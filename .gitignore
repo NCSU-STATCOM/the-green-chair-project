@@ -43,3 +43,4 @@ vignettes/*.pdf
 # Additional things
 *.Rproj
 STATCOM_data.xlsx
+~*.xlsx
