@@ -37,3 +37,9 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+
+
+# Additional things
+*.Rproj
+STATCOM_data.xlsx
