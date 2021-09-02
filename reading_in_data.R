@@ -10,6 +10,8 @@ tgcp_demog <- rename(tgcp_demog, Id = `...1`)
 
 
 
+# viewing the data
+
 View(tail(tgcp_demog[, c(1:40, 119:128)], n = 100))
 
 
