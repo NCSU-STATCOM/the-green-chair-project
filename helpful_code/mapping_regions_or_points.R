@@ -39,6 +39,9 @@ ggplot(le_df, aes(long, lat)) +
 
 ### Mapping choropleths (regions colored according to a value)
 
+# There's a package called choroplethrzip (https://arilamstein.com/creating-zip-code-choropleths-choroplethrzip/)
+# that should be useful for zip code mapping
+
 
 
 # First way, using choroplethr package
