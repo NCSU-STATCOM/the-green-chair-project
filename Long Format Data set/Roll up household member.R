@@ -17,3 +17,4 @@ library(reshape2)
 #New <-melt(tgcp_demog,na.rm = TRUE, id.vars = c(names(tgcp_demog)[-20:-117]),measure.vars = c(names(tgcp_demog)[20:117]),names_pattern = "(.)(.)")
 #names(longer)[31] <- "HHMInfoAnswer"
 #names(longer)[32] <- "HHMInfo"
+#another way seems incorrect,,, 
