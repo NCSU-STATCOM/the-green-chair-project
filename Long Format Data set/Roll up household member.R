@@ -36,10 +36,9 @@ H <- G %>%
     endsWith(ClientAge, "Female") ~ "Female"
     
   ))
+#looking for a way to merge two cols within a dataset and remove duplicates while maintaining the both null values. 
 
 View(H)
-
-
 
 
 
