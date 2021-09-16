@@ -1,0 +1,183 @@
+# Data cleaning and wrangling
+## Read in the raw data
+library(readxl)
+greenchair <- read_excel("C:/Users/ywang256/Desktop/STATCOM_data.xlsx", na= "NA")
+nms <- colnames(greenchair)
+ct <- ifelse(grepl("ClientZipCode|QueenBeds|Cribs|TwinBeds", nms), "numeric", "guess")
+greenchair<- as.data.frame(read_excel("C:/Users/ywang256/Desktop/STATCOM_data.xlsx", 
+                                      na= "NA", col_types = ct))
+str(greenchair[,1:20])
+str(greenchair[,118:128])
+
+## Column A_Variable_Assign a column name
+colnames(greenchair)[1] <- "ID"
+
+## Column B_Variable_"Timestamp"
+greenchair$Timestamp <- as.Date(greenchair$Timestamp)
+
+## Column G_Variable_"ClientAge"
+greenchair$ClientGender[which(greenchair$ClientAge == "Adult (age 18 or over) Male")] <- "Male"
+greenchair$ClientGender[which(greenchair$ClientAge == "Adult (age 18 or over) Female")] <- "Female"
+greenchair$ClientAge[is.na(greenchair$ClientAge)] <- "N/A" 
+greenchair$ClientAge <- sub(pattern = ".*(Adult).*", replacement = "\\1", greenchair$ClientAge)
+greenchair$ClientAge <- sub(pattern = ".*(Child).*", replacement = "\\1", greenchair$ClientAge)
+greenchair$ClientAge <- sub(pattern = ".*(Audlt).*", replacement = "\\1", greenchair$ClientAge)
+greenchair$ClientAge <- sub(pattern = "Audlt", replacement = "Adult", greenchair$ClientAge)
+greenchair$ClientAge[which(greenchair$ClientAge == "Male" | greenchair$ClientAge == "Female")] <- "N/A"
+greenchair$ClientAge[which(greenchair$ClientAge < 18)] <- "Child"
+greenchair$ClientAge[which(greenchair$ClientAge != "Adult" 
+                           & greenchair$ClientAge != "Child" 
+                           & greenchair$ClientAge != "N/A")] <- "Adult"
+greenchair$ClientAge <- as.factor(greenchair$ClientAge)
+
+## Column H_Variable_"ClientGender"
+greenchair$ClientGender[is.na(greenchair$ClientGender)] <- "N/A"
+greenchair$ClientGender <- as.factor(greenchair$ClientGender)
+
+## Column I_Variable_"Ethnicity"
+greenchair$Ethnicity[which(greenchair$Ethnicity == "Hispanic Latino/ Latinx"
+                           | greenchair$Ethnicity == "Hispanic Latino/ LatinX" 
+                           | greenchair$Ethnicity == "Hispanic Latino/LatinX"
+                           | greenchair$Ethnicity == "Hispanic/Latino")] <- "Hispanic or Latino"
+greenchair$Ethnicity[which(greenchair$Ethnicity == "Non- Hispanic or Latino/Latinx"
+                           | greenchair$Ethnicity == "Non-Hispanic Latino/ LatinX " 
+                           | greenchair$Ethnicity == "NOn-Hispanic Latino/ LatinX"
+                           | greenchair$Ethnicity == "Non-Hispanic Latino/LatinX"
+                           | greenchair$Ethnicity == "Non-Hispanic Latino/ LatinX")] <- "Not Hispanic or Latino"
+greenchair$Ethnicity[which(greenchair$Ethnicity == "N/A (Community Housing)"
+                           | greenchair$Ethnicity == "N/A Community Housing" 
+                           | greenchair$Ethnicity == "N/A Spaces & Places"
+                           | greenchair$Ethnicity == "Unknown")] <- "N/A"
+greenchair$Ethnicity[is.na(greenchair$Ethnicity)] <- "N/A"
+greenchair$Ethnicity <- as.factor(greenchair$Ethnicity)
+
+## Column J_Variable_"Race"
+greenchair$Race[which(greenchair$Race == "American Indian or Alaskan Native"
+                      | greenchair$Race == "American Indian or Native Alaskan")] <- "American Indian or Alaska Native"
+greenchair$Race[which(greenchair$Race == "Black/African-American")] <- "Black or African American"
+greenchair$Race[which(greenchair$Race == "Multiple races")] <- "Multiracial"
+greenchair$Race[which(greenchair$Race == "N/A (Community Housing)"
+                      | greenchair$Race == "N/A Community Housing" 
+                      | greenchair$Race == "N/A Spaces & Places")] <- "N/A"
+
+## Column K_Variable_"Veteran"
+greenchair$Veteran[which(greenchair$Veteran != "Yes" 
+                         & greenchair$Veteran != "No")] <- "N/A"
+greenchair$Veteran[which(greenchair$Veteran == "N/A Community Housing")] <- "N/A"
+greenchair$Veteran[is.na(greenchair$Veteran)] <- "N/A"
+greenchair$Veteran <- as.factor(greenchair$Veteran)
+
+## Column L_Variable_"Incarcerated"
+greenchair$Incarcerated[which(greenchair$Incarcerated != "Yes" 
+                              & greenchair$Incarcerated != "No")] <- "N/A"
+greenchair$Incarcerated[is.na(greenchair$Incarcerated)] <- "N/A"
+greenchair$Incarcerated <- as.factor(greenchair$Incarcerated)
+
+## Column M_Variable_"Disability"
+greenchair$Disability[which(greenchair$Disability== "Unknown")] <- "N/A"
+greenchair$Disability[is.na(greenchair$Disability)] <- "N/A"
+greenchair$Disability <- as.factor(greenchair$Disability)
+
+## Column N_Variable_"AnnualIncomeAmount"
+greenchair$AnnualIncomeAmount <- as.numeric(greenchair$AnnualIncomeAmount)
+greenchair$AnnualIncomeAmount[is.na(greenchair$AnnualIncomeAmount)] <- NA
+summary(greenchair$AnnualIncomeAmount)
+
+## Column DO_Variable_"QueenBeds"
+greenchair$QueenBeds[is.na(greenchair$QueenBeds)] <- NA
+summary(greenchair$QueenBeds)
+
+## Column DP_Variable_"Assistance"
+greenchair$Assistance <- sub(pattern = ".*(Disaster).*", replacement = "Disaster Relief", greenchair$Assistance)
+greenchair$Assistance <- sub(pattern = ".*(Transition).*", replacement = "\\1", greenchair$Assistance)
+greenchair$Assistance <- sub(pattern = ".*(transition).*", replacement = "\\1", greenchair$Assistance)
+greenchair$Assistance[which(greenchair$Assistance== "transition")] <- "Transition"
+greenchair$Assistance[is.na(greenchair$Assistance)] <- "N/A"
+greenchair$Assistance <- as.factor(greenchair$Assistance)
+
+## Column DQ_Variable_"Circumstance"
+greenchair$'COVID-19'[which(greenchair$Circumstance == "COVID-19"
+                            | greenchair$Circumstance =="Fire-COVID"
+                            | greenchair$Circumstance =="Homelessness-COVID"
+                            | greenchair$Circumstance == "Low Income-COVID"
+                            | greenchair$Circumstance == "Client is relocating for other disaster (fire, flooding, pests)-COVID")] <- "COVID"
+greenchair$Assistance[which(greenchair$Circumstance == "community referrals, support students for academic success")] <- "Sweeter Dreams"
+greenchair$Circumstance[which(greenchair$Circumstance == "Sweeter Dreams"
+                            | greenchair$Circumstance =="Community Housing"
+                            | greenchair$Circumstance == "community referrals, support students for academic success")] <- "N/A"
+greenchair$Disability[which(greenchair$Circumstance == "Disability")] <- "Yes"
+greenchair$Disability[which(greenchair$Circumstance == "Client is in subsidized housing intended for low income elderly individuals with a disability")] <- "Yes"
+greenchair$Circumstance <- sub(pattern = "COVID-19", replacement = "N/A", greenchair$Circumstance)
+greenchair$Circumstance <- sub(pattern = "Fire-COVID", 
+                               replacement = "Client is relocating for other disaster (fire, flooding, pests)", 
+                               greenchair$Circumstance)
+greenchair$Circumstance <- sub(pattern = "Fire", 
+                               replacement = "Client is relocating for other disaster (fire, flooding, pests)", 
+                               greenchair$Circumstance)
+greenchair$Circumstance <- sub(pattern = "Client is relocating for other disaster (fire, flooding, pests)-COVID", 
+                               replacement = "Client is relocating for other disaster (fire, flooding, pests)", 
+                               greenchair$Circumstance)
+greenchair$Circumstance <- sub(pattern = "Pest Infestation", 
+                               replacement = "Client is relocating for other disaster (fire, flooding, pests)", 
+                               greenchair$Circumstance)
+greenchair$Circumstance <- sub(pattern = "Low Income-COVID", 
+                               replacement = "Low Income", 
+                               greenchair$Circumstance)
+greenchair$Circumstance <- sub(pattern = "Homelessness-COVID", 
+                               replacement = "Client is exiting homelessness", 
+                               greenchair$Circumstance)
+greenchair$Circumstance <- sub(pattern = "Homelessness", 
+                               replacement = "Client is exiting homelessness", 
+                               greenchair$Circumstance)
+greenchair$Circumstance <- sub(pattern = "(Disability)", replacement = "N/A", greenchair$Circumstance)
+greenchair$Circumstance <- sub(pattern = "Client is in subsidized housing intended for low income elderly individuals with a disability",
+                               replacement = "N/A", greenchair$Circumstance)
+greenchair$Circumstance <- sub(pattern = "Job loss*", replacement = "Job Loss", greenchair$Circumstance)
+greenchair$Circumstance <- sub(pattern = "relocation", replacement = "Relocation", greenchair$Circumstance)
+greenchair$Circumstance <- sub(pattern = "Natural Disaster", replacement = "Client is relocating after a natural disaster (hurricane, tornado, etc.)",
+                               greenchair$Circumstance)
+greenchair$Circumstance <- sub(pattern = "Re-entry after incarceration", replacement = "Re-entry after Incarceration", greenchair$Circumstance)
+greenchair$Circumstance <- as.factor(greenchair$Circumstance)
+
+## Column DR_Variable_"HomeSize"
+greenchair$HomeSize <- sub(pattern = ".*(Child).*", replacement = "\\N/A", greenchair$HomeSize)
+greenchair$HomeSize <- sub(pattern = ".*(Israel Williams).*", replacement = "\\N/A", greenchair$HomeSize)
+greenchair$HomeSize <- sub(pattern = ".*(1).*", replacement = "\\1 Bedroom", greenchair$HomeSize)
+greenchair$HomeSize <- sub(pattern = ".*(2).*", replacement = "2 Bedrooms", greenchair$HomeSize)
+greenchair$HomeSize <- sub(pattern = ".*(3).*", replacement = "3 Bedrooms", greenchair$HomeSize)
+greenchair$HomeSize <- sub(pattern = ".*(4).*", replacement = "4 Bedrooms", greenchair$HomeSize)
+greenchair$HomeSize <- sub(pattern = ".*(5).*", replacement = "5 Bedrooms", greenchair$HomeSize)
+greenchair$HomeSize <- sub(pattern = ".*(6).*", replacement = "6 Bedrooms", greenchair$HomeSize)
+greenchair$HomeSize <- sub(pattern = ".*(Studio).*", replacement = "\\1", greenchair$HomeSize)
+greenchair$HomeSize <- sub(pattern = "bedrooms extra large", replacement = "Bedrooms extra large", greenchair$HomeSize)
+greenchair$HomeSize[which(greenchair$HomeSize == "unkown" | greenchair$HomeSize == "Unknown" 
+                      | greenchair$HomeSize == "Unkown")] <- "N/A"
+greenchair$HomeSize[is.na(greenchair$HomeSize)] <- "N/A"
+greenchair$HomeSize <- as.factor(greenchair$HomeSize)
+
+## Column DT_Variable_"COVID-19"
+greenchair$'COVID-19'[which(greenchair$'COVID-19' == "COIVD" | greenchair$'COVID-19' == "COViD" 
+                          | greenchair$'COVID-19' == "COVID-19"
+                          | greenchair$'COVID-19' == "COVID`")]<- "COVID"
+greenchair$'COVID-19'[is.na(greenchair$'COVID-19')] <- "N/A"
+greenchair$'COVID-19' <- as.factor(greenchair$'COVID-19')
+greenchair$'COVID-19' <- as.factor(greenchair$'COVID-19')
+
+## Column DU_Variable_"Cribs"
+greenchair$Cribs[is.na(greenchair$Cribs)] <- NA
+summary(greenchair$Cribs)
+
+## Column DV_Variable_"TwinBeds"
+greenchair$TwinBeds[is.na(greenchair$TwinBeds)] <- NA
+summary(greenchair$TwinBeds)
+
+## Column DW_Variable_"NoteInPocket"
+greenchair$NoteInPocket[which(greenchair$NoteInPocket == "no")] <- "No"
+greenchair$NoteInPocket[is.na(greenchair$NoteInPocket)] <- "N/A"
+greenchair$NoteInPocket <- as.factor(greenchair$NoteInPocket)
+
+## Column DX_Variable_"ChildSleeping"
+greenchair$ChildSleeping[is.na(greenchair$ChildSleeping)] <- "N/A"
+greenchair$ChildSleeping[which(greenchair$ChildSleeping == "sleeping on floor"
+                        | greenchair$ChildSleeping == "Sleeping on floor")] <- "Sleeping on the floor"
+greenchair$ChildSleeping <- as.factor(greenchair$ChildSleeping)
