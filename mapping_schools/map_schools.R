@@ -1,21 +1,25 @@
 library(rgdal)
+library(raster)
 library(tidyverse)
 library(readxl)
 
-#### 1. Read in shape file of all the public schools in NC
-shp <- readOGR(dsn = "Public_Schools.shp", stringsAsFactors = F)
-SCHOOL_NAM <- shp$SCHOOL_NAM
-SCHOOL_NAM <- as.data.frame(SCHOOL_NAM)
-SCHOOL_NAM %>% contains("Child")
-str_detect(SCHOOL_NAM, "Child")
+##################################################
+#### 1. Read in shape file of all the schools in NC
+shp <- read.csv("NC_schools.csv")
+shp <- shp[,-1]
+coordinates(shp) <- ~ coords.x1 + coords.x2
+plot(shp)
 
+
+##################################################
 ### 2. Read in STATCOM_data.xlsx
-statcom_data <- read_excel("STATCOM_data.xlsx", col_types = "text")
+statcom_data <- read_excel("C:/Users/user/Desktop/STATCOM_data.xlsx", col_types = "text")
 
 # Select columns involving which schools the individuals go to: 9 columns in total
 school_col_names <- tidyselect::vars_select(colnames(statcom_data), contains('School', ignore.case = TRUE)) 
 school_col_df <- statcom_data %>% select(school_col_names)
 
+##################################################
 ### 3. Tidy up school_col_df
 # remove rows containing only NA's
 school_col_df <- school_col_df %>% filter(if_any(everything(), ~ !is.na(.)))
@@ -44,12 +48,17 @@ rm_string <- c("n/a", "N/a", "N/A", "n/A", "na", "N?A",
                "below"
                )
 school_col_df <- mutate_all(school_col_df, funs(replace(., str_detect(.,paste(rm_string, collapse = "|")), NA)))
+
+# remove values with no specific school names
 school_col_df <- mutate_all(school_col_df, funs(replace(., . == "Elementary School", NA)))
 school_col_df <- mutate_all(school_col_df, funs(replace(., . == "Elementary", NA)))
 school_col_df <- mutate_all(school_col_df, funs(replace(., . == "Middle School", NA)))
 school_col_df <- mutate_all(school_col_df, funs(replace(., . == "High School", NA)))
 school_col_df <- mutate_all(school_col_df, funs(replace(., . == "High school", NA)))
 
-
-school_names <- unique(as.vector(as.matrix(school_col_df)))
+# get unique school names 
+school_names <- unique(na.omit(as.vector(as.matrix(school_col_df))))
 school_names <- as.data.frame(school_names)
+
+##################################################
+#### 4. Match the school_names with the school names in the shape file
