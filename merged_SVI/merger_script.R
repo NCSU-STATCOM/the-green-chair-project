@@ -4,20 +4,20 @@
 
 library(dplyr)
 
-##dir<-(Your directory containing datasets)
+dir<-"/Users/jrk99/STATCOM/Datasets/"
 
 ##External CDC data
 file_18<-"NorthCarolina.csv"
 
-NC_18<-read.csv(paste(dir,file_18,sep=""))
+NC_18<-read.csv(paste0(dir,file_18))
 
 ###Zip to Tract Data
 zip_tract_file<-"zcta_tract_rel_10.txt"
-zt_data<-read.csv(paste(dir,zip_tract_file,sep=""))
+zt_data<-read.csv(paste0(dir,zip_tract_file))
 
 ###Green Chair Data
 green_chair_file<-"STATCOM_data.xlsx - Program Referrals.csv"
-GC_data<-read.csv(paste(dir,green_chair_file,sep=""))
+GC_data<-read.csv(paste0(dir,green_chair_file))
 
 ##Cleaning zipcodes--Changes Zip codes with only 4 numbers to add a zero at end; 
 ##                      if 6 numbers or zip not in census or zip not in NC, changed to NA
@@ -40,7 +40,6 @@ keep<-colnames(GC_data)[!endsWith(colnames(GC_data), "FirstName")&!endsWith(coln
 
 GC_data<-GC_data[colnames(GC_data)%in%keep]
 
-
 ##Creating New Summary Variables By TRPOPPCT--The Percentage of Total Population of the 2010 Census Tract 
 ##                                              represented by the record
 trpoppct_summary<- zt_data %>% group_by(GEOID) %>% summarise(trpoppct_sum = sum(TRPOPPCT))
@@ -50,14 +49,16 @@ mean(trpoppct_summary$trpoppct_sum>=99)
 
 
 ##Actual merger loop
-merged_GC_mat <- matrix(NA, nrow = nrow(GC_data), ncol = length(colnames(NC_18)))
+NC_18_col_subset<-colnames(NC_18[,8:ncol(NC_18)])
+
+merged_GC_mat <- matrix(NA, nrow = nrow(GC_data), ncol = length(NC_18_col_subset))
 
 no_f_dat <- 0
 
 merged_mat_idx <- 1
 
-##What we want weighted average of
-NC_18_col_subset<-colnames(NC_18[,8:ncol(NC_18)])
+##Replace -999 Null values with NA
+NC_18[NC_18==-999]<-NA
 
 
 for (zip in GC_data$ClientZipCode){
@@ -94,7 +95,7 @@ for (zip in GC_data$ClientZipCode){
   merged_mat_idx <- merged_mat_idx+1
 }
 
-colnames(merged_GC_mat) <- colnames(NC_18)
+colnames(merged_GC_mat) <- NC_18_col_subset
 
 ##Merged dataset
 new_GC_data<-data.frame(GC_data,merged_GC_mat)
