@@ -1,0 +1,33 @@
+---
+title: "Analysis of The Green Chair Project Client Demographics"
+author: |
+  STATCOM: Alvin Sheng, Jimmy Hickey, Naomi Giertych, Hyoshin Kim, Jake Koerner, Jiatao Wang, Shakthi Unnithan, Sneha Karanjai, Xavier Genelin, Xiaoqian Liu, Yinqiao Wang
+site: bookdown::bookdown_site
+delete_merged_file: true
+output:
+  bookdown::pdf_document2:
+    toc: yes
+    toc_depth: 2
+abstract: |
+  This report contains an exploration and initial analysis of data on The Green Chair Project's (TGCP) clients, the community vulnerability and economic health of Wake County's block groups, the CDC Social Vulnerability Indices of Wake County's census tracts, and Wake County public schools.
+---
+
+<!-- Setting plot dimensions for entire report -->
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, fig.align = 'center', fig.width = 5, fig.height = 3)
+```
+
+\newpage
+
+```{r child = 'tgcp_data_subsection.Rmd'}
+```
+
+\newpage
+
+```{r child = 'external_data_subsection.Rmd'}
+```
+
+
+
+
