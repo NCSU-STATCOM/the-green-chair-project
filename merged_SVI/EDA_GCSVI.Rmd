@@ -1,0 +1,443 @@
+---
+title: "Initial Explanatory Analysis On Social Vunerability Measures of Locations of Green Chair Clients"
+author:
+- North Carolina State University Statistics in the Community (Jake Koerner)
+
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = TRUE,
+	fig.height = 4,
+	fig.width = 8,
+	warning = FALSE
+)
+```
+
+## Some Initial EDA Based on SVI Data for Clients
+* We add an extra column of total beds needed for each client
+* We also transform Veteran, Incarcerated, Disability to 0 and 1, for 
+success and failure; we also transform NAs, unknowns, etc. to 0s
+  + This is useful for evaluating correlation statistics for
+  Veteran, Incarcerated and Disability between other variables
+
+```{r include=FALSE}
+library(ggplot2)
+library(rmarkdown)
+library(tidyverse)
+library(corrplot)
+library(psych)
+library(gridExtra)
+
+
+data_dir<-"/Users/jrk99/STATCOM/Datasets/"
+
+GC_SVI_file<-"merged_CDC_GC.csv"
+
+GC_SVI<-read.csv(paste0(data_dir,GC_SVI_file))
+GC_SVI[GC_SVI==""]<-NA
+
+GC_SVI$Timestamp<-as.Date(GC_SVI$Timestamp, format ="%d-%b-%Y")
+
+GC_SVI$Veteran[GC_SVI$Veteran=="Yes"]<-1
+GC_SVI$Veteran[GC_SVI$Veteran!="1" | is.na(GC_SVI$Veteran)]<-0
+GC_SVI$Veteran<-as.numeric(GC_SVI$Veteran)
+
+GC_SVI$Incarcerated[GC_SVI$Incarcerated=="Yes"]<-1
+GC_SVI$Incarcerated[GC_SVI$Incarcerated!="1"| is.na(GC_SVI$Incarcerated)]<-0
+GC_SVI$Incarcerated<-as.numeric(GC_SVI$Incarcerated)
+
+GC_SVI$Disability[GC_SVI$Disability=="Yes"]<-1
+GC_SVI$Disability[GC_SVI$Disability!="1"| is.na(GC_SVI$Disability)]<-0
+GC_SVI$Disability<-as.numeric(GC_SVI$Disability)
+
+bed_req<-GC_SVI[,colnames(GC_SVI)[endsWith(colnames(GC_SVI), "BedReq")]]
+
+for (i in 1:nrow(bed_req)){
+  for (j in 1:ncol(bed_req)){
+    if (is.na(bed_req[i,j])){
+      bed_req[i,j]<-"0"
+    }
+    else{
+    if (startsWith(bed_req[i,j], "Yes")){
+      bed_req[i,j]<-"1"
+    }
+    else{
+      bed_req[i,j]<-"0"
+    }
+    }
+  }
+}
+
+##Assume that all NAs for those who have put down bed request are Nos
+
+bed_req<-as.data.frame(lapply(bed_req,as.numeric))
+
+GC_SVI<-cbind(GC_SVI, totalBedNeeded=rowSums(bed_req))
+```
+
+## Gathering some initial descriptive statistics on the numerical data
+```{r echo=FALSE}
+
+numer_subset<-colnames(GC_SVI)[sapply(GC_SVI, typeof)!="character" &
+                                 !startsWith(colnames(GC_SVI), "More") &
+                                 !startsWith(colnames(GC_SVI), "HH") &
+                                 !startsWith(colnames(GC_SVI), "EPL") & 
+                                 !startsWith(colnames(GC_SVI), "SPL") &
+                                 !startsWith(colnames(GC_SVI), "RPL") &
+                                 !startsWith(colnames(GC_SVI), "F") & 
+                                 !startsWith(colnames(GC_SVI), "E_") & 
+                                 !startsWith(colnames(GC_SVI), "M_") & 
+                                 !startsWith(colnames(GC_SVI), "MP") ]
+
+numer_subset<-numer_subset[-which(numer_subset %in% c("X.1", "X", "ClientZipCode",
+                                                      "Timestamp"))]
+
+numer_GCSVI<-GC_SVI[numer_subset]
+
+describe(numer_GCSVI)
+```
+
+Some things worth noting about clients:
+
+* Annual Income is right skewed; most annual incomes are small with a few large outliers
+* NumAdultMale is slight left skewed; most households have about one adult male but a lot of outliers with none
+* Most beds needed are twin beds
+
+Some things worth noting about SVI statistics of where clients live:
+
+* Percent Poverty averages about 17%, but Percent Unemployment averages only about 5-6%
+* About 10-12% have no high school diploma
+* About 10-12% are single parents
+* About 10-12% have a disability
+* Average percent minority is over half
+* About a fifth to a fourth are seventeen or younger
+* On average, about 16% live in housing structures with more than 10 units per structure
+* About 7-8% do not have a vehicle
+* About 13% do not possess insurance
+
+Some things of note for categorical variables:
+* We see that a need for queen beds is positively correlated with those 
+incarcerated and especially those with a disability
+* We see some of the largest correlation values for the disability column
+  + SVI measures of poverty, no high school diploma, speaking 
+  English "less than well", living in apartment-like
+  structures and crowded environments, having no vechicle, and
+  not being insured
+
+```{r echo=FALSE}
+
+cor(numer_GCSVI, use="complete.obs")
+```
+
+## Some correlation statistics:
+Again some interesting things to note:
+
+* NumChildren negatively correlated with SVI measures of poverty, living in apartment-like structures, and not having a vehicle
+* Need for queen beds is slightly positively correlated with SVI measures of poverty and not having a vehicle
+* Need for twin beds is slightly positively correlated with SVI measures of perecent of population aged less than or equal to 17, and percent of population living in mobile homes (in fact need for beds in general is correlated wth these SVI measures)
+
+However, it is worth noting that SVI statistics may not be reliable for the given data.
+For instance, the correlation between those with a disability among the clients
+in the original dataset and the percent of population among that client with a disability
+is quite small.
+
+
+```{r include=FALSE}
+
+### Percent Median Income by Household Size
+## Wake County
+sixty_wake<-c(31920,36480,41040,45600,49260,52920)
+
+sixty_wake_df<-data.frame(id=c(1:length(sixty_wake)),inc=sixty_wake)
+
+##To get for household size 7,8 for Wake County, assuming a linear relationship
+linear_sixty_wake<-lm(inc~id,data=sixty_wake_df)
+
+sixty_wake_pred<-data.frame(id=c(7,8),
+                            inc=predict(linear_sixty_wake, 
+                                        newdata=data.frame(id=c(7,8))))
+
+sixty_wake<-rbind(sixty_wake_df,sixty_wake_pred)$inc
+ 
+
+#Raleigh
+sixty_ral<-c(40200,45950,51700,57450,62050,66650,71200,75800)
+
+eighty_ral<-c(53600,61250,68900,76550,82700,88800,94950,101050)
+
+
+##Assuming a linear relationship between percent median income and percent level
+## i.e. linear increase in annual income level for going from 30% to 60% median 
+## income level
+
+slope<-(eighty_ral-sixty_ral)/0.2
+
+intercept<-sixty_ral-(slope*0.6)
+
+thirty_ral<-(slope*0.3)+intercept
+
+thirty_wake<-thirty_ral*mean(sixty_wake/sixty_ral)
+
+##Adding 1s and 0s for in/out of % median income level group for 30% and 60% for
+## both Wake County and Raleigh areas
+ral_sixty<-c()
+ral_thirty<-c()
+wake_sixty<-c()
+wake_thirty<-c()
+for (i in 1:nrow(GC_SVI)){
+  inc<-GC_SVI$AnnualIncomeAmount[i]
+  numhouse<-GC_SVI$TotalHHNumber[i]
+  if (!is.na(numhouse) &!is.na(inc)){
+    if (0<numhouse & numhouse<9){
+      if (inc<=sixty_ral[numhouse]){
+        ral_sixty<-append(ral_sixty,1)
+      }
+      else{
+        ral_sixty<-append(ral_sixty,0)
+      }
+      if (inc<=sixty_wake[numhouse]){
+        wake_sixty<-append(wake_sixty,1)
+      }
+      else{
+        wake_sixty<-append(wake_sixty,0)
+      }
+      if (inc<=thirty_ral[numhouse]){
+        ral_thirty<-append(ral_thirty,1)
+      }
+      else{
+        ral_thirty<-append(ral_thirty,0)
+      }
+      if (inc<=thirty_wake[numhouse]){
+        wake_thirty<-append(wake_thirty,1)
+      }
+      else{
+        wake_thirty<-append(wake_thirty,0)
+      }
+    }
+    else{
+      ral_sixty<-append(ral_sixty,NA)
+      ral_thirty<-append(ral_thirty,NA)
+      wake_sixty<-append(wake_sixty,NA)
+      wake_thirty<-append(wake_thirty,NA)
+    }
+  }
+  else{
+    ral_sixty<-append(ral_sixty,NA)
+    ral_thirty<-append(ral_thirty,NA)
+    wake_sixty<-append(wake_sixty,NA)
+    wake_thirty<-append(wake_thirty,NA)
+  }
+}
+
+GCSVI_wInc<-cbind(GC_SVI,ral_sixty,ral_thirty,wake_sixty,wake_thirty)
+
+GCSVI_wInc<-GCSVI_wInc[!is.na(GCSVI_wInc$ral_sixty),]
+
+```
+
+
+
+## Deeper Dive Into Correlated Relationships
+```{r echo=FALSE}
+
+ggplot(GCSVI_wInc, aes(x=NumChildren, y=EP_POV,color=as.character(NumChildren)))+geom_boxplot()+labs(x="Number of Children",y="Percent Poverty", title="Percent Poverty by Number of Children")+scale_color_discrete(name="Num Children", 
+                       labels=c(0,1,2,3,4,5,6,7))
+```
+Some things to note:
+
+* We see that that distribution among number of children is about the same for percent poverty
+* Those with no children, however, often are among more impoverished areas, with a bit of a left-skew (indicating more distributed closer to more impoverished areas)
+
+```{r echo=FALSE}
+ggplot(GCSVI_wInc, aes(x=NumChildren, y=EP_MUNIT,color=as.character(NumChildren)))+geom_boxplot()+labs(x="Number of Children",y="Percent More than 10 Units", title="Percent More than 10 Units by Number of Children")+scale_color_discrete(name="Num Children", 
+                       labels=c(0,1,2,3,4,5,6,7))
+```
+Some things to note:
+
+* We see that that distribution among number of children varies; in general we see that having more children tends to have a small probability of living in a structure with more than ten units
+  + This probability is pretty constant among after more than two kids
+
+```{r echo=FALSE}
+ggplot(GCSVI_wInc, aes(x=NumChildren, y=EP_NOVEH,color=as.character(NumChildren)))+geom_boxplot()+labs(x="Number of Children",y="Percent No Vehicle", title="Percent No Vehicle by Number of Children")+scale_color_discrete(name="Num Children", 
+                       labels=c(0,1,2,3,4,5,6,7))
+```
+Some things to note:
+
+* We see that that distribution among number of children is about the same, perhaps with a right skew (more towards a lower probability of having no vehicle) after the first child
+  + There are a few clients that live in areas where the probability of having no vehicle is high no matter the number of children (long right tail)
+
+
+```{r echo=FALSE}
+ggplot(GCSVI_wInc, aes(x=QueenBeds, y=EP_POV,color=as.character(QueenBeds)))+geom_boxplot()+labs(x="Number Queen Beds Needed",y="Percent Poverty", title="Percent Poverty by Queen Beds Needed")+scale_color_discrete(name="Num Beds", 
+                       labels=c(0,1,2,3,4,5,6,7))
+```
+Some things to note:
+
+* We see that that distribution among number of queen beds varies. It is worth noting that:
+  + Those that need one queen bed tend to live among more impoverished areas
+  + It would be worth looking into how the need for a queen bed is distributed among those with a disability
+
+```{r echo=FALSE}
+ggplot(GCSVI_wInc, aes(x=QueenBeds, y=EP_NOVEH,color=as.character(QueenBeds)))+geom_boxplot()+labs(x="Number Queen Beds Needed",y="Percent No Vehicle", title="Percent No Vehicle by Queen Beds Needed")+scale_color_discrete(name="Num Beds", 
+                       labels=c(0,1,2,3,4,5,6,7))
+```
+Some things to note:
+
+* We see that that distribution among number of queen beds varies. It is worth noting that:
+  +Those that need more than one queen bed tend to live in areas where the probability of having no vehicle tends to be lower (assuming that the need for three queen beds is an outlier)
+  + Again, it would be worth looking into how the need for a queen bed is distributed among those with a disability
+
+```{r echo=FALSE}
+ggplot(GCSVI_wInc, aes(x=TwinBeds, y=EP_AGE17,color=as.character(TwinBeds)))+geom_boxplot()+labs(x="Number Twin Beds Needed",y="Percent Less Than 17", title="Percent Less Than 17 by Twin Beds Needed")+scale_color_discrete(name="Num Beds", 
+                       labels=c(0,1,2,3,4,5,6,7))
+
+
+```
+Some things to note:
+
+* We see that that distribution among number of twin beds varies. It is worth noting that overall, however, that the need for twin beds increases as one tends to live in areas with more people less than 17 years of age
+
+
+## Brief Investigation Among Percent Median Income Groups
+We label client as whether or not one is below the 30% or 60% median income level in Raleigh and Wake County
+* These median income levels are based on data sourced from websites below
+```{r echo=FALSE}
+
+GCSVI_numchild_sum<-as.data.frame(GCSVI_wInc %>% group_by(NumChildren) %>%
+    summarize(numbelowsixty_ral=sum(ral_sixty, na.rm=T),
+              numbelowthirty_ral=sum(ral_thirty, na.rm=T),
+              numbelowsixty_wake=sum(wake_sixty, na.rm=T),
+              numbelowthirty_wake=sum(wake_thirty, na.rm=T)))
+  
+
+GCSVI_numchild_sum<-GCSVI_numchild_sum[!is.na(GCSVI_numchild_sum$NumChildren),]
+
+numchild_for_plot<-gather(GCSVI_numchild_sum, key="inc_type", value="numBelow", 
+                          c(numbelowthirty_ral, numbelowsixty_ral,                                                                              numbelowthirty_wake,numbelowsixty_wake))
+
+ggplot(numchild_for_plot, aes(x=NumChildren, y=numBelow, fill=inc_type))+
+  geom_bar(stat="identity", position="dodge")+labs(x="Number of Children",
+  y="Number Below Median Percentile", 
+  title="Number of Children by Income Percentile")+
+  scale_fill_discrete(name="Median Income Percentile", 
+                      labels=c("Below 60% Meidan Raleigh", 
+                               "Below 60% Meidan Wake",
+                               "Below 30% Meidan Raleigh",
+                              "Below 30% Meidan Wake"))
+```
+Some things to note:
+
+* We see that the number of all of those below a certain median income level maximizes around two children, and drops of with more children, and generally having a left skew
+  +In other words more people living below a certain median income level when having less children
+* Also worth noting that many more clients tend to live below the 30% median income in Raleigh compared to Wake County as a whole, especially among having less children
+  + Worth looking into how this distribution is among those that actually are strictly living in Raleigh versus just Wake County
+
+
+```{r echo=FALSE}
+
+GCSVI_queen_sum<-as.data.frame(GCSVI_wInc %>% group_by(QueenBeds) %>%
+    summarize(numbelowsixty_ral=sum(ral_sixty, na.rm=T),
+              numbelowthirty_ral=sum(ral_thirty, na.rm=T),
+              numbelowsixty_wake=sum(wake_sixty, na.rm=T),
+              numbelowthirty_wake=sum(wake_thirty, na.rm=T)))
+  
+
+GCSVI_queen_sum<-GCSVI_queen_sum[!is.na(GCSVI_queen_sum$QueenBeds),]
+
+queen_for_plot<-gather(GCSVI_queen_sum, key="inc_type", value="numBelow", 
+                          c(numbelowthirty_ral, numbelowsixty_ral,                                                                              numbelowthirty_wake,numbelowsixty_wake))
+
+ggplot(queen_for_plot, aes(x=QueenBeds, y=numBelow, fill=inc_type))+
+  geom_bar(stat="identity", position="dodge")+labs(x="Number Queen Beds Neeed",
+  y="Number Below Median Percentile", 
+  title="Number Queen Beds by Income Percentile")+
+  scale_fill_discrete(name="Median Income Percentile", 
+                      labels=c("Below 60% Meidan Raleigh", 
+                               "Below 60% Meidan Wake",
+                               "Below 30% Meidan Raleigh",
+                              "Below 30% Meidan Wake"))
+```
+Some things to note:
+
+* Most people who need a queen bed are not below a certain median income level
+  + Among those who do not need a queen bed, more tend to be below the 60% median income level, and more tend to live below the Raleigh 30% median income level
+
+
+
+```{r echo=FALSE}
+
+GCSVI_twin_sum<-as.data.frame(GCSVI_wInc %>% group_by(TwinBeds) %>%
+    summarize(numbelowsixty_ral=sum(ral_sixty, na.rm=T),
+              numbelowthirty_ral=sum(ral_thirty, na.rm=T),
+              numbelowsixty_wake=sum(wake_sixty, na.rm=T),
+              numbelowthirty_wake=sum(wake_thirty, na.rm=T)))
+  
+
+GCSVI_twin_sum<-GCSVI_twin_sum[!is.na(GCSVI_twin_sum$TwinBeds),]
+
+twin_for_plot<-gather(GCSVI_twin_sum, key="inc_type", value="numBelow", 
+                          c(numbelowthirty_ral, numbelowsixty_ral,                                                                              numbelowthirty_wake,numbelowsixty_wake))
+
+ggplot(twin_for_plot, aes(x=TwinBeds, y=numBelow, fill=inc_type))+
+  geom_bar(stat="identity", position="dodge")+labs(x="Number Twin Beds Neeed",
+  y="Number Below Median Percentile", 
+  title="Number Twin Beds by Income Percentile")+
+  scale_fill_discrete(name="Median Income Percentile", 
+                      labels=c("Below 60% Meidan Raleigh", 
+                               "Below 60% Meidan Wake",
+                               "Below 30% Meidan Raleigh",
+                              "Below 30% Meidan Wake"))
+```
+Some things to note:
+
+* Most people who need a twin bed are not below a certain median income level
+  + More tend to be below the 60% median income level, and more tend to live below the Raleigh 30% median income level, with the less twin beds needed, especially less than three twin beds
+
+
+```{r echo=FALSE}
+
+order_POV<-GCSVI_wInc[order(GCSVI_wInc$EP_POV),]
+
+acc_ral_thirty<-c(order_POV$ral_thirty[1])
+acc_ral_sixty<-c(order_POV$ral_sixty[1])
+acc_wake_thirty<-c(order_POV$wake_thirty[1])
+acc_wake_sixty<-c(order_POV$wake_sixty[1])
+for (i in 2:nrow(order_POV)){
+  acc_ral_thirty<-append(acc_ral_thirty,order_POV$ral_thirty[i]+
+                           acc_ral_thirty[i-1])
+  acc_ral_sixty<-append(acc_ral_sixty,order_POV$ral_sixty[i]+
+                          acc_ral_sixty[i-1])
+  acc_wake_thirty<-append(acc_wake_thirty,order_POV$wake_thirty[i]+
+                            acc_wake_thirty[i-1])
+  acc_wake_sixty<-append(acc_wake_sixty,order_POV$wake_sixty[i]+
+                           acc_wake_sixty[i-1])
+}
+
+order_POV<-cbind(order_POV, acc_ral_thirty, acc_ral_sixty, 
+                 acc_wake_thirty, acc_wake_sixty)
+
+order_POV_plot<-gather(order_POV, key="inc_type", value="accuml", 
+                       c(acc_ral_thirty, acc_ral_sixty, acc_wake_thirty, 
+                         acc_wake_sixty))
+
+ggplot(order_POV_plot, aes(x=EP_POV, y=accuml, color=inc_type))+geom_line()+
+  labs(x="Percent Poverty Less Than or Equal",y="Number Below Median Percentile",
+       title="Percent Poverty by Income Percentile")+
+  scale_color_discrete(name="Median Income Percentile", 
+                       labels=c("Below 60% Meidan Raleigh", 
+                                "Below 60% Meidan Wake",
+                                "Below 30% Meidan Raleigh",
+                                "Below 30% Meidan Wake"))
+```
+Some things to note:
+
+* We see that the number of people below a certain income level accumulated at much larger steps as one's area surpasses a certain percent of impoverishment
+* We see the size of these jumps among Wake County residents does not increase as much as those made by Raleigh residents as the area's percent impoverishment surpasses a certain level
+
+
+## Sources for Median Income Level Data:
+* <https://dhic.org/resident-services/housing-options/>
+* <https://raleighnc.gov/Community/content/HousingNeighborhoods/Articles/RentanApartment.html>
+* <https://www.huduser.gov/portal/datasets/il.html#2021_faq>
