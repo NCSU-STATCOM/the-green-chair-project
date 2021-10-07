@@ -14,6 +14,11 @@ public_shp_df <- as.data.frame(public_shp)
 non_public_shp_df <- as.data.frame(non_public_shp)
 uni_shp_df <- as.data.frame(uni_shp)
 
+#write.csv(public_shp_df, "NC_Public_Schools.csv", row.names = F)
+#write.csv(non_public_shp_df, "NC_Non-Public_Schools.csv", row.names = F)
+#write.csv(uni_shp_df, "NC_Colleges_and_Universities.csv", row.names = F)
+
+
 ### 1-2. Rename & remove columns in the three shape files
 ### Eyeballing the three files, we select common variables in all three files
 public_shp_df <- public_shp_df %>% dplyr::select(c("SCHOOL_NAM", "PHYS_ADDR", "PHYS_CITY", "PHYS_ZIP", "COUNTY", "coords.x1", "coords.x2"))
