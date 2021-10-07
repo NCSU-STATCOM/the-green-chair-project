@@ -15,7 +15,7 @@ abstract: |
 <!-- Setting plot dimensions for entire report -->
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, fig.align = 'center', fig.width = 5, fig.height = 3)
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.align = 'center', fig.width = 5, fig.height = 3)
 ```
 
 \newpage
@@ -28,7 +28,7 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, fig.align = 'center', fig.w
 ```{r child = 'external_data_subsection.Rmd'}
 ```
 
-\newpage
-```{r child = 'Longer Format.Rmd'}
+<!-- \newpage -->
+<!-- ```{r child = 'Longer Format.Rmd'} -->
 
-```
+<!-- ``` -->

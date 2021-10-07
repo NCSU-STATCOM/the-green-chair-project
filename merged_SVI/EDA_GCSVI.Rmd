@@ -127,11 +127,6 @@ incarcerated and especially those with a disability
   structures and crowded environments, having no vechicle, and
   not being insured
 
-```{r echo=FALSE}
-
-cor(numer_GCSVI, use="complete.obs")
-```
-
 ## Some correlation statistics:
 Again some interesting things to note:
 
@@ -143,6 +138,11 @@ However, it is worth noting that SVI statistics may not be reliable for the give
 For instance, the correlation between those with a disability among the clients
 in the original dataset and the percent of population among that client with a disability
 is quite small.
+
+```{r echo=FALSE}
+
+cor(numer_GCSVI, use="complete.obs")
+```
 
 
 ```{r include=FALSE}
