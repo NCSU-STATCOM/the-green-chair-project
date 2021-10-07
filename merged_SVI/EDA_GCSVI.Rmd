@@ -181,6 +181,28 @@ thirty_ral<-(slope*0.3)+intercept
 
 thirty_wake<-thirty_ral*mean(sixty_wake/sixty_ral)
 
+
+# Correcting the Wake County AMI levels
+
+thirty_wake <-c(20100, 
+23000,
+25850,
+28700,
+31000,
+33300,
+35600,
+37900)
+
+sixty_wake <-c(40200, 
+45960,
+51720,
+57420,
+62040,
+66660,
+71220,
+75840)
+
+
 ##Adding 1s and 0s for in/out of % median income level group for 30% and 60% for
 ## both Wake County and Raleigh areas
 ral_sixty<-c()
@@ -304,7 +326,6 @@ Some things to note:
 ## Brief Investigation Among Percent Median Income Groups
 We label client as whether or not one is below the 30% or 60% median income level in Raleigh and Wake County
 
-* These median income levels are based on data sourced from websites in the next sub-section.
 ```{r echo=FALSE}
 
 GCSVI_numchild_sum<-as.data.frame(GCSVI_wInc %>% group_by(NumChildren) %>%
@@ -317,24 +338,20 @@ GCSVI_numchild_sum<-as.data.frame(GCSVI_wInc %>% group_by(NumChildren) %>%
 GCSVI_numchild_sum<-GCSVI_numchild_sum[!is.na(GCSVI_numchild_sum$NumChildren),]
 
 numchild_for_plot<-gather(GCSVI_numchild_sum, key="inc_type", value="numBelow", 
-                          c(numbelowthirty_ral, numbelowsixty_ral,                                                                              numbelowthirty_wake,numbelowsixty_wake))
+                          c(numbelowthirty_wake,numbelowsixty_wake))
 
 ggplot(numchild_for_plot, aes(x=NumChildren, y=numBelow, fill=inc_type))+
   geom_bar(stat="identity", position="dodge")+labs(x="Number of Children",
   y="Number Below Median Percentile", 
   title="Number of Children by Income Percentile")+
   scale_fill_discrete(name="Median Income Percentile", 
-                      labels=c("Below 60% Median Raleigh", 
-                               "Below 60% Median Wake",
-                               "Below 30% Median Raleigh",
+                      labels=c("Below 60% Median Wake",
                               "Below 30% Median Wake"))
 ```
 Some things to note:
 
-* We see that the number of all of those below a certain median income level maximizes around two children, and drops of with more children, and generally having a left skew
-  +In other words more people living below a certain median income level when having less children
-* Also worth noting that many more clients tend to live below the 30% median income in Raleigh compared to Wake County as a whole, especially among having less children
-  + Worth looking into how this distribution is among those that actually are strictly living in Raleigh versus just Wake County
+* We see that the number of all of those below a certain median income level maximizes around two children, and drops of with more children
+  + In other words more people living below a certain median income level when having less children
 
 
 ```{r echo=FALSE}
@@ -349,22 +366,19 @@ GCSVI_queen_sum<-as.data.frame(GCSVI_wInc %>% group_by(QueenBeds) %>%
 GCSVI_queen_sum<-GCSVI_queen_sum[!is.na(GCSVI_queen_sum$QueenBeds),]
 
 queen_for_plot<-gather(GCSVI_queen_sum, key="inc_type", value="numBelow", 
-                          c(numbelowthirty_ral, numbelowsixty_ral,                                                                              numbelowthirty_wake,numbelowsixty_wake))
+                          c(numbelowthirty_wake,numbelowsixty_wake))
 
 ggplot(queen_for_plot, aes(x=QueenBeds, y=numBelow, fill=inc_type))+
   geom_bar(stat="identity", position="dodge")+labs(x="Number Queen Beds Neeed",
   y="Number Below Median Percentile", 
   title="Number Queen Beds by Income Percentile")+
   scale_fill_discrete(name="Median Income Percentile", 
-                      labels=c("Below 60% Median Raleigh", 
-                               "Below 60% Median Wake",
-                               "Below 30% Median Raleigh",
+                      labels=c("Below 60% Median Wake",
                               "Below 30% Median Wake"))
 ```
 Some things to note:
 
 * Most people who need a queen bed are not below a certain median income level
-  + Among those who do not need a queen bed, more tend to be below the 60% median income level, and more tend to live below the Raleigh 30% median income level
 
 
 
@@ -380,22 +394,20 @@ GCSVI_twin_sum<-as.data.frame(GCSVI_wInc %>% group_by(TwinBeds) %>%
 GCSVI_twin_sum<-GCSVI_twin_sum[!is.na(GCSVI_twin_sum$TwinBeds),]
 
 twin_for_plot<-gather(GCSVI_twin_sum, key="inc_type", value="numBelow", 
-                          c(numbelowthirty_ral, numbelowsixty_ral,                                                                              numbelowthirty_wake,numbelowsixty_wake))
+                          c(numbelowthirty_wake,numbelowsixty_wake))
 
 ggplot(twin_for_plot, aes(x=TwinBeds, y=numBelow, fill=inc_type))+
   geom_bar(stat="identity", position="dodge")+labs(x="Number Twin Beds Neeed",
   y="Number Below Median Percentile", 
   title="Number Twin Beds by Income Percentile")+
   scale_fill_discrete(name="Median Income Percentile", 
-                      labels=c("Below 60% Median Raleigh", 
-                               "Below 60% Median Wake",
-                               "Below 30% Median Raleigh",
+                      labels=c("Below 60% Median Wake",
                               "Below 30% Median Wake"))
 ```
 Some things to note:
 
 * Most people who need a twin bed are not below a certain median income level
-  + More tend to be below the 60% median income level, and more tend to live below the Raleigh 30% median income level, with the less twin beds needed, especially less than three twin beds
+
 
 
 ```{r echo=FALSE}
@@ -417,29 +429,22 @@ for (i in 2:nrow(order_POV)){
                            acc_wake_sixty[i-1])
 }
 
-order_POV<-cbind(order_POV, acc_ral_thirty, acc_ral_sixty, 
+order_POV<-cbind(order_POV,
                  acc_wake_thirty, acc_wake_sixty)
 
 order_POV_plot<-gather(order_POV, key="inc_type", value="accuml", 
-                       c(acc_ral_thirty, acc_ral_sixty, acc_wake_thirty, 
+                       c(acc_wake_thirty, 
                          acc_wake_sixty))
 
 ggplot(order_POV_plot, aes(x=EP_POV, y=accuml, color=inc_type))+geom_line()+
   labs(x="Percent Poverty Less Than or Equal",y="Number Below Median Percentile",
        title="Percent Poverty by Income Percentile")+
   scale_color_discrete(name="Median Income Percentile", 
-                       labels=c("Below 60% Median Raleigh", 
-                                "Below 60% Median Wake",
-                                "Below 30% Median Raleigh",
+                       labels=c("Below 60% Median Wake",
                                 "Below 30% Median Wake"))
 ```
 Some things to note:
 
 * We see that the number of people below a certain income level accumulated at much larger steps as one's area surpasses a certain percent of impoverishment
-* We see the size of these jumps among Wake County residents does not increase as much as those made by Raleigh residents as the area's percent impoverishment surpasses a certain level
 
 
-## Sources for Median Income Level Data:
-* <https://dhic.org/resident-services/housing-options/>
-* <https://raleighnc.gov/Community/content/HousingNeighborhoods/Articles/RentanApartment.html>
-* <https://www.huduser.gov/portal/datasets/il.html#2021_faq>
