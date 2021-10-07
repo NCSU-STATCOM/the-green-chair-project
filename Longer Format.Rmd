@@ -18,9 +18,9 @@ Longer_Format <- pivot_longer(tgcp_demog,col = 15:118,names_to = "HHMemberInfo",
 
 this pivot_longer, created two new columns, one is the short question of the household information, another columns answer the short question correspondingly. 
 
-## trying to do tome column combining to reduce the dimensionality. 
+## trying to do some columns combining to reduce the dimensionality. 
 
-```{r}
+```{r echo = TRUE}
 #unite the client last name and client first name 
 C <- unite(Longer_Format,ClientName, ends_with("Name"), sep = " ", na.rm = FALSE)
 
@@ -80,6 +80,10 @@ F <- rbind(A,B)
 G <- rbind(C,D)
 J <- rbind(F,G)
 S <- rbind(J,E)
+```
+
+
+```{r echo = TRUE}
 # S here is data set with household member info only have total number of HH member
 # we are not considering the HH member greater than 10 at this time. 
 
@@ -94,7 +98,7 @@ ggplot(S, aes(x = HHMemberInfo, fill = as.factor(Beds))) + geom_bar(position = "
 __The plot above is the data visualization of the count of household with different total number of member. As well as count of total beds they have in their homes for each (distinct) total number of household member(0,1,...,10)__  
 This plot include the missing values from past surveys. 
 
-```{r}
+```{r echo = TRUE}
 ggplot(subset(S,!is.na(Beds)), aes(x = HHMemberInfo, fill = as.factor(Beds))) + 
   geom_bar(position = "stack")+
   scale_fill_discrete(name = "Beds") +
