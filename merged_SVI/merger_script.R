@@ -4,7 +4,7 @@
 
 library(dplyr)
 
-dir<-"/Users/jrk99/STATCOM/Datasets/"
+dir<-"/Users/Alvin/Documents/NCSU_Fall_2021/TheGreenChairProject/the-green-chair-project/merged_SVI/"
 
 ##External CDC data
 file_18<-"NorthCarolina.csv"
@@ -40,12 +40,12 @@ keep<-colnames(GC_data)[!endsWith(colnames(GC_data), "FirstName")&!endsWith(coln
 
 GC_data<-GC_data[colnames(GC_data)%in%keep]
 
-##Creating New Summary Variables By TRPOPPCT--The Percentage of Total Population of the 2010 Census Tract 
+##Creating New Summary Variables By ZPOPPCT--The Percentage of Total Population of the ZCTA
 ##                                              represented by the record
-trpoppct_summary<- zt_data %>% group_by(GEOID) %>% summarise(trpoppct_sum = sum(TRPOPPCT))
+ZPOPPCT_summary<- zt_data %>% group_by(ZCTA5) %>% summarise(ZPOPPCT_sum = sum(ZPOPPCT))
 
-##Yes, most census tracts are wholly accounted for by the zip codes
-mean(trpoppct_summary$trpoppct_sum>=99)
+##Yes, most zip codes are wholly accounted for by the census tracts
+mean(ZPOPPCT_summary$ZPOPPCT_sum>=99)
 
 
 ##Actual merger loop

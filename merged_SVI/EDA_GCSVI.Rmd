@@ -31,14 +31,14 @@ library(psych)
 library(gridExtra)
 
 
-data_dir<-"/Users/jrk99/STATCOM/Datasets/"
+data_dir<-"/Users/Alvin/Documents/NCSU_Fall_2021/TheGreenChairProject/the-green-chair-project/merged_SVI/"
 
 GC_SVI_file<-"merged_CDC_GC.csv"
 
 GC_SVI<-read.csv(paste0(data_dir,GC_SVI_file))
 GC_SVI[GC_SVI==""]<-NA
 
-GC_SVI$Timestamp<-as.Date(GC_SVI$Timestamp, format ="%d-%b-%Y")
+# GC_SVI$Timestamp<-as.Date(GC_SVI$Timestamp, format ="%d-%b-%Y")
 
 GC_SVI$Veteran[GC_SVI$Veteran=="Yes"]<-1
 GC_SVI$Veteran[GC_SVI$Veteran!="1" | is.na(GC_SVI$Veteran)]<-0
@@ -102,7 +102,7 @@ describe(numer_GCSVI)
 Some things worth noting about clients:
 
 * Annual Income is right skewed; most annual incomes are small with a few large outliers
-* NumAdultMale is slight left skewed; most households have about one adult male but a lot of outliers with none
+* NumAdultMale is slightly left skewed; most households have about one adult male but a lot of outliers with none
 * Most beds needed are twin beds
 
 Some things worth noting about SVI statistics of where clients live:
@@ -118,6 +118,7 @@ Some things worth noting about SVI statistics of where clients live:
 * About 13% do not possess insurance
 
 Some things of note for categorical variables:
+
 * We see that a need for queen beds is positively correlated with those 
 incarcerated and especially those with a disability
 * We see some of the largest correlation values for the disability column
@@ -256,7 +257,7 @@ ggplot(GCSVI_wInc, aes(x=NumChildren, y=EP_MUNIT,color=as.character(NumChildren)
 ```
 Some things to note:
 
-* We see that that distribution among number of children varies; in general we see that having more children tends to have a small probability of living in a structure with more than ten units
+* We see that the distribution among number of children varies; in general we see that having more children is associated with a smaller probability of living in a structure with more than ten housing units
   + This probability is pretty constant among after more than two kids
 
 ```{r echo=FALSE}
@@ -286,7 +287,7 @@ ggplot(GCSVI_wInc, aes(x=QueenBeds, y=EP_NOVEH,color=as.character(QueenBeds)))+g
 Some things to note:
 
 * We see that that distribution among number of queen beds varies. It is worth noting that:
-  +Those that need more than one queen bed tend to live in areas where the probability of having no vehicle tends to be lower (assuming that the need for three queen beds is an outlier)
+  + Those that need more than one queen bed tend to live in areas where the probability of having no vehicle tends to be lower (assuming that the need for three queen beds is an outlier)
   + Again, it would be worth looking into how the need for a queen bed is distributed among those with a disability
 
 ```{r echo=FALSE}
@@ -302,7 +303,8 @@ Some things to note:
 
 ## Brief Investigation Among Percent Median Income Groups
 We label client as whether or not one is below the 30% or 60% median income level in Raleigh and Wake County
-* These median income levels are based on data sourced from websites below
+
+* These median income levels are based on data sourced from websites in the next sub-section.
 ```{r echo=FALSE}
 
 GCSVI_numchild_sum<-as.data.frame(GCSVI_wInc %>% group_by(NumChildren) %>%
@@ -322,10 +324,10 @@ ggplot(numchild_for_plot, aes(x=NumChildren, y=numBelow, fill=inc_type))+
   y="Number Below Median Percentile", 
   title="Number of Children by Income Percentile")+
   scale_fill_discrete(name="Median Income Percentile", 
-                      labels=c("Below 60% Meidan Raleigh", 
-                               "Below 60% Meidan Wake",
-                               "Below 30% Meidan Raleigh",
-                              "Below 30% Meidan Wake"))
+                      labels=c("Below 60% Median Raleigh", 
+                               "Below 60% Median Wake",
+                               "Below 30% Median Raleigh",
+                              "Below 30% Median Wake"))
 ```
 Some things to note:
 
@@ -354,10 +356,10 @@ ggplot(queen_for_plot, aes(x=QueenBeds, y=numBelow, fill=inc_type))+
   y="Number Below Median Percentile", 
   title="Number Queen Beds by Income Percentile")+
   scale_fill_discrete(name="Median Income Percentile", 
-                      labels=c("Below 60% Meidan Raleigh", 
-                               "Below 60% Meidan Wake",
-                               "Below 30% Meidan Raleigh",
-                              "Below 30% Meidan Wake"))
+                      labels=c("Below 60% Median Raleigh", 
+                               "Below 60% Median Wake",
+                               "Below 30% Median Raleigh",
+                              "Below 30% Median Wake"))
 ```
 Some things to note:
 
@@ -385,10 +387,10 @@ ggplot(twin_for_plot, aes(x=TwinBeds, y=numBelow, fill=inc_type))+
   y="Number Below Median Percentile", 
   title="Number Twin Beds by Income Percentile")+
   scale_fill_discrete(name="Median Income Percentile", 
-                      labels=c("Below 60% Meidan Raleigh", 
-                               "Below 60% Meidan Wake",
-                               "Below 30% Meidan Raleigh",
-                              "Below 30% Meidan Wake"))
+                      labels=c("Below 60% Median Raleigh", 
+                               "Below 60% Median Wake",
+                               "Below 30% Median Raleigh",
+                              "Below 30% Median Wake"))
 ```
 Some things to note:
 
@@ -426,10 +428,10 @@ ggplot(order_POV_plot, aes(x=EP_POV, y=accuml, color=inc_type))+geom_line()+
   labs(x="Percent Poverty Less Than or Equal",y="Number Below Median Percentile",
        title="Percent Poverty by Income Percentile")+
   scale_color_discrete(name="Median Income Percentile", 
-                       labels=c("Below 60% Meidan Raleigh", 
-                                "Below 60% Meidan Wake",
-                                "Below 30% Meidan Raleigh",
-                                "Below 30% Meidan Wake"))
+                       labels=c("Below 60% Median Raleigh", 
+                                "Below 60% Median Wake",
+                                "Below 30% Median Raleigh",
+                                "Below 30% Median Wake"))
 ```
 Some things to note:
 
