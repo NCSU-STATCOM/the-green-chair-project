@@ -1,0 +1,994 @@
+"OBJECTID_1","OBJECTID","SchoolID","County","SchoolName","Address","City","State","Zipcode","Website","SchoolType","coords.x1","coords.x2"
+1,1,59351,"Alamance","Alamance Christian School","1336 Town Branch Road","Graham","NC",27253,"www.alamancechristianschool.org","Religious",576251.036022859,257953.432246812
+2,2,59352,"Alamance","Bible Wesleyan Chr. Sch.","106 Moore's Chapel Cemetery Rd.","Graham","NC",27253,NA,"Religious",575990.616158044,244177.032212401
+3,3,59353,"Alamance","Blessed Sacrament Catholic Sch.","515 Hillcrest Avenue","Burlington","NC",27215,"www.bssknights.org","Religious",569440.534414202,260142.735286135
+4,4,85552,"Alamance","Bradford Academy","939 South Third Street","Mebane","NC",27302,"www.bradfordacademy.org","Religious",584586.665257344,259052.216775531
+5,5,59354,"Alamance","Burlington Christian Academy","621 E. Sixth Street","Burlington","NC",27215,"www.burlingtonchristian.org","Religious",569994.646976083,258913.985441061
+6,6,59355,"Alamance","Burlington School","1615 Greenwood Terrace","Burlington","NC",27215,"ww.theburlingtonschool.org","Independent",567635.750512153,260907.678650843
+7,7,79104,"Alamance","Children's House Montessori School","3750 Alamance Road","Burlington","NC",27215,"www.chmontessori.org","Independent",565740.184214174,254429.29817182
+8,8,85553,"Alamance","Elon School","201 South O'Kelly Avenue","Burlington","NC",27215,"www.theelonschool.org","Independent",570130.39305256,259257.079565223
+9,9,108441,"Alamance","Elon School","1615 Greenwood Terrace","Burlington","NC",27215,NA,"Religious",567635.750512153,260907.678650843
+10,10,140522,"Alamance","Emma L. Broady Academy","2317 Churchill Drive","Burlington","NC",27215,NA,"Religious",566574.404769692,256561.698200703
+11,11,59611,"Alamance","Friendship Christian School","2541 Elon-Ossipee Road","Elon","NC",27244,NA,"Religious",563372.67803136,267697.482162502
+12,12,134880,"Alamance","Positive Day School","229 N. Graham Hopedale Rd.","Burlington","NC",27217,NA,"Religious",573048.560151786,260692.931210058
+13,13,85555,"Alamance","Youth Train Ventures School","915 South Main Street","Burlington","NC",27215,NA,"Independent",569678.795855356,259648.285188472
+14,14,144296,"Alexander","Alexander Christian Acad. Alt. School","61 C. I. Chatman Court","Taylorsville","NC",28681,NA,"Religious",413254.594685774,243032.770177966
+15,15,144297,"Alexander","Alexander Christian Acad. at Hiddenite","PO Box 38","Hiddenite","NC",28636,NA,"Religious",420852.726652027,241011.891911313
+16,16,116156,"Alexander","Alexander Christian Academy","3919 Icard Ridge Road","Hickory","NC",28601,"www.alexanderchristianacademy.com","Religious",398576.275374347,233581.180368012
+17,17,85556,"Alexander","Fallow Ground Christian Academy","720 Bible Camp Lane","Taylorsville","NC",28681,NA,"Religious",407021.564663584,231642.661776815
+18,18,102862,"Alexander","Walkers Day Program School","137 7th Street","Taylorsville","NC",28681,NA,"Independent",412665.420808254,242859.901122125
+19,19,102222,"Alleghany","Blue Ridge Christian School","PO Box 518","Glade Valley","NC",28627,"www.blueridgechristianschool.org","Religious",429715.536385092,301594.017542416
+20,20,103735,"Anson","Cornerstone Treatment Facility","129 Wallace Road","Wadesboro","NC",28170,"www.ncprtf.com","Independent",513526.381805452,135240.180016998
+21,21,113738,"Anson","P. J. G. School","PO Box 84","Peachland","NC",28133,NA,"Independent",494150.061918193,138536.030251291
+22,22,66132,"Anson","Revelation Academy","P.O. Box 304","Wadesboro","NC",28170,"www.revelationacademy.com","Religious",511134.534420825,135249.314345868
+23,23,112062,"Avery","Bethel Christian Academy","12021  S. US 19 E.","Spruce Pine","NC",28777,"www.bethelchristianacademy.org","Religious",338054.179389252,246688.146096881
+24,24,72635,"Avery","Cornerstone Christian Academy","196 Whitson Branch Road","Bakersville","NC",28705,"www.bethelmissionarybaptist church.org","Religious",317767.24285796,256664.952116711
+25,25,59356,"Avery","High Country Christian School","1551 Tynecastle Highway","Banner Elk","NC",28604,NA,"Religious",352180.484487152,269951.598225253
+26,26,59357,"Avery","Rainbow Christian Academy","2221 Blevins Creek Road","Elk Park","NC",28622,NA,"Religious",344552.454782476,269432.466924351
+27,27,72603,"Avery","Temple Baptist Christian Academy","117 Prison Camp Road","Newland","NC",28657,NA,"Religious",341394.014047564,252090.913218725
+28,28,59358,"Beaufort","Emmanuel Christian School","3078 US Highway 17 North","Washington","NC",27889,"www.emmanuelchristianschool.net","Religious",784680.535586934,206196.081259342
+29,29,59359,"Beaufort","Pungo Christian Academy","983 West Main Street","Belhaven","NC",27810,"www.pungochristianacademy.com","Independent",824053.44841222,202190.447953887
+30,30,59360,"Beaufort","Terra Ceia Christian School","4428 Christian School Road","Pantego","NC",27860,"www.tccschool.com","Religious",812073.052340935,207696.663787525
+31,31,95173,"Beaufort","Unity Christian Academy","1501 Haw Branch Rd.","Chocowinity","NC",27817,"www.ucawarriors.com","Religious",783587.53587382,188110.302343728
+32,32,101283,"Beaufort","Woolard-Paige Academy","148 Avon Avenue","Washington","NC",27889,NA,"Independent",788117.633940924,201264.783672277
+33,33,59361,"Bertie","Bethel Assembly Christian Acad.","105 Askewville Bryant St.","Windsor","NC",27983,NA,"Religious",794684.382170096,263911.312852306
+34,34,124649,"Bertie","Freedom Academy","1144 Hexlena Road","Aulander","NC",27805,NA,"Independent",785580.677228168,272882.481185513
+35,35,59362,"Bertie","Lawrence Academy","P.O. Box 70","Merry Hill","NC",27957,"www.lawrenceacademy.org","Independent",811997.661852001,265833.733074483
+36,36,108850,"Bertie","Windsor Chr. Child Develop. Ctr. Sch.","PO Box 623","Windsor","NC",27983,NA,"Religious",794171.418325522,251417.465586834
+37,37,59363,"Bladen","Community Baptist Academy","3107 NC Hwy. 410 South","Bladenboro","NC",28320,NA,"Religious",629518.605226232,89537.4868729319
+38,38,108104,"Bladen","Elizabethtown Christian Academy","1800 West Broad St.","Elizabethtown","NC",28337,NA,"Religious",643838.267028521,98065.178090645
+39,39,94476,"Bladen","West Bank Academy","P.O. Box 1","Elizabethtown","NC",28337,NA,"Religious",645346.577485415,97142.4641701728
+40,40,72604,"Brunswick","Academy of Coastal Carolina","P.O. Box 1988","Shallotte","NC",28459,"www.theacademyedu.com","Independent",666900.53350553,25896.3101395145
+41,41,59379,"Burke","Morganton Christian Academy","201 Believer's Way","Morganton","NC",28655,"www.morgantonchristian.com","Religious",369819.708615359,221776.836112751
+42,42,85557,"Brunswick","Atlas Day Treatment Sch at Trinity","P.O. Box 717","Leland","NC",28451,"www.wolocapefear.org","Independent",699077.267383753,56202.7518552858
+43,43,133776,"Brunswick","Canipe Academy","368 Fairway Dr Boiling Spring Lakes","Southport","NC",28461,NA,"Religious",696963.452165031,31358.9048833773
+44,44,59682,"Brunswick","Evelyn Smith Wray Village School","720 Whiteville Road NW","Shallotte","NC",28470,"www.thevillagecampus.org","Independent",663452.522064595,25911.5187860671
+45,45,135360,"Cumberland","God's Heritage Christian Academy","PO Box 65553","Fayetteville","NC",28303,NA,"Religious",614635.947046354,148675.29937706
+46,46,59377,"Burke","Morganton Day School","305 West Concord Street","Morganton","NC",28655,"www.morgantondayschool.com","Independent",366413.066261776,224150.436947832
+47,47,108105,"Brunswick","Holden Beach Christian Acad.","2428 Seashore Rd.","Supply","NC",28462,NA,"Religious",673038.744660209,19465.8426731043
+48,48,59248,"Cumberland","Greater Fayetteville Adventist Acad.","2601 Lone Pine Drive","Fayetteville","NC",28306,NA,"Religious",617996.719898816,140861.811727768
+49,49,92065,"Burke","Reflections of Christ Christian Acad","110 Third Street SE","Hildebran","NC",28637,"www.rocca.webstarts.com","Religious",391090.89430135,220421.909454374
+50,50,120651,"Brunswick","Kids Connection School","PO Box 2587","Shallotte","NC",28459,NA,"Independent",666900.53350553,25896.3101395145
+51,51,59403,"Cumberland","Guy Schools","985 S. McPherson Church Rd.","Fayetteville","NC",28303,NA,"Independent",615436.013498286,143766.630333787
+52,52,59378,"Burke","Silver Creek SDA School","2195 Jamestown Road","Morganton","NC",28655,"www.silvercreekadventistschool.org","Religious",357162.352469993,220117.974606708
+53,53,59253,"Brunswick","L & L Montessori School","4150 Vanessa Drive","Southport","NC",28461,"www.llmontessori.net","Independent",695827.472346743,20229.1593666393
+54,54,103228,"Burke","Valley View Day Program School","2130 Highway 18 US 64","Morganton","NC",28655,NA,"Independent",366565.063733833,224518.279068084
+55,55,59689,"Cumberland","Harvest Preparatory Academy","P.O. Box 2391","Fayetteville","NC",28312,"www.harvestpreparatoryacademy.org","Religious",623431.529553539,143075.608262384
+56,56,66134,"Brunswick","Leland Christian Academy","517 Village Road","Leland","NC",28451,"www.lelandchristian.org","Religious",700621.25172451,54948.2812083252
+57,57,85558,"Cabarrus","C3 Concord Christian School","265 Manor Avenue","Concord","NC",28025,"www.concordchristian.com","Religious",467149.128260466,182429.828939825
+58,58,59776,"Cumberland","LEJ Diagnostic Ctr for Dev Studies","2620-C Bragg Blvd","Fayetteville","NC",28303,NA,"Independent",616575.162396055,146708.267175799
+59,59,108106,"Brunswick","Ocean Aire Academy","6570 Ocean Aire Rd SW","Ocean Isle Beach","NC",28469,NA,"Religious",659723.189769802,17850.8187222145
+60,60,59435,"Forsyth","Gospel Light Christian School","PO Box 70","Walkertown","NC",27051,"www.glcslions.org","Religious",505624.790653652,269028.658870293
+61,61,59748,"Cumberland","Liberty Christian Academy","6548 Rockfish Road","Fayetteville","NC",28306,"www.lcknights.com","Religious",610707.624009344,136175.117358925
+62,62,100549,"Brunswick","River Heights Cottage School","414 Lightwood Lane","Shallotte","NC",28470,NA,"Religious",667213.375616259,24491.1415457465
+63,63,59322,"Forsyth","Greenhills School","1360 Lyndale Drive","Winston-Salem","NC",27106,"www.greenhillsschool.ws","Independent",485928.244956028,263407.887958229
+64,64,98800,"Cumberland","McLauchlin Academy","8212 Ella Mae Dr.","Fayetteville","NC",28314,NA,"Independent",602625.049984037,144382.989992375
+65,65,59805,"Brunswick","Southeastern Christian Academy","P.O. Box 2328","Shallotte","NC",28459,"www.scashallotte.org","Religious",666900.53350553,25896.3101395145
+66,66,59380,"Cabarrus","Cannon School","5801 Poplar Tent Road","Concord","NC",28027,"www.cannonschool.org","Independent",457426.82177138,185142.489080647
+67,67,59348,"Cumberland","Montessori School","P.O. Box 40138","Fayetteville","NC",28309,"www.fayettevillemontessori.com","Independent",613531.099706828,143471.167527007
+68,68,59614,"Brunswick","Southport Christian School","4457-A Flagship Ave SE","Southport","NC",28461,"www.southportchristian.com","Religious",696400.455742534,21701.2621316649
+69,69,59315,"Forsyth","Jefferson Day School","P.O. Box 25286","Winston-Salem","NC",27101,"www.jeffersondayschool.org","Independent",497247.090215998,260980.295612121
+70,70,59744,"Cumberland","New Life Christian Acad & Prep Sch","1420 Hoke Loop Road","Fayetteville","NC",28314,"www.newlifechristianacademync.org","Religious",602758.011354357,144324.061403211
+71,71,59714,"Forsyth","Kingswood School","1001 Reynolda Road","Winston-Salem","NC",27104,"www.tchome.org","Religious",495698.468859461,261960.97402535
+72,72,92063,"Brunswick","Strategic Academy","2050 Mercantile Drive","Leland","NC",28451,"www.strategicbh.com","Independent",695778.990424427,57190.2742886376
+73,73,59850,"Cumberland","Northview Baptist Academy","7455 Ramsey Street","Fayetteville","NC",28311,"www.northviewbaptistacademy.org","Religious",623301.093648914,160349.384102797
+74,74,59381,"Cabarrus","cfa Academy","154 Warren C. Coleman Blvd.","Concord","NC",28027,"www.cfaacademy.org","Religious",463502.117464254,184370.101269692
+75,75,72620,"Forsyth","Montessori School of Winston-Salem","6050 Holder Road","Clemmons","NC",27012,"www.wsmontessori.org","Independent",485806.974501192,257786.460559227
+76,76,59612,"Brunswick","West Christian Academy","P.O. Box 2250","Shallotte","NC",28459,"www.westchristianacademync.com","Religious",666900.53350553,25896.3101395145
+77,77,59405,"Cumberland","Northwood Temple Academy","4200 Ramsey Street","Fayetteville","NC",28311,"www.ntaeagles.org","Religious",620549.444511303,151714.998924712
+78,78,59699,"Cabarrus","Charlotte Islamic Academy","8810 Hickory Ridge Road","Harrisburg","NC",28075,"www.ciacademy.us","Religious",461827.076274726,172593.631618906
+79,79,59717,"Buncombe","Adonai Christian Academy","119 Cumberland Avenue","Asheville","NC",28801,NA,"Religious",287027.551148342,211141.123726603
+80,80,59437,"Forsyth","Our Lady of Mercy Catholic Sch","1730 Link Road","Winston-Salem","NC",27103,"www.ourladyofmercyschool.org","Religious",495955.271949771,258168.6767313
+81,81,115765,"Cumberland","Omega Academy","345 Devers Street #2","Fayetteville","NC",28303,NA,"Independent",616662.953371023,146314.655160177
+82,82,59341,"Buncombe","Arden Christian School","2568 Hendersonville Road","Arden","NC",28704,NA,"Religious",291045.731548626,194516.849300431
+83,83,92075,"Cumberland","Parks Chapel Christian Academy","2503 Murchison Road","Fayetteville","NC",28301,NA,"Religious",617909.456135124,148562.011151753
+84,84,115836,"Cabarrus","Connect Christian School","3101 Davidson Hwy.","Concord","NC",28027,NA,"Religious",461455.120347695,188029.600210637
+85,85,59242,"Forsyth","Redeemer School","1046 Miller Street","Winston-Salem","NC",27103,"www.redeemerschool.org","Religious",494900.447187923,259127.329641912
+86,86,59364,"Buncombe","Asheville Catholic School","12 Culvern Street","Asheville","NC",28804,"www.ashevillecatholic.org","Religious",288025.628569837,214436.559421808
+87,87,85566,"Cumberland","Renaissance Classical Academy","6427 Cliffdale Road","Fayetteville","NC",28314,"www.rccaonline.com","Religious",610159.137462643,145118.567419235
+88,88,59616,"Cabarrus","Covenant Classical School","3200 Patrick Henry Drive","Concord","NC",28027,"www.covenantclassical.org","Religious",461337.400873189,188058.398605956
+89,89,109026,"Forsyth","S.T.A.R. School","1001 Reynolda Road","Winston-Salem","NC",27104,NA,"Independent",495698.468859461,261960.97402535
+90,90,94935,"Cabarrus","Daniel Academy","681 Sunderland Road SW","Concord","NC",28027,"www.tda-concord.com","Religious",464283.538084126,183326.022983836
+91,91,130719,"Cumberland","Riverside Christian Academy","2010 Middle River Loop","Fayetteville","NC",28312,"www.reanc.us","Religious",623396.005495119,145282.266782045
+92,92,59365,"Buncombe","Asheville Christian Academy","P.O. Box 1089","Swannanoa","NC",28778,"www.ACAcademy.org","Religious",301433.37881602,210717.509277405
+93,93,59438,"Forsyth","Salem Academy","500 East Salem Avenue","Winston-Salem","NC",27101,"www.salemacademy.com","Independent",498188.933002157,260046.578397749
+94,94,138734,"Cabarrus","Faith Christian Academy","904 Chipola Street","Kannapolis","NC",28083,NA,"Religious",463734.772345763,194678.320356008
+95,95,85567,"Cumberland","Second Chance Learning Center","P.O. Box 25122","Fayetteville","NC",28314,NA,"Religious",609061.885605541,145457.913761904
+96,96,59366,"Buncombe","Asheville School","360 Asheville School Road","Asheville","NC",28806,"www.ashevilleschool.org","Independent",281546.589467707,207706.76000274
+97,97,92066,"Cabarrus","Franklin Heights Christian Acad.","526 Wright Avenue","Kannapolis","NC",28083,"www.franklinheightschristianacademy.com","Religious",465299.918722217,195493.404961154
+98,98,59406,"Cumberland","St. Ann Catholic School","365 N. Cool Spring Street","Fayetteville","NC",28301,"www.stanncatholicschool.net","Religious",621115.346183453,144868.323507216
+99,99,59407,"Cumberland","St. Patrick Catholic School","1620 Marlborough Road","Fayetteville","NC",28304,"www.stpatrickschoolnc.org","Religious",616723.171699332,142460.297598816
+100,100,59844,"Cabarrus","Harvest Christian Academy","P.O. Box 1095","Kannapolis","NC",28082,NA,"Religious",460940.258444903,194901.864343911
+101,101,85568,"Cumberland","Stedman Christian Academy","P.O. Box 396","Stedman","NC",28391,"stedmanphchurch.com","Religious",637276.562793564,139570.55341292
+102,102,101699,"Cabarrus","Hope Academy","7655 Bruton Smith Blvd.","Concord","NC",28027,"www.hopek12.com","Religious",454643.318405179,180281.90055792
+103,103,79111,"Cumberland","Temple Christian Academy","3159 Sanderosa Road","Fayetteville","NC",28312,NA,"Religious",628986.987111679,147190.500279898
+104,104,100547,"Cabarrus","Kids 'R' Kids Schs Quality Lrng 13","320 Coddle Market Dr.","Concord","NC",28027,"www.krkconcord.com","Independent",458571.620630205,185401.353910739
+105,105,59297,"Cumberland","Trinity Christian School","3727 Rosehill Road","Fayetteville","NC",28311,"www.trinitycommunityservices.org","Religious",618281.292193661,151115.600890076
+106,106,59439,"Forsyth","Salem Baptist Christian School","429 S. Broad Street","Winston-Salem","NC",27101,"www.salemvikings.org","Religious",497054.472844731,260141.365094056
+107,107,59692,"Cumberland","Village Christian Academy","908 S. McPherson Church Rd","Fayetteville","NC",28303,"www.vcanc.com","Religious",615177.360861228,144218.59563927
+108,108,59651,"Cabarrus","New Life Christian Academy","4065 Poplar Tent Road","Concord","NC",28027,"www.nlchristianacademy.com","Religious",460247.847977558,185819.475799929
+109,109,103484,"Cumberland","Willowbrook Treatment Center","4433 Marracco Drive","Hope Mills","NC",28306,"www.ncprtf.com","Independent",617139.228488009,134458.862036435
+110,110,59367,"Buncombe","Asheville-Pisgah Christian Sch.","90 Academy Drive","Candler","NC",28715,"www.ashevillepisgah.org","Religious",277042.155016102,207967.584989427
+111,111,111218,"Cabarrus","St. John Comm. Sch c/o Woodson Univ","80 Union Street South","Concord","NC",28025,NA,"Independent",466150.428308604,185166.134765239
+112,112,79112,"Currituck","Jarvisburg Christian Academy","121 Forbes Road","Jarvisburg","NC",27947,"www.jarvisburgchristianacademy.org","Religious",891662.179447625,276371.669738486
+113,113,59723,"Dare","Heron Pond Montessori School","3910 Poor Ridge Road","Kitty Hawk","NC",27949,"www.heronpondmontessori.com","Independent",905513.000472937,260879.463920951
+114,114,92067,"Cabarrus","Treasure Chest School","2487 Chevaron Drive","Concord","NC",28025,NA,"Independent",475669.863933737,182028.054017043
+115,115,59808,"Dare","Sonshine Learning Center","100 Beacon Drive","Kitty Hawk","NC",27949,NA,"Religious",907446.696165892,261559.610127799
+116,116,104413,"Cabarrus","Village Christian Academy","200 Sims Parkway","Harrisburg","NC",28075,"www.thevillagechristianacademy.net","Religious",458741.71126806,175314.978672896
+117,117,59440,"Forsyth","St. John's Lutheran Day Sch.","2415 Silas Creek Parkway","Winston-Salem","NC",27103,"www.stjohnsfalcons.org","Religious",494141.173734753,258120.136567978
+118,118,59641,"Caldwell","Harris Chapel Christian Acad.","1444 Cajah Mountain Road","Hudson","NC",28638,NA,"Religious",383211.188422731,233603.362047648
+119,119,59721,"Caldwell","Heritage Christian School","239 Mount Herman Road","Hudson","NC",28638,"www.heritagechristianschool.net","Religious",384844.497511516,236461.224321852
+120,120,59382,"Carteret","Beaufort Christian Academy","P.O. Box 2069","Beaufort","NC",28516,NA,"Religious",824054.588393892,109883.720411517
+121,121,115768,"Buncombe","Avonlea School","25 Locust Cove Road","Weaverville","NC",28787,"avonleaschool.org","Independent",296214.155944375,224179.636087039
+122,122,59383,"Carteret","Grace Christian School","520 Roberts Road","Newport","NC",28570,"www.gcsnewport.com","Religious",803754.949080479,115934.821255023
+123,123,59384,"Carteret","Gramercy Christian School","8170 Highway 70","Newport","NC",28570,"www.gramercychristian.org","Religious",803741.979391954,121722.546875861
+124,124,124654,"Carteret","New Life Christian Academy","301 Friendly Road","Morehead City","NC",28557,NA,"Religious",814037.989422758,110984.640857315
+125,125,66137,"Carteret","Newport Christian Academy","8125 Highway 70 E.","Newport","NC",28532,NA,"Religious",799343.605490542,128711.771614565
+126,126,59441,"Forsyth","St. Leo Catholic School","333 Springdale Avenue","Winston-Salem","NC",27104,"www.stleocatholic.com","Religious",494922.345918732,261570.600419985
+127,127,120650,"Carteret","Opportunity School","145 Eckerd Road","Newport","NC",28570,NA,"Independent",800780.950559908,111904.463401686
+128,128,111274,"Carteret","Salt and Light Academy","544 Cedar Point Blvd.","Cedar Point","NC",28584,NA,"Religious",784246.560167482,104729.782491535
+129,129,105383,"Buncombe","Azalea Mountain School","587 Haywood Road","Asheville","NC",28806,"www.azaleamountain.org","Independent",284499.897556823,208734.097858366
+130,130,59385,"Carteret","St. Egbert Catholic School","1705 Evans Street","Morehead City","NC",28557,"www.stegbert.org","Religious",817843.933268092,110144.583471511
+131,131,59847,"Catawba","Christian Family Academy","4643 County Home Road","Conover","NC",28613,"www.christianfamilyacademy.com","Religious",406214.480152349,224901.637920525
+132,132,59386,"Catawba","Concordia Christian Day Sch.","215 5th Avenue, SE","Conover","NC",28613,"www.concordianc.org","Religious",409128.608963029,218971.287247445
+133,133,60272,"Catawba","Cornerstone Christian Academy","263 Third Avenue, NW","Hickory","NC",28601,"www.cornerstonecounselingnc.org","Religious",397811.051406361,222763.704676658
+134,134,59442,"Forsyth","Summit School","2100 Reynolda Road","Winston-Salem","NC",27104,"www.summitschool.com","Independent",493974.450557771,264156.257781943
+135,135,59250,"Catawba","Hickory Christian Academy","3260  6th Street Drive NW","Hickory","NC",28601,"www.hickorychristian.com","Religious",397965.343531998,227640.558337878
+136,136,59679,"Catawba","Hickory Day School","2535 21st Avenue, NE","Hickory","NC",28601,"www.hickoryday.org","Independent",403128.269405333,224844.362970158
+137,137,148898,"Buncombe","Black Mountain Academy","501 W. State Street","Black Mountain","NC",28711,NA,"Independent",308202.309102212,211770.863088137
+138,138,59846,"Catawba","Lincoln Catawba Christian Academy","935 Island Ford Road","Maiden","NC",28650,"www.lccalions.org","Religious",410235.910232544,202618.965719221
+139,139,59387,"Catawba","Montessori at Sandy Ford School","2931 Sandy Ford Road","Newton","NC",28658,"www.montessoriatsandyford.org","Independent",402611.347689744,214386.803901976
+140,140,66143,"Forsyth","Triad Baptist Christian Academy","1175 South Main Street","Kernersville","NC",27284,"www.tbcnow.org","Religious",510433.664126148,261975.458805235
+141,141,126686,"Catawba","NC Boys Academy","PO Box 11460","Hickory","NC",28603,"www.ncboysacademy.org","Religious",393058.452993067,221119.882282749
+142,142,59408,"Dare","Wanchese Christian Academy","P.O. Box 201","Wanchese","NC",27981,"www.wanchesechristianacademy.com","Religious",912727.984658498,237222.735756312
+143,143,92068,"Catawba","St. John's Lutheran School","2126 St. John's Church Rd.","Conover","NC",28613,NA,"Religious",411881.086515795,221960.872677345
+144,144,59746,"Buncombe","Bread of Life Learning Center","P.O. Box 1724","Weaverville","NC",28787,NA,"Religious",287314.283390631,221918.936950782
+145,145,59779,"Forsyth","Vineyard School","3637 Old Vineyard Road","Winston-Salem","NC",27104,"www.oldvineyard.net","Independent",490908.896434759,259018.581222922
+146,146,59388,"Catawba","St. Stephen's Lutheran School","2304 Springs Road  NE","Hickory","NC",28601,"www.sslswarriors.org","Religious",402335.456460065,223749.762212584
+147,147,101368,"Buncombe","Buckner School","PO Box 1538","Candler","NC",28715,NA,"Independent",277979.897093972,205208.129162893
+148,148,59642,"Catawba","Tabernacle Christian School","1225 29th Avenue Drive, NE","Hickory","NC",28601,"www.tabernaclechristianschool.org","Religious",400906.530992339,226218.689604716
+149,149,59433,"Forsyth","Winston Salem Christian School","3730 University Parkway","Winston-Salem","NC",27106,"www.wschristian.com","Religious",494641.46314543,266170.369842436
+150,150,59617,"Catawba","Tri-City Christian School","P.O. Box 1690","Conover","NC",28613,"www.tccseagles.org","Religious",408532.024089286,218953.345458498
+151,151,145463,"Buncombe","Canterbury Classical School","PO Box 16981","Asheville","NC",28816,NA,"Religious",283203.586836117,209483.508512396
+152,152,92069,"Catawba","University Christian High School","602 7th Avenue NE","Hickory","NC",28601,"www.uchigh.com","Religious",399047.818248324,223085.652293384
+153,153,59806,"Catawba","WH Johnston SDA School","174 23rd Street N.W.","Hickory","NC",28601,"www.hickorysda.org/williamjohnstonsdaschool","Religious",394560.792794381,222756.522316946
+154,154,66144,"Forsyth","Winston-Salem Street School","630 West 6th Street, Suite 101","Winston-Salem","NC",27101,"www.wsstreetschool.com","Religious",496955.769085217,261480.462109586
+155,155,59368,"Buncombe","Carolina Day School","1345 Hendersonville Road","Asheville","NC",28803,"www.cdschool.org","Independent",289577.820529144,202258.436577978
+156,156,100543,"Buncombe","Changing Hearts Boarding Sch.","PO Box 416","Barnardsville","NC",28709,"www.chbsm.org","Religious",296911.772955429,229992.805954423
+157,157,59443,"Forsyth","Woodland Baptist Chr. Sch.","1175 Bethania Rural Hall Road","Winston-Salem","NC",27106,"www.wbcseagles.org","Religious",492115.296784017,273151.339490622
+158,158,136862,"Chatham","Apostolic Lighthouse Christian School","PO Box 1020","Siler City","NC",27344,NA,"Religious",568172.058947746,219465.222755058
+159,159,59775,"Chatham","Auldern Academy","990 Glovers Grove Church Rd","Siler City","NC",27344,"www.auldern.com","Independent",578790.655579667,213730.176227903
+160,160,108108,"Buncombe","Children's Earth School","86 Bradley St.","Asheville","NC",28806,NA,"Independent",285750.913985976,207875.237527875
+161,161,59444,"Franklin","Calvary Christian School","394 Ferrells Bridge Road","Louisburg","NC",27549,"www.calvarybaptistoflouisburg.com","Religious",676892.229848897,248476.130774479
+162,162,59257,"Chatham","Community Independent School","2089 Lamont Norwood Road","Pittsboro","NC",27312,"www.communityindependentschool.org","Independent",596351.313606308,232583.203383265
+163,163,60273,"Chatham","Grace Haven Academy","P.O. Box 1412","Graham","NC",27253,"www.gracehavenministries.org","Religious",573228.16596618,257756.7916377
+164,164,85559,"Chatham","Haw River Christian Academy","2428 Silk Hope Gum Springs Rd.","Pittsboro","NC",27312,"www.hawriverchristian.org","Religious",584970.572016384,224218.618368745
+165,165,59369,"Buncombe","Christ School","500 Christ School Road","Arden","NC",28704,"www.christschool.org","Independent",293033.509044104,196022.200863646
+166,166,131549,"Franklin","True Light Shines Academy","7428 Pearces Road","Louisburg","NC",27549,NA,"Religious",675372.566166169,247900.467426436
+167,167,135612,"Chatham","Holy Youth Christian Academy","615 Old Lystra Road","Chapel Hill","NC",27517,NA,"Religious",602630.000663591,232931.736306351
+168,168,115767,"Buncombe","Christian Heritage Academy","420 Swannanoa River Road","Asheville","NC",28805,NA,"Religious",291090.628770927,208640.269915882
+169,169,92070,"Chatham","Jordan Lake School of the Arts","1434 Farrington Road Ste 100","Apex","NC",27523,"www.jordanlakesa.com","Independent",608743.455879683,222480.168763502
+170,170,59321,"Gaston","Assembly of Faith Chr. Sch.","1030 Lower Dallas Hwy","Dallas","NC",28034,NA,"Religious",413443.129234074,175436.000188593
+171,171,85561,"Chatham","Moonrise Academy","P.O. Box 5116","Chapel Hill","NC",27514,"www.moonriseacademy.org","Independent",605080.994859433,240404.186054574
+172,172,72619,"Davidson","ABC of NC Child Develop. Ctr","905 Friedberg Church Rd.","Winston-Salem","NC",27127,"www.abcofnc.org","Independent",494719.358992016,249804.447635967
+173,173,120948,"Buncombe","East Wind Christian Academy","1567 Patton Ave.","Asheville","NC",28806,NA,"Religious",282074.826562994,208382.190655308
+174,174,116157,"Gaston","Community Christian Academy","616 Athenia Place","Bessemer City","NC",28016,NA,"Religious",403035.227910909,171958.962150436
+175,175,79109,"Chatham","Our Neighborhood School","87 Thompson Street","Pittsboro","NC",27312,"www.ourneighborhoodschool.com","Independent",593737.819347267,218803.661398424
+176,176,59327,"Chatham","Three Springs of NC School","990 Glovers Grove Church Rd.","Siler City","NC",27344,"www.threespringsnc.com","Independent",578790.655579667,213730.176227903
+177,177,59445,"Gaston","Cramerton Christian Academy","426 Woodlawn Extension","Cramerton","NC",28032,"www.cramtertonchristian.org","Religious",419895.021173999,168004.255805351
+178,178,59350,"Buncombe","Eliada Academy","P.O. Box 16708","Asheville","NC",28816,"www.eliada.org","Independent",283203.586836117,209483.508512396
+179,179,59812,"Gaston","Faith Christian Academy","826 Stanley-Spencer Mountain Rd","Gastonia","NC",28056,"www.facebook.com/groups/FCAGastonia","Religious",419434.701480446,177399.054299267
+180,180,59389,"Cherokee","Murphy Adventist School","1584 Old Ranger Rd.","Murphy","NC",28906,"www.murphyadventistchristianschool.com","Religious",148607.968139008,158232.523602
+181,181,59370,"Buncombe","Emmanuel Lutheran School","51 Wilburn Place","Asheville","NC",28806,"www.emmanuellutheranschool.org","Religious",283169.936843498,209516.952105653
+182,182,72612,"Cherokee","Refuge Christian School","357 Graham Road","Murphy","NC",28906,NA,"Religious",140639.707690536,156163.334479647
+183,183,59447,"Gaston","First Wesleyan Christian School","208-A S. Church Street","Gastonia","NC",28054,"www.fwcsfwcs.org","Religious",412339.27300612,169894.761386966
+184,184,143688,"Cherokee","Shepherd Academy","68 Fairfax Drive","Murphy","NC",28906,NA,"Religious",149411.910374108,158756.394887634
+185,185,72606,"Buncombe","Euan Robertson Academy","P.O. Box 17265","Asheville","NC",28816,NA,"Independent",283203.586836117,209483.508512396
+186,186,59286,"Chowan","Chowan Multi-Purpose Juvenile Sch","110 Substation Road","Edenton","NC",27932,"www.mhfr.org","Religious",828030.00700118,262655.674130797
+187,187,59448,"Gaston","Gaston Christian School","1625 Lowell Bethesda Road","Gastonia","NC",28056,"www.gastonchristian.org","Religious",418828.408409166,168680.182572836
+188,188,92064,"Buncombe","French Broad River Academy - Boys","1900 Riverside Drive","Asheville","NC",28804,"www.fbra-avl.org","Independent",283708.117181045,214921.708460566
+189,189,59449,"Gaston","Gaston Day School","2001 Gaston Day School Road","Gastonia","NC",28056,"www.gastonday.org","Independent",414651.955538445,163285.775475893
+190,190,92071,"Clay","Carolina Christian Academy","PO Box 1254","Hayesville","NC",28904,"www.ccachargers.com","Religious",170077.56352818,153949.732576337
+191,191,135528,"Cleveland","Charity Christian School","PO Box 276","Fallston","NC",28042,NA,"Religious",382304.46360729,189128.436116077
+192,192,59317,"Cleveland","Fallston Christian School","P.O. Box 336","Fallston","NC",28042,NA,"Religious",382304.46360729,189128.436116077
+193,193,138249,"Buncombe","French Broad River Academy - Girls","191 Lyman Street, #316","Asheville","NC",28801,"www.fbra-avl.org","Independent",286279.590280434,208469.503597477
+194,194,126684,"Gaston","Hope Collegiate Academy","625 E. 2nd Avenue, Suite 1","Gastonia","NC",28054,NA,"Religious",412048.617266378,169746.997021899
+195,195,101365,"Davidson","Bethany Christian School","584 Tower Rd.","Thomasville","NC",27360,"www.bethanybaptistc.com","Religious",513882.522985654,234324.122672422
+196,196,59409,"Davidson","Carolina Christian Academy","367 Academy Drive","Thomasville","NC",27360,"www.ccanc.us","Religious",508325.055308559,229946.430390792
+197,197,113400,"Davidson","Galilee Christian Academy","101 E Park Avenue","Lexington","NC",27292,NA,"Religious",500222.94777999,232986.790354999
+198,198,85562,"Cleveland","Grace Christian Academy","260 Range Road","Kings Mountain","NC",28086,"www.gracechristiankm.com","Religious",387233.484611396,166277.307138838
+199,199,85569,"Davidson","Nelson Academy","103 Mendota Avenue","Lexington","NC",27292,NA,"Independent",494810.248777629,228990.208087245
+200,200,102540,"Gaston","Kings View Christian Academy","4432 Kings Mountain Hwy.","Bessemer City","NC",28016,"www.kingsview.shutterfly.com","Religious",402399.098715228,169165.825054895
+201,201,115766,"Buncombe","Gospel Baptist Christian Academy","32 Union Street","Asheville","NC",28804,NA,"Religious",285464.040003292,213959.808346773
+202,202,59672,"Davidson","New Hope Christian Academy","105 Pineywood Street","Thomasville","NC",27360,"www.newhopechristianacademyonline.org","Religious",509766.164802723,237015.972055258
+203,203,94477,"Cleveland","Trinity III Academy","810-1 West Dixon Boulevard","Shelby","NC",28152,NA,"Independent",377166.642323838,173049.307600901
+204,204,59316,"Gaston","Montessori Community School West","123 W. Pennsylvania Ave.","Bessemer City","NC",28016,"www.themcsw.org","Independent",401751.906991028,172581.260231756
+205,205,59783,"Davidson","Paramount Christian Academy","109 Dusty Lane","Thomasville","NC",27360,NA,"Religious",509871.7025009,231508.068433899
+206,206,101366,"Cleveland","Willow Tree Community School","P.O. Box 753","Boiling Springs","NC",28017,"www.wtcschool.org","Religious",366983.354348579,169436.277879188
+207,207,59719,"Buncombe","Hanger Hall School for Girls","64 W.T. Weaver Blvd.","Asheville","NC",28804,"www.hangerhall.org","Independent",287333.408697886,212604.000615025
+208,208,92076,"Davidson","Riverwood Academy","P.O. Box 1419","Lexington","NC",27293,"www.riverwoodacademy.com","Independent",496319.519583646,230968.303642455
+209,209,59410,"Davidson","Sheets Memorial Christian School","307 Holt Street","Lexington","NC",27292,"www.sheetsmemorial.org","Religious",495665.384299947,229320.432304516
+210,210,59450,"Gaston","St. Michael's Catholic School","704 St. Michael's Lane","Gastonia","NC",28052,"www.stmichaelsgastonia.org","Religious",409574.008876121,168194.086582299
+211,211,59747,"Columbus","Carolina Adventist Academy","P.O. Box 1937","Whiteville","NC",28472,"www.go-caa.org","Religious",636854.803152519,64062.5215586517
+212,212,59243,"Davidson","Triad Academy","905 Friedberg Church Road","Winston-Salem","NC",27127,"www.triadacademy.org","Independent",494719.358992016,249804.447635967
+213,213,59411,"Davidson","Union Grove Christian School","2295 Union Grove Road","Lexington","NC",27295,"www.uniongroveonline.com","Religious",495690.561854076,247622.511888379
+214,214,59391,"Columbus","Columbus Christian Academy","623 Warrior Trail","Whiteville","NC",28472,"www.columbuschristianacademy.com","Religious",638181.919695685,66382.5349294171
+215,215,132336,"Davidson","Walters Grove Baptist Academy","2610 Cid Rd.","Lexington","NC",27292,NA,"Religious",513026.038216716,216754.299453562
+216,216,59685,"Buncombe","Heirborne Christian Academy","P.O. Box 592","Asheville","NC",28802,NA,"Religious",287524.813034915,210189.131922787
+217,217,59412,"Davidson","Westchester Country Day School","2045 North Old Greensboro Rd","High Point","NC",27265,"www.westchestercds.org","Independent",511786.540016703,246965.68799538
+218,218,59722,"Columbus","Faith Christian Academy","P.O. Box 469","Delco","NC",28436,NA,"Religious",673672.589412441,59268.7717696391
+219,219,59247,"Davie","Trinity Baptist Academy","2722 US Highway 601 South","Mocksville","NC",27028,NA,"Religious",471372.07450447,231527.468968272
+220,220,92072,"Columbus","Mill Branch Christian Academy","739 Washington Street","Whiteville","NC",28473,"www.millbranchchristianacademy.com","Religious",635598.452244529,65246.8341164235
+221,221,59279,"Gaston","Stanley Christian Academy","P.O. Box 307","Stanley","NC",28164,"www.revival-tabernacle.org","Religious",419171.144268999,180186.872705856
+222,222,72624,"Buncombe","Katuah Sudbury School","178A Westwood Place","Asheville","NC",28806,"www.katuahsudbury.org","Independent",285478.725856322,209284.916532936
+223,223,72613,"Columbus","New Life Christian Academy","1386 Delco Prosper Road","Delco","NC",28436,NA,"Religious",681466.45282408,60749.1362243704
+224,224,85570,"Duplin","Cedar Fork Mennonite School","1362 Fountaintown Road","Beulaville","NC",28518,NA,"Religious",730086.925191481,123675.170072081
+225,225,59339,"Duplin","Champion Educational Center","P.O. Box 470","Beulaville","NC",28518,NA,"Religious",721343.999927036,130790.311658848
+226,226,59280,"Duplin","New Hope Christian Academy","P.O. Box 248","Wallace","NC",28466,"www.wallacefirstag.com","Religious",701567.975300361,109882.020285746
+227,227,59615,"Buncombe","Learning Community Sch","P.O. Box 1143","Black Mountain","NC",28711,"www.thelearningcommunity.org","Independent",308498.956744961,212294.386074543
+228,228,59338,"Gaston","Tabernacle Christian Academy","2128 Dallas-Cherryville Highway","Dallas","NC",28034,"www.tcadallas.com","Religious",408112.475079011,176304.321363859
+229,229,98712,"Columbus","Solomon Assessment Center","400 Flemington Drive","Lake Waccamaw","NC",28450,"www.boysandgirlshomes.org","Independent",653418.743011897,63134.5930209178
+230,230,119601,"Duplin","Tri-County Academy","PO Box 692","Wallace","NC",28466,NA,"Independent",701567.975300361,109882.020285746
+231,231,59413,"Duplin","West Duplin Christian Academy","987 NC 24 & 50 Highways","Warsaw","NC",28398,NA,"Religious",696366.511501131,137795.347245922
+232,232,102370,"Buncombe","Light of Wisdom School","2 Science of Mind Way","Asheville","NC",28806,"www.lightofwisdomschool.com","Religious",282468.251368621,207114.479319135
+233,233,59451,"Gaston","Victory Christian Academy","310 Carolina Avenue","Gastonia","NC",28052,"www.vcagastonia.org","Religious",410112.693655425,167668.233688768
+234,234,148707,"Duplin","Zelophehad's Daughters Christian Academy","PO Box 129","Magnolia","NC",28453,NA,"Religious",696186.247066341,127371.920734247
+235,235,59414,"Durham","Agape Corner School","1217 Holloway Street","Durham","NC",27703,"www.agapecorner.org","Religious",620470.333798171,248993.572645968
+236,236,79105,"Buncombe","Maccabi Academy","43 N. Liberty St., Suite 100","Asheville","NC",28801,"www.maccabiacademy.org","Religious",287898.160268859,211503.775241816
+237,237,97080,"Columbus","Tri County Academy of S.T.E.M.","44 Dream Avenue","Delco","NC",28436,NA,"Independent",673672.589412441,59268.7717696391
+238,238,147768,"Durham","AHES-Genesis Schools of Hope","3209 Yorktown Avenue, Suite 171","Durham","NC",27713,NA,"Religious",619170.332568235,242498.455169093
+239,239,115835,"Gaston","What About the Children Academy","PO Box 471","Gastonia","NC",28053,NA,"Independent",410687.582760385,170102.788861202
+240,240,103279,"Durham","Al-Huda Academy","5104 Revere Road","Durham","NC",27713,"www.alhudaacademy.net","Religious",617770.475190184,237775.397611879
+241,241,60276,"Durham","B.E. Academy","P.O. Box 3552","Durham","NC",27702,"www.beingequippedacademy.org","Religious",618595.83590531,249268.690918231
+242,242,139739,"Buncombe","Montford Hall","75 Zillicoa Street","Asheville","NC",28801,NA,"Independent",286409.149187405,212113.558927277
+243,243,66146,"Graham","Mount Nebo Christian Academy","P.O. Box 97","Robbinsville","NC",28771,"www.mtnebobc.com","Religious",172729.273367085,184971.312850133
+244,244,59372,"Buncombe","Mount Pisgah Academy","75 Academy Drive","Candler","NC",28715,"www.pisgah.us","Religious",277010.413922605,207949.738393484
+245,245,59333,"Granville","Christian Faith Center Acad.","P.O. Box 510","Creedmoor","NC",27522,"www.cfcacademy.com","Religious",637941.721481458,262696.09539107
+246,246,59656,"Durham","Bethesda Christian Academy","1914 S. Miami Boulevard","Durham","NC",27703,"www.BCAcrusaders.org","Religious",624191.239203623,243349.543701043
+247,247,59392,"Columbus","Victory Christian Academy","27139 Andrew Jackson Hwy East","Delco","NC",28436,NA,"Religious",683206.695465676,62289.2604579069
+248,248,59415,"Durham","Camelot Academy","809 West Proctor Street","Durham","NC",27707,"www.camelotacademy.org","Independent",617526.960922456,248534.313694576
+249,249,59393,"Columbus","Waccamaw Academy","P.O. Box 507","Whiteville","NC",28472,"www.waccamawacademy.com","Independent",636854.803152519,64062.5215586517
+250,250,59416,"Durham","Cresset Christian Academy","3707 Garrett Road","Durham","NC",27707,"www.cressetchristian.org","Religious",611740.833831897,246577.741613274
+251,251,59288,"Buncombe","Mount Sheba Baptist Acad.","20 Old Jupiter Road","Weaverville","NC",28787,NA,"Religious",282245.76871048,227820.804856393
+252,252,59417,"Durham","Duke School","3716 Erwin Road","Durham","NC",27705,"www.dukeschool.org","Independent",612591.54979751,249466.223076383
+253,253,59644,"Durham","Durham Academy","3601 Ridge Road","Durham","NC",27705,"www.da.org","Independent",612307.472119521,247132.934984133
+254,254,142082,"Greene","Covenant of Faith Christian Academy","3035 Hwy. 123 North","Hookerton","NC",28538,NA,"Religious",738388.826778742,190863.297691802
+255,255,85571,"Durham","Durham Nativity School","P.O. Box 3537","Durham","NC",27702,"www.durhamnativity.org","Independent",618595.83590531,249268.690918231
+256,256,59373,"Buncombe","Nazarene Christian School","385 Hazel Mill Road","Asheville","NC",28806,"www.ashevillefirstnazarene.org","Religious",284184.692736575,210185.328655113
+257,257,145635,"Durham","Empowered Minds Academy","1217 Holloway Street","Durham","NC",27701,NA,"Independent",620497.322392368,248993.092245622
+258,258,59751,"Durham","Faith Assembly Christian Academy","3120 Fayetteville Street","Durham","NC",27707,"www.facadurham.com","Religious",617863.948998322,245450.14175413
+259,259,59245,"Durham","Fellowship Baptist Academy","515 Southerland Street","Durham","NC",27703,"www.fbcofdurham.org","Religious",622160.69874418,249527.297702299
+260,260,59452,"Greene","Mount Calvary Christian Acad.","P.O. Box 250","Hookerton","NC",28538,"www.mtcalvaryfwbchurch.com","Religious",737584.669769932,186298.95380461
+261,261,72607,"Buncombe","New City Christian School","PO Box 6412","Asheville","NC",28816,"www.newcitychristian.com","Religious",283203.586836117,209483.508512396
+262,262,59802,"Durham","Five Oaks SDA School","4124 Farrington Road","Durham","NC",27707,"www.fiveoaksschool.org","Religious",611007.426432235,243142.371966245
+263,263,59394,"Craven","Annunciation Catholic School","246 E. Main Street","Havelock","NC",28532,"www.annunciationcatholicnc.org","Religious",801189.304653239,127032.930050619
+264,264,92079,"Guilford","Adess Day Treatment School","2504 New Garden Road East","Greensboro","NC",27455,NA,"Independent",534745.752691836,264795.794933952
+265,265,59395,"Craven","Calvary Baptist Church School","P.O. Box 1089","New Bern","NC",28563,"www.calbapt.org","Religious",788260.091265539,152185.162848201
+266,266,72608,"Buncombe","New Classical Academy","671 Sand Hill Rd.","Asheville","NC",28806,"www.thenewclassicalacademy.org","Independent",281991.026967248,206937.905160833
+267,267,144935,"Durham","Gift of Knowledge Academy","3026 Wake Forest Highway","Durham","NC",27703,NA,"Independent",623940.763137191,248069.941486578
+268,268,59781,"Guilford","American Hebrew Academy","4334 Hobbs Road","Greensboro","NC",27410,"www.americanhebrewacademy.org","Religious",531132.035617867,261921.809204539
+269,269,115762,"Durham","Global Montessori Academy","6453 NC Hwy 55","Durham","NC",27713,"www.globalmontessori.org","Independent",618954.548347387,238477.337340616
+270,270,59296,"Durham","Gorman Christian Academy","3311 East Geer Street","Durham","NC",27704,"www.gormanchristian.org","Religious",626327.429132636,254424.047675373
+271,271,79107,"Buncombe","Odyssey Community School","90 Zillicoa St.","Asheville","NC",28801,"www.odysseycommunity.org","Independent",286435.906982453,212184.795011997
+272,272,59453,"Guilford","B'nai Shalom Day School","804-A Winview Drive","Greensboro","NC",27410,"www.bnai-shalom.org","Religious",532371.00692823,260247.28364405
+273,273,59418,"Durham","Hill Center","3200 Pickett Road","Durham","NC",27705,"www.hillcenter.org","Independent",612198.120038919,246888.746838601
+274,274,59371,"Buncombe","Providence Christian Academy","48 Woodland Hills Road","Asheville","NC",28804,"www.providenceasheville.com","Religious",285016.513949097,219434.16129669
+275,275,59419,"Durham","Immaculata Catholic School","721 Burch Avenue","Durham","NC",27701,"www.immaculataschool.org","Religious",617402.74296358,249394.343011204
+276,276,72615,"Craven","Epiphany School of Global Studies","2301 Trent Road","New Bern","NC",28562,"www.epiphany-nb.org","Independent",785030.198364368,151712.68801301
+277,277,117125,"Durham","International Montessori School","3001 Academy Rd. Suite 300","Durham","NC",27707,NA,"Independent",614685.59649538,246318.521320034
+278,278,59859,"Guilford","Brittain Academy","155 Northpoint Avenue, Suite 105","High Point","NC",27262,"www.brittianacademy.net","Independent",517406.455744975,248734.472633952
+279,279,94999,"Durham","Just Right Academy","P.O. Box 3523","Chapel Hill","NC",27515,"www.justrightacademy.org","Independent",606764.513417518,241589.60357126
+280,280,132032,"Durham","Kids R Kids RTP School","2502 Presidential Drive","Durham","NC",27703,"kidsrkidsrtp.com","Independent",623905.077028813,241193.095571391
+281,281,59374,"Buncombe","Rainbow Community School","574 Haywood Road","Asheville","NC",28806,"www.rainbowcommunityschool.org","Independent",284598.822335766,208704.514563683
+282,282,130776,"Guilford","Bryan School","324 S. Elm Street Suite 300","Greensboro","NC",27408,NA,"Independent",538395.240302887,257582.579022409
+283,283,116601,"Durham","Kingdom School of Leadership","3026 Holloway St.","Durham","NC",27703,NA,"Religious",623948.185535563,248068.000986869
+284,284,59246,"Durham","Lerner School","1935 W. Cornwallis Road","Durham","NC",27705,"www.lernerschool.org","Religious",613762.456014546,247573.439264858
+285,285,59396,"Craven","Liberty Christian School","81 Shepard Street","Havelock","NC",28532,"www.libertyknights.org","Religious",801866.9441634,124862.057317382
+286,286,59241,"Guilford","Caldwell Academy","2900 Horse Pen Creek Rd.","Greensboro","NC",27410,"www.caldwellacademy.org","Religious",529797.760449497,265019.92296198
+287,287,59720,"Buncombe","Reynolds Mountain Christ. Acad.","20 Reynolds Mountain Blvd.","Asheville","NC",28804,"www.northashevillechristian.org","Religious",285735.439967194,216169.560778141
+288,288,59420,"Durham","Liberty Christian School","3864 Guess Road","Durham","NC",27705,"www.libertychristiandurham.org","Religious",615960.983892259,256470.151910339
+289,289,105004,"Durham","Lighted Pathway Academy","3501 S. Alston Avenue","Durham","NC",27704,NA,"Independent",619946.552798051,242295.456199899
+290,290,59421,"Durham","Montessori Children's House Sch.","2800 Pickett Road","Durham","NC",27705,"www.mchdurham.org","Independent",613897.051472679,246797.195829984
+291,291,59422,"Durham","Montessori Community School","4512 Pope Road","Durham","NC",27707,"www.mcsdurham.org","Independent",609748.464487146,242212.596987627
+292,292,59290,"Guilford","Canterbury School","5400 Old Lake Jeanette Road","Greensboro","NC",27455,"www.canterburygso.org","Independent",538126.933887123,265824.49586153
+293,293,59305,"Buncombe","Stone Mountain School","126 Camp Elliott Road","Black Mountain","NC",28711,"www.stonemountainschool.com","Independent",318867.874555403,201630.748727392
+294,294,79135,"Durham","Montessori Farm School","2400 Broad Street, Suite 2","Durham","NC",27704,"www.montessorifarmschool.com","Independent",617629.366977359,253099.903008493
+295,295,115761,"Craven","New Bern Christian Academy","2911 Old Cherry Point Rd.","New Bern","NC",28560,"www.newbernchristianacademy.com","Religious",790823.711207635,147107.717617936
+296,296,59423,"Durham","Mount Zion Christian Academy","3519 Fayetteville Street","Durham","NC",27707,"www.mzcadurham.org","Religious",617968.834763256,244702.258313708
+297,297,109431,"Guilford","Career Academy of Greensboro","1305 Julian Street","Greensboro","NC",27406,NA,"Independent",540141.630713745,256502.646126954
+298,298,59375,"Buncombe","Swannanoa Christian Academy","P.O. Box 969","Swannanoa","NC",28778,NA,"Religious",301433.37881602,210717.509277405
+299,299,92077,"Durham","New Horizons Acad of Excellence","4005 Holt School Road","Durham","NC",27704,NA,"Independent",618136.333612737,255713.089736693
+300,300,128540,"Durham","Our Playhouse Preschool & Kindergarten","2400 University Drive","Durham","NC",27707,NA,"Independent",616601.537093646,246895.244863588
+301,301,59397,"Craven","Ruth's Chapel Christian Sch.","2709 Oaks Road","New Bern","NC",28560,"www.ruthschapel.com","Religious",786078.984388454,154568.462964782
+302,302,59713,"Durham","Quality Education Institute","800 Elmira Avenue","Durham","NC",27707,"www.qeidurham.org","Religious",618575.152445939,245472.422537398
+303,303,85572,"Durham","Southpoint Academy","7415 Fayetteville Road","Durham","NC",27713,"www.southpointacademy.org","Religious",614763.904936,237756.537165903
+304,304,108110,"Guilford","Carter's Circle of Care Day Treat.","200 Fisher Ave. Suite 104","High Point","NC",27602,NA,"Independent",517322.597751409,247959.887301032
+305,305,59398,"Craven","St. Paul Catholic Education Ctr","3007 Country Club Road","New Bern","NC",28562,"www.stpaulsc.org","Religious",785571.502208155,149715.060742561
+306,306,66136,"Buncombe","Swannanoa Valley Montessori Sch","101 Carver Avenue","Black Mountain","NC",28711,"www.swanmont.org","Independent",307041.938748582,211993.925352506
+307,307,59858,"Durham","St. SYA Academy II","3102 Cedarwood Drive","Durham","NC",27707,"www.stsya.org","Independent",617262.108810196,244412.081388142
+308,308,124657,"Craven","Strait Path Academy","145 Jonestown Road","Dover","NC",28526,NA,"Religious",759614.740384271,171006.249948205
+309,309,141597,"Guilford","Charlotte Sports Academy","900 16th Street","Greensboro","NC",27405,NA,"Independent",539550.095924305,261980.478862571
+310,310,59424,"Durham","Tabernacle of Life Chr. Sch.","2400 Sovereign Street","Durham","NC",27705,NA,"Religious",615921.584136082,252638.016236834
+311,311,118337,"Durham","Treasures of Joy Christian Academy","3528 Arlington Place","Durham","NC",27707,NA,"Religious",617853.24938837,244719.428911943
+312,312,59302,"Durham","Triangle Day School","4911 Neal Road","Durham","NC",27705,"www.triangledayschool.org","Independent",612049.036169064,252760.139175568
+313,313,59376,"Buncombe","Temple Baptist School","985 1/2 Patton Avenue","Asheville","NC",28806,"www.templebaptistasheville.com","Religious",284352.603096349,209654.067165624
+314,314,59244,"Durham","Trinity School of Durham & CH","4011 Pickett Road","Durham","NC",27705,"www.trinityschoolnc.org","Religious",610277.118652033,246935.468260521
+315,315,59455,"Guilford","Covenant Christian Day School","1414 Cliffwood Drive","Greensboro","NC",27406,"www.ccdsgso.org","Religious",535958.538470423,254166.050891733
+316,316,85563,"Craven","Swift Creek Mennonite School","1283 Honolulu Road","Grifton","NC",28530,NA,"Religious",765083.42616966,180590.278144615
+317,317,59619,"Durham","Tutorial -1/2 Christian Schools","6500 Englehardt Drive","Raleigh","NC",27617,NA,"Religious",632728.237709162,239868.308408419
+318,318,108107,"Buncombe","Timbersong Academy","531 Upper Flat Creek Rd.","Weaverville","NC",28787,NA,"Independent",292393.670076774,227281.393670853
+319,319,92078,"Durham","Union Independent School","311 Dowd Street","Durham","NC",27701,NA,"Independent",619263.0535684,249645.13322581
+320,320,100548,"Guilford","Crusade Baptist Academy","2919 Huffine Mill Rd.","Gibsonville","NC",27249,NA,"Religious",551217.268200686,266136.235990269
+321,321,124650,"Cumberland","Academy at New Life","PO Box 622","Hope Mills","NC",28348,"www.newlifehopemills.com","Religious",614526.203367179,135261.970500676
+322,322,131451,"Durham","Veritas Collaborative School","4024 Stirrup Creek Drive","Durham","NC",27703,NA,"Independent",623839.958831778,240537.353614062
+323,323,59426,"Forsyth","Berean Christian School","4135 Thomasville Road","Winston-Salem","NC",27107,"www.wpipbereanradio.org","Religious",502970.53780814,254771.21085494
+324,324,59428,"Forsyth","Bishop McGuinness Catholic H. S.","1725 NC Highway 66 South","Kernersville","NC",27284,"www.bmhs.us","Religious",513896.286341082,258739.373445453
+325,325,85577,"Guilford","Faith Christian Academy","512 Kivet Dairy Road","McLeansville","NC",27301,"www.faithca.com","Religious",550832.591337715,256876.385681212
+326,326,133778,"Burke","Christ Classical Academy","PO Box 2275","Morganton","NC",28680,NA,"Religious",365048.30476029,225066.513969004
+327,327,59281,"Cumberland","Adventist Christian School","2601 Lone Pine Dr.","Fayetteville","NC",28306,"www.facs.faysda.org","Religious",617996.719898816,140861.811727768
+328,328,59429,"Forsyth","Brookside Montessori School","736 Piney Grove Road","Kernersville","NC",27284,"www.brooksidemontessori.org","Independent",513332.587461008,265438.395821948
+329,329,133777,"Guilford","God's Heritage Christian Dayschool","3717 Sunnycrest Ave.","Greensboro","NC",27405,NA,"Religious",542381.117980462,259389.493073821
+330,330,59430,"Forsyth","Calvary Day School","5000 Country Club Road","Winston-Salem","NC",27104,"www.cbdscougars.com","Religious",488028.030758445,259819.686493479
+331,331,94480,"Burke","Hand in Hand Day Treatment Sch","205 S. Main Street","Drexel","NC",28619,"www.huhfy.com","Independent",374071.81616117,225655.806940917
+332,332,59431,"Forsyth","Cedar Forest Christian School","4634 Shattalon Drive","Winston-Salem","NC",27106,"www.cedarforestchurch.com","Religious",489552.500757365,268310.122260293
+333,333,79110,"Cumberland","Bal-Perazim Christian Academy","4921 Bragg Boulevard","Fayetteville","NC",28303,"www.balperazim.org  ""link"" B P Academy","Religious",613731.821545058,148857.285651211
+334,334,129594,"Guilford","Greater Vision Academy","2367 Wagoner Rd.","Gibsonville","NC",27249,"www.greatervisionnc.com","Religious",558605.794884057,263617.3027134
+335,335,119216,"Forsyth","Elite Preparatory Academy","704 Bank Street","Winston Salem","NC",27101,NA,"Independent",497084.176937081,260049.862113168
+336,336,59432,"Forsyth","Ephesus Junior Academy","1225 North Cleveland Avenue","Winston-Salem","NC",27101,"www.ejacademy.org","Religious",498804.669008146,262573.267749228
+337,337,124653,"Forsyth","Eunice Kennedy Shriver Day School","725 Waughtown Street","Winston-Salem","NC",27107,NA,"Independent",499416.166111316,257996.930117596
+338,338,59399,"Cumberland","Berean Baptist Academy","518 Glensford Drive","Fayetteville","NC",28314,"www.bbafnc.org","Religious",612988.338347351,144981.230706371
+339,339,59645,"Guilford","Greensboro Day School","5401 Lawndale Drive","Greensboro","NC",27455,"www.greensboroday.org","Independent",534387.873797226,266687.453234633
+340,340,135974,"Forsyth","Faith Academy Christian School","2305 Elbon Drive","Winston-Salem","NC",27105,NA,"Religious",500285.359209202,263652.585797057
+341,341,59725,"Forsyth","First Christian Academy","1130 N. Main Street","Kernersville","NC",27284,"www.gofcaknights.com","Religious",515057.276495935,265563.799669268
+342,342,59434,"Forsyth","Forsyth Country Day School","P.O. Box 549","Lewisville","NC",27023,"www.fcds.org","Independent",482070.642745311,261324.703557881
+343,343,100544,"Cumberland","Cape Fear Christian School","301 Hope Mills Road","Fayetteville","NC",28304,NA,"Religious",613166.408780266,143098.961513586
+344,344,59854,"Guilford","Greensboro Islamic Academy","2023 16th Street","Greensboro","NC",27405,"www.giaschool.com","Religious",541258.52975537,261682.46619997
+345,345,59457,"Guilford","Greensboro Montessori School","2856 Horse Pen Creek Rd.","Greensboro","NC",27410,"www.thegms.org","Independent",529764.326749394,264547.529563567
+346,346,92073,"Cumberland","Clearview Christian Academy","3353 Dunn Road","Eastover","NC",28312,"eastoverchristianacademy.com","Religious",628813.230770971,148581.689679416
+347,347,94478,"Guilford","Guess Community Services Sch","3818 North Elm St., Ste. C","Greensboro","NC",27455,NA,"Independent",537725.076170383,265670.063200809
+348,348,59643,"Cumberland","College Lakes Christian Academy","4704 Ramsey Street","Fayetteville","NC",28311,"www.collegelakeschurch.org","Religious",620596.367313423,152512.186250428
+349,349,59814,"Harnett","Johnathan's House Christian Acad","P.O. Box 42","Kipling","NC",27543,"www.johnathanshouse.com","Religious",625910.936083277,191812.636525517
+350,350,92082,"Harnett","Learning Time Academy","P.O. Box 1685","Fuquay-Varina","NC",27526,"www.learningtimeinc.com","Independent",627825.934652299,203058.522455772
+351,351,97079,"Harnett","Victory Christian Academy","PO Box 298","Lillington","NC",27546,NA,"Religious",626007.272420972,182998.950436966
+352,352,59622,"Guilford","Hayworth Christian School","1696 Westchester Drive","High Point","NC",27262,"www.hayworthchristian.org","Religious",516349.542006964,244437.43066965
+353,353,66153,"Haywood","Aspire Day School","P.O. Box 250","Balsam","NC",28707,"www.aspireyouthandfamily.com","Independent",238859.097804928,193889.193187973
+354,354,59239,"Haywood","Bethel Christian Academy","100 Park Street","Canton","NC",28716,"www.bcaeaglescanton.org","Religious",261233.175401825,204377.1922889
+355,355,59401,"Cumberland","Cornerstone Christian Academy","3000 Scotty Hill Road","Fayetteville","NC",28303,"www.cbcfay.org","Religious",616237.468784897,147733.945257602
+356,356,141598,"Haywood","Blue Ridge Adventist Christian School","119 Hampshire Drive","Waynesville","NC",28786,NA,"Religious",247785.667018324,204048.112874938
+357,357,79118,"Haywood","Haywood Christian Academy","P.O. Box 609","Lake Junaluska","NC",28745,"www.haywoodchristianacademy.org","Religious",249402.387079823,204081.830454012
+358,358,59621,"Guilford","High Point Christian Academy","800 Phillips Avenue","High Point","NC",27262,"www.hpcacougars.org","Religious",517072.387354534,244553.197834216
+359,359,59238,"Haywood","St. Joseph Academy","175 Rich Cove Road","Maggie Valley","NC",28751,NA,"Religious",238250.872515427,204049.214955173
+360,360,85597,"Henderson","Academy at Trails Carolina","555 Sky Valley Camp Road","Hendersonville","NC",28739,"www.trailsacademy.com","Independent",285278.002220187,167117.851552097
+361,361,125001,"Cumberland","Destiny Now Academy","2567 Owen Drive","Fayetteville","NC",28306,NA,"Religious",617832.909331039,140643.54917782
+362,362,92083,"Henderson","Aiglon Training Academy","P.O. Box 5282","Hendersonville","NC",28792,"www.achurchthatserves.com","Independent",295220.401532872,179579.618123367
+363,363,130211,"Henderson","Canongate Catholic High School","4110 Hendersonville Rd. Ste. 10","Fletcher","NC",28732,NA,"Religious",291603.990102874,191444.160045076
+364,364,59782,"Guilford","High Point Friends School","800-A Quaker Lane","High Point","NC",27262,"www.hpfs.org","Religious",517420.396698132,245762.353270132
+365,365,59473,"Henderson","Captain Gilmer School","P.O. Box 5338","Fletcher","NC",28732,"www.captaingilmer.com","Religious",291235.127190568,192537.757217187
+366,366,111636,"Cumberland","Emmanuel Outreach Prep School","4761 Draughon Road","Fayetteville","NC",28312,NA,"Religious",632781.583503626,148173.630406586
+367,367,92080,"Guilford","His Village Academy","P.O. Box 201","Jamestown","NC",27282,NA,"Religious",525326.331974191,249927.848360457
+368,368,108324,"Henderson","Faith-Covenant Christian Academy","PO Box 6852","Hendersonville","NC",28793,NA,"Religious",295456.22188205,179458.882346798
+369,369,59475,"Henderson","Fletcher Academy","P.O. Box 5440","Fletcher","NC",28732,"www.fletcheracademy.com","Religious",291235.127190568,192537.757217187
+370,370,108109,"Cumberland","Falcon Christian Academy","PO Box 39","Falcon","NC",28342,"www.falconchildrenshome.org","Religious",641631.264167504,159812.896830477
+371,371,141233,"Henderson","Grotto 2","705 Oakland Street","Hendersonville","NC",28791,NA,"Independent",294630.50445784,179642.921815319
+372,372,109817,"Guilford","Hope Academy","PO Box 10616","Greensboro","NC",27404,NA,"Religious",534579.860144568,259411.297989247
+373,373,59474,"Henderson","Hendersonville Christian School","708 S. Grove Street","Hendersonville","NC",28792,"www.hcsmustangs.org","Religious",295911.965176588,178424.202361852
+374,374,59476,"Henderson","Heritage Hall International School","802 A South Grove Street","Hendersonville","NC",28792,"www.heritagehallschool.org","Independent",296040.504047263,178179.361312559
+375,375,59477,"Henderson","Immaculata Catholic School","711 Buncombe Street","Hendersonville","NC",28791,"www.immac.org","Religious",294742.492833787,179594.766124507
+376,376,66158,"Mecklenburg","Branch Christian Academy","9100 Olmstead Drive","Charlotte","NC",28262,NA,"Religious",450777.769061696,174665.909510458
+377,377,95502,"Henderson","Lake House Academy","447 Lily Pad Lane","Flat Rock","NC",28731,"www.lakehouseacademy.com","Independent",296857.899152383,175689.116032854
+378,378,59402,"Cumberland","Fayetteville Academy","3200 Cliffdale Road","Fayetteville","NC",28303,"www.fayettevilleacademy.com","Independent",614998.712319635,145514.494559754
+379,379,59458,"Guilford","Immaculate Heart of Mary Cath Sch","4145 Johnson Street","High Point","NC",27265,"www.ihm-school.com","Religious",517748.315651455,254083.341984028
+380,380,118400,"Henderson","Mills River Seventh-day Adventist","2142 Jeffress Road","Mills River","NC",28759,"www.millsriversdaschool.org","Religious",285865.21568685,188762.205564776
+381,381,66147,"Henderson","Mud Creek Christian School","403 Rutledge Drive","Hendersonville","NC",28739,"www.mudcreekschool.org","Religious",295663.946710524,176382.782796664
+382,382,124758,"Henderson","Naturally Grown School","75 Bryson Road","Mills River","NC",28759,"naturallygrownproject.com","Independent",283988.274371278,187566.810134515
+383,383,59400,"Cumberland","Fayetteville Christian School","1422 Ireland Drive","Fayetteville","NC",28304,"www.fayettevillechristian.com","Religious",614437.693800116,142800.890659273
+384,384,59295,"Mecklenburg","Brisbane Academy","5901 Statesville Road","Charlotte","NC",28269,"www.brisbaneacademy.org","Independent",442278.853762204,173474.189069375
+385,385,140671,"Guilford","Impact Journey School","4705 N. Church Street","Greensboro","NC",27455,NA,"Independent",538384.445534843,265993.158721434
+386,386,138123,"Henderson","North Carolina Christian Academy","425 Linda Vista Drive","Hendersonville","NC",28792,NA,"Religious",295842.704720106,181618.25958587
+387,387,116602,"Henderson","Safe Harbor Christian Academy","182 Kingdom Place","Zirconia","NC",28790,NA,"Independent",297196.128595711,166125.462357813
+388,388,72625,"Henderson","Talisman Academy","2075 N. Rugby Rd.","Hendersonville","NC",28791,"www.talismanacademy.com","Independent",289856.824841676,188246.686337497
+389,389,131566,"Henderson","Talisman Semesters School","64 Gap Creek Rd.","Zirconia","NC",28790,NA,"Independent",297154.93078843,164313.767942578
+390,390,133880,"Henderson","The Way Christian Academy","1315 Old Spartanburg Hwy.","Hendersonville","NC",29792,NA,"Religious",296743.691793438,177571.221235029
+391,391,139223,"Cumberland","First Impressions Academy","6965 Nexus Court","Fayetteville","NC",28304,NA,"Independent",608359.156214602,142582.994798368
+392,392,60284,"Mecklenburg","British International Sch. of Charlotte","7000 Endhaven Lane","Charlotte","NC",28277,"www.britishschoolofcharlotte.org","Independent",441914.097136691,147763.734794401
+393,393,131537,"Henderson","Upward Adventist School","957 Upward Rd.","Flat Rock","NC",28731,NA,"Religious",301262.724033202,176831.499050539
+394,394,131568,"Guilford","Lionheart Academy of the Triad","1734 Battleground Ave.","Greensboro","NC",27408,NA,"Independent",536296.103089488,260119.123811342
+395,395,59807,"Cumberland","Flaming Sword Christian Academy","3230 Legion Road","Hope Mills","NC",28348,"www.flamingswordacademy.org","Religious",617071.138268817,138830.503984483
+396,396,59347,"Guilford","Mell-Burton School","1601 Huffine Mill Road","Greensboro","NC",27405,"www.youthfocus.org","Independent",544172.045317126,260598.865786932
+397,397,59695,"Henderson","Veritas Christian Academy","17 Cane Creek Road","Fletcher","NC",28732,"www.veritasnc.org","Religious",291930.256144203,192536.895410942
+398,398,66149,"Henderson","World's Edge Christian Academy","P.O. Box 288","Edneyville","NC",28727,NA,"Religious",306061.246218125,187350.067576665
+399,399,113739,"Cumberland","Focus Academy at Overhills","751 Lillington Highway","Spring Lake","NC",28390,NA,"Independent",612502.806654604,158241.180828325
+400,400,72622,"Guilford","Mell-Burton Structured Day School","309 Concord Street, Suite 201","Greensboro","NC",27406,"www.youthfocus.org","Independent",537564.577935771,254689.42305504
+401,401,108112,"Hertford","ACC Academy","PO Box 155","Ahoskie","NC",27910,NA,"Religious",790344.989314106,283435.637791781
+402,402,59788,"Mecklenburg","Brookstone Schools","P.O. Box 667890","Charlotte","NC",28266,"www.brookstoneschools.org","Religious",436001.918721246,166651.071307672
+403,403,92074,"Cumberland","Freedom Christian Academy","3130 Gillespie Street","Fayetteville","NC",28306,"www.fcapatriots.org","Religious",618504.750745119,137996.070344649
+404,404,59456,"Guilford","Napoleon B. Smith Academy","1800 E. Market Street","Greensboro","NC",27401,NA,"Religious",540242.645214464,257950.597815143
+405,405,59278,"Mecklenburg","Carmel Christian School","1145 Pineville-Matthews Road","Matthews","NC",28105,"www.carmelchristian.org","Religious",449800.625307094,152752.913029028
+406,406,59460,"Guilford","New Garden Friends School","1128 New Garden Road","Greensboro","NC",27410,"www.ngfs.org","Religious",529302.151892018,260886.085754145
+407,407,59479,"Hertford","Ahoskie Christian School","500-504 Kiwanis Street","Ahoskie","NC",27910,NA,"Religious",791422.144458845,282374.887700135
+408,408,59498,"Mecklenburg","Charlotte Catholic High School","7702 Pineville-Matthews Road","Charlotte","NC",28226,"www.gocougars.org","Religious",440855.693688694,149963.494333841
+409,409,59284,"Hertford","Hertford Multi-Purpose Juvenile Sch","114 Oak Villa Road","Winton","NC",27986,"www.mhfc.org","Religious",794492.016027804,293559.13930474
+410,410,102861,"Hertford","New Vision Christian Academy","PO Box 384","Murfreesboro","NC",27855,NA,"Religious",779993.46489935,300112.875383925
+411,411,59465,"Guilford","Noble Academy","3310 Horse Pen Creek Rd.","Greensboro","NC",27410,"www.nobleknights.org","Independent",530915.327831669,266341.133362181
+412,412,59480,"Hertford","Ridgecroft School","P.O. Box 1008","Ahoskie","NC",27910,"www.ridgecroft.org","Independent",790344.989314106,283435.637791781
+413,413,115763,"Hoke","Academy of Excellence","2240 S. Duffie Rd.","Red Springs","NC",28377,NA,"Independent",589169.490474775,122075.821146198
+414,414,59637,"Guilford","Oak Ridge Military Academy","P.O. Box 498","Oak Ridge","NC",27310,"www.oakridgemilitary.com","Independent",520320.763525897,268874.516782228
+415,415,138427,"Hoke","Canyon Hills Treatment Facility Academy","769 Aberdeen Road","Raeford","NC",28376,NA,"Independent",586251.979929009,137511.278427988
+416,416,59647,"Mecklenburg","Charlotte Christian School","7301 Sardis Road","Charlotte","NC",28270,"www.charlottechristian.com","Religious",448295.486163549,155652.032323662
+417,417,148624,"Hoke","Cape Fear Christian High School","7623 Rockfish Road","Raeford","NC",28376,NA,"Religious",603682.819456304,137762.010217924
+418,418,79117,"Guilford","Our Children's Community School","2204 Joan Avenue","Greensboro","NC",27455,"www.occsgreensboro.org","Independent",534813.149852484,263171.205180658
+419,419,94481,"Mecklenburg","Charlotte Community School for Girls","1440 S. Tryon, Ste. 109","Charlotte","NC",28203,"www.charlottecommunityschool.org","Independent",440670.805995779,164261.741965046
+420,420,59461,"Guilford","Our Lady of Grace Catholic Sch","201 South Chapman Street","Greensboro","NC",27403,"www.olgsch.org","Religious",535536.648318589,257976.053081973
+421,421,103710,"Hoke","Grace House Treatment Center","1892 Turnpike Road","Raeford","NC",28376,"www.ncprtf.com","Independent",586706.477130241,137486.515826793
+422,422,59499,"Mecklenburg","Charlotte Country Day School","1440 Carmel Road","Charlotte","NC",28226,"www.charlottecountryday.org","Independent",445438.234285392,156546.102465427
+423,423,59462,"Guilford","Piedmont School","815 Old Mill Road","High Point","NC",27265,"www.thepiedmontschool.com","Independent",518583.818255741,252893.969626112
+424,424,103709,"Hoke","Hope Gardens Treatment Center","1958 Turnpike Road","Raeford","NC",28376,"www.ncprtf.com","Independent",586576.896957975,137464.24903352
+425,425,115770,"Guilford","Primrose School of New Irving Park","4 North Pointe Court","Greensboro","NC",27408,NA,"Independent",537718.43144063,263652.767332779
+426,426,59346,"Mecklenburg","Charlotte Jewish Day School","P.O. Box 79180","Charlotte","NC",0,"www.cjdschool.org","Religious",442304.910454564,164931.501101859
+427,427,117554,"Guilford","Prince of Peace Christian Academy","PO Box 16523","Greensboro","NC",27416,NA,"Independent",537796.262183857,254527.098486276
+428,428,59500,"Mecklenburg","Charlotte Latin School","9502 Providence Road","Charlotte","NC",28277,"www.charlottelatin.org","Independent",447997.451049194,149026.979551597
+429,429,129853,"Hoke","Precious Haven Learning Academy","181 Bostic Road","Raeford","NC",28376,NA,"Independent",603043.370683207,136971.648299521
+430,430,119442,"Mecklenburg","Charlotte Leadership Academy","1326 Prince Hall Avenue","Charlotte","NC",28206,NA,"Independent",442341.245681857,167876.103769496
+431,431,72626,"Hoke","Rockfish Christian Academy","7604 Rockfish Rd","Raeford","NC",28376,"www.rockfishchristian.com","Religious",603664.938360308,137770.579516325
+432,432,59501,"Mecklenburg","Charlotte Preparatory School","212 Boyce Road","Charlotte","NC",28211,"www.charlotteprep.com","Independent",448368.674657573,156468.368847338
+433,433,59481,"Hyde","Hope Mennonite School","25 Mainstem Road","Pantego","NC",27860,NA,"Religious",829137.058377217,210805.264659133
+434,434,108111,"Guilford","Serenity Counseling & Resource Ctr.","2211 W. Meadowview Rd Ste 10","Greensboro","NC",27407,NA,"Independent",533896.165425929,255189.437103925
+435,435,72627,"Iredell","Academy of Excellence","612 South Race Street","Statesville","NC",28677,NA,"Religious",438483.952727095,226390.635699799
+436,436,59662,"Guilford","Shining Light Academy","4530 W. Wendover Avenue","Greensboro","NC",27409,"www.slanc.org","Religious",527787.767239338,255910.375242263
+437,437,92085,"Mecklenburg","Charlotte United Christian Academy","7640 Wallace Road","Charlotte","NC",28212,"www.cucawarriors.com","Religious",450577.219414927,158974.727982316
+438,438,72628,"Iredell","Calvary Academy","137 Princess Loop","Troutman","NC",28166,NA,"Religious",439318.991944441,218135.123950571
+439,439,59463,"Guilford","St. Pius X Catholic School","2200 North Elm Street","Greensboro","NC",27408,"www.spxschool.com","Religious",538656.785204966,261343.975612687
+440,440,59620,"Mecklenburg","Chesterbrook Academy","7801 Ballantyne Commons Parkway","Charlotte","NC",28277,"www.ballantyne.chesterbrookacademy.com","Independent",444484.840073548,146657.541202344
+441,441,59266,"Iredell","Cornerstone Christian Academy","650 Glover Street","Statesville","NC",28625,"www.welovecornerstone.com","Religious",441890.387911529,226998.726826202
+442,442,135876,"Guilford","The Covenant School","PO Box 10454","Greensboro","NC",27420,NA,"Religious",539033.833374563,258096.396002514
+443,443,85578,"Iredell","Crossroads Chr Sch of Statesville","1950 Salisbury Hwy","Statesville","NC",28677,"www.ccsofstatesville.net","Religious",443261.256691845,224787.100380342
+444,444,59862,"Mecklenburg","Chesterbrook Academy @ Birkdale","15115 Norman View Lane","Huntersville","NC",28078,"www.huntersville.chesterbrookacademy.com","Independent",437147.391446008,189129.039077634
+445,445,59754,"Iredell","Eagles Refuge Academy","109 Eagles Refuge Drive","Statesville","NC",28625,NA,"Religious",432837.865267053,237447.099216267
+446,446,59464,"Guilford","Tri-City Christian Academy","8000 Clinard Farms Road","High Point","NC",27265,"www.tricityschool.com","Religious",520650.844975181,256902.759337351
+447,447,59483,"Iredell","Gethsemane Christian Academy","115 Gethsemane Road","Olin","NC",28660,NA,"Religious",440919.365445673,244511.460506469
+448,448,59466,"Guilford","Vandalia Christian School","3919 Pleasant Garden Road","Greensboro","NC",27406,"www.vcsgso.com","Religious",539641.10514164,251352.099138582
+449,449,108113,"Iredell","Goddard School of Mooresville","179 Townsquare Circle","Mooresville","NC",28117,NA,"Independent",440185.192097518,205214.887899434
+450,450,118098,"Iredell","Hope Christian Academy","872 Fern Hill Rd.","Mooresville","NC",28117,NA,"Religious",437022.146950229,211598.902475178
+451,451,59467,"Guilford","Wesleyan Christian Academy","1917 N. Centennial Street","High Point","NC",27262,"www.wesed.org","Religious",519382.404521866,248606.091932155
+452,452,146718,"Guilford","You Are Our Future Academy","900 16th Street","Greensboro","NC",27405,NA,"Independent",539550.095924305,261980.478862571
+453,453,134328,"Iredell","Independence Day Academy","724 Saint Cloud Drive","Statesville","NC",28625,NA,"Independent",445905.522966209,227578.99995032
+454,454,103205,"Mecklenburg","Christ the King Catholic High School","2011 Crusader Way","Huntersville","NC",28078,"www.christthekinghs.com","Religious",438968.115765457,189738.322324956
+455,455,94479,"Iredell","Liberty Preparatory Christian Acad.","246 Blume Road","Mooresville","NC",28117,"www.libertyprepnc.com","Religious",436735.917820495,204334.879730603
+456,456,139103,"Guilford","YouthSpring School","PO Box 38338","Greensboro","NC",0,NA,"Independent",538013.88428359,257540.752537228
+457,457,72629,"Iredell","Miss Cookie's Place School","317 East Church Street","Troutman","NC",28166,NA,"Religious",438929.576131043,218438.036290869
+458,458,59623,"Halifax","Cornerstone Christian School","P.O. Box 608","Roanoke Rapids","NC",27870,NA,"Religious",730996.350862873,299861.429531809
+459,459,59667,"Mecklenburg","Christian Montessori School","14101 Stumptown Road","Huntersville","NC",28078,"www.christianmontessorischool.org","Independent",441108.711078323,187211.142139796
+460,460,59696,"Iredell","Mooresville Christian Academy","P.O. Box 114","Mooresville","NC",28115,"www.mooresvillechristianacademy.org","Religious",446025.912252273,205051.1627609
+461,461,59867,"Mecklenburg","Student First Academy","2029 Mecklenburg Avenue","Charlotte","NC",28205,"www.studentfirstacademy.org","Independent",445628.480555051,165829.530269349
+462,462,148246,"Iredell","Primrose School of Lake Norman","173 Raceway Drive","Mooresville","NC",28117,NA,"Independent",440189.676401153,205581.960420918
+463,463,103188,"Mecklenburg","Talented Tenth Boys Acad of NC","PO Box 642","Charlotte","NC",28216,"www.tttbanc.org","Religious",440989.014494509,178207.356570197
+464,464,59468,"Halifax","Halifax Academy","1400 Three Bridges Road","Roanoke Rapids","NC",27870,"www.halifaxacademy.org","Independent",728913.279906864,294564.655318743
+465,465,59484,"Iredell","Southview Christian School","625 Wallace Springs Road","Statesville","NC",28677,"www.southviewbaptistministries.org","Religious",436420.567116302,222552.404244874
+466,466,92093,"Mecklenburg","Teaching Achieving Students Acad","9200 University City Blvd.","Charlotte","NC",28213,"www.tasacademy.org","Religious",452383.212005489,173583.755623
+467,467,142018,"Mecklenburg","Combine Academy","646 Matthew-Mint Hill Road","Matthews","NC",28105,NA,"Religious",453562.413105456,153063.071317511
+468,468,59469,"Halifax","Hobgood Academy","201 S. Beech Street","Hobgood","NC",27843,"www.hobgoodacademy.com","Independent",754184.366146644,253813.27236362
+469,469,59841,"Halifax","Miracle Tabernacle Christian Sch","P.O. Box 2128","Roanoke Rapids","NC",27870,NA,"Religious",730996.350862873,299861.429531809
+470,470,118198,"Iredell","Springs Academy","PO Box 1","Barium Springs","NC",28010,NA,"Independent",437908.833069099,220105.886047903
+471,471,59503,"Mecklenburg","The John Crosland School","5146 Parkway Plaza Blvd.","Charlotte","NC",28217,"www.johncroslandschool.org","Independent",436121.08672188,160346.391459038
+472,472,145820,"Mecklenburg","Cornerstone Adventist Academy","11431 University City Boulevard","Charlotte","NC",28213,NA,"Religious",455675.402518685,174938.474091709
+473,473,98713,"Halifax","New West Academy","PO Box 371","Weldon","NC",27890,NA,"Independent",735074.597142054,297727.90251253
+474,474,59237,"Iredell","Statesville Christian School","1210 Museum Road","Statesville","NC",28625,"www.statesvillechristian.org","Religious",438567.900650891,229632.618007394
+475,475,110342,"Harnett","A Little Bit of Johnathans House Chr Sch","155 Raleigh St.","Angier","NC",27501,NA,"Religious",633095.866278832,194747.817572175
+476,476,131452,"Mecklenburg","Tools Academy Christian School","20823 B North Main St.","Cornelius","NC",28031,NA,"Religious",441069.287578977,194722.653432343
+477,477,59240,"Harnett","AppleWorks Private School","2753 Old Stage Rd South","Erwin","NC",28339,"appleworksprivateschool.com","Independent",636056.07686882,178102.368839549
+478,478,59332,"Iredell","Statesville Montessori School","1012 Harmony Drive","Statesville","NC",28677,"www.statesvillemontessori.com","Independent",440957.042109352,226968.496644704
+479,479,59271,"Mecklenburg","Trinity Christian Preparatory School","7516 E. Indep. Blvd., Suite 100","Charlotte","NC",28227,"www.trinityprep.com","Religious",455010.593191019,161021.682488967
+480,480,59470,"Harnett","Cape Fear Christian Academy","138 Erwin Chapel Road","Erwin","NC",28339,"www.capefearchristianacademy.org","Independent",637041.740660931,178439.402650377
+481,481,59502,"Mecklenburg","Countryside Montessori Schools","9026 Mallard Creek Road","Charlotte","NC",28262,"www.countrysidemontessorischools.org","Independent",448425.56098519,176397.641067741
+482,482,101286,"Iredell","The Learning Experience School","123 Legacy Village Blvd.","Mooresville","NC",28117,NA,"Independent",441961.211564604,200817.669817366
+483,483,59784,"Harnett","Coats Christian Academy","P.O. Box 488","Coats","NC",27521,NA,"Religious",639479.546119385,183742.748058103
+484,484,59823,"Mecklenburg","Trinity Episcopal School","750 East 9th Street","Charlotte","NC",28202,"www.tescharlotte.org","Religious",442903.217329842,165193.770138433
+485,485,59337,"Mecklenburg","Covenant Day School","800 Fullwood Lane","Matthews","NC",28105,"www.covenantday.org","Religious",451627.138320368,153112.130230058
+486,486,59816,"Iredell","Woodlawn School","135 Woodlawn Schol Loop","Mooresville","NC",28115,"www.woodlawnschool.org","Independent",443129.503976399,197651.876279984
+487,487,100542,"Harnett","Dream Big Christian Academy K-12","PO Box 786","Dunn","NC",28335,"www.dreambigchristianacademy.com","Religious",647114.417474602,171968.081095047
+488,488,59752,"Harnett","Faith Education Academy","111 North Layton Avenue","Dunn","NC",28334,"www.faitheducationacademync.com","Religious",644785.721999194,173198.875164963
+489,489,59515,"Mecklenburg","United Faith Christian Academy","8617 Providence Road","Charlotte","NC",28277,"www.ufca.org","Religious",447749.240714604,150072.023029771
+490,490,79121,"Jackson","Academy at SOAR","PO Box 388","Balsam","NC",28707,"www.academyatsoar.org","Independent",238859.097804928,193889.193187973
+491,491,79119,"Jackson","Heritage Christian Academy","P.O. Box 2138","Sylva","NC",28779,"www.hcaofsylva.org","Religious",226453.631761756,188504.314020516
+492,492,59471,"Harnett","Foundations Christian Academy","P.O. Box 1166","Dunn","NC",28335,NA,"Religious",647114.417474602,171968.081095047
+493,493,59336,"Mecklenburg","Victory Christian Center School","1501 Carrier Drive","Charlotte","NC",28216,"www.vccskings.com","Religious",440616.10968146,170488.581629682
+494,494,92081,"Harnett","Hall, Hudson, Lovette Christian Acad.","P.O. Box 1503","Dunn","NC",28335,NA,"Religious",647114.417474602,171968.081095047
+495,495,59485,"Jackson","Victory Christian School","278 Victory Church Road","Sylva","NC",28779,"www.mountainvictory.org","Religious",218886.801859011,176804.569140825
+496,496,115760,"Mecklenburg","Crossway Academy","9129 Monroe Rd, Ste 100-105","Charlotte","NC",28270,NA,"Independent",450738.702247961,156258.707064141
+497,497,136293,"Harnett","Independence Montessori Academy","84 Tingen Road","Broadway","NC",27505,NA,"Independent",606955.074423683,175719.706016885
+498,498,92094,"Mecklenburg","Village Montessori School","20615 North Main Street","Cornelius","NC",28031,"www.village-montessori.org","Independent",441026.090385396,194497.118681137
+499,499,59676,"Johnston","Academy of Hope","P.O. Box 339","Clayton","NC",27528,"www.houseofhopeofnc.org","Religious",659247.620991411,210509.048115036
+500,500,79131,"Mecklenburg","Walnut Grove Christian School","13925 Erwin Road","Charlotte","NC",28273,"www.walnutgrovechristianschool.com","Religious",429398.174878053,153380.740832113
+501,501,59486,"Johnston","Gateway Christian School","10781 NC 50 North","Benson","NC",27504,NA,"Religious",647758.818634349,196242.349806273
+502,502,94483,"Mecklenburg","Word of Wisdom & Excellence Acad.","1801 Mecklenburg Avenue","Charlotte","NC",28205,NA,"Religious",445271.735932248,165909.721956421
+503,503,72633,"Mecklenburg","Cyzner Institute","7022 Sardis Road","Charlotte","NC",28173,"www.cyznerinstitute.com","Independent",448161.497098667,156196.108108321
+504,504,92084,"Johnston","Kids R Kids School - Clayton","307 Tew Court","Clayton","NC",27520,"www.kidsrkidsclayton.com","Independent",655658.81359965,212434.854558289
+505,505,59702,"Mitchell","Altapass Christian School","50 Altapass Trail","Spruce Pine","NC",28777,NA,"Religious",336909.553278165,241997.986600103
+506,506,147026,"Mecklenburg","Davidson Center for Learning","452 S. Main Street, Suite 110","Davidson","NC",28036,"davidsoncenter.com","Independent",441466.729499015,195103.680645887
+507,507,100546,"Johnston","LifeSpring Academy","PO Box 1567","Clayton","NC",27528,"www.lifespringacademy.com","Religious",659247.620991411,210509.048115036
+508,508,59277,"Mitchell","Spruce Pine Montessori School","67 Walnut Avenue","Spruce Pine","NC",28777,"www.sprucepinemontessori.org","Independent",332835.544663373,244612.279792948
+509,509,59817,"Johnston","Lighthouse Christian Academy","2850 Old Fairground Road","Angier","NC",27501,"www.thelighthouseacademy.com","Religious",645479.289721241,195883.086822141
+510,510,59728,"Mecklenburg","Davidson Day School","750 Jetton Street","Davidson","NC",28036,"www.davidsonday.org","Independent",440757.376263136,196157.616429172
+511,511,59544,"Pasquotank","Albemarle School","1210 US 17 South","Elizabeth City","NC",27909,"www.thealbemarleschool.org","Independent",853721.646670564,283695.875382524
+512,512,118775,"Pasquotank","Carolina Preparatory Academy","1290 Halstead Blvd.","Elizabeth City","NC",27909,NA,"Religious",858653.603813622,284386.764623109
+513,513,59517,"Mitchell","Tri-County Christian School","207 Pinebridge Ave.","Spruce Pine","NC",28777,NA,"Religious",332730.716679524,244074.836307561
+514,514,72631,"Johnston","Southside Christian School","2028 Orton Road","Clayton","NC",27520,"www.scswarriors.com","Religious",652214.846798435,209776.202393593
+515,515,72639,"Pasquotank","Elizabeth City SDA School","1117 US Highway 17 South","Elizabeth City","NC",27909,NA,"Religious",854678.494085958,284757.340529768
+516,516,79137,"Pasquotank","Foreshadow Academy","1456 Weeksville Road","Elizabeth City","NC",27909,"www.foreshadowacademy.com","Religious",863715.066611876,279829.764906771
+517,517,124652,"Mecklenburg","Davidson Green School","511 South Main Street","Davidson","NC",28036,"www.davidsongreenschool.org","Independent",441325.290226885,194920.61518681
+518,518,119360,"Johnston","Star Christian Academy","4423 Wilson's Mills Road","Smithfield","NC",27577,NA,"Religious",668040.307466527,203291.258832343
+519,519,102371,"Montgomery","Eggleston's Playground School","PO Box 220","Biscoe","NC",27209,NA,"Religious",540026.467192616,178848.261631671
+520,520,72640,"Pasquotank","New Life Academy","1958 North Road Street","Elizabeth City","NC",27909,"www.newlifeacademyec.com","Religious",858827.202224878,286600.087436013
+521,521,92097,"Pasquotank","Tender Years School","1092 US Highway 17 South","Elizabeth City","NC",27909,"www.tenderyearschildcareandpreschool.com","Religious",854971.14732773,285001.649769999
+522,522,79122,"Lee","Calvary Education Center","P.O. Box 187","Lemon Springs","NC",28355,NA,"Religious",591954.7899573,181943.319798112
+523,523,59825,"Montgomery","Family Worship Minist. Chr. Acad.","P.O. Box 454","Troy","NC",27371,"www.fwmchurch.com","Religious",528103.15715382,178811.645706924
+524,524,92098,"Pasquotank","Tutor All School","214 Charles Street","Elizabeth City","NC",27909,NA,"Independent",857238.602164624,286348.497326022
+525,525,59487,"Lee","Grace Christian School","PO Box 1408","Sanford","NC",27331,"www.gracechristiansanford.com","Religious",594554.786332376,190773.114245858
+526,526,59545,"Pasquotank","Victory Christian School","684 Old Hertford Highway","Elizabeth City","NC",27909,"www.victorybaptistministries.com","Religious",851493.56529778,281096.645598838
+527,527,59868,"Montgomery","Summit Christian Academy","P.O. Box 280","Troy","NC",27371,NA,"Religious",528103.15715382,178811.645706924
+528,528,108118,"Pender","King's Academy","12435 Shaw Highway","Burgaw","NC",28425,NA,"Religious",719187.669919052,96536.473431116
+529,529,59518,"Montgomery","Wescare Christian Academy","1368 NC Highway 134 North","Troy","NC",27371,"www.wescarechristianacademy.org","Religious",529846.974623839,182002.950394221
+530,530,59664,"Lee","Griffin Academy","488 B Commerce Drive","Sanford","NC",27332,"www.msoskids.org","Independent",598585.252681124,185456.018135162
+531,531,142079,"Mecklenburg","Daystar Arising Academy","PO Box 480084","Charlotte","NC",28269,NA,"Religious",446135.807984596,177262.415110243
+532,532,66163,"Pender","Life Christian Academy","15965-B US Highway 17 North","Hampstead","NC",28443,"www.receivinglife.org","Religious",729543.974115905,70751.4177503865
+533,533,100541,"Mecklenburg","Dream Children School","PO Box 752","Harrisburg","NC",28075,"www.knowledgeispowerinc.org","Independent",459530.22421109,176245.909363236
+534,534,59519,"Moore","Calvary Christian School","400 S. Bennett Street","Southern Pines","NC",28387,"www.calvarychristianschool.biz","Religious",573383.244205978,157844.957998313
+535,535,59265,"Lee","Lee Christian School","3220 Keller Andrews Road","Sanford","NC",27330,"www.leechristianschool.org","Religious",591112.390957852,189706.931829743
+536,536,140028,"Mecklenburg","Einstein School of Charlotte","3307 Rea Road c/o Good Shep. Ch.","Charlotte","NC",28226,NA,"Independent",446313.83465001,152469.00473132
+537,537,148623,"Pender","Penderlea Christian Academy","8348 Penderlea Highway","Willard","NC",28478,NA,"Religious",699006.777565316,97929.8879561685
+538,538,131567,"Pender","Topsail Montessori School","101 Whitebridge Road","Hampstead","NC",28443,NA,"Independent",726403.83894741,67138.250300793
+539,539,143690,"Person","Educ. Ctrs. Acad. for Progressive Lrng.","201 N. Main Street, Suite 112-116","Roxboro","NC",27573,NA,"Religious",611132.389857645,293341.58336382
+540,540,85591,"Person","Greenwood Academy","1191 Leasburg Road","Roxboro","NC",27573,NA,"Independent",609052.096193224,292823.213111138
+541,541,59488,"Lenoir","Arendell Parrott Academy","P.O. Box 1297","Kinston","NC",28503,"www.parrottacademy.org","Independent",737601.509054182,169163.088055082
+542,542,59329,"Moore","Cameron Boys Camp School","P.O. Box 277","Cameron","NC",28326,"www.bchfamily.org","Religious",606785.347536299,167674.73906599
+543,543,140414,"Mecklenburg","ELA Christian School","PO Box 560621","Charlotte","NC",28256,NA,"Religious",448998.268598759,171124.902192043
+544,544,59489,"Lenoir","Bethel Christian Academy","1936 Banks School Road","Kinston","NC",28504,"www.bcatrojans.com","Religious",732705.0978503,170744.33949702
+545,545,59344,"Person","Person Christian School","P.O. Box 1201","Roxboro","NC",27573,NA,"Religious",610885.187317138,293725.082985794
+546,546,94482,"Mecklenburg","Epiphany School of Charlotte","1000 E. Morehead Street","Charlotte","NC",28204,"www.theepiphanyschool.com","Religious",441748.314860571,163841.595642429
+547,547,59546,"Person","Roxboro Christian Academy","P.O. Box 1357","Roxboro","NC",27573,"www.roxborochristianacademy.org","Religious",610885.187317138,293725.082985794
+548,548,59236,"Lenoir","Five Points Education Training Cntr","PO Box 2277","Kinston","NC",28502,"www.novabehavioralhealthcare.com","Independent",737601.509054182,169163.088055082
+549,549,115764,"Moore","Covenant Preparatory School","2086 Seven Lakes South","West End","NC",27376,"www.covenantprep.com","Religious",557924.800100662,168989.769407276
+550,550,59830,"Person","Zion Christian Academy","2850 Virgilina Road","Roxboro","NC",27574,"www.zionchristiancenter.net","Religious",616073.893863125,296872.109619865
+551,551,140187,"Lenoir","Miss Charlie's Child Develop. Center","700 N. East Street","Kinston","NC",28501,NA,"Independent",739171.486914339,169304.204495782
+552,552,59520,"Moore","Episcopal Day School","340 E. Massachusetts Avenue","Southern Pines","NC",28387,"www.episcopalday.org","Religious",573901.288389323,157513.97576257
+553,553,59233,"Mecklenburg","Evelyn Mack Academy","6850 Monroe Road","Charlotte","NC",28212,"www.theevelynmackacademy.com","Independent",449571.376534184,159316.445720937
+554,554,59629,"Pitt","Brookhaven SDA School","4658 Reedy Branch Road","Winterville","NC",28590,NA,"Religious",753363.113381356,199557.995712297
+555,555,59547,"Pitt","Calvary Christian Academy","1412 Holbert Street","Greenville","NC",27834,"www.calvarychristianacademygreenville.com","Religious",756731.414053749,210389.74398114
+556,556,124651,"Mecklenburg","Faith Baptist Christian School","6840 Wilson Grove Road","Charlotte","NC",28227,NA,"Religious",456392.929903314,161688.660128836
+557,557,94488,"Pitt","Children's Montessori School","100 Hungate Dr.","Greenville","NC",27858,NA,"Independent",758499.534615354,202314.544212556
+558,558,59820,"Lincoln","Academic Illumination Day School","1953 Cabin Lane","Stanly","NC",28164,"www.patriciaa.com","Independent",425402.077221172,186908.448694477
+559,559,85582,"Moore","Faith Baptist Christian Academy","P.O. Box 191","West End","NC",27376,NA,"Religious",557923.252602078,169064.897091042
+560,560,135875,"Pitt","Children's World Academy","1525 East Arlington Blvd.","Greenville","NC",27858,NA,"Independent",758249.985391052,203439.949871212
+561,561,59763,"Pitt","Christ Covenant School","4889 Old Tar Road","Winterville","NC",28590,"www.christcs.org","Religious",756062.518873747,198502.181292346
+562,562,59640,"Mecklenburg","Fletcher School","8500 Sardis Road","Charlotte","NC",28270,"www.thefletcherschool.org","Independent",449592.089570399,154329.027992634
+563,563,59326,"Moore","Highland Christian Academy","5587 US Highway 1","Vass","NC",28394,NA,"Religious",579651.762919334,162410.522816528
+564,564,134327,"Lincoln","Denver Christian Academy","2243 North Hwy 16","Denver","NC",28037,NA,"Religious",428285.476718756,196192.808974637
+565,565,59231,"Pitt","Community Christian Academy","2009 Pactolus Road","Greenville","NC",27834,"www.greenvillecommunitychristian.com","Religious",760187.099383141,209402.510630986
+566,566,140186,"Pitt","Deeper Life Academy","7465 Pitt Street","Grimesland","NC",27837,NA,"Religious",773130.552139082,202851.013115641
+567,567,100540,"Mecklenburg","Francis Elementary School","1717 Sharon Road West","Charlotte","NC",28210,"www.elonhomes.org","Independent",438852.676856553,153356.119528158
+568,568,59665,"Lincoln","Long Shoals Wesleyan Academy","3032 Wesleyan Church Road","Lincolnton","NC",28092,"www.longshoalsacademy.com","Religious",406599.484926344,187284.411534769
+569,569,104412,"Moore","Jackson Springs Treatment Facility","778 Hoffman Road","West End","NC",27376,"www.ncprtf.com","Independent",558604.115752853,161904.976231238
+570,570,66165,"Pitt","Faith Christian Academy","5005 Corey Road","Winterville","NC",28590,"www.faith-assembly.org","Religious",757920.782490055,199609.060315179
+571,571,92095,"Moore","Longleaf Academy","600 Valley View Road","Southern Pines","NC",28387,"www.longleafacademy.com","Independent",576720.407026014,160625.589146638
+572,572,85579,"Macon","Macon County Juvenile School","1950 Lakeside Drive","Franklin","NC",28734,"www.mhfc.org","Religious",211754.038098627,169111.57431272
+573,573,59548,"Pitt","Greenville Christian Academy","1621 Greenville Blvd., S.W.","Greenville","NC",27834,"www.greenvillechristian.com","Religious",752456.789455747,203647.900835302
+574,574,59521,"Moore","O'Neal School","P.O. Box 290","Southern Pines","NC",28388,"www.onealschool.org","Independent",573776.110622836,157960.626967521
+575,575,59300,"Macon","Trimont Christian Academy","98 Promise Lane","Franklin","NC",28734,"www.trimont-academy.org","Religious",209113.603934525,166599.282960529
+576,576,59549,"Pitt","Greenville Montessori School","822 Laurie Ellis Road","Winterville","NC",28590,"www.greenvillemontessori.com","Independent",756759.024999527,197307.776640469
+577,577,85580,"Madison","Little Ivy Baptist Academy","1053 Crossroads Parkway","Mars Hill","NC",28754,NA,"Religious",290477.012764999,236024.501248082
+578,578,59760,"Moore","Sandhills Classical Christian Sch.","P.O. Box 2600","Southern Pines","NC",28388,"www.sandhillsccs.org","Religious",573776.110622836,157960.626967521
+579,579,94489,"Pitt","Ingram Christian Academy","502 Dexter Street Ste. B","Greenville","NC",27834,NA,"Religious",754862.152136149,203849.123545909
+580,580,60282,"Madison","Wolf Creek Academy","P.O. Box 2001","Mars Hill","NC",28754,"www.wolfcreekacademy.org","Religious",293692.712042662,251027.998858429
+581,581,59628,"Pitt","Oakwood School","4000 MacGregor Downs Road","Greenville","NC",27834,"www.theoakwoodschool.org","Independent",750007.492882118,208602.077399092
+582,582,85593,"Pitt","Open Door School","4584 Reedy Branch Road","Winterville","NC",28590,"www.go2odm.com","Religious",753415.745075269,199842.819149034
+583,583,59294,"Moore","Solid Rock Christian School","311 East Maple Street","Aberdeen","NC",28315,NA,"Religious",571066.481142961,153468.396581102
+584,584,98027,"Pitt","Pope John Paul II Catholic H. S.","2725 E. 14th Street","Greenville","NC",27858,"www.jp2highschool.com","Religious",759846.740444281,203482.644331561
+585,585,143571,"Madison","Woodson Branch Nature School","14555 US Hwy 25/70","Marshall","NC",28753,NA,"Independent",271286.185969806,244895.041172134
+586,586,59826,"Moore","St. John Paul II Catholic School","2922 Camp Easter Rd.","Southern Pines","NC",28387,"www.sjp2catholicschool.org","Religious",575017.890918766,162352.584797069
+587,587,115839,"Pitt","Reimage Child Development Center","3950 Victory Lane","Winterville","NC",28590,NA,"Religious",754849.825480693,200775.173818158
+588,588,59491,"McDowell","Marion Christian Academy","P.O. Box 1045","Marion","NC",28752,"www.marionchristian.org","Religious",337624.465777437,218813.694695404
+589,589,79138,"Pitt","Roseleaf Academy","P.O. Box 296","Farmville","NC",27828,NA,"Religious",737644.606514138,205639.382977547
+590,590,79125,"Mecklenburg","Friends School of Charlotte","7001 Wallace Lane, Suite 400","Charlotte","NC",28212,"www.friendsschoolofcharlotte.org","Religious",449984.087649168,159589.986657217
+591,591,108115,"Moore","Village Children's House School","4212 Murdocksville Rd.","West End","NC",27376,NA,"Independent",566173.219722864,162059.765389046
+592,592,120831,"McDowell","Nebo Crossing Academy","961 Harmony Grove Road","Nebo","NC",28761,NA,"Religious",346014.401526344,220490.735349981
+593,593,59550,"Pitt","St. Peter's Catholic School","2606 East 5th Street","Greenville","NC",27858,"www.stpeterscatholicschool.com","Religious",759784.268427724,207147.621431507
+594,594,59821,"Mecklenburg","Grace Covenant Academy","17301 Statesville Road","Cornelius","NC",28031,"www.gracecovenant.org","Religious",440135.320222665,190224.216106629
+595,595,129726,"Pitt","Stroke of Faith Academy","2872 NC Hwy 118","Grifton","NC",28530,"www.strokeoffaith.org","Religious",760586.606127012,179315.449408276
+596,596,59235,"McDowell","New Manna Christian School","P.O. Box 1085","Marion","NC",28752,"www.newmannachristianschool.com","Religious",337624.465777437,218813.694695404
+597,597,60289,"Nash","Cornerstone Christian Academy","1481 Beechwood Drive","Rocky Mount","NC",27803,"www.cornerstoneibc.com","Religious",713708.895977384,241828.765842274
+598,598,129917,"Pitt","Third Street Academy","600 W. Third Street","Greenville","NC",27834,NA,"Religious",756331.500995891,208034.982203243
+599,599,59551,"Pitt","Trinity Christian School","3111 Golden Road","Greenville","NC",27858,"www.trinitychristian-school.com","Religious",759923.149575805,206010.286177481
+600,600,59552,"Polk","Tryon SDA School","2820 Lynn Road","Tryon","NC",28782,"www.tryonsdaschool.org","Religious",315028.700350036,168662.883256664
+601,601,66155,"Mecklenburg","Access Academy","P.O. Box 19649","Charlotte","NC",28214,"www.accessfamilyservices.com","Independent",431844.659246255,169846.337171551
+602,602,59299,"Nash","Englewood Bapt. Weekday Sch.","1350 S. Winstead Avenue","Rocky Mount","NC",27803,NA,"Religious",713491.414969841,244263.526817525
+603,603,92086,"Mecklenburg","Greyfriars Classical Academy","2701 Rice Road","Matthews","NC",28105,"www.greyfriarsca.net","Religious",454405.532953578,155457.836492401
+604,604,79139,"Randolph","Agape Christian Academy","1627 Browers Chapel Road","Asheboro","NC",27205,"www.agapechristianacad.com","Religious",539291.154473041,215092.171430994
+605,605,59289,"Nash","Faith Christian School","1333 Faith Christian Drive","Rocky Mount","NC",27803,"www.fcspatriots.org","Religious",713930.818441228,242463.364400294
+606,606,59492,"Mecklenburg","Adventist Christian Academy","4601 Emory Lane","Charlotte","NC",28211,"www.adventisechristianacademy.org","Religious",446803.295933518,159928.769722464
+607,607,101698,"Randolph","Bailey's Grove Baptist School","622 Pleasant Cross Rd.","Asheboro","NC",27203,NA,"Religious",544412.517855698,220465.875099184
+608,608,59831,"Randolph","Calvary Christian Academy","1424 Highway 42 South","Asheboro","NC",27205,"www.cpcasheboro.org","Religious",540177.038877258,214682.060906192
+609,609,59493,"Mecklenburg","Alexander Children's Center","6220 Thermal Road","Charlotte","NC",28211,"www.alexanderyouthnetwork.org","Independent",449663.451896737,157828.887739502
+610,610,59522,"Nash","Falls Road Bapt. Church Sch.","113 Trevathan Street","Rocky Mount","NC",27804,"www.fallsroadbaptist.org","Religious",717845.040643058,245043.593766693
+611,611,59639,"Mecklenburg","Hickory Grove Christian School","7200 E. W.T. Harris Blvd","Charlotte","NC",28215,"www.hgchristian.org","Religious",452639.875641842,164638.766240492
+612,612,117124,"Randolph","Colonial Child Care Center","6792 Welborn Rd.","Trinity","NC",27370,NA,"Religious",517703.539277632,234836.323007051
+613,613,92099,"Randolph","Emmanuel Day School","P.O. Box 1263","Randleman","NC",27317,"www.emmanueldayschool.webs.com","Religious",537018.350873852,229589.387848252
+614,614,59494,"Mecklenburg","Anami Montessori School","2901 Archdale Drive","Charlotte","NC",28210,"www.anamimontessori.org","Independent",440651.915909388,156579.243614752
+615,615,59703,"Nash","First United Methodist Kindergarten","100 South Church Street","Rocky Mount","NC",27804,"www.fumcrm.org","Religious",718126.015360296,243871.663315993
+616,616,59553,"Randolph","Faith Christian School","5449 Brookhaven Road","Ramseur","NC",27316,"www.faithramseur.org","Religious",552438.450490302,217397.216239493
+617,617,59755,"Mecklenburg","Back Creek Christian Academy","1827 Back Creek Church Road","Charlotte","NC",28213,"www.bccaschool.org","Religious",454007.236967633,174328.881743124
+618,618,59626,"Nash","Mount Zion Christian Academy","P.O. Box 2502","Rocky Mount","NC",27802,"www.mzccrockymount.org","Religious",719099.534648234,243792.056415034
+619,619,59496,"Mecklenburg","Berean Junior Academy","3748 N. Beatties Ford Rd","Charlotte","NC",28216,"www.bereanjunioracademy.org","Religious",440579.949806918,171972.816011781
+620,620,92100,"Randolph","Farmer Christian Academy","4751 Dunbar Bridge Road","Asheboro","NC",27205,"www.farmerchristianacademy.com","Religious",521196.150295609,211560.127152881
+621,621,108116,"Nash","New Life Christian Academy","812 Instrument Drive","Rocky Mount","NC",27804,"www.newlifeacademyrm.com","Religious",719305.827832736,250647.662122248
+622,622,59625,"Mecklenburg","Holy Trinity Catholic Middle School","3100 Park Road","Charlotte","NC",28209,"www.htcms.org","Religious",440856.549719482,161162.603128102
+623,623,59554,"Randolph","Fayetteville Street Christian School","151 W. Pritchard Street","Asheboro","NC",27203,"www.fscspatriots.org","Religious",536070.421413716,218566.569731116
+624,624,59555,"Randolph","Level Cross Christian School","10169 US Hwy 220 Bus. N","Randleman","NC",27317,"www.lccseagles.com","Religious",536696.092260239,237454.917264247
+625,625,95584,"Mecklenburg","Bethune Mays Classical Academy","800 Briar Creek Rd, Suite DD400","Charlotte","NC",28205,NA,"Independent",445741.621298186,163092.99465554
+626,626,59523,"Nash","Our Lady Perpetual Help Cath Sch","315 Hammond Street","Rocky Mount","NC",27804,"www.olphrm.com","Religious",717825.141818292,243494.125403643
+627,627,59459,"Randolph","Mount Calvary Christian School","6551 Weant Road","Archdale","NC",27263,NA,"Religious",525725.197838308,239799.909424901
+628,628,59706,"Randolph","Neighbors Grove Christian Academy","1928 N. Fayetteville Street","Asheboro","NC",27203,"www.neighborsgrove.com","Religious",536760.290620751,222281.025222428
+629,629,59497,"Mecklenburg","Bible Baptist Christian School","2724 Margaret Wallace Road","Matthews","NC",28105,"www.bbcscolts.com","Religious",452006.667595476,157836.881909721
+630,630,94484,"Nash","Praise City Christian Academy","PO Box 1973","Rocky Mount","NC",27802,NA,"Religious",719099.534648234,243792.056415034
+631,631,94490,"Randolph","New Life Baptist Academy","1068 Worthville Rd.","Randleman","NC",27317,NA,"Religious",538782.067367912,227660.108036444
+632,632,140521,"Mecklenburg","Intellicor International Academy","4301 Shamrock Drive","Charlotte","NC",28215,NA,"Religious",450189.173476605,165529.491078852
+633,633,135527,"Randolph","Trinity Christian School","5017 Plainfield Road","Sophia","NC",27350,NA,"Religious",533432.54493662,229321.936258964
+634,634,129125,"Mecklenburg","Kent Academy","1819 Charlotte Drive","Charlotte","NC",28203,NA,"Independent",441550.656188214,162608.862009395
+635,635,96648,"Mecklenburg","Blessed Beginnings Learning Academy","5910 Red Carriage Lane","Charlotte","NC",28212,NA,"Religious",451664.682114386,161650.960594177
+636,636,59832,"Randolph","Youth Unlimited School","P.O. Box 485","High Point","NC",27261,"www.youthunlimited.cc","Independent",519392.544366054,244979.479908677
+637,637,59524,"Nash","Rocky Mount Academy","1313 Avondale Avenue","Rocky Mount","NC",27803,"www.rmacademy.com","Independent",713940.912973946,244332.381394191
+638,638,92113,"Richmond","Hamlet Presbyterian Weekday School","200 Rice Street","Hamlet","NC",28345,"www.sites.google.com/site/1stpresbyterianweekdaysc","Religious",545327.93832633,126365.733021399
+639,639,94485,"Nash","St. Andrew's Espiscopal School","301 Circle Drive","Rocky Mount","NC",27804,"www.saint-andrews-church.org","Religious",714849.797705715,245844.238748904
+640,640,59833,"Richmond","Outreach Christian Academy","440 Battley Dairy Road","Hamlet","NC",28345,NA,"Religious",541802.575972254,125174.492427263
+641,641,95325,"Richmond","Richmond County Faith Academy","755 N. US 220 Highway","Rockingham","NC",28379,NA,"Religious",538110.68792106,136492.447721524
+642,642,108117,"New Hanover","Access Academy Wilmington","725 Wellington Avenue","Wilmington","NC",28401,NA,"Independent",708027.886615339,49912.6445054095
+643,643,59834,"Richmond","Rockingham Christian Academy","178 McDonald Church Road","Rockingham","NC",28379,NA,"Religious",547011.806680098,135061.133711435
+644,644,59276,"New Hanover","Calvary Christian School","423 North 23rd Street","Wilmington","NC",28405,"www.calvarychristianwilmington.com","Religious",709083.105870161,55420.0958707388
+645,645,59790,"Mecklenburg","Keys of Carolina School","1715 Sharon Road West","Charlotte","NC",28210,"www.thekeysofcarolina.com","Independent",438815.079564472,153345.708130833
+646,646,79140,"Richmond","Second Baptist Christian Academy","518 Fourth Street","Hamlet","NC",28345,"www.2ndbaptisthamlet.org/daySchool.asp","Religious",546785.110804073,125822.328719776
+647,647,59525,"New Hanover","Cape Fear Academy","3900 S. College Road","Wilmington","NC",28412,"www.capefearacademy.org","Independent",711806.605940753,47228.9151396528
+648,648,59319,"New Hanover","Children's Schoolhouse","612 South College Road","Wilmington","NC",28403,"www.childrensschoolhouse.org","Independent",712746.14453089,53347.2612710223
+649,649,59263,"Richmond","Southeastern Christian Academy","257 Freeman Mill Rd","Hamlet","NC",28345,NA,"Religious",542482.663547299,126821.048060745
+650,650,72636,"New Hanover","Coastal Christian High School","1150 The King's Highway","Wilmington","NC",28409,"www.coastalchristian.net","Religious",712008.679031453,43124.2554451097
+651,651,94591,"Rowan","Tools for Success Academy","505 West Franklin Street","Salisbury","NC",28144,NA,"Independent",476602.233562418,214610.563416518
+652,652,59556,"Richmond","Temple Christian School","165 Airport Road","Rockingham","NC",28379,"www.temple-tigers.com","Religious",538701.865214912,130631.714184487
+653,653,115771,"Mecklenburg","Kiddie Academy of Charlotte","9310 Blakeney Center Drive","Charlotte","NC",28277,"kiddieacademy.com","Independent",444523.958730721,143687.625540707
+654,654,72644,"Robeson","Antioch Christian Academy","5071 Old Whiteville Road","Lumberton","NC",28358,"www.antiochgators.com","Religious",617055.559973598,91566.6302096043
+655,655,59526,"New Hanover","Ephesus Junior Academy","1002 Castle Street","Wilmington","NC",28401,"www.ephesussdawilmington.org","Religious",707674.783551835,53634.7691877726
+656,656,59275,"Rowan","Uwharrie Learning Center","P.O. Box 259","Gold Hill","NC",28071,"www.trtc.net","Independent",487998.560002332,197619.199806888
+657,657,59872,"Robeson","Created for You Learning Academy","PO Box 148","Red Springs","NC",28377,NA,"Independent",592981.436489913,118033.780772626
+658,658,59232,"New Hanover","Friends School","350 Peiffer Avenue","Wilmington","NC",28409,"www.fsow.org","Religious",715990.437778043,50938.1671524141
+659,659,103548,"Robeson","Crossroads Treatment Center","703-A West Third Avenue","Red Springs","NC",28377,"www.ncprtf.com","Independent",592085.451286428,118178.015954006
+660,660,79127,"Mecklenburg","Kids R Kids School","6250 Blakeney Park Drive","Charlotte","NC",28277,"www.krkacademy.com","Independent",444533.025024674,143333.351516819
+661,661,59837,"Rutherford","Anath Christian Academy","PO Box 247","Union Mills","NC",28167,NA,"Religious",339166.368713206,195889.735238867
+662,662,59835,"Robeson","Friendship Baptist Academy","P.O. Box 133","Saint Pauls","NC",28384,NA,"Religious",612194.21320237,117017.569615548
+663,663,143252,"Mecklenburg","Kidville Kovar Child Development Center","2624 Milton Road","Charlotte","NC",28215,NA,"Independent",450692.710979702,166420.253681468
+664,664,85594,"Robeson","Future Innovations Academy","703 West 3rd Avenue","Red Springs","NC",28377,"www.futureinnv.com","Independent",592085.451286428,118178.015954006
+665,665,79141,"Robeson","Grace Christian Academy","950-A Linkhaw Road","Lumberton","NC",28358,"www.gracechristianlumberton.com","Religious",610056.725307752,99176.0825452842
+666,666,94486,"New Hanover","Hill School of Wilmington","3240 Burnt Mill Dr, Ste 9A","Wilmington","NC",28403,"www.hillschoolofwilmington.org","Independent",710781.628272839,53941.95217067
+667,667,137013,"Mecklenburg","Kidz Place Academy","7008 - 7 E W.T. Harris Blvd","Charlotte","NC",28215,NA,"Independent",452598.93225235,164783.294009943
+668,668,100550,"Robeson","H.O.P.E. Christian Academy","369 Wagon Wheel Road","Shannon","NC",28386,NA,"Religious",600505.654685877,120062.9802217
+669,669,79145,"Rutherford","Carey Christian Academy","910 Piney Ridge Road","Forest City","NC",28043,NA,"Religious",346353.41451893,178781.941600645
+670,670,59557,"Robeson","Highlander Academy","200 N. College Street","Red Springs","NC",28377,NA,"Independent",593300.430525745,118387.579490924
+671,671,127904,"Robeson","Kingdom Performance Arts Chr","137 Meadowcroft Dr","Fayetteville","NC",28311,NA,"Religious",620842.547062232,152652.592216067
+672,672,96298,"Robeson","Majestic Christian Academy","129 E. 3rd Avenue","Red Springs","NC",28377,NA,"Religious",592963.403697586,118296.499115607
+673,673,94487,"New Hanover","Joshua Academy","4704 S. College Rd.","Wilmington","NC",28412,"www.joshuaacademywilmington.com","Religious",711767.021121994,45488.9750253987
+674,674,124655,"Rutherford","Faith Academy","PO Box 987","Forest City","NC",28043,NA,"Religious",349154.179532349,179436.096432945
+675,675,138068,"Mecklenburg","Kidz Place Academy - Badger","1240 Badger Court","Charlotte","NC",28206,NA,"Religious",442425.326769428,168340.162768919
+676,676,94491,"Robeson","Mind and Soul School","5973 McLeod Drive","Maxton","NC",28364,NA,"Independent",579563.046177488,101977.945162944
+677,677,59709,"Rutherford","Freedom Academy","P.O. Box 729","Ellenboro","NC",28040,NA,"Religious",358863.262467514,178714.354786437
+678,678,59527,"New Hanover","Learning Foundations School","3801 Wilshire Boulevard","Wilmington","NC",28403,"www.amybradleyschool.com","Independent",711502.189299287,53002.4375670459
+679,679,59301,"Robeson","Mount Zion Christian Academy","9709 NC Highway 72 West","Pembroke","NC",28372,NA,"Religious",594783.45585452,107927.529851595
+680,680,59345,"New Hanover","Myrtle Grove Christian School","806 Piner Road","Wilmington","NC",28409,"www.mgcs.org","Religious",712310.775570517,43481.8223611843
+681,681,92116,"Rutherford","Glenwood Christian Academy","461 Bostic-Sunshine Highway","Bostic","NC",28018,NA,"Religious",351869.635267364,180439.35659162
+682,682,103547,"Robeson","New Haven Treatment Center","703-B West 3rd Avenue","Red Springs","NC",28377,"www.ncprtf.com","Independent",592085.451286428,118178.015954006
+683,683,79142,"Robeson","Omega Christian Academy","P.O. Box 2745","Lumberton","NC",28359,NA,"Religious",609182.457562303,96684.8114027102
+684,684,59558,"Robeson","Riverside Christian Academy","3644 US Highway 74 West","Lumberton","NC",28360,NA,"Religious",594774.220001656,96955.5994478874
+685,685,59794,"Rutherford","Liberty Christian Academy","1071 S. Broadway St.","Forest City","NC",28043,"www.lcaclassical.com","Religious",349700.582087126,176531.873545403
+686,686,59283,"Robeson","Robeson Multi-Purpose Juvenile Sch","210 Legend Road","Lumberton","NC",28358,NA,"Religious",604697.292883459,92796.1226172782
+687,687,59528,"New Hanover","New Horizons Elem. School","3705 South College Road","Wilmington","NC",28412,"www.newhorizonselementary.org","Independent",711838.672640026,47629.4620505013
+688,688,118567,"Rutherford","New Beginnings Christian School","6495 Hudlow Road","Union Mills","NC",28167,NA,"Religious",340325.713081519,197184.227252161
+689,689,66164,"New Hanover","Noah's Ark Children's Center","1501 Beasley Road","Wilmington","NC",28409,NA,"Religious",714491.134769071,48472.5275219306
+690,690,92087,"Mecklenburg","King's Academy","2022 W. Sugar Creek Road","Charlotte","NC",28262,"www.thekingsacademycharlotte.org","Independent",446233.176005747,172473.135136303
+691,691,59334,"Rutherford","Pine Ridge Mennonite School","1010 Elliott Road","Rutherfordton","NC",28139,NA,"Religious",334055.939369146,193547.863788109
+692,692,120014,"New Hanover","Oasis Day School","3114 Randall Parkway Suite 4","Wilmington","NC",28403,"www.oasisnc.org","Independent",710645.067799598,53733.6912189014
+693,693,59318,"Robeson","Southeastern Academy","12251 NC Highway 41 North","Lumberton","NC",28358,"www.southeasternacademy.org","Independent",621294.482672374,99991.2324038334
+694,694,79132,"New Hanover","Pathways Mid. & Hgh. School","3110-1 Randall Parkway","Wilmington","NC",28403,"www.academyofexcellence.co","Religious",710592.942011085,53734.3914195728
+695,695,59568,"Rutherford","Trinity Christian School","299 Deter Street","Rutherfordton","NC",28139,"www.trinityschoolnc.com","Religious",341429.643322396,184846.181461193
+696,696,92114,"Robeson","Stars Youth Academy","P.O. Box 1231","Lumberton","NC",28358,NA,"Independent",609025.212102498,97100.4122140631
+697,697,108849,"New Hanover","Peace Rose Montessori School","2173 Wrightsville Ave.","Wilmington","NC",28403,"www.peacerose.org","Independent",709169.855621217,53537.1386857312
+698,698,59325,"Rutherford","Word of Faith Christian Sch.","207 Old Flynn Road","Spindale","NC",28160,NA,"Religious",343898.484255646,180458.006969038
+699,699,103227,"Mecklenburg","Knowledge is Power Early Lrng Prog","PO Box 752","Harrisburg","NC",28075,"www.knowledgeispowerinc.org","Independent",459530.22421109,176245.909363236
+700,700,59761,"New Hanover","Pine Valley Wee Care Kindergarten","3788 Shipyard Boulevard","Wilmington","NC",28403,"www.pvumcweecare.com","Religious",710719.866025444,50094.7030226719
+701,701,59335,"Robeson","United Pentecostal Chr. Sch.","P.O. Box 368","Red Springs","NC",28377,NA,"Religious",592981.436489913,118033.780772626
+702,702,85581,"Mecklenburg","Lake Norman Christian School","PO Box 4267","Davidson","NC",28036,"www.lknc.org","Religious",441172.490771098,195864.731086692
+703,703,85590,"New Hanover","Point Institute","4714 College Acres Drive","Wilmington","NC",28403,"www.pointinstitutewilmington.org","Independent",713223.382035566,53959.0763280969
+704,704,79143,"Rockingham","Amazing Grace Baptist School","4530 NC 135","Stoneville","NC",27048,NA,"Religious",531466.779420906,298809.483317912
+705,705,102369,"Mecklenburg","Learning Experience School","3937 W. Arrowood Rd.","Charlotte","NC",28273,NA,"Independent",432978.362858319,157326.113043934
+706,706,59569,"Sampson","Harrells Christian Academy","P.O. Box 88","Harrells","NC",28444,"www.harrellschristianacademy.com","Independent",680913.90979142,108314.921865467
+707,707,132313,"Mecklenburg","Legacy Leadership Academy","PO Box 667","Cornelius","NC",28031,NA,"Independent",438778.745855075,193760.926866405
+708,708,118497,"New Hanover","Providence Preparatory Academy","2730 Northchase Pkwy. SE","Wilmington","NC",28405,"www.providencewilmington.com","Religious",713162.832877521,62002.2342506796
+709,709,110341,"Rockingham","Benaja Christian Academy","600 McWalker Road","Reidsville","NC",27320,NA,"Religious",550928.313862433,278772.220489062
+710,710,59262,"Rockingham","Carolina Baptist Academy","PO Box 2242","Reidsville","NC",27323,NA,"Religious",549946.539621355,288137.50910156
+711,711,130395,"Mecklenburg","Lorraine Academy","3242 Ridge Rd.","Charlotte","NC",28269,NA,"Religious",449988.894010892,181251.414907619
+712,712,92117,"Sampson","Mintz Christian Academy","2741 Mintz Road","Roseboro","NC",28382,"www.mcanc.com","Religious",657592.273778964,127117.264215514
+713,713,108114,"Mecklenburg","Male Leadership Acad. of Charlotte","5901 Nations Ford Rd.","Charlotte","NC",28217,"www.mla-charlotte.org","Religious",437221.18926993,158901.966856213
+714,714,59559,"Rockingham","Community Baptist School","509 Triangle Road","Reidsville","NC",27320,"www.communitybaptistschools.net","Religious",549100.405853356,285134.396857264
+715,715,127905,"Mecklenburg","Mallard Creek Creativity Center","8765 Browne Road - Unit A","Charlotte","NC",28269,NA,"Independent",446006.732248685,180260.684768979
+716,716,59666,"Mecklenburg","Manus Academy","6203 Carmel Road","Charlotte","NC",28226,"www.manusacademy.com","Independent",441570.51704254,150548.267199827
+717,717,79128,"Mecklenburg","McKinney Academy","412 Armour Street","Davidson","NC",28036,"www.mckinneyacademy.com","Independent",441569.697794332,196498.179846233
+718,718,59764,"Rockingham","Increase Learning Center","P.O. Box 235","Reidsville","NC",27320,NA,"Religious",549812.443368046,289266.694062319
+719,719,92096,"New Hanover","St. James Day School","25 South 3rd Street","Wilmington","NC",28401,"www.stjamesp.org","Religious",706706.064776376,54352.3905443922
+720,720,85595,"Sampson","New Life Christian Academy","2605 Southeast Boulevard","Clinton","NC",28328,"www.nlcanc.org","Religious",673210.289712015,135543.113021417
+721,721,118197,"Mecklenburg","Mosaic School","401 E. Arrowood Road","Charlotte","NC",28217,NA,"Independent",437643.64533944,155452.583891936
+722,722,59630,"Rockingham","Lighthouse Christian School","8133 NC 87","Reidsville","NC",27320,NA,"Religious",543353.985686066,292001.419881573
+723,723,92088,"Mecklenburg","Mountain Island Day School","1209 Little Rock Road","Charlotte","NC",28214,"www.midschool.org","Religious",433101.050372854,169397.749452904
+724,724,59793,"Rockingham","Oak Level Baptist Academy","PO Box 161","Stokesdale","NC",27357,"www.oaklevelbaptistchurch.org","Religious",525114.39541559,282532.533791095
+725,725,59828,"New Hanover","St. Mark Catholic School","1013 Eastwood Road","Wilmington","NC",28403,"www.stmarkcatholicschool.org","Religious",715643.42311489,54720.7886210196
+726,726,59875,"Sampson","Spirit of Life Christian Academy","180 Overland Road","Clinton","NC",28328,"www.thespiritoflifechurch.org","Religious",668636.600442764,137673.727929443
+727,727,115758,"Mecklenburg","National Child Care Institute","9908 Monroe Road","Matthews","NC",28105,NA,"Independent",451334.899305153,154981.319031633
+728,728,92089,"Mecklenburg","Nations Ford Christian Academy","5901 Nations Ford Road","Charlotte","NC",28217,"www.nfcckids.org","Religious",437221.18926993,158901.966856213
+729,729,59707,"Rockingham","Rhema Christian Academy","6901 Highway 700","Ruffin","NC",27326,NA,"Religious",553064.107829256,304845.675281225
+730,730,148211,"Mecklenburg","NDC Academy","1025 E. 36th Street","Charlotte","NC",28205,NA,"Religious",445847.335224099,167150.261083215
+731,731,134775,"Sampson","The Point Christian Academy","460 Reeda Branch Road","Roseboro","NC",28382,NA,"Religious",655458.642149845,146361.321843166
+732,732,59529,"New Hanover","St. Mary Catholic School","217 South Fourth Street","Wilmington","NC",28401,"www.thestmaryschool.org","Religious",706868.929135495,54033.4579123352
+733,733,59822,"Mecklenburg","New Life Christian Academy","1337 Samuel Street","Charlotte","NC",28206,"www.nlcacharlotte.com","Religious",442262.002810284,168840.181163589
+734,734,92115,"Rockingham","Trinity Wesleyan Christian School","186 East Aiken Road","Eden","NC",27288,NA,"Religious",543052.597509684,308106.412448863
+735,735,59561,"Rockingham","Victory Baptist Academy","2073 Oregon Hill Road","Ruffin","NC",27326,NA,"Religious",552277.22571779,300025.092423528
+736,736,59505,"Mecklenburg","Northside Christian Academy","333 Jeremiah Boulevard","Charlotte","NC",28262,"www.ncaknights.com","Religious",447327.931160609,171538.223823622
+737,737,92118,"Scotland","Christ the Cornerstone Academy","10401 McColl Road","Laurinburg","NC",28352,"www.christthecornerstone.org","Religious",563179.174919254,108336.091500953
+738,738,118336,"New Hanover","Waterview Learning Academy","5006 Randall Pkwy","Wilmington","NC",28403,NA,"Independent",712890.932308999,53974.0644300748
+739,739,60287,"Mecklenburg","Oasis Performing Arts School","P.O. Box 667814","Charlotte","NC",28266,"www.oasisperformingartsschool.com","Religious",436001.918721246,166651.071307672
+740,740,72646,"Scotland","Destiny Christian School","13000 Blue Woods Road","Laurinburg","NC",28352,NA,"Religious",561896.911237018,111278.513177656
+741,741,59506,"Mecklenburg","Omni Montessori School","9536 Blakeney-Heath Road","Charlotte","NC",28277,"www.omni-montessori.org","Independent",444131.280022709,144369.745198531
+742,742,59669,"New Hanover","Wilmington Acad. of Arts & Sci","6201 Myrtle Grove Rd","Wilmington","NC",28409,"www.wilmingtonacademy.org","Independent",712964.102996419,41572.2599737514
+743,743,92090,"Mecklenburg","One7 Academy","2223 Eastway Drive","Charlotte","NC",28205,"www.one7.org","Religious",447931.99145591,165261.963863529
+744,744,59570,"Scotland","Laurinburg Institute","125 McGirts Bridge Rd","Laurinburg","NC",28352,"www.laurinburginstitute.org","Independent",567979.485364756,114643.632962015
+745,745,59507,"Mecklenburg","Our Lady of Assumption Cath Sch","4225 Shamrock Drive","Charlotte","NC",28215,"www.olainfo.com","Religious",450114.766593288,165594.038665889
+746,746,59530,"New Hanover","Wilmington Christian Academy","1401 N. College Road","Wilmington","NC",28405,"www.wilmingtonchristian.com","Religious",713766.727283351,58178.6347862724
+747,747,79129,"Mecklenburg","Palisades Episcopal School","13120 Grand Palisades Parkway","Charlotte","NC",28278,"www.pescharlotte.org","Independent",423156.427556515,148479.173255198
+748,748,59268,"Scotland","Scotland Christian Academy","10300 McColl Road","Laurinburg","NC",28352,"www.scasaints.org","Religious",562555.183741536,107375.056118693
+749,749,59738,"Rowan","City of Refuge Christian School","11360 Old Concord Road","Rockwell","NC",28138,NA,"Religious",470142.858302833,196598.785661472
+750,750,59739,"Stanly","Carolina Christian School","P.O. Box 399","Locust","NC",28097,"www.carolinachristianschool.com","Religious",478711.229006608,168235.985743217
+751,751,59700,"Mecklenburg","Paw Creek Christian Academy","5110 Tuckaseegee Road","Charlotte","NC",28208,"www.pawcreek.org","Religious",435632.362514183,167841.946656618
+752,752,66159,"Mecklenburg","Philips Academy","3115 Providence Road","Charlotte","NC",28211,"www.philipsacademync.org","Independent",445223.697558374,158838.27447552
+753,753,60288,"Mecklenburg","Phoenix Montessori Academy","12340 Mt. Holly-Huntersville Road","Huntersville","NC",28078,"www.phoenixmontessori.org","Independent",441198.188416086,183670.751596984
+754,754,109430,"Mecklenburg","Pioneer Springs Community School","PO Box 95","Cornelius","NC",28031,NA,"Independent",438778.745855075,193760.926866405
+755,755,59627,"New Hanover","Wilmington SDA School","2833 Market Street","Wilmington","NC",28403,"www.wilmingtonadventistschool.com","Religious",710057.47454667,54850.4492812529
+756,756,59759,"Mecklenburg","Plaza Road Academy","6035 Hunters Crossing Lane","Charlotte","NC",28215,"www.prbccharlotte.com","Religious",451404.824653446,168565.093012271
+757,757,59740,"Stanly","Christ the King Christian Academy","P.O. Box 279","New London","NC",28127,"www.ctkca.com","Religious",499461.534993444,185932.421564631
+758,758,59313,"Mecklenburg","Presbyterian Academy","200 Hawthorne Lane","Charlotte","NC",28233,NA,"Independent",443418.735403232,163811.147929084
+759,759,59269,"Stanly","Park Ridge Christian School","312 Park Ridge Road","Albemarle","NC",28001,"www.parkridgechristianschool.com","Religious",501413.012201886,180443.197219675
+760,760,72637,"New Hanover","Yahweh Center School","P.O. Box 10399","Wilmington","NC",28404,"www.yahwehcenter.org","Independent",720839.107480318,61505.5038368814
+761,761,121910,"Stanly","Premier Svcs. of Carolinas Treatment","109 Penny St.","Albemarle","NC",28001,NA,"Independent",500894.597303974,179768.376071878
+762,762,59531,"Northampton","Northeast Academy","210 E. Church Street","Lasker","NC",27845,"www.northeasteaglesnc.com","Independent",761954.08568326,289747.125702668
+763,763,59572,"Stanly","Straitway Baptist School","1084 Carolina Avenue","Albemarle","NC",28001,NA,"Religious",499815.609730347,179404.258664671
+764,764,59874,"Rowan","Clearview Christian Academy","200 Clearview Road","Cleveland","NC",27013,"www.clearviewchristian.org","Religious",456328.015861462,220746.216773119
+765,765,147769,"Mecklenburg","Prosperity Guidepost Montessori","4755 Prosperity Church Road","Charlotte","NC",28269,NA,"Independent",447607.761504856,180087.340286516
+766,766,59508,"Mecklenburg","Providence Christian School","4906 Providence Road","Charlotte","NC",28226,"www.providencechristschool.org","Religious",446462.537265883,156512.252860563
+767,767,59670,"Northampton","Severn Mennonite School","132 New Hope Lane","Margarettesville","NC",27853,NA,"Religious",770626.282003779,308888.167275377
+768,768,140322,"Rowan","Good People Academy","120 E. Innes St.","Salisbury","NC",28144,NA,"Independent",476587.606152391,213629.496326812
+769,769,146206,"Stanly","Uwharrie Academy","125 Charter Street","Albemarle","NC",28001,NA,"Religious",504814.447641554,178109.866776481
+770,770,141296,"Onslow","Abundant Life Christian Academy","1518 Gumbranch Road","Jacksonville","NC",28540,NA,"Religious",753930.277828684,115842.429980511
+771,771,66166,"Rowan","Grace Academy","6725 Highway 152 East","Rockwell","NC",28138,"www.graceacademyrockwell.com","Religious",478651.14533445,200271.710562164
+772,772,59509,"Mecklenburg","Providence Day School","5800 Sardis Road","Charlotte","NC",28270,"www.providenceday.org","Independent",447376.790688124,158014.972126797
+773,773,95808,"Mecklenburg","Queen City Preparatory Academy","3557 North Sharon Amity, Ste 200","Charlotte","NC",28205,"www.queencityprep.org","Independent",449557.531482417,163098.471508591
+774,774,133002,"Mecklenburg","R. C. Smith Christian Academy","PO Box 481065","Charlotte","NC",28269,NA,"Religious",446135.807984596,177262.415110243
+775,775,59563,"Rowan","North Hills Christian School","2970 W. Innes Street","Salisbury","NC",28144,"www.northhillschristian.com","Religious",475465.163244689,217585.046694959
+776,776,59343,"Stokes","Calvary Christian School","748 Spainhour Road","King","NC",27021,"www.calvarychristianschool.org","Religious",489042.069035035,279890.879099742
+777,777,59532,"Onslow","Born Again Christian Academy","1204 Highway 210","Sneads Ferry","NC",28460,NA,"Religious",753336.543271305,87928.3725521881
+778,778,96716,"Mecklenburg","Ramah Christian Classical School","13301 Eastfield Rd.","Huntersville","NC",28078,"www.ramahchristianclassicalschool.org","Religious",447617.783439721,183104.139839688
+779,779,115759,"Onslow","Coastline Christian Academy","104 Drummer Kellum Rd.","Jacksonville","NC",28546,NA,"Religious",758478.182248646,116856.136776539
+780,780,79130,"Mecklenburg","Renaissance Christian School","11000 Dekalb Place","Charlotte","NC",28262,"www.renaissancechristian.net","Religious",455123.151754671,176397.653585363
+781,781,59274,"Rowan","North Kannapolis Christian Acad","312 Locust Street","Kannapolis","NC",28081,"www.northkannapolischristianacademy.net","Religious",462596.004212422,196525.778274685
+782,782,59342,"Stokes","King Family Ministries Sch.","1095 Damascus Road","Danbury","NC",27016,NA,"Religious",502564.905555797,299048.934117688
+783,783,124928,"Rowan","Outreach Academy","PO Box 6794","Statesville","NC",28687,"www.christianoutreachnc.org","Religious",438819.171064418,227054.192353973
+784,784,59829,"Onslow","F.A.C.T. Day Treatment School","127 Center Street","Jacksonville","NC",28546,NA,"Independent",757788.976106844,111609.553945731
+785,785,92091,"Mecklenburg","Right Choice MWM School","3641 Central Avenue","Charlotte","NC",28205,NA,"Independent",447344.864866953,164054.99772976
+786,786,59564,"Rowan","Rockwell Christian School","P.O. Box 609","Rockwell","NC",28138,"www.rockwellchristianschool.com","Religious",481676.541496272,200866.575394403
+787,787,59510,"Mecklenburg","Rod of God Christian Academy","PO Box 240381","Charlotte","NC",28217,"www.rodofgod.com","Religious",437434.801195651,156446.05098103
+788,788,145620,"Surry","Inspire Learning Center, LLC","360 Stanford Church Road","Siloam","NC",27047,NA,"Religious",467937.1220396,289111.57714645
+789,789,59734,"Onslow","Fellowship Christian Academy","7 East Drive","Jacksonville","NC",28546,"www.fbc-fca.com","Religious",759790.051956978,111019.278640557
+790,790,96529,"Surry","New Vision Christian Academy","1530 E. Pine St.","Mount Airy","NC",27030,NA,"Religious",469052.492873511,307579.716909707
+791,791,59514,"Mecklenburg","School at Thompson","6800 Saint Peter's Lane","Matthews","NC",28105,"www.thompsoncff.org","Independent",451874.980431886,158524.845163429
+792,792,59533,"Onslow","Grace Baptist School","114 Roosevelt Dr.","Jacksonville","NC",28540,"www.gbejaxnc.com","Religious",754346.693788649,113088.0772804
+793,793,119223,"Mecklenburg","Sedgefield School","2830 Dorchester Place","Charlotte","NC",28209,NA,"Independent",440203.452668607,161972.43656197
+794,794,59565,"Rowan","Sacred Heart Catholic School","385 Lumen Christi Lane","Salisbury","NC",28147,"www.salisburycatholic.org","Religious",473113.875454818,218262.990481446
+795,795,113737,"Mecklenburg","Shands School","1315 Matthews-Mint Hill Road","Matthews","NC",28105,"www.shandsschool.org","Independent",454482.711408493,153070.216404963
+796,796,109427,"Surry","Pilot Christian Academy","111 E. Main St.","Pilot Mountain","NC",27041,NA,"Religious",478007.342469623,293277.413614167
+797,797,142094,"Onslow","Grace Classical School","PO Box 12034","Jacksonville","NC",28546,NA,"Religious",753944.033346643,117028.210418904
+798,798,92092,"Mecklenburg","Shining Stars Academy","PO Box 39056","Charlotte","NC",28278,"www.shiningstarsacademy.com","Independent",427432.580584328,152170.825214302
+799,799,59270,"Rowan","Salisbury Academy","2210 Jake Alexander Blvd. North","Salisbury","NC",28147,"www.salisburyacademy.org","Independent",472790.918404785,216853.521887433
+800,800,137359,"Mecklenburg","Shining Stars Academy at Arrowood","PO Box 39056","Charlotte","NC",28278,NA,"Independent",427432.580584328,152170.825214302
+801,801,59537,"Onslow","Infant of Prague Catholic School","501 Bordeaux Street","Jacksonville","NC",28540,"www.iopschool.net","Religious",753716.022015975,112458.438030338
+802,802,124656,"Mecklenburg","SOAR Academy","2409 Plantation Center Dr., Suite A","Matthews","NC",28105,NA,"Independent",451701.942362269,149562.019992733
+803,803,140279,"Rowan","Salisbury Adventist School","305 Rudolph Rd.","Salisbury","NC",28146,NA,"Religious",477935.705920058,210276.434127007
+804,804,59865,"Mecklenburg","South Charlotte Baptist Academy","12416 Lancaster Highway","Pineville","NC",28134,"www.scbacademy.org","Religious",438160.700047813,148449.753990445
+805,805,59264,"Mecklenburg","Southlake Christian Academy","13820 Hagers Ferry Road","Huntersville","NC",28078,"www.southlakechristian.org","Religious",433818.476642783,188097.14503897
+806,806,59511,"Mecklenburg","St. Ann Catholic School","600 Hillside Avenue","Charlotte","NC",28209,"www.stannscatholicschool.com","Religious",441212.225431671,160161.796838779
+807,807,59535,"Onslow","Jacksonville Christian Academy","919 Gum Branch Road","Jacksonville","NC",28540,"www.jacksonvillechristianacademy.com","Religious",754997.827477581,114889.993671633
+808,808,59512,"Mecklenburg","St. Gabriel Catholic School","3028 Providence Road","Charlotte","NC",28211,"www.stgabrielcatholicschool.org","Religious",445062.352594602,158983.792346172
+809,809,59566,"Rowan","Salisbury Christian School","225 Majestic Drive","Salisbury","NC",28146,NA,"Religious",482119.461465664,205665.584659256
+810,810,59866,"Mecklenburg","St. Mark Catholic School","14750 Stumptown Road","Huntersville","NC",28078,"www.stmarkcatholic.net","Religious",440164.883775829,186907.987916265
+811,811,118424,"Onslow","Liberty Christian Academy","215 Kinston Hwy","Richlands","NC",28574,"www.liberty-academy.net","Religious",740977.55510519,129301.190245043
+812,812,59298,"Mecklenburg","St. Matthew Catholic School","11525 Elm Lane","Charlotte","NC",28277,"www.st-matts.com","Religious",444118.796745745,146126.282120861
+813,813,59328,"Onslow","Living Water Christian School","3980 Gum Branch Road","Jacksonville","NC",28540,"www.lwcs.net","Religious",751613.473381201,118346.6089695
+814,814,59513,"Mecklenburg","St. Patrick Catholic School","1125 Buchanan Street","Charlotte","NC",28203,"www.saintpatrickschool.org","Religious",441590.526484184,162988.240427481
+815,815,59671,"Onslow","Montessori Children's School","714 Bates Street","Jacksonville","NC",28540,"www.jacksonvillemontessori.com","Independent",755146.854439008,114558.146242158
+816,816,131565,"Surry","Salem Christian Academy","430 Rockford Road","Dobson","NC",27017,NA,"Religious",456644.028376219,292530.491082955
+817,817,117553,"Mecklenburg","Strategic Academy","1715 Sharon Rd. W.","Charlotte","NC",28210,"www.strategicbh.com","Independent",438815.079564472,153345.708130833
+818,818,139102,"Onslow","North Shore Academy","1355 NC Hwy 210","Sneads Ferry","NC",28460,"www.nshoreacademy.com","Independent",753229.674175669,86819.5804991052
+819,819,59573,"Surry","White Plains Christian School","609 Old Highway 601","Mount Airy","NC",27030,"www.whiteplainschristianschool.com","Religious",463624.039925603,301134.754056556
+820,820,59536,"Onslow","Onslow Christian Academy","1351 Pony Farm Road","Jacksonville","NC",28540,NA,"Religious",745646.66014173,115607.920477644
+821,821,135285,"Surry","Yadkin Valley Community School","PO Box 809","Elkin","NC",28621,NA,"Independent",442920.459681026,278603.342631578
+822,822,59311,"Onslow","Shiloh Institute of Learning","P.O. Box 286","Jacksonville","NC",28540,NA,"Religious",754470.983876347,113936.207891209
+823,823,59631,"Swain","Grace Christian Academy","P.O. Box 1099","Bryson City","NC",28713,"www.gracechristianacademy-bc.org","Religious",205767.496343534,195590.749689706
+824,824,59291,"Onslow","St. Anne's Parish Day School","711 Henderson Drive","Jacksonville","NC",28540,"www.stannesdayschool.com","Religious",753564.774089161,114725.647133138
+825,825,100545,"Swain","New Kituwah Academy","PO Box 486","Cherokee","NC",28719,"www.nc-cherokee.com","Independent",214134.101620802,199026.473604612
+826,826,59534,"Onslow","Village Academy","192 Village Drive","Jacksonville","NC",28546,NA,"Independent",758491.483556067,111805.55459008
+827,827,59574,"Transylvania","Anchor Baptist Academy","3232 Hendersonville Hwy.","Pisgah Forest","NC",28768,NA,"Religious",274942.381354903,173641.421659693
+828,828,116158,"Wake","Iron Academy","9660 Falls of Neuse Rd, Ste 138 #263","Raleigh","NC",27615,NA,"Religious",641339.191218714,237675.15543567
+829,829,59292,"Orange","Artgarden Montessori School","1603 East Franklin Street","Chapel Hill","NC",27514,"www.balletschoolofchapelhill.com","Independent",606815.039317271,242232.556331791
+830,830,59575,"Transylvania","Bethany Christian School","135 Bert Lane Road","Brevard","NC",28712,"www.bethanybaptistministries.org","Religious",271590.034722213,169014.930467246
+831,831,85605,"Wake","Jewish Academy of Wake County","7400 Falls of Neuse Road","Raleigh","NC",27615,"www.myjewishacademy.org","Religious",643271.992889692,236923.94686502
+832,832,92121,"Wake","Jordan Lake Sudbury School","1280 Buck Jones Road","Raleigh","NC",27606,"www.jordanlakesudbury.org","Independent",632974.054783951,223720.508495856
+833,833,59539,"Orange","Carolina Friends School","4809 Friends School Road","Durham","NC",27705,"www.cfsnc.org","Religious",607663.163273995,250606.804912781
+834,834,85596,"Transylvania","Mountain Sun Community Sch","P.O. Box 2229","Brevard","NC",28712,"www.mountainsunschool.org","Independent",269556.582566339,170903.561384698
+835,835,59540,"Orange","Emerson Waldorf School","6211 New Jericho Road","Chapel Hill","NC",27516,"www.emersonwaldorf.org","Independent",602632.59961268,248169.670221204
+836,836,79146,"Transylvania","Wellspring Acad. of the Carolinas","27 Back Country Road","Brevard","NC",28712,"www.welllspringacademies.com","Independent",270234.631056801,174873.666239159
+837,837,116159,"Wake","KinderCare School","203 Kilmayne Dr.","Cary","NC",27511,NA,"Independent",629084.407327176,224041.223591436
+838,838,101285,"Orange","Hillsborough Christian Academy","PO Box 910","Hillsborough","NC",27278,"www.hillsboroughacademy.org","Religious",600495.088042164,258513.703329444
+839,839,121227,"Wake","Knowledge Beginnings Sch - Raleigh","10741 Forest Pines Drive","Raleigh","NC",27614,"www.knowledgebeginnings.com","Independent",650672.696807381,243360.961845132
+840,840,126882,"Union","Abundant Life Christian Academy","4224 Blanchard Cir.","Indian Trail","NC",28079,NA,"Religious",456066.119979999,145563.377401423
+841,841,59541,"Orange","Montessori Day School","1702 Legion Rd","Chapel Hill","NC",27517,"www.mdsch.org","Independent",607734.06982375,242461.209867321
+842,842,117123,"Wake","Knowledge Beginnings School","250 Cornerstone Dr.","Cary","NC",27519,"www.knowledgebeginnings.com","Independent",623301.955406529,226105.19684119
+843,843,109432,"Orange","Our Playhouse Preschool","3501 NC Hwy 54 West","Chapel Hill","NC",27516,"www.ourplayhousepreschool.com","Independent",592613.841444,240977.298634406
+844,844,79149,"Wake","Landmark Christian Academy","9011 Chapel Hill Road","Cary","NC",27513,"www.lfwbc.org","Religious",628230.300261613,227068.910150817
+845,845,95174,"Wake","Learn with the Best School","559 Jones Franklin Rd Ste 164 A&B","Raleigh","NC",27606,"www.learnwiththebestschool.com","Independent",637979.923225357,224910.970854133
+846,846,59256,"Orange","Pinewoods Montessori School","109 Millstone Dr., Suite L","Hillsborough","NC",27278,"www.pinewoodsmontessori.com","Independent",600515.27698198,255146.807853736
+847,847,144936,"Union","Anderson Academy","PO Box 490","Marshville","NC",28103,NA,"Independent",484668.292553967,138316.67941688
+848,848,101772,"Orange","Renaissance Montessori School","1710 Old NC 10","Hillsborough","NC",27705,"www.renaissancemontessorischool.com","Independent",603270.420590843,255109.882415967
+849,849,66167,"Union","Arborbrook Christian Academy","4823 Waxhaw-Indian Trail Rd.","Matthews","NC",28104,"www.arborbrook.org","Religious",454729.341212188,140958.561708732
+850,850,59771,"Wake","Lord of Life Academy","2100 Buffaloe Road","Garner","NC",27529,"www.lolpk.com","Religious",643542.597638952,213814.50966404
+851,851,59230,"Wake","Lucy Daniels Center","9003 Weston Parkway","Cary","NC",27513,"www.lucydanielsschool.org","Independent",627769.179318358,230507.127315124
+852,852,59543,"Orange","St. Thomas More Catholic School","920 Carmichael Street","Chapel Hill","NC",27514,"www.stmcsnc.org","Religious",606889.912549259,239079.117710596
+853,853,59678,"Union","Central Academy at Lake Park","3624 Lake Park Road","Indian Trail","NC",28079,"www.centralacademyatlakepark.org","Religious",460316.477010974,149071.344995417
+854,854,59799,"Wake","Mariposa School","203 Gregson Drive","Cary","NC",27511,"www.mariposaschool.org","Independent",627279.884456402,220463.882595396
+855,855,126331,"Pamlico","Gateway Christian Academy","PO Box 116","Arapahoe","NC",28510,NA,"Religious",813904.821212336,140357.841666954
+856,856,126969,"Union","Classical Liberal Arts Academy","1621 Stack Road","Monroe","NC",28112,NA,"Independent",471617.55194918,129288.505424622
+857,857,105487,"Wake","Millennium Academy","231 Capcom Avenue # 281","Wake Forest","NC",27587,"www.millenniumacademync.com","Independent",652409.668442793,243901.375198025
+858,858,94557,"Pamlico","Pamlico Christian Academy","P.O. Box 68","Grantsboro","NC",28529,"www.pamlicochristianacademy.org","Religious",806484.908148434,156275.376899794
+859,859,59803,"Union","Fellowship Christian School","902 South Rocky River Rd","Monroe","NC",28110,NA,"Religious",461625.573578028,136290.710732978
+860,860,59588,"Wake","Montessori School of Raleigh","7005 Leadmine Road","Raleigh","NC",27615,"www.msr.org","Independent",640149.221944846,235917.286236135
+861,861,59576,"Union","First Assembly Christian School","2500 Arnold Drive","Monroe","NC",28110,NA,"Religious",465120.149388136,141327.047705757
+862,862,59591,"Wake","Neuse Christian Academy","7600 Falls of Neuse Road","Raleigh","NC",27615,"www.neusechristian.com","Religious",643233.479901343,237119.457823398
+863,863,100539,"Wake","New Bern Avenue Day Care","1030 N. Rogers Ln Ste 141-143","Raleigh","NC",27610,NA,"Independent",650470.101358599,226425.735613888
+864,864,79126,"Union","Grace Academy","3645 Pleasant Plains Rd","Matthews","NC",28104,"www.graceacademync.com","Religious",454483.16916397,149340.260107387
+865,865,92119,"Union","Hartis Grove Christian Academy","4224 Blanchard Circle","Indian Trail","NC",28079,"www.hgchristianacademy.org","Religious",456066.119979999,145563.377401423
+866,866,59308,"Wake","New School Montessori Center","5617 Sunset Lake Road","Holly Springs","NC",27540,"www.montessoricenter.org","Independent",628676.813304098,211312.025753545
+867,867,59632,"Wake","North Raleigh Christian Academy","7300 Perry Creek Road","Raleigh","NC",27616,"www.nrcaknights.com","Religious",650724.270472462,236222.332888534
+868,868,138428,"Union","Kids R Kids Learning Acad.","5549 Potter Rd.","Matthews","NC",28104,NA,"Independent",454687.256900204,147651.213568421
+869,869,101367,"Wake","Oak City Academy","712 S. East St.","Raleigh","NC",27601,"www.oakcityacademy.org","Religious",642807.960574561,224308.83190289
+870,870,135141,"Union","Kingdom Bridge Academy","10015 Royal Colony Dr.","Waxhaw","NC",28173,NA,"Independent",444951.641679459,138519.107247962
+871,871,108120,"Wake","Oaks Academy","1062 Pebblebrook Dr.","Wake Forest","NC",27587,NA,"Religious",649883.863006263,256465.624126809
+872,872,59592,"Wake","Our Lady of Lourdes Catholic Sch","2710 Overbrook Drive","Raleigh","NC",27608,"www.olls.org","Religious",642631.334301153,229519.073078001
+873,873,141342,"Union","Marvin Academy","1525 Crane Road","Waxhaw","NC",28173,"www.marvinacademy.org","Religious",446553.852456618,140293.500447506
+874,874,79150,"Wake","Peace Montessori School","2190 North Salem Street, Suite 103","Apex","NC",27523,"www.peacemontessori.com","Independent",624603.95566919,222663.998163765
+875,875,59324,"Union","Metrolina Christian Academy","P.O. Box 1460","Indian Trail","NC",28079,"www.metrolinachristian.org","Religious",458761.689041886,148882.55145474
+876,876,101284,"Wake","Primrose School at Holly Grove","1530 Avent Ferry Road","Holly Springs","NC",27540,"www.primrosehollygrove.com","Independent",622917.02290449,208780.32229623
+877,877,59796,"Union","Next Generation Educ. Behav Ctr","P.O. Box 3319","Monroe","NC",28111,"www.agapeservicesnc.com","Independent",467917.88204284,137578.472480277
+878,878,59593,"Wake","Raleigh Christian Academy","2110 Trawick Road","Raleigh","NC",27604,"www.raleighchristian.com","Religious",647803.055267544,228405.658730771
+879,879,72648,"Union","Open Book Baptist Christian Academy","P.O. Box 809","Monroe","NC",28111,NA,"Religious",467917.88204284,137578.472480277
+880,880,85606,"Wake","Raleigh Progressive School","8604 Falls of Neuse Rd., Suite 104","Raleigh","NC",27615,"www.raleighprogressiveschool.com","Independent",644405.041665787,238092.511792837
+881,881,59797,"Union","Shining Light Baptist Academy","2541 Old Charlotte Highway","Monroe","NC",28110,"www.theshininglightbaptistacademy.com","Religious",465360.221032282,140964.138381084
+882,882,59578,"Union","Tabernacle Christian School","2900 Walkup Avenue","Monroe","NC",28110,"www.tcsmonroe.com","Religious",472985.375768696,138726.247571591
+883,883,59272,"Wake","Raleigh School","1141 Raleigh School Drive","Raleigh","NC",27607,"www.raleighschool.org","Independent",634331.107145772,226947.484774865
+884,884,85600,"Union","Under His Wings Christian School","510 Baucom Road","Monroe","NC",28110,NA,"Religious",471081.768263186,145804.862568554
+885,885,59594,"Wake","Raleigh SDA School","4805 Dillard Drive","Raleigh","NC",27606,"www.ant875Aadventist.org","Religious",634818.827655391,221866.020066341
+886,886,59595,"Wake","Ravenscroft School","7409 Falls of Neuse Road","Raleigh","NC",27615,"www.ravenscroft.org","Independent",643308.447578765,236744.463703213
+887,887,60292,"Union","Weddington Christian Academy","13901 Providence Road","Weddington","NC",28104,"www.weddingtonchristianacademy.org","Religious",448751.34561158,142515.23934374
+888,888,92122,"Wake","Reaching Your Goals Academy","1203 Kent Road","Raleigh","NC",27606,"www.reachingyourgoalsinc.com","Independent",637283.355085074,225481.566042375
+889,889,85602,"Union","Woodridge School","5306 Woodridge Drive","Monroe","NC",28110,NA,"Independent",457959.194436946,142417.785156267
+890,890,72654,"Wake","Rejoice Academy","3510 Edwards Mill Road","Raleigh","NC",27612,"www.rejoiceacademyandperformingartscenter.com","Religious",636412.166457975,230529.157464959
+891,891,66169,"Vance","Crossroads Christian School","P.O. Box 249","Henderson","NC",27537,"www.ccscolts.org","Religious",656567.978999868,286092.982116168
+892,892,59579,"Vance","Kerr-Vance Academy","700 Vance Academy Road","Henderson","NC",27537,"www.kerrvance.com","Independent",658969.574715334,282281.590094073
+893,893,72649,"Vance","North Henderson School","173 E. Parker St.","Henderson","NC",27536,NA,"Religious",664129.287204897,287603.689552771
+894,894,119225,"Wake","Rejoice Community School","407 S. Brooks Street","Wake Forest","NC",27587,NA,"Religious",653843.95868719,246945.568714663
+895,895,126809,"Wake","Rejoice School of Educ. & Perf. Arts","237 Friendship Chapel Road","Wake Forest","NC",27587,NA,"Religious",653332.822971058,245449.530547105
+896,896,135616,"Wake","Renaissance Montessori Sch. of Cary","610 Nottingham Dr.","Cary","NC",27511,NA,"Independent",632773.334029638,223866.367567657
+897,897,72650,"Vance","Vance County Learning Center","317 South Garnett Street","Henderson","NC",27536,"www.VCLEARNINGCENTER.ORG","Independent",663021.461211199,285883.562943825
+898,898,72655,"Wake","Resurrection Lutheran School","100 West Lochmere Drive","Cary","NC",27518,"www.rlscary.org","Religious",629742.451011315,219588.812843906
+899,899,59580,"Vance","Victory Baptist Church School","P.O. Box 592","Henderson","NC",27536,"www.victorybaptistnc.com","Religious",662950.440531352,286152.154787226
+900,900,79151,"Wake","Rising Star Christian Academy","PO Box 1473","Wake Forest","NC",27588,"www.rscacademy.com","Religious",653729.324403096,246444.659124983
+901,901,105963,"Vance","WestCare N. Carolina Girls Sch.","634 Shepard's Way Lane","Manson","NC",27553,NA,"Independent",667947.288067628,302850.923197586
+902,902,59583,"Wake","Sacred Heart Cathedral School","204 Hillsborough Street","Raleigh","NC",27603,"www.cathedral-school.net","Religious",641952.120376031,225310.455500528
+903,903,142077,"Wake","Accelerator School LLC","29 S. Circle Drive","Chapel Hill","NC",27516,"www.accelerator.school","Independent",602684.213298475,235788.118589308
+904,904,59596,"Wake","Saint Mary's School","900 Hillsborough Street","Raleigh","NC",27603,"www.sms.edu","Independent",641034.310775016,225379.091201207
+905,905,59293,"Wake","Al-Iman School","3020 Ligon Street","Raleigh","NC",27607,"www.alimanschool.org","Religious",637425.424267471,226252.702073095
+906,906,94492,"Wake","South Wake Preschool & Academy","2275 N. Grassland Dr.","Fuquay-Varina","NC",27526,"www.southwakepa.com","Independent",626793.081141896,207142.916687569
+907,907,85603,"Wake","All Saints Academy","4154 Shearon Farms Ave Suite 100","Wake Forest","NC",27587,"www.allsaintsacademy.net","Religious",650349.751218457,239994.64627883
+908,908,59711,"Wake","St. Catherine of Siena Cath Sch","520 W. Holding Avenue","Wake Forest","NC",27587,"www.scswf.org/school","Religious",652497.507973572,246746.974381154
+909,909,92120,"Wake","An-Noor School","808 Atwater Street","Raleigh","NC",27607,"www.raleighmasjid.org","Religious",637575.744436371,226329.204654001
+910,910,59585,"Wake","St. David's School","3400 White Oak Road","Raleigh","NC",27609,"www.sdsw.org","Religious",641308.642193544,229954.61180624
+911,911,59772,"Wake","St. Mary Magdalene Catholic Sch","625 Magdala Place","Apex","NC",27502,"www.stmm.net/school","Religious",620933.29489868,218966.451124078
+912,912,59876,"Wake","Atlas International School","PO Box 123","Sparta","NC",28675,"www.atlasinternationalschool.com","Independent",419804.706256663,307748.810578594
+913,913,59773,"Wake","St. Michael the Archangel Cath Sch","810 High House Road","Cary","NC",27513,"www.stmcary.org","Religious",625737.634477746,225836.787258785
+914,914,59767,"Wake","Body of Christ Christian Academy","4501 Spring Forest Road","Raleigh","NC",27616,"www.boccacademy.com","Religious",648739.65215684,233716.192965114
+915,915,59674,"Wake","St. Raphael's Catholic School","5815 Falls of Neuse Road","Raleigh","NC",27609,"www.saintraphaelschool.org","Religious",643994.265188801,234278.173824953
+916,916,59710,"Wake","Bonner Academy","6216 Hunter Street","Raleigh","NC",27612,"www.bonneracademy.com","Independent",638348.527022101,235305.875699038
+917,917,59840,"Wake","St. Thomas More Academy","3109 Spring Forest Road","Raleigh","NC",27616,"www.stmacademy.org","Religious",646779.638177302,233609.093321977
+918,918,105778,"Wake","Breakthrough Sch Dev High Lrng","622 Maywood Avenue","Raleigh","NC",27603,"www.breakthroughtemple.com","Religious",640701.469009098,223152.4880889
+919,919,59597,"Wake","St. Timothy's School","4523 Six Forks Road","Raleigh","NC",27609,"www.sttimothys.org","Religious",641844.259415169,232128.216426816
+920,920,59254,"Wake","Stevens Prep Academy","901 Oak Creek Road","Raleigh","NC",27615,"www.stevensprepacademy.com","Independent",643694.060030294,238757.183461322
+921,921,59582,"Wake","Cardinal Gibbons High School","1401 Edwards Mill Road","Raleigh","NC",27607,"www.cghsnc.org","Religious",634327.254562879,227914.812565662
+922,922,110863,"Wake","Strategic Academy","3200 Waterfield Dr.","Garner","NC",27529,"www.strategicbh.com","Independent",649389.984483608,214215.301278533
+923,923,140552,"Wake","Thales Academy - Knightdale","525 Carolinian Drive","Knightdale","NC",27545,NA,"Independent",656086.86054431,226262.833652655
+924,924,92123,"Wake","Thales Academy of Apex","1177 Ambergate Station","Apex","NC",27502,"www.thalesacademy.org","Independent",623479.846878673,220692.030608887
+925,925,59673,"Wake","Cary Academy","1500 N. Harrison Avenue","Cary","NC",27513,"www.caryacademy.org","Independent",630269.246465394,229623.153064357
+926,926,59633,"Wake","Cary Christian School","1330 Old Apex Road","Cary","NC",27513,"www.carychristianschool.org","Religious",627115.046961475,224652.553991986
+927,927,95617,"Wake","Thales Academy of Raleigh","8151 Town Drive","Raleigh","NC",27616,"www.thalesacademy.org","Independent",649276.125767604,235245.935524823
+928,928,111219,"Wake","Celebration Christian Academy","3510 Edwards Mill Rd.","Raleigh","NC",27615,NA,"Religious",636412.166457975,230529.157464959
+929,929,92124,"Wake","Thales Academy of Wake Forest","3106 Heritage Trade Drive","Wake Forest","NC",27587,"www.thalesacademy.org","Independent",653083.415506317,244393.838279767
+930,930,105643,"Wake","Triangle Collaborative School","4000 Bearcat Way, Suite 104","Morrisville","NC",27560,"www.trianglecollab.org","Independent",625791.095344649,230542.16034062
+931,931,92125,"Wake","Triangle Montessori Academy","540 East Chatham Street","Cary","NC",27511,"www.trianglemontessori.com","Independent",630449.589973134,226434.087551026
+932,932,59768,"Wake","Chesterbrook Acad. of Cary","130 Towne Village Drive","Cary","NC",27513,"www.cary.chesterbrookacademy.com","Independent",624207.130801772,225507.914155317
+933,933,105250,"Wake","Trillium Montessori School","10120-210 Green Level Church Rd.","Cary","NC",27519,"www.trilliummontessori.org","Independent",618437.536014917,229830.357916638
+934,934,59590,"Wake","Chesterbrook Acad. of Raleigh","10200 Strickland Road","Raleigh","NC",27615,"www.northraleigh.chesterbrookacademy.com","Independent",639714.428787797,238804.998819189
+935,935,115772,"Wake","Children's Discovery Center","5511 Avent Ferry Rd.","Raleigh","NC",27606,"www.casparpark.com","Independent",635104.648295978,221996.137433385
+936,936,59741,"Wake","Trilogy School","3810 Merton Drive, Suite E","Raleigh","NC",27609,"www.trilogyschool.com","Independent",642711.08740476,230739.180712594
+937,937,79147,"Wake","Christian Life Academy","3209 Gresham Lake Rd. Ste. 136","Raleigh","NC",27615,NA,"Religious",647459.19408746,236896.0404991
+938,938,59712,"Wake","Trinity Academy of Raleigh","10224 Baileywick Rd.","Raleigh","NC",27613,"www.trinityacademy.com","Religious",637036.301580318,239751.405060358
+939,939,125154,"Wake","Commission Leadership Academy","PO Box 61185","Raleigh","NC",27616,NA,"Religious",648445.061208851,233049.936814381
+940,940,79152,"Wake","Trinity Christian Academy","6600 Hallelujah Boulevard","Wendell","NC",27591,NA,"Religious",663607.138072572,229193.060587242
+941,941,85604,"Wake","Faith Assembly Christian Academy","825 South New Hope Road","Raleigh","NC",27610,NA,"Religious",649374.118543475,223415.604884697
+942,942,66174,"Wake","Upper Room Academy","3809 Duxford Drive","Raleigh","NC",27614,NA,"Religious",640807.651603177,247569.054806467
+943,943,59801,"Wake","Upper Room Christian Academy","3330 Idlewood Village Drive","Raleigh","NC",27610,"www.urcap.org","Religious",644297.136487967,220442.31861509
+944,944,59649,"Wake","Fletcher Academy","400 Cedarview Court","Raleigh","NC",27609,"www.thefletcheracademy.com","Independent",642889.958917761,233758.038556367
+945,945,66175,"Wake","Vital Link Private School","608 Royal Street","Raleigh","NC",27607,"www.vitallinkschools.com","Independent",637759.759398674,226444.738425899
+946,946,59798,"Wake","Follow the Child Montessori School","3601 Harden Road","Raleigh","NC",27607,"www.followthechild.org","Independent",636592.810591528,228900.152914295
+947,947,131722,"Wake","Wake Academy","PO Box 5632","Cary","NC",27512,NA,"Independent",629042.557527849,223540.622000434
+948,948,59769,"Wake","Franciscan Catholic School","10000 St. Francis Drive","Raleigh","NC",27613,"www.franciscanschool.org","Religious",632931.140877356,240565.207454404
+949,949,59584,"Wake","Friendship Christian School","5510 Falls of Neuse Road","Raleigh","NC",27609,"www.friendshipchristian.net","Religious",644295.212715623,233790.39282533
+950,950,121176,"Wake","Gethsemane Christian SDA Jr. Acad.","2523 Sanderford Road","Raleigh","NC",27610,"www.gethsemanesdaschool.org","Religious",644519.016255766,221366.652811103
+951,951,59598,"Wake","Wake Christian Academy","5500 Wake Academy Drive","Raleigh","NC",27603,"www.wakechristianacademy.com","Religious",639556.888849918,216856.528071741
+952,952,79148,"Wake","Goddard School","10550 Little Brier Creek Lane","Raleigh","NC",27617,"www.goddardschools.com","Independent",628518.752920796,240238.624099715
+953,953,94493,"Wake","Wake Forest Montessori School","231 Capcom Ave, Unit 180","Wake Forest","NC",27587,"www.wakeforestmontessori.com","Independent",652409.668442793,243901.375198025
+954,954,59287,"Wake","Word of God Christian Academy","3000 Rock Quarry Rd.","Raleigh","NC",27610,"www.wogca.org","Religious",645944.952452841,221638.432128055
+955,955,115769,"Wake","God's Garden Kindergarten","9725 Fayetteville Road","Raleigh","NC",27603,NA,"Religious",635933.070523604,210383.133534832
+956,956,59599,"Warren","Norlina Christian School","P.O. Box 757","Norlina","NC",27563,"www.norlinachristianschool.com","Religious",681919.528203105,299261.992609194
+957,957,85609,"Watauga","Grace Academy","P.O. Box 1212","Boone","NC",28607,"www.graceacademyboone.com","Religious",370372.255924938,274938.967953475
+958,958,100538,"Wake","Grace Christian College Prep Acad","1120 Kingman Dr","Knightdale","NC",27545,NA,"Religious",653908.316298569,225350.268087884
+959,959,59601,"Watauga","Mountain Pathways School","453 Howard's Creek Road","Boone","NC",28607,"www.mountainpathways.org","Independent",370289.537900243,279658.082558429
+960,960,100561,"Wayne","Asperger Connection School","503 Glendale Drive","Pikeville","NC",27863,"www.theaspergerconnectionschool.org","Independent",692562.28526893,192643.712425085
+961,961,72656,"Wayne","Children's House Montessori Sch","P.O. Box 11539","Goldsboro","NC",27532,"www.childrenshouseinc.com","Independent",705503.240144969,180473.282453211
+962,962,59589,"Wake","Grace Christian School","1101 Buck Jones Road","Raleigh","NC",27606,"www.gracechristian.net","Religious",633094.507564111,224085.478814868
+963,963,115773,"Wake","Grove School of Cary","2590 Laura Duncan Road","Cary","NC",27513,"www.groveschool.com","Independent",625571.700273017,223401.053788306
+964,964,66177,"Wayne","D. S. Simmons Academy","900 11th Street","Goldsboro","NC",27530,"www.dssimmonsacademy.com","Religious",703075.012829761,183716.544587813
+965,965,108119,"Wake","Hatcher Grove Chr Acad & Lrng Ctr","3404 Davis Drive","Cary","NC",27519,NA,"Religious",623361.03324204,229009.499112384
+966,966,59602,"Wayne","Faith Christian Academy","1200 W. Grantham Street","Goldsboro","NC",27530,"www.fcagoldsboro.com","Religious",699281.758249634,183473.015007444
+967,967,59309,"Wake","Heartwood Montessori School","112 Byrum Street","Cary","NC",27511,"www.heartwoodmontessori.com","Independent",629472.516765202,225336.863204692
+968,968,118099,"Wayne","New Independence Academy","PO Box 125","Pikeville","NC",27863,NA,"Independent",698425.658371955,191244.633827262
+969,969,59581,"Wake","Heritage Christian Academy","615 Mack Todd Road","Zebulon","NC",27597,"www.hca-nc.org","Religious",670398.156613058,229547.238991575
+970,970,59650,"Wayne","Pathway Christian Academy","P.O. Box 1895","Goldsboro","NC",27533,"www.pathwayacademy.org","Religious",701079.620627233,181658.602971982
+971,971,59587,"Wake","Hilltop Christian School","10212 Fayetteville Road","Fuquay-Varina","NC",27526,"www.hilltopchurch.com","Religious",634860.25281903,208207.517124135
+972,972,59634,"Wayne","Rhema Christian Academy","323 Whitfield Drive","Goldsboro","NC",27530,NA,"Religious",699442.092081442,181566.219120776
+973,973,66171,"Wake","Hopewell Academy","101 Preston Executive Drive","Cary","NC",27513,"www.hopewellacademy.org","Independent",625326.312377129,226488.173624774
+974,974,59603,"Wayne","St. Mary Catholic School","1601 Edgerton Street","Goldsboro","NC",27530,"www.smsgoldsboro.org","Religious",703245.414362415,181991.529061364
+975,975,59604,"Wayne","Wayne Christian School","1201 Patetown Road","Goldsboro","NC",27530,"www.waynechristian.org","Religious",703638.167637605,185431.754403561
+976,976,59605,"Wayne","Wayne Country Day School","480 Country Day Road","Goldsboro","NC",27530,"www.waynecountryday.com","Independent",703795.745982888,184269.65615442
+977,977,59267,"Wayne","Wayne Montessori School","P.O. Box 10646","Goldsboro","NC",27532,"www.wayne-montessori.org","Independent",705503.240144969,180473.282453211
+978,978,59282,"Wayne","Wayne Multi-Purpose Juvenile Sch.","1703 O'Berry Center Road","Goldsboro","NC",27530,NA,"Religious",696862.364878868,183684.09060364
+979,979,59765,"Wilkes","Gordon Baptist Christian School","285 Boone Trail","North Wilkesboro","NC",28659,"www.gordonbaptist.com","Religious",414380.861688227,269623.781119835
+980,980,59635,"Wilkes","Harvest Time Christian Acad.","398 Winston Street","Wilkesboro","NC",28659,NA,"Religious",416888.060545011,268552.324114159
+981,981,59742,"Wilkes","Millers Creek Christian School","P.O. Box 559","Millers Creek","NC",28651,"www.millerscreekchristianschool.org","Religious",408508.09437224,273086.008762848
+982,982,92126,"Wilson","Building Blocks Montessori School","3960 Lake Wilson Road","Wilson","NC",27896,"www.buildingblocksmontessori.net","Independent",705564.405629857,225030.560442967
+983,983,72657,"Wilson","Charis Prep School","P.O. Box 547","Wilson","NC",27894,"www.charis-prep.com","Religious",707562.115992028,219254.216663063
+984,984,59766,"Wilson","Community Christian School","5160 Packhouse Road N.W.","Wilson","NC",27896,"www.ccs-cyclones.com","Religious",702904.701922325,225950.617191335
+985,985,59606,"Wilson","Garnett Christian Academy","4747 Lake Wilson Road","Elm City","NC",27822,NA,"Religious",709597.216714251,228167.797087105
+986,986,112129,"Wilson","Great Accomplishments Acad.","3011 NC Hwy 42 W, Ste 138","Wilson","NC",27893,"www.gaautismacademy.com","Independent",704050.390948869,219043.829972526
+987,987,59607,"Wilson","Greenfield School","3351 NC Hwy 42 West","Wilson","NC",27893,"www.greenfieldschool.org","Independent",703058.585965513,219145.570368331
+988,988,59608,"Wilson","Wilson Christian Academy","P.O. Box 3818","Wilson","NC",27895,"www.wilsonchristian.com","Religious",705651.594305239,219218.837205438
+989,989,59680,"Yadkin","Faith Fellowship School","P.O. Box 1279","Yadkinville","NC",27055,NA,"Religious",460254.857133179,265619.073150923
+990,990,59609,"Yadkin","Whispering Pines Chr. Day Sch.","5321 Saint Paul Church Rd.","Hamptonville","NC",27020,NA,"Religious",443052.868004792,260370.358203409
+991,991,59610,"Yancey","Arthur Morgan School","60 AMS Circle","Burnsville","NC",28714,"www.arthurmorganschool.org","Independent",320493.179071869,236673.17340216
+992,992,108848,"Yancey","Genesis Academy","1867 State Hwy 19E","Burnsville","NC",28715,NA,"Religious",278721.054542135,205629.891467093
+993,993,59636,"Yancey","Yancey County Chr. School","P.O. Box 1437","Burnsville","NC",28714,NA,"Religious",311753.231400297,245527.603527499
