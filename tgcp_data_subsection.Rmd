@@ -8,7 +8,7 @@ Note that we are using the threshold for Raleigh.
 With all that in mind, we have categorized each client/family as being below the 30% line, between 30% and 60%, above 60%, or unknown (if the income data was unavailable).
 
 
-```{r child = 'tgcp-data/median_income_bar_plots.Rmd'}
+```{r child = 'tgcp-data/median_income_bar_plots.Rmd', echo = FALSE, message = FALSE, warning = FALSE}
 ```
 
 
