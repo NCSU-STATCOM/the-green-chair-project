@@ -22,18 +22,20 @@ library(ggplot2)
 library(gganimate)
 library(animation)
 library(dplyr)
+library(here)
 # library(magick)
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, fig.align = 'center', fig.width = 5, fig.height = 6)
 options(knitr.graphics.auto_pdf = TRUE)
+i_am("tgcp-data/median_income_bar_plots.Rmd")
 ```
 
 ```{r include=FALSE, warning= FALSE}
 # Data cleaning and wrangling
 ## Read in the raw data
-greenchair <- read_excel("../STATCOM_data.xlsx", na= "NA")
+greenchair <- read_excel(here("STATCOM_data.xlsx"), na= "NA")
 nms <- colnames(greenchair)
 ct <- ifelse(grepl("ClientZipCode|QueenBeds|Cribs|TwinBeds|TotalHHNumber", nms), "numeric", "guess")
-greenchair<- as.data.frame(read_excel("../STATCOM_data.xlsx", na= "NA", col_types = ct))
+greenchair<- as.data.frame(read_excel(here("STATCOM_data.xlsx"), na= "NA", col_types = ct))
 str(greenchair[,1:21])
 str(greenchair[,118:128])
 

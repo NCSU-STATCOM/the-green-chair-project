@@ -1,8 +1,10 @@
 ```{r echo = FALSE}
 library(readxl)
 library(tidyverse)
+library(here)
+i_am("Long Format Data set/beds_by_people.Rmd")
 #read excel document 
-tgcp_demog <- read_excel("../STATCOM_data.xlsx", col_types = "text")
+tgcp_demog <- read_excel(here("STATCOM_data.xlsx"), col_types = "text")
 #rename tghe columns 
 tgcp_demog <- rename(tgcp_demog, Id = `...1`)
 

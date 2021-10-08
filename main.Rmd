@@ -12,12 +12,6 @@ abstract: |
   This report contains an exploration and initial analysis of data on The Green Chair Project's (TGCP) clients, the community vulnerability and economic health of Wake County's block groups, the CDC Social Vulnerability Indices of Wake County's census tracts, and Wake County public schools.
 ---
 
-<!-- Setting plot dimensions for entire report -->
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.align = 'center', fig.width = 5, fig.height = 3)
-```
-
 \newpage
 
 ```{r child = 'tgcp_data_subsection.Rmd'}
@@ -25,7 +19,7 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.align 
 
 \newpage
 
-```{r child = 'external_data_subsection.Rmd'}
+```{r child = 'external_data_subsection.Rmd', echo = FALSE, message = FALSE, warning = FALSE, fig.align = 'center', fig.width = 5, fig.height = 3}
 ```
 
 <!-- \newpage -->
