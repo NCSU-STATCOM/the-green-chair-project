@@ -1,19 +1,89 @@
-# Section 1
+# Exploring TGCP data
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+We have spent a lot of time cleaning the data, allowing us to start making visualizations.
+First, we wanted to answer how many clients are living below the 30% median income line, how many are in the 30% and 60% range, and how many are above the 60% range. 
+It's important to note that the thresholds for these classifcations change both by year and by the number of people that live in a household.
+[You can see the thresholds for 2021 here, provided by the HOME Investment Partnerships Program.](https://www.huduser.gov/portal/datasets/home-datasets/files/HOME_IncomeLmts_State_NC_2021.pdf)
+Note that we are using the threshold for Raleigh.
+With all that in mind, we have categorized each client/family as being below the 30% line, between 30% and 60%, above 60%, or unknown (if the income data was unavailable).
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-```{r}
-cbind(1:10, 2:11)
+```{r child = 'tgcp-data/median_income_bar_plots.Rmd'}
 ```
 
-## Including Plots 1
 
-You can also embed plots, for example:
+We have also looked at the total number of beds provided to clients (number of twins and queens combined).
+Again, since this may changed based on the number of members of a household, we have stratified.
 
-```{r, echo=FALSE}
-plot(pressure, col = "red")
+```{r child = 'Long Format Data set/beds_by_people.Rmd', echo = FALSE, message = FALSE, warning = FALSE}
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+Next we wanted to investigate which agencies refered the most clients.
+From this, we can get a better grasp on where the clients are coming from and how to best serve them.
+These are the ten agencies that refer the most clients. 
+
+```{r, echo=FALSE, message = FALSE, warning = FALSE}
+## Common Agencies
+
+# Setting up
+library(readxl)
+library(writexl)
+library(tidyverse)
+
+# Read in raw data
+tgcp_demog <- read_excel("STATCOM_data.xlsx", col_types = "text")
+tgcp_demog <- rename(tgcp_demog, Id = `...1`)
+
+# Viewing the data
+#View(tail(tgcp_demog[, c(1:40, 119:128)], n = 100))
+
+# List of Agencies -- needs to be cleaned
+#ggplot(data = tgcp_demog, aes(x = Agency)) + geom_histogram(stat = "count")
+agency_table <- as.data.frame(table(tgcp_demog$Agency))
+colnames(agency_table) <- c("Agency","Freq")
+# View(agency_table)
+
+# Write to spreadsheet for data cleaning
+# write_xlsx(agency_table, 
+          # "C:\\Users\\shakt\\OneDrive\\Documents\\NC State\\TGCP\\the green chair project\\AgencyNames.xlsx")
+
+# Reading in new spreadsheet with duplicate rows for cleaned names
+agency_clean <- read_excel(paste0(getwd(), "/tgcp-agencies/AgencyNames.xlsx"), range = cell_cols("B:D"))
+# View(agency_clean)
+
+# Aggregating duplicate rows to update frequency count
+agency_clean2 <- aggregate(Freq~Agency_Clean_Short, 
+                           data = agency_clean, FUN=sum)
+
+## Visualizing the agency data
+# Not very useful plot (too many variables)
+#ggplot(data = agency_clean, aes(x = Agency_Clean_Short)) + geom_bar()
+
+# Top 10 Agencies only
+agency_clean2 %>% arrange(desc(Freq)) %>%
+  slice(1:10) %>%
+  mutate(agency_rank = fct_reorder(Agency_Clean_Short, Freq),
+         highlight =
+           ifelse(Agency_Clean_Short %in%
+                              Agency_Clean_Short[which.max(Freq)],T,F)) %>%
+  ggplot(., aes(x=factor(agency_rank),y=Freq)) +
+  # geom_bar(stat = 'identity', aes(fill=highlight)) +
+  # scale_fill_manual(values = c("grey50","#6BBF4E")) +
+    geom_bar(stat = 'identity') +
+  coord_flip() +
+  theme(axis.text.y = element_text(size = 7, angle = 45),
+        legend.position = "none") +
+  labs(title = "Top 10 Agencies",
+       x = "", y = "") 
+
+```
+
+As expected, the Wake Country Public School System referred the most by far, with nearly 1200 referrals. 
+This has encouraged us to look further into the schools.
+We are compiling data including drop out/graduation rates, test scores, and free and reduced lunch participation for each public school in Wake county.
+Then we will be able to cross reference this with our data to find correlations between clients referred to TGCP and these external, school variables.
+Here we present the schools with the highest percentage of their students enrolled in the free and reduced lunch program as well as the schools with most highest total number of students enrolled in a lunch program.
+
+```{r child = 'school_data/lunch_plot.Rmd', echo = FALSE, message = FALSE, warning = FALSE}
+```
