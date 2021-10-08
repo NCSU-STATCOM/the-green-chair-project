@@ -49,7 +49,7 @@ colnames(agency_table) <- c("Agency","Freq")
           # "C:\\Users\\shakt\\OneDrive\\Documents\\NC State\\TGCP\\the green chair project\\AgencyNames.xlsx")
 
 # Reading in new spreadsheet with duplicate rows for cleaned names
-agency_clean <- read_excel(paste0(getwd(), "/tgcp-agencies/AgencyNames.xlsx"), range = cell_cols("B:D"))
+agency_clean <- read_excel("AgencyNames.xlsx", range = cell_cols("B:D"))
 # View(agency_clean)
 
 # Aggregating duplicate rows to update frequency count
