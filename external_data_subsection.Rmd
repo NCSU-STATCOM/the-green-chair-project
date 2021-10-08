@@ -1,6 +1,8 @@
 
 # Exploratory Analysis on Social Vulnerability Measures of Locations of Green Chair Clients
 
+The CDC Social Vulnerability Index (SVI) is a collection of social vulnerability measures for each census tract. We merged the CDC SVIs into the zip codes of the TGCP clients.
+
 ```{r include=FALSE}
 library(ggplot2)
 library(rmarkdown)
@@ -78,64 +80,81 @@ numer_GCSVI<-GC_SVI[numer_subset]
 describe(numer_GCSVI)
 ```
 
-Some things worth noting about clients:
-
-* Annual Income is right skewed; most annual incomes are small with a few large outliers
-* NumAdultMale is slightly left skewed; most households have about one adult male but a lot of outliers with none
-* Most beds needed are twin beds
-
 Some things worth noting about SVI statistics of where clients live:
 
 * Percent Poverty averages about 17%, but Percent Unemployment averages only about 5-6%
-* About 10-12% have no high school diploma
-* About 10-12% are single parents
-* About 10-12% have a disability
+* About 12% have no high school diploma
+* About 12% are single parents
+* About 10% have a disability
 * Average percent minority is over half
-* About a fifth to a fourth are seventeen or younger
-* On average, about 16% live in housing structures with more than 10 units per structure
-* About 7-8% do not have a vehicle
+* About a 23% are seventeen or younger
+* On average, about 15% live in housing structures with more than 10 units per structure
+* About 7% do not have a vehicle
 * About 13% do not possess insurance
 
 
 
+Some things worth noting about clients:
+
+* Annual Income is right skewed; most annual incomes are small with a few large outliers
+
+```{r}
+boxplot(numer_GCSVI$AnnualIncomeAmount, main = "Annual Income")
+```
+
+* NumAdultMale is slightly left skewed; most households have about one adult male but a lot of outliers with none
+
+```{r}
+boxplot(numer_GCSVI$NumAdultMales, main = "Number Adult Males")
+```
+
 ## Some correlation statistics:
-
-Some interesting things to note:
-
-* NumChildren negatively correlated with SVI measures of poverty, living in apartment-like structures, and not having a vehicle
-* We see that a need for queen beds is positively correlated with those 
-incarcerated and especially those with a disability. Need for queen beds is also slightly positively correlated with SVI measures of poverty and not having a vehicle
-* Need for twin beds is slightly positively correlated with SVI measures of percent of population aged less than or equal to 17, and percent of population living in mobile homes (in fact need for beds in general is correlated wth these SVI measures)
-* We see some of the largest correlation values for the disability column
-  + SVI measures of poverty, no high school diploma, speaking 
-  English "less than well", living in apartment-like
-  structures and crowded environments, having no vechicle, and
-  not being insured
-
-However, it is worth noting that SVI statistics may look at a population different from that of TGCP clients.
-For instance, the correlation between those with a disability among the clients
-in the original dataset and the percent of population among that client with a disability
-is quite small.
 
 ```{r include = FALSE}
 
 numer_cor <- cor(numer_GCSVI, use="complete.obs")
 ```
 
+* NumChildren negatively correlated with SVI measures of poverty, living in apartment-like structures, and not having a vehicle
+
+
+
     Correlations with NumChildren
 ```{r}
 numer_cor[row.names(numer_cor) == "NumChildren",]
 ```
+
+* We see that a need for queen beds is positively correlated with those 
+incarcerated and especially those with a disability. Need for queen beds is also slightly positively correlated with SVI measures of poverty and not having a vehicle
+
+
 
     Correlations with QueenBeds
 ```{r}
 numer_cor[row.names(numer_cor) == "QueenBeds",]
 ```
 
+* Need for twin beds is slightly positively correlated with SVI measures of percent of population aged less than or equal to 17, and percent of population living in mobile homes (in fact, the need for beds in general is correlated with these SVI measures)
+
+
+
     Correlations with TwinBeds
 ```{r}
 numer_cor[row.names(numer_cor) == "TwinBeds",]
 ```
+
+* We see some of the largest correlation values with Disability, i.e.
+  + SVI measures of poverty, no high school diploma, speaking 
+  English "less than well", living in apartment-like
+  structures and crowded environments, having no vehicle, and
+  not being insured
+
+However, it is worth noting that SVI statistics may look at a population different from that of TGCP clients.
+For instance, the correlation between those with a disability among the clients
+in the original dataset and the percent of population in the client's zipcode with a disability
+is quite small.
+
+
 
     Correlations with Disability
 ```{r}
@@ -245,8 +264,8 @@ ggplot(GCSVI_wInc, aes(x=NumChildren, y=EP_POV,color=as.character(NumChildren)))
 ```
 Some things to note:
 
-* We see that that distribution among number of children is about the same for percent poverty
-* Those with no children, however, often are among more impoverished areas, with a bit of a left-skew (indicating more distributed closer to more impoverished areas)
+* We see that the distribution among number of children is about the same
+* Those with no children, however, often are within more impoverished areas
 
 ```{r echo=FALSE}
 ggplot(GCSVI_wInc, aes(x=NumChildren, y=EP_MUNIT,color=as.character(NumChildren)))+geom_boxplot()+labs(x="Number of Children",y="Percent More than 10 Units", title="Percent More than 10 Units by Number of Children")+scale_color_discrete(name="Num Children", 
@@ -255,7 +274,6 @@ ggplot(GCSVI_wInc, aes(x=NumChildren, y=EP_MUNIT,color=as.character(NumChildren)
 Some things to note:
 
 * We see that the distribution among number of children varies; in general we see that having more children is associated with a smaller probability of living in a structure with more than ten housing units
-  + This probability is pretty constant among after more than two kids
 
 ```{r echo=FALSE}
 ggplot(GCSVI_wInc, aes(x=NumChildren, y=EP_NOVEH,color=as.character(NumChildren)))+geom_boxplot()+labs(x="Number of Children",y="Percent No Vehicle", title="Percent No Vehicle by Number of Children")+scale_color_discrete(name="Num Children", 
@@ -263,8 +281,8 @@ ggplot(GCSVI_wInc, aes(x=NumChildren, y=EP_NOVEH,color=as.character(NumChildren)
 ```
 Some things to note:
 
-* We see that that distribution among number of children is about the same, perhaps with a right skew (more towards a lower probability of having no vehicle) after the first child
-  + There are a few clients that live in areas where the probability of having no vehicle is high no matter the number of children (long right tail)
+* We see that the distribution among number of children is about the same
+  + There are a few clients that live in areas where the probability of having no vehicle is high no matter the number of children (there are several high outliers)
 
 
 ```{r echo=FALSE}
@@ -274,7 +292,7 @@ ggplot(GCSVI_wInc, aes(x=QueenBeds, y=EP_POV,color=as.character(QueenBeds)))+geo
 Some things to note:
 
 * We see that that distribution among number of queen beds varies. It is worth noting that:
-  + Those that need one queen bed tend to live among more impoverished areas
+  + Those that need one queen bed tend to live in more impoverished areas
   + It would be worth looking into how the need for a queen bed is distributed among those with a disability
 
 ```{r echo=FALSE}
@@ -283,9 +301,7 @@ ggplot(GCSVI_wInc, aes(x=QueenBeds, y=EP_NOVEH,color=as.character(QueenBeds)))+g
 ```
 Some things to note:
 
-* We see that that distribution among number of queen beds varies. It is worth noting that:
-  + Those that need more than one queen bed tend to live in areas where the probability of having no vehicle tends to be lower (assuming that the need for three queen beds is an outlier)
-  + Again, it would be worth looking into how the need for a queen bed is distributed among those with a disability
+* We see that that distribution among number of queen beds varies. 
 
 ```{r echo=FALSE}
 ggplot(GCSVI_wInc, aes(x=TwinBeds, y=EP_AGE17,color=as.character(TwinBeds)))+geom_boxplot()+labs(x="Number Twin Beds Needed",y="Percent Less Than 17", title="Percent Less Than 17 by Twin Beds Needed")+scale_color_discrete(name="Num Beds", 
@@ -295,189 +311,6 @@ ggplot(GCSVI_wInc, aes(x=TwinBeds, y=EP_AGE17,color=as.character(TwinBeds)))+geo
 ```
 Some things to note:
 
-* We see that that distribution among number of twin beds varies. It is worth noting that overall, however, that the need for twin beds increases as one tends to live in areas with more people less than 17 years of age
-
-## Deeper Dive Into Correlated Relationships
-```{r echo=FALSE}
-
-ggplot(GCSVI_wInc, aes(x=NumChildren, y=EP_POV,color=as.character(NumChildren)))+geom_boxplot()+labs(x="Number of Children",y="Percent Poverty", title="Percent Poverty by Number of Children")+scale_color_discrete(name="Num Children", 
-                       labels=c(0,1,2,3,4,5,6,7))
-```
-Some things to note:
-
-* We see that that distribution among number of children is about the same for percent poverty
-* Those with no children, however, often are among more impoverished areas, with a bit of a left-skew (indicating more distributed closer to more impoverished areas)
-
-```{r echo=FALSE}
-ggplot(GCSVI_wInc, aes(x=NumChildren, y=EP_MUNIT,color=as.character(NumChildren)))+geom_boxplot()+labs(x="Number of Children",y="Percent More than 10 Units", title="Percent More than 10 Units by Number of Children")+scale_color_discrete(name="Num Children", 
-                       labels=c(0,1,2,3,4,5,6,7))
-```
-Some things to note:
-
-* We see that the distribution among number of children varies; in general we see that having more children is associated with a smaller probability of living in a structure with more than ten housing units
-  + This probability is pretty constant among after more than two kids
-
-```{r echo=FALSE}
-ggplot(GCSVI_wInc, aes(x=NumChildren, y=EP_NOVEH,color=as.character(NumChildren)))+geom_boxplot()+labs(x="Number of Children",y="Percent No Vehicle", title="Percent No Vehicle by Number of Children")+scale_color_discrete(name="Num Children", 
-                       labels=c(0,1,2,3,4,5,6,7))
-```
-Some things to note:
-
-* We see that that distribution among number of children is about the same, perhaps with a right skew (more towards a lower probability of having no vehicle) after the first child
-  + There are a few clients that live in areas where the probability of having no vehicle is high no matter the number of children (long right tail)
+* We see that that distribution among number of twin beds varies. It is worth noting that overall, however, that the need for twin beds increases as one tends to live in areas with more people less than 17 years of age.
 
 
-```{r echo=FALSE}
-ggplot(GCSVI_wInc, aes(x=QueenBeds, y=EP_POV,color=as.character(QueenBeds)))+geom_boxplot()+labs(x="Number Queen Beds Needed",y="Percent Poverty", title="Percent Poverty by Queen Beds Needed")+scale_color_discrete(name="Num Beds", 
-                       labels=c(0,1,2,3,4,5,6,7))
-```
-Some things to note:
-
-* We see that that distribution among number of queen beds varies. It is worth noting that:
-  + Those that need one queen bed tend to live among more impoverished areas
-  + It would be worth looking into how the need for a queen bed is distributed among those with a disability
-
-```{r echo=FALSE}
-ggplot(GCSVI_wInc, aes(x=QueenBeds, y=EP_NOVEH,color=as.character(QueenBeds)))+geom_boxplot()+labs(x="Number Queen Beds Needed",y="Percent No Vehicle", title="Percent No Vehicle by Queen Beds Needed")+scale_color_discrete(name="Num Beds", 
-                       labels=c(0,1,2,3,4,5,6,7))
-```
-Some things to note:
-
-* We see that that distribution among number of queen beds varies. It is worth noting that:
-  + Those that need more than one queen bed tend to live in areas where the probability of having no vehicle tends to be lower (assuming that the need for three queen beds is an outlier)
-  + Again, it would be worth looking into how the need for a queen bed is distributed among those with a disability
-
-```{r echo=FALSE}
-ggplot(GCSVI_wInc, aes(x=TwinBeds, y=EP_AGE17,color=as.character(TwinBeds)))+geom_boxplot()+labs(x="Number Twin Beds Needed",y="Percent Less Than 17", title="Percent Less Than 17 by Twin Beds Needed")+scale_color_discrete(name="Num Beds", 
-                       labels=c(0,1,2,3,4,5,6,7))
-
-
-```
-Some things to note:
-
-* We see that that distribution among number of twin beds varies. It is worth noting that overall, however, that the need for twin beds increases as one tends to live in areas with more people less than 17 years of age
-
-
-# Brief Investigation Among Percent Median Income Groups
-We label client as whether or not one is below the 30% or 60% median income level in Raleigh and Wake County
-
-```{r echo=FALSE}
-
-GCSVI_numchild_sum<-as.data.frame(GCSVI_wInc %>% group_by(NumChildren) %>%
-    summarize(numbelowsixty_ral=sum(ral_sixty, na.rm=T),
-              numbelowthirty_ral=sum(ral_thirty, na.rm=T),
-              numbelowsixty_wake=sum(wake_sixty, na.rm=T),
-              numbelowthirty_wake=sum(wake_thirty, na.rm=T)))
-  
-
-GCSVI_numchild_sum<-GCSVI_numchild_sum[!is.na(GCSVI_numchild_sum$NumChildren),]
-
-numchild_for_plot<-gather(GCSVI_numchild_sum, key="inc_type", value="numBelow", 
-                          c(numbelowthirty_wake,numbelowsixty_wake))
-
-ggplot(numchild_for_plot, aes(x=NumChildren, y=numBelow, fill=inc_type))+
-  geom_bar(stat="identity", position="dodge")+labs(x="Number of Children",
-  y="Number Below Median Percentile", 
-  title="Number of Children by Income Percentile")+
-  scale_fill_discrete(name="Median Income Percentile", 
-                      labels=c("Below 60% Median Wake",
-                              "Below 30% Median Wake"))
-```
-Some things to note:
-
-* We see that the number of all of those below a certain median income level maximizes around two children, and drops of with more children
-  + In other words more people living below a certain median income level when having less children
-
-
-```{r echo=FALSE}
-
-GCSVI_queen_sum<-as.data.frame(GCSVI_wInc %>% group_by(QueenBeds) %>%
-    summarize(numbelowsixty_ral=sum(ral_sixty, na.rm=T),
-              numbelowthirty_ral=sum(ral_thirty, na.rm=T),
-              numbelowsixty_wake=sum(wake_sixty, na.rm=T),
-              numbelowthirty_wake=sum(wake_thirty, na.rm=T)))
-  
-
-GCSVI_queen_sum<-GCSVI_queen_sum[!is.na(GCSVI_queen_sum$QueenBeds),]
-
-queen_for_plot<-gather(GCSVI_queen_sum, key="inc_type", value="numBelow", 
-                          c(numbelowthirty_wake,numbelowsixty_wake))
-
-ggplot(queen_for_plot, aes(x=QueenBeds, y=numBelow, fill=inc_type))+
-  geom_bar(stat="identity", position="dodge")+labs(x="Number Queen Beds Neeed",
-  y="Number Below Median Percentile", 
-  title="Number Queen Beds by Income Percentile")+
-  scale_fill_discrete(name="Median Income Percentile", 
-                      labels=c("Below 60% Median Wake",
-                              "Below 30% Median Wake"))
-```
-Some things to note:
-
-* Most people who need a queen bed are not below a certain median income level
-
-
-
-```{r echo=FALSE}
-
-GCSVI_twin_sum<-as.data.frame(GCSVI_wInc %>% group_by(TwinBeds) %>%
-    summarize(numbelowsixty_ral=sum(ral_sixty, na.rm=T),
-              numbelowthirty_ral=sum(ral_thirty, na.rm=T),
-              numbelowsixty_wake=sum(wake_sixty, na.rm=T),
-              numbelowthirty_wake=sum(wake_thirty, na.rm=T)))
-  
-
-GCSVI_twin_sum<-GCSVI_twin_sum[!is.na(GCSVI_twin_sum$TwinBeds),]
-
-twin_for_plot<-gather(GCSVI_twin_sum, key="inc_type", value="numBelow", 
-                          c(numbelowthirty_wake,numbelowsixty_wake))
-
-ggplot(twin_for_plot, aes(x=TwinBeds, y=numBelow, fill=inc_type))+
-  geom_bar(stat="identity", position="dodge")+labs(x="Number Twin Beds Neeed",
-  y="Number Below Median Percentile", 
-  title="Number Twin Beds by Income Percentile")+
-  scale_fill_discrete(name="Median Income Percentile", 
-                      labels=c("Below 60% Median Wake",
-                              "Below 30% Median Wake"))
-```
-Some things to note:
-
-* Most people who need a twin bed are not below a certain median income level
-
-
-
-```{r echo=FALSE}
-
-order_POV<-GCSVI_wInc[order(GCSVI_wInc$EP_POV),]
-
-acc_ral_thirty<-c(order_POV$ral_thirty[1])
-acc_ral_sixty<-c(order_POV$ral_sixty[1])
-acc_wake_thirty<-c(order_POV$wake_thirty[1])
-acc_wake_sixty<-c(order_POV$wake_sixty[1])
-for (i in 2:nrow(order_POV)){
-  acc_ral_thirty<-append(acc_ral_thirty,order_POV$ral_thirty[i]+
-                           acc_ral_thirty[i-1])
-  acc_ral_sixty<-append(acc_ral_sixty,order_POV$ral_sixty[i]+
-                          acc_ral_sixty[i-1])
-  acc_wake_thirty<-append(acc_wake_thirty,order_POV$wake_thirty[i]+
-                            acc_wake_thirty[i-1])
-  acc_wake_sixty<-append(acc_wake_sixty,order_POV$wake_sixty[i]+
-                           acc_wake_sixty[i-1])
-}
-
-order_POV<-cbind(order_POV,
-                 acc_wake_thirty, acc_wake_sixty)
-
-order_POV_plot<-gather(order_POV, key="inc_type", value="accuml", 
-                       c(acc_wake_thirty, 
-                         acc_wake_sixty))
-
-ggplot(order_POV_plot, aes(x=EP_POV, y=accuml, color=inc_type))+geom_line()+
-  labs(x="Percent Poverty Less Than or Equal",y="Number Below Median Percentile",
-       title="Percent Poverty by Income Percentile")+
-  scale_color_discrete(name="Median Income Percentile", 
-                       labels=c("Below 60% Median Wake",
-                                "Below 30% Median Wake"))
-```
-Some things to note:
-
-* We see that the number of people below a certain income level accumulated at much larger steps as one's area surpasses a certain percent of impoverishment
