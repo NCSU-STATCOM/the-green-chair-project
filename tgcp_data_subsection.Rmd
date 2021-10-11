@@ -198,7 +198,7 @@ queen_for_plot<-gather(GCSVI_queen_sum, key="inc_type", value="numBelow",
                           c(numbelowthirty_wake,numbelowsixty_wake))
 
 ggplot(queen_for_plot, aes(x=QueenBeds, y=numBelow, fill=inc_type))+
-  geom_bar(stat="identity", position="dodge")+labs(x="Number Queen Beds Neeed",
+  geom_bar(stat="identity", position="dodge")+labs(x="Number Queen Beds Needed",
   y="Number Below Median Percentile", 
   title="Number Queen Beds by Income Percentile")+
   scale_fill_discrete(name="Median Income Percentile", 
@@ -226,7 +226,7 @@ twin_for_plot<-gather(GCSVI_twin_sum, key="inc_type", value="numBelow",
                           c(numbelowthirty_wake,numbelowsixty_wake))
 
 ggplot(twin_for_plot, aes(x=TwinBeds, y=numBelow, fill=inc_type))+
-  geom_bar(stat="identity", position="dodge")+labs(x="Number Twin Beds Neeed",
+  geom_bar(stat="identity", position="dodge")+labs(x="Number Twin Beds Needed",
   y="Number Below Median Percentile", 
   title="Number Twin Beds by Income Percentile")+
   scale_fill_discrete(name="Median Income Percentile", 
