@@ -1,8 +1,11 @@
 
 ```{r }
 library(dplyr)
+library(here)
 
-lunch_data = read.csv("data/lunches_2020_2021.csv")
+i_am("school_data/lunch_plot.Rmd")
+
+lunch_data = read.csv(here("school_data/data/lunches_2020_2021.csv"))
 
 lunch_data$FREE.and.REDUCED = as.numeric(lunch_data$FREE.and.REDUCED)
 
