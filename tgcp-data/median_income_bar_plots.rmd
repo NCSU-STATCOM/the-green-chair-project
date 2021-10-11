@@ -1901,10 +1901,10 @@ ggplot(income_year, aes(x=Year, y=n, fill=Homeincome))+
   y="Number of Clients", 
   title="Income Percentiles by Year")+
   scale_fill_discrete(name="Median Income Percentile", 
-                      labels=c("Above 60%",
+                      labels=c("Below 30%", 
                                "Below 60%",
-                              "Unknown",
-                              "Below 30%"
+                              "Above 60%",
+                              "Unknown"
                               )) +
   theme(plot.title = element_text(color="Black", size=14, face="bold", hjust = 0.6),
           legend.position="bottom")+
@@ -1923,10 +1923,10 @@ ggplot(income_household, aes(x=TotalHHNumber, y=n, fill=Homeincome))+
   y="Number of Clients", 
   title="Income Percentiles by Number of Household Members")+
   scale_fill_discrete(name="Median Income Percentile", 
-                      labels=c("Above 60%",
+                      labels=c("Below 30%", 
                                "Below 60%",
-                              "Unknown",
-                              "Below 30%")) +
+                              "Above 60%",
+                              "Unknown")) +
   theme(plot.title = element_text(color="Black", size=12, face="bold", hjust = 0.6),
           legend.position="bottom") +
   guides(fill=guide_legend(nrow=2, byrow=TRUE))
