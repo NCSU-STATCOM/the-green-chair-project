@@ -9,7 +9,20 @@ library(sf)
 
 ##################################################
 #### 1. Read in shape file of all the schools in NC
-shp <- read_csv("NC_schools.csv")
+#shp <- read_csv("NC_schools.csv")
+public_shp_df <- st_read(dsn = "D:/NC_schools_shapefile/Public_Schools.shp", stringsAsFactors = F)
+non_public_shp_df <- st_read(dsn = "D:/NC_schools_shapefile/Non-Public_Schools.shp", stringsAsFactors = F)
+uni_shp_df <- st_read(dsn = "D:/NC_schools_shapefile/Colleges_and_Universities.shp", stringsAsFactors = F)
+
+### 1-2. Rename & remove columns in the three shape files
+### Eyeballing the three files, we select common variables in all three files
+public_shp_df <- public_shp_df %>% dplyr::select(c("SCHOOL_NAM", "PHYS_ADDR", "PHYS_CITY", "PHYS_ZIP", "COUNTY", "geometry"))
+non_public_shp_df <- non_public_shp_df %>% dplyr::select(c("SchoolName", "Address", "City", "Zipcode", "County", "geometry"))
+uni_shp_df <- uni_shp_df %>% dplyr::select(c("NAME", "ADDRESS", "CITY", "ZIP", "COUNTY", "geometry"))
+colnames(public_shp_df) <- colnames(uni_shp_df) <- c("SchoolName", "Address", "City", "Zipcode", "County", "geometry")
+
+# merge the three shape files into one
+shp <- union_all(public_shp_df, non_public_shp_df)
 
 ##################################################
 ### 2. Read in STATCOM_data.xlsx
@@ -312,9 +325,13 @@ sum(school_col_merge$County %>% is.na()) # Note. Total of 296 schools are missin
 merge_shp <- school_col_merge %>% drop_na()
 counties_shp <- st_read("D:/NC_schools_shapefile/NCDOT_County_Boundaries.shp")
 
+
 ggplot() + 
-  geom_sf(data = counties_shp) + 
-  geom_sf(data = merge_shp)
+  geom_sf(data = counties_shp, aes(geometry = geometry)) +
+  geom_sf(data = merge_shp, aes(geometry = geometry)) 
+  
+
+
 
 
 
