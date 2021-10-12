@@ -1,0 +1,108 @@
+## Convert data to a longer format
+```{r echo = TRUE}
+library(readxl)
+library(tidyverse)
+#read excel document 
+tgcp_demog <- read_excel("C:/Users/CKA/Downloads/STATCOM_data.xlsx", col_types = "text")
+#rename tghe columns 
+tgcp_demog <- rename(tgcp_demog, Id = `...1`)
+
+
+#table(tgcp_demog$TotalHHNumber,
+
+#convert the data set from wide format to longer format (by roll up the household Member Information and drop the missing values as necessary)
+Longer_Format <- pivot_longer(tgcp_demog,col = 15:118,names_to = "HHMemberInfo",values_to = "HHMemberInfoAnswer",values_drop_na = TRUE) 
+
+
+```
+
+this pivot_longer, created two new columns, one is the short question of the household information, another columns answer the short question correspondingly. 
+
+## trying to do some columns combining to reduce the dimensionality. 
+
+```{r echo = TRUE}
+#unite the client last name and client first name 
+C <- unite(Longer_Format,ClientName, ends_with("Name"), sep = " ", na.rm = FALSE)
+
+#unite the HHMemberInfo and InfoAnswer into one col with ":" separate. 
+D <- unite(C,HHMemberInfo, starts_with("HHMemberInfo"), sep = ": ", na.rm = FALSE)
+
+
+# convert the necessary variables from char to numeric values 
+E <- D[, c(1,2,5,13,14,20,21)] <- sapply(D[,c(1,2,5,13,14,20,21)], as.numeric)
+#str(D)
+
+#create a new column  containing number of beds total in the household (adding QueensBed and TwinBeds)
+F <- mutate(D,Beds = QueenBeds+TwinBeds)
+
+
+#delete cols: QueensBeds and TwinsBeds
+G <- subset(F, select = -c(TwinBeds,QueenBeds) )
+
+
+#trying to deal with the ClientGender and Client Age issues since ClientAge contains some gender info that are not stated in the ClientGender col 
+
+H <- G %>%
+  mutate(ClientGenderFill = case_when(
+    endsWith(ClientAge, "Male") ~ "Male",
+    endsWith(ClientAge, "Female") ~ "Female"
+    
+  ))
+```
+
+## Some simple data visualizations. 
+
+Only collecting the data that containing the total number of household member. 
+
+```{r pressure, echo=FALSE}
+View(H)
+
+#table(H$Race,H$ClientAge)
+P <-H %>% group_by(ClientName) %>% filter(HHMemberInfo == c('TotalHHNumber: '))
+
+P <- H %>% group_by(ClientName) %>% filter(HHMemberInfo == c('TotalHHNumber: 2.0'))
+Y <- H %>% group_by(ClientName) %>% filter(HHMemberInfo == c('TotalHHNumber: 3.0'))
+B <-H %>% group_by(ClientName) %>% filter(HHMemberInfo == c('TotalHHNumber: 4.0'))
+K <- H %>% group_by(ClientName) %>% filter(HHMemberInfo == c('TotalHHNumber: 5.0'))
+U <- H %>% group_by(ClientName) %>% filter(HHMemberInfo == c('TotalHHNumber: 6.0'))
+Q <-H %>% group_by(ClientName) %>% filter(HHMemberInfo == c('TotalHHNumber: 7.0'))
+I <- H %>% group_by(ClientName) %>% filter(HHMemberInfo == c('TotalHHNumber: 8.0'))
+L <- H %>% group_by(ClientName) %>% filter(HHMemberInfo == c('TotalHHNumber: 9.0'))
+R <-H %>% group_by(ClientName) %>% filter(HHMemberInfo == c('TotalHHNumber: 10.0'))
+Z <- H %>% group_by(ClientName) %>% filter(HHMemberInfo == c('TotalHHNumber: 1.0'))
+
+A<- rbind(P,Y)
+B <- rbind(B,K)
+C <- rbind(U,Q)
+D <- rbind(I,L)
+E <- rbind(R,Z)
+F <- rbind(A,B)
+G <- rbind(C,D)
+J <- rbind(F,G)
+S <- rbind(J,E)
+```
+
+
+```{r echo = TRUE}
+# S here is data set with household member info only have total number of HH member
+# we are not considering the HH member greater than 10 at this time. 
+
+# And then, some data visualization. 
+ggplot(S, aes(x = HHMemberInfo, fill = as.factor(Beds))) + geom_bar(position = "stack")+
+  scale_fill_discrete(name = "Beds") +
+  labs (title = "Count:House Hold Total Numbers, Stack: # of Beds")+
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
+
+```
+
+__The plot above is the data visualization of the count of household with different total number of member. As well as count of total beds they have in their homes for each (distinct) total number of household member(0,1,...,10)__  
+This plot include the missing values from past surveys. 
+
+```{r echo = TRUE}
+ggplot(subset(S,!is.na(Beds)), aes(x = HHMemberInfo, fill = as.factor(Beds))) + 
+  geom_bar(position = "stack")+
+  scale_fill_discrete(name = "Beds") +
+  labs (title = "Count:House Hold Total Numbers, Stack: # of Beds(Remove NA)")+
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
+```
+This is basically same plot as the previous one, except the removal of missing total number of beds information. 

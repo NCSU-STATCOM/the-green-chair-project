@@ -1,19 +1,316 @@
-# Section 2
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+# Exploratory Analysis on Social Vulnerability Measures of Locations of Green Chair Clients
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+The CDC Social Vulnerability Index (SVI) is a collection of social vulnerability measures for each census tract. We merged the CDC SVIs into the zip codes of the TGCP clients.
+
+```{r include=FALSE}
+library(ggplot2)
+library(rmarkdown)
+library(tidyverse)
+library(corrplot)
+library(psych)
+library(gridExtra)
+
+
+data_dir<-"merged_SVI/"
+
+GC_SVI_file<-"merged_CDC_GC.csv"
+
+GC_SVI<-read.csv(paste0(data_dir,GC_SVI_file))
+GC_SVI[GC_SVI==""]<-NA
+
+# GC_SVI$Timestamp<-as.Date(GC_SVI$Timestamp, format ="%d-%b-%Y")
+
+GC_SVI$Veteran[GC_SVI$Veteran=="Yes"]<-1
+GC_SVI$Veteran[GC_SVI$Veteran!="1" | is.na(GC_SVI$Veteran)]<-0
+GC_SVI$Veteran<-as.numeric(GC_SVI$Veteran)
+
+GC_SVI$Incarcerated[GC_SVI$Incarcerated=="Yes"]<-1
+GC_SVI$Incarcerated[GC_SVI$Incarcerated!="1"| is.na(GC_SVI$Incarcerated)]<-0
+GC_SVI$Incarcerated<-as.numeric(GC_SVI$Incarcerated)
+
+GC_SVI$Disability[GC_SVI$Disability=="Yes"]<-1
+GC_SVI$Disability[GC_SVI$Disability!="1"| is.na(GC_SVI$Disability)]<-0
+GC_SVI$Disability<-as.numeric(GC_SVI$Disability)
+
+bed_req<-GC_SVI[,colnames(GC_SVI)[endsWith(colnames(GC_SVI), "BedReq")]]
+
+for (i in 1:nrow(bed_req)){
+  for (j in 1:ncol(bed_req)){
+    if (is.na(bed_req[i,j])){
+      bed_req[i,j]<-"0"
+    }
+    else{
+    if (startsWith(bed_req[i,j], "Yes")){
+      bed_req[i,j]<-"1"
+    }
+    else{
+      bed_req[i,j]<-"0"
+    }
+    }
+  }
+}
+
+##Assume that all NAs for those who have put down bed request are Nos
+
+bed_req<-as.data.frame(lapply(bed_req,as.numeric))
+
+GC_SVI<-cbind(GC_SVI, totalBedNeeded=rowSums(bed_req))
+```
+
+## Gathering some initial descriptive statistics on the numerical data
+```{r echo=FALSE}
+
+numer_subset<-colnames(GC_SVI)[sapply(GC_SVI, typeof)!="character" &
+                                 !startsWith(colnames(GC_SVI), "More") &
+                                 !startsWith(colnames(GC_SVI), "HH") &
+                                 !startsWith(colnames(GC_SVI), "EPL") & 
+                                 !startsWith(colnames(GC_SVI), "SPL") &
+                                 !startsWith(colnames(GC_SVI), "RPL") &
+                                 !startsWith(colnames(GC_SVI), "F") & 
+                                 !startsWith(colnames(GC_SVI), "E_") & 
+                                 !startsWith(colnames(GC_SVI), "M_") & 
+                                 !startsWith(colnames(GC_SVI), "MP") ]
+
+numer_subset<-numer_subset[-which(numer_subset %in% c("X.1", "X", "ClientZipCode",
+                                                      "Timestamp"))]
+
+numer_GCSVI<-GC_SVI[numer_subset]
+
+describe(numer_GCSVI)
+```
+
+Some things worth noting about SVI statistics of where clients live:
+
+* Percent Poverty averages about 17%, but Percent Unemployment averages only about 5-6%
+* About 12% have no high school diploma
+* About 12% are single parents
+* About 10% have a disability
+* Average percent minority is over half
+* About a 23% are seventeen or younger
+* On average, about 15% live in housing structures with more than 10 units per structure
+* About 7% do not have a vehicle
+* About 13% do not possess insurance
+
+
+
+Some things worth noting about clients:
+
+* Annual Income is right skewed; most annual incomes are small with a few large outliers
 
 ```{r}
-cbind(rnorm(10), rgamma(10, shape = 2))
+boxplot(numer_GCSVI$AnnualIncomeAmount, main = "Annual Income")
 ```
 
-## Including Plots 2
+* NumAdultMale is slightly left skewed; most households have about one adult male but a lot of outliers with none
 
-You can also embed plots, for example:
-
-```{r, echo=FALSE}
-plot(pressure)
+```{r}
+boxplot(numer_GCSVI$NumAdultMales, main = "Number Adult Males")
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+## Some correlation statistics:
+
+```{r include = FALSE}
+
+numer_cor <- cor(numer_GCSVI, use="complete.obs")
+```
+
+* NumChildren negatively correlated with SVI measures of poverty, living in apartment-like structures, and not having a vehicle
+
+
+
+    Correlations with NumChildren
+```{r}
+numer_cor[row.names(numer_cor) == "NumChildren",]
+```
+
+* We see that a need for queen beds is positively correlated with those 
+incarcerated and especially those with a disability. Need for queen beds is also slightly positively correlated with SVI measures of poverty and not having a vehicle
+
+
+
+    Correlations with QueenBeds
+```{r}
+numer_cor[row.names(numer_cor) == "QueenBeds",]
+```
+
+* Need for twin beds is slightly positively correlated with SVI measures of percent of population aged less than or equal to 17, and percent of population living in mobile homes (in fact, the need for beds in general is correlated with these SVI measures)
+
+
+
+    Correlations with TwinBeds
+```{r}
+numer_cor[row.names(numer_cor) == "TwinBeds",]
+```
+
+* We see some of the largest correlation values with Disability, i.e.
+  + SVI measures of poverty, no high school diploma, speaking 
+  English "less than well", living in apartment-like
+  structures and crowded environments, having no vehicle, and
+  not being insured
+
+However, it is worth noting that SVI statistics may look at a population different from that of TGCP clients.
+For instance, the correlation between those with a disability among the clients
+in the original dataset and the percent of population in the client's zipcode with a disability
+is quite small.
+
+
+
+    Correlations with Disability
+```{r}
+numer_cor[row.names(numer_cor) == "Disability", ]
+```
+
+```{r include=FALSE}
+
+### Percent Median Income by Household Size
+## Wake County
+sixty_wake<-c(31920,36480,41040,45600,49260,52920)
+
+sixty_wake_df<-data.frame(id=c(1:length(sixty_wake)),inc=sixty_wake)
+
+##To get for household size 7,8 for Wake County, assuming a linear relationship
+linear_sixty_wake<-lm(inc~id,data=sixty_wake_df)
+
+sixty_wake_pred<-data.frame(id=c(7,8),
+                            inc=predict(linear_sixty_wake, 
+                                        newdata=data.frame(id=c(7,8))))
+
+sixty_wake<-rbind(sixty_wake_df,sixty_wake_pred)$inc
+ 
+
+#Raleigh
+sixty_ral<-c(40200,45950,51700,57450,62050,66650,71200,75800)
+
+eighty_ral<-c(53600,61250,68900,76550,82700,88800,94950,101050)
+
+
+##Assuming a linear relationship between percent median income and percent level
+## i.e. linear increase in annual income level for going from 30% to 60% median 
+## income level
+
+slope<-(eighty_ral-sixty_ral)/0.2
+
+intercept<-sixty_ral-(slope*0.6)
+
+thirty_ral<-(slope*0.3)+intercept
+
+thirty_wake<-thirty_ral*mean(sixty_wake/sixty_ral)
+
+##Adding 1s and 0s for in/out of % median income level group for 30% and 60% for
+## both Wake County and Raleigh areas
+ral_sixty<-c()
+ral_thirty<-c()
+wake_sixty<-c()
+wake_thirty<-c()
+for (i in 1:nrow(GC_SVI)){
+  inc<-GC_SVI$AnnualIncomeAmount[i]
+  numhouse<-GC_SVI$TotalHHNumber[i]
+  if (!is.na(numhouse) &!is.na(inc)){
+    if (0<numhouse & numhouse<9){
+      if (inc<=sixty_ral[numhouse]){
+        ral_sixty<-append(ral_sixty,1)
+      }
+      else{
+        ral_sixty<-append(ral_sixty,0)
+      }
+      if (inc<=sixty_wake[numhouse]){
+        wake_sixty<-append(wake_sixty,1)
+      }
+      else{
+        wake_sixty<-append(wake_sixty,0)
+      }
+      if (inc<=thirty_ral[numhouse]){
+        ral_thirty<-append(ral_thirty,1)
+      }
+      else{
+        ral_thirty<-append(ral_thirty,0)
+      }
+      if (inc<=thirty_wake[numhouse]){
+        wake_thirty<-append(wake_thirty,1)
+      }
+      else{
+        wake_thirty<-append(wake_thirty,0)
+      }
+    }
+    else{
+      ral_sixty<-append(ral_sixty,NA)
+      ral_thirty<-append(ral_thirty,NA)
+      wake_sixty<-append(wake_sixty,NA)
+      wake_thirty<-append(wake_thirty,NA)
+    }
+  }
+  else{
+    ral_sixty<-append(ral_sixty,NA)
+    ral_thirty<-append(ral_thirty,NA)
+    wake_sixty<-append(wake_sixty,NA)
+    wake_thirty<-append(wake_thirty,NA)
+  }
+}
+
+GCSVI_wInc<-cbind(GC_SVI,ral_sixty,ral_thirty,wake_sixty,wake_thirty)
+
+GCSVI_wInc<-GCSVI_wInc[!is.na(GCSVI_wInc$ral_sixty),]
+
+```
+
+
+
+## Deeper Dive Into Correlated Relationships
+```{r echo=FALSE}
+
+ggplot(GCSVI_wInc, aes(x=NumChildren, y=EP_POV,color=as.character(NumChildren)))+geom_boxplot()+labs(x="Number of Children",y="Percent Poverty", title="Percent Poverty by Number of Children")+scale_color_discrete(name="Num Children", 
+                       labels=c(0,1,2,3,4,5,6,7))
+```
+Some things to note:
+
+* We see that the distribution among number of children is about the same
+* Those with no children, however, often are within more impoverished areas
+
+```{r echo=FALSE}
+ggplot(GCSVI_wInc, aes(x=NumChildren, y=EP_MUNIT,color=as.character(NumChildren)))+geom_boxplot()+labs(x="Number of Children",y="Percent More than 10 Units", title="Percent More than 10 Units by Number of Children")+scale_color_discrete(name="Num Children", 
+                       labels=c(0,1,2,3,4,5,6,7))
+```
+Some things to note:
+
+* We see that the distribution among number of children varies; in general we see that having more children is associated with a smaller probability of living in a structure with more than ten housing units
+
+```{r echo=FALSE}
+ggplot(GCSVI_wInc, aes(x=NumChildren, y=EP_NOVEH,color=as.character(NumChildren)))+geom_boxplot()+labs(x="Number of Children",y="Percent No Vehicle", title="Percent No Vehicle by Number of Children")+scale_color_discrete(name="Num Children", 
+                       labels=c(0,1,2,3,4,5,6,7))
+```
+Some things to note:
+
+* We see that the distribution among number of children is about the same
+  + There are a few clients that live in areas where the probability of having no vehicle is high no matter the number of children (there are several high outliers)
+
+
+```{r echo=FALSE}
+ggplot(GCSVI_wInc, aes(x=QueenBeds, y=EP_POV,color=as.character(QueenBeds)))+geom_boxplot()+labs(x="Number Queen Beds Needed",y="Percent Poverty", title="Percent Poverty by Queen Beds Needed")+scale_color_discrete(name="Num Beds", 
+                       labels=c(0,1,2,3,4,5,6,7))
+```
+Some things to note:
+
+* We see that that distribution among number of queen beds varies. It is worth noting that:
+  + Those that need one queen bed tend to live in more impoverished areas
+  + It would be worth looking into how the need for a queen bed is distributed among those with a disability
+
+```{r echo=FALSE}
+ggplot(GCSVI_wInc, aes(x=QueenBeds, y=EP_NOVEH,color=as.character(QueenBeds)))+geom_boxplot()+labs(x="Number Queen Beds Needed",y="Percent No Vehicle", title="Percent No Vehicle by Queen Beds Needed")+scale_color_discrete(name="Num Beds", 
+                       labels=c(0,1,2,3,4,5,6,7))
+```
+Some things to note:
+
+* We see that that distribution among number of queen beds varies. 
+
+```{r echo=FALSE}
+ggplot(GCSVI_wInc, aes(x=TwinBeds, y=EP_AGE17,color=as.character(TwinBeds)))+geom_boxplot()+labs(x="Number Twin Beds Needed",y="Percent Less Than 17", title="Percent Less Than 17 by Twin Beds Needed")+scale_color_discrete(name="Num Beds", 
+                       labels=c(0,1,2,3,4,5,6,7))
+
+
+```
+Some things to note:
+
+* We see that that distribution among number of twin beds varies. It is worth noting that overall, however, that the need for twin beds increases as one tends to live in areas with more people less than 17 years of age.
+
+

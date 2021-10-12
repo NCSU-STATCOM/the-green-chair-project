@@ -4,7 +4,7 @@
 
 library(dplyr)
 
-dir<-"/Users/jrk99/STATCOM/Datasets/"
+dir<-"/Users/Alvin/Documents/NCSU_Fall_2021/TheGreenChairProject/the-green-chair-project/merged_SVI/"
 
 ##External CDC data
 file_18<-"NorthCarolina.csv"
@@ -16,8 +16,11 @@ zip_tract_file<-"zcta_tract_rel_10.txt"
 zt_data<-read.csv(paste0(dir,zip_tract_file))
 
 ###Green Chair Data
+# used reading_in_data.R, set GC_data to tgcp_demog
 green_chair_file<-"STATCOM_data.xlsx - Program Referrals.csv"
 GC_data<-read.csv(paste0(dir,green_chair_file))
+
+GC_data$ClientZipCode <- as.numeric(GC_data$ClientZipCode)
 
 ##Cleaning zipcodes--Changes Zip codes with only 4 numbers to add a zero at end; 
 ##                      if 6 numbers or zip not in census or zip not in NC, changed to NA
@@ -40,12 +43,12 @@ keep<-colnames(GC_data)[!endsWith(colnames(GC_data), "FirstName")&!endsWith(coln
 
 GC_data<-GC_data[colnames(GC_data)%in%keep]
 
-##Creating New Summary Variables By TRPOPPCT--The Percentage of Total Population of the 2010 Census Tract 
+##Creating New Summary Variables By ZPOPPCT--The Percentage of Total Population of the ZCTA
 ##                                              represented by the record
-trpoppct_summary<- zt_data %>% group_by(GEOID) %>% summarise(trpoppct_sum = sum(TRPOPPCT))
+ZPOPPCT_summary<- zt_data %>% group_by(ZCTA5) %>% summarise(ZPOPPCT_sum = sum(ZPOPPCT))
 
-##Yes, most census tracts are wholly accounted for by the zip codes
-mean(trpoppct_summary$trpoppct_sum>=99)
+##Yes, most zip codes are wholly accounted for by the census tracts
+mean(ZPOPPCT_summary$ZPOPPCT_sum>=99)
 
 
 ##Actual merger loop
@@ -64,11 +67,11 @@ NC_18[NC_18==-999]<-NA
 for (zip in GC_data$ClientZipCode){
   if (!is.na(zip)){
     ##Grabs the geoids/tracts and percent of pop. covered by that geoid, for this zipcode
-    one_zip_mult_tract <- zt_data[zt_data$ZCTA5 == zip, names(zt_data) %in% c("GEOID", "TRPOPPCT")]
+    one_zip_mult_tract <- zt_data[zt_data$ZCTA5 == zip, names(zt_data) %in% c("GEOID", "ZPOPPCT")]
     one_zip_mult_tract<-rename(one_zip_mult_tract, FIPS="GEOID")
   }
   else{
-    one_zip_mult_tract<-data.frame(FIPS=NaN,TRPOPPCT=NaN)
+    one_zip_mult_tract<-data.frame(FIPS=NaN,ZPOPPCT=NaN)
   }
   
   
@@ -87,8 +90,8 @@ for (zip in GC_data$ClientZipCode){
     else {
       ##Take weighted sum
       merged_GC_mat[merged_mat_idx, col_idx] <- sum(one_zip_mult_tract_GC[coln] * 
-                                                      one_zip_mult_tract_GC$TRPOPPCT, na.rm = T) / 
-        sum(one_zip_mult_tract_GC$TRPOPPCT[!is.na(one_zip_mult_tract_GC[coln])])
+                                                      one_zip_mult_tract_GC$ZPOPPCT, na.rm = T) / 
+        sum(one_zip_mult_tract_GC$ZPOPPCT[!is.na(one_zip_mult_tract_GC[coln])])
     }
     col_idx <- col_idx + 1
   }

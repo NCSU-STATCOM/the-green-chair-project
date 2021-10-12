@@ -1,0 +1,44 @@
+
+```{r }
+library(dplyr)
+library(here)
+
+i_am("school_data/lunch_plot.Rmd")
+
+lunch_data = read.csv(here("school_data/data/lunches_2020_2021.csv"))
+
+lunch_data$FREE.and.REDUCED = as.numeric(lunch_data$FREE.and.REDUCED)
+
+lunch_data %>%
+  arrange(desc(FR.PERCENTAGE)) %>%
+  slice(1:10) %>%
+  mutate(lunch_rank = fct_reorder(SCHOOL.NAME, FR.PERCENTAGE),
+         highlight =
+           ifelse(SCHOOL.NAME %in%
+                              SCHOOL.NAME[which.max(FR.PERCENTAGE)],T,F)) %>%
+  ggplot(., aes(x=factor(lunch_rank),y=FR.PERCENTAGE)) +
+    geom_bar(stat = 'identity') +
+  coord_flip() +
+  theme(axis.text.y = element_text(size = 7, angle = 45),
+        legend.position = "none") +
+  labs(title = "Top 10 Percentage Free and Reduced Lunch",
+       x = "", y = "") 
+
+
+lunch_data %>%
+  arrange(desc(FREE.and.REDUCED)) %>%
+  slice(1:10) %>%
+  mutate(lunch_rank = fct_reorder(SCHOOL.NAME, FREE.and.REDUCED),
+         highlight =
+           ifelse(SCHOOL.NAME %in%
+                              SCHOOL.NAME[which.max(FREE.and.REDUCED)],T,F)) %>%
+  ggplot(., aes(x=factor(lunch_rank),y=FREE.and.REDUCED)) +
+    geom_bar(stat = 'identity') +
+  coord_flip() +
+  theme(axis.text.y = element_text(size = 7, angle = 45),
+        legend.position = "none") +
+  labs(title = "Top 10 Total Free and Reduced Lunch",
+       x = "", y = "") 
+
+
+```
