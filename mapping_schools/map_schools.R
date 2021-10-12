@@ -2,13 +2,14 @@ library(rgdal)
 library(raster)
 library(tidyverse)
 library(readxl)
+library(viridis)
+library(rgeos)
+library(maptools)
+library(sf)
 
 ##################################################
 #### 1. Read in shape file of all the schools in NC
-shp_df <- read.csv("NC_schools.csv")
-shp <- shp_df[,-1]
-coordinates(shp) <- ~ coords.x1 + coords.x2
-plot(shp)
+shp <- read_csv("NC_schools.csv")
 
 ##################################################
 ### 2. Read in STATCOM_data.xlsx
@@ -103,7 +104,7 @@ school_col_long <- school_col_long %>% filter(!school_names %in% unident_names)
 ##### Change specific school names (if they're obviously mistyped)
 ##### Note. If we don't know if the schools are elementary/middle/high, need to look at
 ##### original statcom.xlsx to determine individual's age. 
-SchoolName <- shp_df$SchoolName
+SchoolName <- shp$SchoolName
 
 ### B
 school_col_long$school_names <- school_col_long$school_names %>% str_replace_all("Baileywick Elementary$", "Baileywick Road Elementary")
@@ -291,13 +292,13 @@ school_col_long$school_names <- school_col_long$school_names %>% str_replace_all
 # Note. There are wrong rows in the shape file (same school name, NOT near WAKE COUNTY).
 #       Delete these schools (one school exactly) since they only cause confusion!
 ##################################################
-shp_df <- shp_df %>% filter(!Address == "987 Carver Sch Rd")
+shp <- shp %>% filter(!Address == "987 Carver Sch Rd")
 
 colnames(school_col_long) <- c("Zipcode","SchoolName")
 school_col_long$Zipcode_first <- str_sub(school_col_long$Zipcode, 1,3)
-shp_df$Zipcode <- as.character(shp_df$Zipcode)
-shp_df$Zipcode_first <- str_sub(shp_df$Zipcode, 1,3)
-school_col_merge <- left_join(school_col_long, shp_df, by = c("SchoolName", "Zipcode_first"))
+shp$Zipcode <- as.character(shp$Zipcode)
+shp$Zipcode_first <- str_sub(shp$Zipcode, 1,3)
+school_col_merge <- left_join(school_col_long, shp, by = c("SchoolName", "Zipcode_first"))
 
 ##################################################
 # 5. Some schools are not included in the shape file. 
@@ -309,5 +310,11 @@ sum(school_col_merge$County %>% is.na()) # Note. Total of 296 schools are missin
 # Let's plot what we have for now. 
 
 merge_shp <- school_col_merge %>% drop_na()
-coordinates(merge_shp) <- ~ coords.x1 + coords.x2
-plot(merge_shp)
+counties_shp <- st_read("D:/NC_schools_shapefile/NCDOT_County_Boundaries.shp")
+
+ggplot() + 
+  geom_sf(data = counties_shp) + 
+  geom_sf(data = merge_shp)
+
+
+
