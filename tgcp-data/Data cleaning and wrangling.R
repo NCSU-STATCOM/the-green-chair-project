@@ -1,10 +1,11 @@
 # Data cleaning and wrangling
 ## Read in the raw data
 library(readxl)
-greenchair <- read_excel("C:/Users/ywang256/Desktop/STATCOM_data.xlsx", na= "NA")
+library(here)
+greenchair <- read_excel("STATCOM_data.xlsx", na= "NA")
 nms <- colnames(greenchair)
 ct <- ifelse(grepl("ClientZipCode|QueenBeds|Cribs|TwinBeds", nms), "numeric", "guess")
-greenchair<- as.data.frame(read_excel("C:/Users/ywang256/Desktop/STATCOM_data.xlsx", 
+greenchair<- as.data.frame(read_excel("STATCOM_data.xlsx", 
                                       na= "NA", col_types = ct))
 str(greenchair[,1:20])
 str(greenchair[,118:128])
