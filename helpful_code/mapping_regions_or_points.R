@@ -15,7 +15,8 @@ library(maptools)
 
 # using 2019 counties shapefile from https://www.census.gov/cgi-bin/geo/shapefiles/index.php 
 # too large to upload to GitHub; download it on your own if you want
-counties_shp <- readOGR("tl_2019_us_county/tl_2019_us_county.shp")
+# It's uploaded to the Google Drive for The Green Chair Project
+counties_shp <- readOGR("tl_2019_us_county.shp")
 
 counties_centroids <- gCentroid(counties_shp, byid = TRUE, id = counties_shp@data$GEOID)
 
