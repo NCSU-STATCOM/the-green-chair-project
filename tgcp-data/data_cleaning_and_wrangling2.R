@@ -40,7 +40,10 @@ for (i in 1:length(greenchair3$ClientZipCode)){
 ##Removing Anything Ending with FirstName, LastName, or Birthday
 greenchair3 <- greenchair3 %>% select(!ends_with(c("FirstName", "LastName", "Birthday")))
 
-##Writes csv for dataframe create
+## Saving as rds object (preserves factor type)
+saveRDS(greenchair3, file = "cleaned_STATCOM_data.rds")
+
+##Writes csv for dataframe created
 write.csv(x=greenchair3, file = "cleaned_STATCOM_data.csv", row.names = F)
 
 
