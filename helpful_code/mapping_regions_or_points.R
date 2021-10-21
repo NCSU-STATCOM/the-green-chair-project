@@ -79,3 +79,25 @@ map_NC <- ggplot() + geom_polygon(data = shp_nc_df, aes(x = long, y = lat, group
 map_NC # takes a while to render
 
 
+
+# Using choroplethrZip
+
+# install.packages("devtools")
+library(devtools)
+install_github('arilamstein/choroplethrZip@v1.5.0')
+
+library(choroplethrZip)
+
+# Using example in https://arilamstein.com/creating-zip-code-choropleths-choroplethrzip/ 
+# "Manually Selecting ZCTAs"
+
+data(df_pop_zip)
+
+manhattan_les = c("10002", "10003", "10009")
+manhattan_ues = c("10021", "10028", "10044", "10128")
+zip_choropleth(df_pop_zip,
+               zip_zoom = c(manhattan_les, manhattan_ues),
+               title    = "2012 Lower and Upper East Side ZCTA Population Estimates",
+               legend   = "Population")
+
+
