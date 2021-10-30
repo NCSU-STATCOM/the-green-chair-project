@@ -105,3 +105,67 @@ new_GC_data<-data.frame(GC_data,merged_GC_mat)
 
 ##Writes csv for dataframe create
 write.csv(x=new_GC_data, file=paste(dir,"merged_CDC_GC.csv",sep=""))
+
+
+
+
+
+
+
+data_dir<-"/Users/Alvin/Documents/NCSU_Fall_2021/TheGreenChairProject/the-green-chair-project/merged_SVI/"
+
+GC_SVI_file<-"merged_CDC_GC.csv"
+
+GC_SVI<-read.csv(paste0(data_dir,GC_SVI_file))
+GC_SVI[GC_SVI==""]<-NA
+
+# GC_SVI$Timestamp<-as.Date(GC_SVI$Timestamp, format ="%d-%b-%Y")
+
+GC_SVI$Veteran[GC_SVI$Veteran=="Yes"]<-1
+GC_SVI$Veteran[GC_SVI$Veteran!="1" | is.na(GC_SVI$Veteran)]<-0
+GC_SVI$Veteran<-as.numeric(GC_SVI$Veteran)
+
+GC_SVI$Incarcerated[GC_SVI$Incarcerated=="Yes"]<-1
+GC_SVI$Incarcerated[GC_SVI$Incarcerated!="1"| is.na(GC_SVI$Incarcerated)]<-0
+GC_SVI$Incarcerated<-as.numeric(GC_SVI$Incarcerated)
+
+GC_SVI$Disability[GC_SVI$Disability=="Yes"]<-1
+GC_SVI$Disability[GC_SVI$Disability!="1"| is.na(GC_SVI$Disability)]<-0
+GC_SVI$Disability<-as.numeric(GC_SVI$Disability)
+
+bed_req<-GC_SVI[,colnames(GC_SVI)[endsWith(colnames(GC_SVI), "BedReq")]]
+
+for (i in 1:nrow(bed_req)){
+  for (j in 1:ncol(bed_req)){
+    if (is.na(bed_req[i,j])){
+      bed_req[i,j]<-"0"
+    }
+    else{
+      if (startsWith(bed_req[i,j], "Yes")){
+        bed_req[i,j]<-"1"
+      }
+      else{
+        bed_req[i,j]<-"0"
+      }
+    }
+  }
+}
+
+##Assume that all NAs for those who have put down bed request are Nos
+
+bed_req<-as.data.frame(lapply(bed_req,as.numeric))
+
+GC_SVI<-cbind(GC_SVI, totalBedNeeded=rowSums(bed_req))
+
+
+
+GC_SVI_EP <- GC_SVI %>% select(!(starts_with("E_") & !ends_with(c("TOTPOP", "HU", "HH")))) %>%
+  select(!starts_with(c("MP_", "M_", "EPL_", "SPL_", "RPL_", "F_")))
+
+summary(GC_SVI_EP[, 101:121])
+
+apply(GC_SVI_EP[, 101:121], 2, function(x) var(x, na.rm = T))
+  
+  
+
+
