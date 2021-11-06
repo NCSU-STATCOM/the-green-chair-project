@@ -54,7 +54,7 @@ corrplot(cor(as.matrix(cbind(mean_SVI$n,to_corr[of_interest_n]))),
          title="SVI Correlation with Number of People in ZipCode")
 corrplot(cor(as.matrix(cbind(mean_SVI["n Median"],to_corr[of_interest_med]))), 
          title="SVI Correlation with Number of People in ZipCode Below Median Income")
-corrplot(cor(as.matrix(cbind(mean_SVI["n Low Income"],to_corr[of_interest_lowinc])),
-         title="SVI Correlation with Number of People in ZipCode Below Low Income"))
-corrplot(cor(as.matrix(cbind(mean_SVI["n Very Low Income"],to_corr[of_interest_verylowinc])),
-         title="SVI Correlation with Number of People in ZipCode Below Very Low Income"))
+corrplot(cor(as.matrix(cbind(mean_SVI["n Low Income"],to_corr[of_interest_lowinc]))),
+         title="SVI Correlation with Number of People in ZipCode Below Low Income")
+corrplot(cor(as.matrix(cbind(mean_SVI["n Very Low Income"],to_corr[of_interest_verylowinc]))),
+         title="SVI Correlation with Number of People in ZipCode Below Very Low Income")
