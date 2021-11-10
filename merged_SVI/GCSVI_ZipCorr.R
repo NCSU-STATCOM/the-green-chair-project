@@ -2,9 +2,10 @@
 
 library(dplyr)
 library(corrplot)
+library(GGally)
 
 ##Loading in data
-data_dir<-"" ##Set local directory
+data_dir<-"merged_SVI/" ##Set local directory
 
 GC_SVI_file<-"merged_CDC_GC_clean.csv"
 
@@ -58,3 +59,24 @@ corrplot(cor(as.matrix(cbind(mean_SVI["n Low Income"],to_corr[of_interest_lowinc
          title="SVI Correlation with Number of People in ZipCode Below Low Income")
 corrplot(cor(as.matrix(cbind(mean_SVI["n Very Low Income"],to_corr[of_interest_verylowinc]))),
          title="SVI Correlation with Number of People in ZipCode Below Very Low Income")
+
+# taking a look at the numbers
+cor(as.matrix(cbind(mean_SVI$n,to_corr[of_interest_n])))[1,]
+
+
+
+# using GGally package to see significances 
+
+ggpairs(data.frame(cbind(mean_SVI$n, to_corr[c("EP_AGE65", "EP_MINRTY", "EP_MUNIT", "EP_MOBILE", "EP_CROWD")])), title = "Correlogram of the Metrics")
+
+# # PCA of the variables of interest
+# 
+# res_pca <- prcomp(to_corr[c("EP_AGE65", "EP_MINRTY", "EP_MUNIT", "EP_MOBILE", "EP_CROWD")])
+# 
+# first_pc <- res_pca$x[, 1]
+# 
+# # including the first PC summary into the correllogram
+# 
+# ggpairs(data.frame(cbind(mean_SVI$n, to_corr[c("EP_AGE65", "EP_MINRTY", "EP_MUNIT", "EP_MOBILE", "EP_CROWD")], first_pc)), title = "Correlogram of the Metrics")
+# 
+# # The first PC doesn't correlate as well.
