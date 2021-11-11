@@ -5,11 +5,7 @@ library(corrplot)
 library(GGally)
 
 ##Loading in data
-data_dir<-"merged_SVI/" ##Set local directory
-
-GC_SVI_file<-"merged_CDC_GC_clean.csv"
-
-GC_SVI<-read.csv(paste0(data_dir,GC_SVI_file))
+GC_SVI <- readRDS("cleaned_STATCOM_data_SVI.rds")
 
 
 ##Aggregate SV indices by ClientZipCode...Using Mean (Can Change Function)
@@ -39,10 +35,10 @@ mean_SVI["n"]<-counts[1:nrow(counts)-1,2]
 to_corr<-mean_SVI[,!(colnames(mean_SVI)%in%(c("ClientZipCode"))|startsWith(colnames(mean_SVI),"n"))]
 
 
-corrs_n<-cor(mean_SVI$n,to_corr)
-corrs_med<-cor(mean_SVI["n Median"],to_corr)
-corrs_lowinc<-cor(mean_SVI["n Low Income"],to_corr)
-corrs_verylowinc<-cor(mean_SVI["n Very Low Income"],to_corr)
+corrs_n<-cor(mean_SVI$n[complete.cases(to_corr)],to_corr[complete.cases(to_corr),])
+corrs_med<-cor(mean_SVI[complete.cases(to_corr), "n Median"],to_corr[complete.cases(to_corr),])
+corrs_lowinc<-cor(mean_SVI[complete.cases(to_corr), "n Low Income"],to_corr[complete.cases(to_corr), ])
+corrs_verylowinc<-cor(mean_SVI[complete.cases(to_corr), "n Very Low Income"],to_corr[complete.cases(to_corr), ])
 
 ##Taking out those SVI with absolute correlation less than 0.2
 of_interest_n<-colnames(to_corr)[abs(corrs_n)>=0.2]
@@ -50,24 +46,26 @@ of_interest_med<-colnames(to_corr)[abs(corrs_med)>=0.2]
 of_interest_lowinc<-colnames(to_corr)[abs(corrs_lowinc)>=0.2]
 of_interest_verylowinc<-colnames(to_corr)[abs(corrs_verylowinc)>=0.2]
 
+# can shorten names later for better plotting
 ##Correlation Matrix Plots
-corrplot(cor(as.matrix(cbind(mean_SVI$n,to_corr[of_interest_n]))), 
+corrplot(cor(as.matrix(cbind(mean_SVI$n[complete.cases(to_corr)],to_corr[complete.cases(to_corr), of_interest_n]))), 
          title="SVI Correlation with Number of People in ZipCode")
-corrplot(cor(as.matrix(cbind(mean_SVI["n Median"],to_corr[of_interest_med]))), 
+corrplot(cor(as.matrix(cbind(mean_SVI[complete.cases(to_corr), "n Median"],to_corr[complete.cases(to_corr), of_interest_med]))), 
          title="SVI Correlation with Number of People in ZipCode Below Median Income")
-corrplot(cor(as.matrix(cbind(mean_SVI["n Low Income"],to_corr[of_interest_lowinc]))),
+corrplot(cor(as.matrix(cbind(mean_SVI[complete.cases(to_corr), "n Low Income"],to_corr[complete.cases(to_corr), of_interest_lowinc]))),
          title="SVI Correlation with Number of People in ZipCode Below Low Income")
-corrplot(cor(as.matrix(cbind(mean_SVI["n Very Low Income"],to_corr[of_interest_verylowinc]))),
+corrplot(cor(as.matrix(cbind(mean_SVI[complete.cases(to_corr), "n Very Low Income"],to_corr[complete.cases(to_corr), of_interest_verylowinc]))),
          title="SVI Correlation with Number of People in ZipCode Below Very Low Income")
 
 # taking a look at the numbers
-cor(as.matrix(cbind(mean_SVI$n,to_corr[of_interest_n])))[1,]
-
-
+cor(as.matrix(cbind(mean_SVI$n[complete.cases(to_corr)],to_corr[complete.cases(to_corr), of_interest_n])))[1,]
+cor(as.matrix(cbind(mean_SVI$`n Median`[complete.cases(to_corr)],to_corr[complete.cases(to_corr), of_interest_med])))[1,]
+cor(as.matrix(cbind(mean_SVI$`n Low Income`[complete.cases(to_corr)],to_corr[complete.cases(to_corr), of_interest_lowinc])))[1,]
+cor(as.matrix(cbind(mean_SVI$`n Very Low Income`[complete.cases(to_corr)],to_corr[complete.cases(to_corr), of_interest_verylowinc])))[1,]
 
 # using GGally package to see significances 
 
-ggpairs(data.frame(cbind(mean_SVI$n, to_corr[c("EP_AGE65", "EP_MINRTY", "EP_MUNIT", "EP_MOBILE", "EP_CROWD")])), title = "Correlogram of the Metrics")
+ggpairs(data.frame(cbind(mean_SVI$n[complete.cases(to_corr)], to_corr[complete.cases(to_corr),c("EP_AGE65", "EP_MINRTY", "EP_MUNIT", "EP_MOBILE", "EP_CROWD")])), title = "Correlogram of the Metrics")
 
 # # PCA of the variables of interest
 # 
