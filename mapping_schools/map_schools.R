@@ -5,6 +5,8 @@ library(readxl)
 library(viridis)
 library(rgeos)
 library(sf)
+library(osmdata)
+library(ggmap)
 
 ##################################################
 #### 1. Read in shape file of all the schools in NC
@@ -317,26 +319,12 @@ school_col_merge <- left_join(school_col_long, shp, by = c("SchoolName", "Zipcod
 # Manually add their coordinates.
 
 sum(school_col_merge$County %>% is.na()) # Note. Total of 296 schools are missing coordinates. 
+View(school_col_merge)
 
 ###################################################
 # Let's plot what we have for now. 
-
-
-
 merge_shp <- school_col_merge %>% drop_na()
-counties_shp <- st_read("D:/NC_schools_shapefile/ZIP_Code_Tabulation_Areas.shp")
-plot(counties_shp)
-counties_centroids <- counties_shp %>% dplyr::select(c("GEOID10", "geometry"))
-plot(counties_centroids)
-plot(merge_shp)
-
-ggplot() + 
-  geom_sf(data = counties_centroids, aes(geometry = geometry)) +
-  geom_sf(data = merge_shp, aes(geometry))
-
-library(osmdata)
-getbb("Wake County North Carolina")
-
+mad_map <- get_map(getbb("Wake County North Carolina"), maptype = "toner-background")
 
 big_streets <- getbb("Wake County North Carolina")%>%
   opq()%>%
@@ -369,7 +357,7 @@ railway <- getbb("Wake County North Carolina")%>%
   add_osm_feature(key = "railway", value="rail") %>%
   osmdata_sf()
 
-q <- ggplot() +
+q <- ggmap(mad_map) +
   geom_sf(data = railway$osm_lines,
           inherit.aes = FALSE,
           color = "black",
@@ -381,13 +369,21 @@ q <- ggplot() +
           color = "black",
           size = .3,
           alpha = .5) +
-  #geom_sf(data = small_streets$osm_lines,
-  #        inherit.aes = FALSE,
-  #        color = "#666666",
-  #        size = .2,
-  #        alpha = .3) +
+  geom_sf(data = small_streets$osm_lines,
+          inherit.aes = FALSE,
+          color = "#666666",
+          size = .2,
+          alpha = .3) +
   geom_sf(data = big_streets$osm_lines,
           inherit.aes = FALSE,
           color = "black",
-          size = .5,
-          alpha = .6)
+          size = .4,
+          alpha = .5)
+
+q1 <- q + 
+  theme_void() + # get rid of background color, grid lines, etc.
+  labs(title = "Wake County") +
+  geom_sf(data = merge_shp$geometry, inherit.aes = FALSE,
+          size = 0.5)
+q1
+  
