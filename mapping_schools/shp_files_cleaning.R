@@ -10,10 +10,14 @@ library(ggmap)
 
 ##################################################
 #### 1. Read in shape file of all the schools in NC
-#shp <- read_csv("NC_schools.csv")
-public_shp_df <- st_read(dsn = "D:/NC_schools_shapefile/Public_Schools.shp", stringsAsFactors = F)
-non_public_shp_df <- st_read(dsn = "D:/NC_schools_shapefile/Non-Public_Schools.shp", stringsAsFactors = F)
-uni_shp_df <- st_read(dsn = "D:/NC_schools_shapefile/Colleges_and_Universities.shp", stringsAsFactors = F)
+public_shp_raw <- st_read(dsn = "D:/NC_schools_shapefile/Public_Schools.shp", stringsAsFactors = F)
+non_public_shp_raw <- st_read(dsn = "D:/NC_schools_shapefile/Non-Public_Schools.shp", stringsAsFactors = F)
+uni_shp_raw <- st_read(dsn = "D:/NC_schools_shapefile/Colleges_and_Universities.shp", stringsAsFactors = F)
+
+public_shp_df <- st_transform(public_shp_raw, "+proj=longlat +ellps=WGS84 +datum=WGS84")
+non_public_shp_df <- st_transform(non_public_shp_raw, "+proj=longlat +ellps=WGS84 +datum=WGS84")
+uni_shp_df <- st_transform(uni_shp_raw, "+proj=longlat +ellps=WGS84 +datum=WGS84")
+
 
 ### 1-2. Rename & remove columns in the three shape files
 ### Eyeballing the three files, we select common variables in all three files
@@ -23,7 +27,8 @@ uni_shp_df <- uni_shp_df %>% dplyr::select(c("NAME", "ADDRESS", "CITY", "ZIP", "
 colnames(public_shp_df) <- colnames(uni_shp_df) <- c("SchoolName", "Address", "City", "Zipcode", "County", "geometry")
 
 # merge the three shape files into one
-shp <- union_all(public_shp_df, non_public_shp_df)
+#shp <- union_all(public_shp_df, non_public_shp_df)
+shp <- rbind(public_shp_df, non_public_shp_df, uni_shp_df)
 
 ##################################################
 ### 2. Read in STATCOM_data.xlsx
@@ -319,71 +324,11 @@ school_col_merge <- left_join(school_col_long, shp, by = c("SchoolName", "Zipcod
 # Manually add their coordinates.
 
 sum(school_col_merge$County %>% is.na()) # Note. Total of 296 schools are missing coordinates. 
-View(school_col_merge)
-
-###################################################
-# Let's plot what we have for now. 
-merge_shp <- school_col_merge %>% drop_na()
-mad_map <- get_map(getbb("Wake County North Carolina"), maptype = "toner-background")
-
-big_streets <- getbb("Wake County North Carolina")%>%
-  opq()%>%
-  add_osm_feature(key = "highway", 
-                  value = c("motorway", "primary", "motorway_link", "primary_link")) %>%
-  osmdata_sf()
-
-med_streets <- getbb("Wake County North Carolina")%>%
-  opq()%>%
-  add_osm_feature(key = "highway", 
-                  value = c("secondary", "tertiary", "secondary_link", "tertiary_link")) %>%
-  osmdata_sf()
+school_merge_df <- st_as_sf(school_col_merge)
+school_merge_df %>%
+  cbind(., st_coordinates(.)) %>% 
+  st_set_geometry(NULL) %>% 
+  write_csv(., 'school_merge.csv')
 
 
-small_streets <- getbb("Wake County North Carolina")%>%
-  opq()%>%
-  add_osm_feature(key = "highway", 
-                  value = c("residential", "living_street",
-                            "unclassified",
-                            "service", "footway"
-                  )) %>%
-  osmdata_sf()
-river <- getbb("Wake County North Carolina")%>%
-  opq()%>%
-  add_osm_feature(key = "waterway", value = "river") %>%
-  osmdata_sf()
-
-railway <- getbb("Wake County North Carolina")%>%
-  opq()%>%
-  add_osm_feature(key = "railway", value="rail") %>%
-  osmdata_sf()
-
-q <- ggmap(mad_map) +
-  geom_sf(data = railway$osm_lines,
-          inherit.aes = FALSE,
-          color = "black",
-          size = .2,
-          linetype="dotdash",
-          alpha = .5) +
-  geom_sf(data = med_streets$osm_lines,
-          inherit.aes = FALSE,
-          color = "black",
-          size = .3,
-          alpha = .5) +
-  geom_sf(data = small_streets$osm_lines,
-          inherit.aes = FALSE,
-          color = "#666666",
-          size = .2,
-          alpha = .3) +
-  geom_sf(data = big_streets$osm_lines,
-          inherit.aes = FALSE,
-          color = "black",
-          size = .4,
-          alpha = .5)
-
-q1 <- q + 
-  theme_void() + # get rid of background color, grid lines, etc.
-  labs(title = "Wake County") +
-  geom_sf(data = merge_shp$geometry, inherit.aes = FALSE,
-          size = 0.5)
-q1
-  
+         
