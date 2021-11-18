@@ -4,7 +4,6 @@ library(tidyverse)
 library(readxl)
 library(viridis)
 library(rgeos)
-library(maptools)
 library(sf)
 
 ##################################################
@@ -323,13 +322,14 @@ sum(school_col_merge$County %>% is.na()) # Note. Total of 296 schools are missin
 # Let's plot what we have for now. 
 
 merge_shp <- school_col_merge %>% drop_na()
-counties_shp <- st_read("D:/NC_schools_shapefile/NCDOT_County_Boundaries.shp")
+counties_shp <- st_read("D:/NC_schools_shapefile/ZIP_Code_Tabulation_Areas.shp")
+plot(counties_shp)
+counties_centroids <- counties_shp %>% select(c("GEOID10", "geometry"))
+plot(counties_centroids)
 
 
 ggplot() + 
-  geom_sf(data = counties_shp, aes(geometry = geometry)) +
-  geom_sf(data = merge_shp, aes(geometry = geometry)) 
-  
+  geom_sf(data = counties_centroids, aes(geometry = geometry)) 
 
 
 
