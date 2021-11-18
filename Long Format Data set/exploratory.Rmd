@@ -1,0 +1,298 @@
+---
+title: "clustering and PCA"
+author: "Jiatao Wang"
+date: "11/3/2021"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+## Clustering 
+
+```{r cars}
+library(readr)
+library(readxl)
+setwd("C:/Users/CKA/Documents/CKA/the-green-chair-project")
+data <- read_csv("cleaned_STATCOM_data.csv")
+tgcp_demog <- read_excel("C:/Users/CKA/Downloads/STATCOM_data.xlsx", col_types = "text")
+
+
+
+anyNA(data$Homeincome)
+#data$Homeincome
+
+income_amount <- tgcp_demog$AnnualIncomeAmount
+
+all <- cbind(data,income_amount)
+anyNA(all$income_amount)
+library(tidyverse)
+
+cleaned <- all%>% filter(!is.na(ClientZipCode),!is.na(income_amount))
+final <- cleaned%>% select(ClientZipCode,income_amount)
+#normalizerd data varaibles zipcode and income_amount. 
+#str(final)
+income<-as.numeric(final$income_amount)
+Z <-cbind(final,income)
+last<-Z[,-2]
+
+means <- apply(last,2,mean)
+sds <- apply(last,2,sd)
+get <- scale(last,center=means,scale=sds)
+
+set.seed(123)
+
+cluster<-kmeans(get,3)
+
+plot(last,col = (cluster$cluster),xlim = c(26000, 29000), ylim = c(0, 50000))
+
+
+
+
+
+library(factoextra) 
+
+k3 <- kmeans(last, centers = 3,nstart = 25)
+
+k3$centers
+
+fviz_cluster(k3, data = last)
+
+
+
+k4 <- kmeans(last, centers = 4,nstart = 25)
+
+k4$centers
+
+fviz_cluster(k4, data = last)
+
+#hier.cluster<-dist(get,method = "euclidean")
+
+
+
+
+
+
+
+#hc1 <- hclust(hier.cluster, method = "complete" )
+#pam <- pam(hier.cluster,4, diss = FALSE)
+#clusplot(pam, shade = FALSE,labels=2,col.clus="blue",col.p="red",span=FALSE,main="Cluster Mapping",cex=1.2)
+
+
+
+#seasonal trend? 
+#str(cleaned_STATCOM_data$Timestamp)
+
+cluster_level <- k3$cluster
+cluster_data <- cbind(cleaned,cluster_level)
+
+hh <- cluster_data %>% group_by(cluster_level,Agency_Clean_Short) %>%
+  summarize(percent = 100*n()/nrow(cluster_data))
+hh
+
+#str(F)
+
+
+# indicating the clients from different cluster may have different number of referals from  agency 
+
+#low income cluster 
+hh1 <- hh %>% filter(percent >=1,cluster_level==1)
+knitr::kable(hh1)
+```
+
+
+
+
+
+
+```{r}
+#lowest income cluster 
+hh2<-hh %>% filter(percent >=1 & cluster_level==2)
+knitr::kable(hh2)
+
+
+# using the within 2/1 standard deviation to select the zip code. 
+# table or graphs involving other categoriacal variables, 
+# or clustering using SVI variables, in it. ;lets do it!!
+#missing values need to take into account 
+#local host mapping in the useful code folder, need to try it, 
+```
+
+Using data from  cleaned original green chair data merged with SVI 
+```{r}
+library(tidyverse)
+library(cluster)    # clustering algorithms
+library(factoextra) # clustering algorithms & visualization
+merge <- read.csv("C:/Users/CKA/Documents/CKA/the-green-chair-project/merged_SVI/merged_CDC_GC_clean.csv")
+str(merge)
+View(merge)
+
+# get rid of the Household number information for this analysis 
+short <- merge %>% select(-starts_with(c("HH","More")))
+last2 <- short %>% select(Agency_Clean_Short,Race,ClientZipCode,AnnualIncomeAmount,TotalHHNumber,31:147)
+View(last2)
+
+
+# return the objects that does not contain any NA values in the last dataset. 
+
+
+# next step : clustering: 
+df <- na.omit(last2)
+View(df)
+
+
+# center and scale the matrix 
+scaled <- scale(df[,-1:-2])
+
+#computing Euclidean distance between the rows of this data 
+distance <- get_dist(scaled)
+
+fviz_dist(distance, gradient = list(low = "#00AFBB", mid = "white", high = "#FC4E07"))
+
+
+
+
+try2 <- kmeans(scaled, centers = 2, nstart = 25)
+str(try2)
+
+fviz_cluster(try2, data = scaled)
+```
+
+
+
+```{r}
+df %>%
+  as_tibble() %>%
+  mutate(cluster = try2$cluster) %>%
+  ggplot(aes(AnnualIncomeAmount,ClientZipCode,  color = factor(cluster),label = TotalHHNumber)) +
+  geom_text() + xlim(0,50000)
+
+```
+
+```{r}
+try3 <- kmeans(scaled, centers = 3, nstart = 25)
+try4 <- kmeans(scaled, centers = 4, nstart = 25)
+try5 <- kmeans(scaled, centers = 5, nstart = 25)
+
+p1 <- fviz_cluster(try2, geom = "point", data = scaled) + ggtitle("k = 2")
+p2 <- fviz_cluster(try3, geom = "point",  data = scaled) + ggtitle("k = 3")
+p3 <- fviz_cluster(try4, geom = "point",  data = scaled) + ggtitle("k = 4")
+p4 <- fviz_cluster(try5, geom = "point",  data = scaled) + ggtitle("k = 5")
+
+library(gridExtra)
+grid.arrange(p1, p2, p3, p4, nrow = 2)
+
+
+# when k = 4 or 5 it captures some outliers within the cluster 
+
+# determine the number of cluster to use in this case: 
+
+set.seed(12345)
+within_sum_squares <- function(k) {
+  kmeans(scaled, k, nstart = 10 )$tot.withinss
+}
+
+# Compute and plot wss for k = 1 to k = 15
+k.values <- 1:10
+
+# extract wss for 2-15 clusters
+wss_values <- map_dbl(k.values, within_sum_squares)
+
+plot(k.values, wss_values,
+       type="b", pch = 19, frame = FALSE, 
+       xlab="Number of clusters K",
+       ylab="Total within-clusters sum of squares")
+
+
+# 5 looks like a good one 
+
+
+
+
+# or use this method 
+fviz_nbclust(scaled, kmeans, method = "wss")
+
+#there is a back shift of within sum of squares at k = 6. 
+
+
+# we want the within sums of squares to be as small as possible, 
+# also want to control the number of k used. 
+# so tried  within 2 standard deviation method. to select the best k 
+
+
+
+
+#fviz_nbclust(scaled, kmeans, method = "silhouette")
+
+
+
+try6 <- kmeans(scaled, centers = 6, nstart = 25)
+fviz_cluster(try6, geom = "point",  data = scaled) + ggtitle("k = 6")
+
+
+
+
+# using k = 4 or 5 
+# summarize by mean for each cluster using the df dataset 
+EE <- df %>%
+  mutate(Cluster = try4$cluster) %>%
+  group_by(Cluster) %>%
+  summarise_all("mean")
+
+knitr::kable(EE)
+
+
+
+
+# plot household number versus zipcode 
+df %>%
+  mutate(cluster = try4$cluster) %>%
+  ggplot(aes(TotalHHNumber,ClientZipCode,color = factor(cluster))) +
+  geom_count()
+  
+#client zipcode vs cluster 
+df %>%
+  mutate(cluster = try4$cluster) %>%
+  ggplot(aes(ClientZipCode,AnnualIncomeAmount,color = factor(cluster))) +
+  geom_count(aes(shape = Race))+
+  theme(axis.text.y  = element_text(angle = 45, vjust = 1, hjust = 1)) +
+  ylim(0, 50000)
+
+
+# zipcode counts for each cluster (race category)
+df %>%
+  mutate(cluster = try4$cluster) %>%
+  ggplot(aes(ClientZipCode, fill = as.factor(Race))) + geom_bar(position = "stack")+
+    facet_grid(cols = vars(cluster),labeller = label_both)+ 
+  scale_fill_discrete(name = "Race") +
+  labs (title = "zipcode vs race")+
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))+
+  xlim(27490, 27730) + ylim(0,400) + stat_bin(binwidth = 10)
+
+
+
+
+cluster_level2 <- try4$cluster
+cluster_data2 <- cbind(df,cluster_level2)
+
+hh2 <- cluster_data2 %>% group_by(cluster_level2,Agency_Clean_Short) %>%
+  summarize(percent = 100*n()/nrow(cluster_data2))
+WW <- hh2 %>% filter(percent >= 0.5)
+knitr::kable(WW)
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
