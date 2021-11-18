@@ -321,17 +321,73 @@ sum(school_col_merge$County %>% is.na()) # Note. Total of 296 schools are missin
 ###################################################
 # Let's plot what we have for now. 
 
+
+
 merge_shp <- school_col_merge %>% drop_na()
 counties_shp <- st_read("D:/NC_schools_shapefile/ZIP_Code_Tabulation_Areas.shp")
 plot(counties_shp)
-counties_centroids <- counties_shp %>% select(c("GEOID10", "geometry"))
+counties_centroids <- counties_shp %>% dplyr::select(c("GEOID10", "geometry"))
 plot(counties_centroids)
-
+plot(merge_shp)
 
 ggplot() + 
-  geom_sf(data = counties_centroids, aes(geometry = geometry)) 
+  geom_sf(data = counties_centroids, aes(geometry = geometry)) +
+  geom_sf(data = merge_shp, aes(geometry))
+
+library(osmdata)
+getbb("Wake County North Carolina")
 
 
+big_streets <- getbb("Wake County North Carolina")%>%
+  opq()%>%
+  add_osm_feature(key = "highway", 
+                  value = c("motorway", "primary", "motorway_link", "primary_link")) %>%
+  osmdata_sf()
+
+med_streets <- getbb("Wake County North Carolina")%>%
+  opq()%>%
+  add_osm_feature(key = "highway", 
+                  value = c("secondary", "tertiary", "secondary_link", "tertiary_link")) %>%
+  osmdata_sf()
 
 
+small_streets <- getbb("Wake County North Carolina")%>%
+  opq()%>%
+  add_osm_feature(key = "highway", 
+                  value = c("residential", "living_street",
+                            "unclassified",
+                            "service", "footway"
+                  )) %>%
+  osmdata_sf()
+river <- getbb("Wake County North Carolina")%>%
+  opq()%>%
+  add_osm_feature(key = "waterway", value = "river") %>%
+  osmdata_sf()
 
+railway <- getbb("Wake County North Carolina")%>%
+  opq()%>%
+  add_osm_feature(key = "railway", value="rail") %>%
+  osmdata_sf()
+
+q <- ggplot() +
+  geom_sf(data = railway$osm_lines,
+          inherit.aes = FALSE,
+          color = "black",
+          size = .2,
+          linetype="dotdash",
+          alpha = .5) +
+  geom_sf(data = med_streets$osm_lines,
+          inherit.aes = FALSE,
+          color = "black",
+          size = .3,
+          alpha = .5) +
+  #geom_sf(data = small_streets$osm_lines,
+  #        inherit.aes = FALSE,
+  #        color = "#666666",
+  #        size = .2,
+  #        alpha = .3) +
+  geom_sf(data = big_streets$osm_lines,
+          inherit.aes = FALSE,
+          color = "black",
+          size = .5,
+          alpha = .6)
