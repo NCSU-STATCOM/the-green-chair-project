@@ -148,9 +148,9 @@ View(df)
 scaled <- scale(df[,-1:-2])
 
 #computing Euclidean distance between the rows of this data 
-distance <- get_dist(scaled)
+#distance <- get_dist(scaled)
 
-fviz_dist(distance, gradient = list(low = "#00AFBB", mid = "white", high = "#FC4E07"))
+#fviz_dist(distance, gradient = list(low = "#00AFBB", mid = "white", high = "#FC4E07"))
 
 
 
