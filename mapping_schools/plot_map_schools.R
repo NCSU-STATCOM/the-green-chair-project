@@ -10,10 +10,9 @@ library(ggmap)
 
 ###################################################
 # Let's plot what we have for now. 
-school_merge_df <- read.csv("school_merge.csv")
-school_merge_df <- school_merge_df %>% drop_na()
-school_merge_df <- st_as_sf(school_merge_df, coords = c("X", "Y"))
-merge_shp <- school_merge_df %>% drop_na()
+school_merge_csv <- read.csv("school_merge.csv")
+school_merge_df <- st_as_sf(school_merge_csv, coords = c("X", "Y"))
+#merge_shp <- school_merge_df %>% drop_na()
 mad_map <- get_map(getbb("Wake County North Carolina"), maptype = "toner-background")
 
 big_streets <- getbb("Wake County North Carolina")%>%
@@ -37,6 +36,7 @@ small_streets <- getbb("Wake County North Carolina")%>%
                             "service", "footway"
                   )) %>%
   osmdata_sf()
+
 river <- getbb("Wake County North Carolina")%>%
   opq()%>%
   add_osm_feature(key = "waterway", value = "river") %>%
