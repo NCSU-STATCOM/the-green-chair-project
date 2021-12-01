@@ -37,6 +37,11 @@ for (i in 1:length(GC_data$ClientZipCode)){
   }
 }
 
+# Note: 2 non-missing zip codes are 6 numbers, 1 zip code is from Virginia, 1 zip code is from West Virginia,
+# and 19 zip codes are 5 numbers, but don't exist anywhere in the U.S. 
+# cleaned_STATCOm_data.rds and cleaned_STATCOM_data_SVI.rds actually keeps the aforementioned 21 zip codes, 
+# only omitting the length-6 ones. 
+
 ##Removing Anything Ending with FirstName, LastName, or Birthday
 keep<-colnames(GC_data)[!endsWith(colnames(GC_data), "FirstName")&!endsWith(colnames(GC_data), "LastName")&
           !endsWith(colnames(GC_data),"Birthday")]
