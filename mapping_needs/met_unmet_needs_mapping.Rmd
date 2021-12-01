@@ -37,6 +37,8 @@ north_carolina_zip <- zip.regions$region[zip.regions$state.name == "north caroli
 
 virginia_zip <- zip.regions$region[zip.regions$state.name == "virginia"]
 
+west_virginia_zip <- zip.regions$region[zip.regions$state.name == "west virginia"]
+
 wake_zip <- zip.regions$region[zip.regions$county.name == "wake"]
 ```
 
@@ -44,7 +46,7 @@ wake_zip <- zip.regions$region[zip.regions$county.name == "wake"]
 
 First, mapping all the census tracts in the data set, in North Carolina. 
 
-For the zip codes that are not in North Carolina, one zip code is from Virginia (with one client) and the rest are typos. 
+For the zip codes that are not in North Carolina, one zip code is from Virginia (with one client), one zip code is from West Virginia (with one client) and the rest are typos. 
 
 <!-- The tgcp_svi dataset  -->
 
@@ -55,47 +57,89 @@ For the zip codes that are not in North Carolina, one zip code is from Virginia 
 # manhattan_ues = c("10021", "10028", "10044", "10128")
 zip_choropleth(zip_code_num_clients,
                # zip_zoom = c(manhattan_les, manhattan_ues),
-               state_zoom = c("north carolina", "virginia"),
+               state_zoom = c("north carolina"),
                title    = "Number of Clients",
                legend   = "Number of Clients", 
                num_colors = 9)
 ```
 
 
+
+<!-- Finding the counties with TGCP clients -->
 
 ```{r}
+zip.regions.tgcp <- zip.regions[zip.regions$region %in% zip_list, ]
 
+tgcp_county_name_code <- unique(cbind(zip.regions.tgcp$county.name, zip.regions.tgcp$county.fips.numeric))
 
-# manhattan_les = c("10002", "10003", "10009")
-# manhattan_ues = c("10021", "10028", "10044", "10128")
-zip_choropleth(zip_code_num_clients,
-               # zip_zoom = c(manhattan_les, manhattan_ues),
-               county_zoom = c("37183", "37063"),
-               title    = "Number of Clients",
-               legend   = "Number of Clients", 
-               num_colors = 9)
+num_clients_county_subset <- left_join(zip_code_num_clients, zip.regions, by = "region")
+```
+
+<!-- Finding the counties with >1 clients -->
+
+```{r}
+county_summ <- num_clients_county_subset %>% group_by(county.fips.numeric) %>% summarise(county_count = n()) 
+
+county_summ_subset <- county_summ[county_summ$county_count > 8,]
+```
+
+```{r}
+unique(zip.regions$county.name[zip.regions$county.fips.numeric %in% county_summ_subset$county.fips.numeric])
+```
+
+```{r}
+county_subset_zip <- zip.regions$region[zip.regions$county.fips.numeric %in% c(county_summ_subset$county.fips.numeric, 37135, 37069)]
 ```
 
 
-
-<!-- Finding only the counties with ZCTAs containing >= 5 clients -->
-
-<!-- c -->
 
 ```{r, eval=FALSE}
 zip_code_num_clients[!(zip_code_num_clients$region %in% north_carolina_zip) & !is.na(zip_code_num_clients$region),]
 ```
 
 ```{r, eval=FALSE}
+zip_code_num_clients[(zip_code_num_clients$region %in% north_carolina_zip) & !is.na(zip_code_num_clients$region) & !(zip_code_num_clients$region %in% county_subset_zip),]
+```
+
+```{r, eval=FALSE}
+zip_code_num_clients[(zip_code_num_clients$region %in% north_carolina_zip) & !is.na(zip_code_num_clients$region) & !(zip_code_num_clients$region %in% zip_code_num_clients$region[zip_code_num_clients$value > 4 &
+                                                      !is.na(zip_code_num_clients$region)]),]
+```
+
+```{r, eval=FALSE}
 zip_code_num_clients$value[!(zip_code_num_clients$region %in% c(north_carolina_zip, virginia_zip)) & !is.na(zip_code_num_clients$region)]
 ```
 
-<!-- Find counties with >1 client -->
+
+
+Zooming into the counties that have . 
 
 ```{r}
-1+1
+
+# manhattan_les = c("10002", "10003", "10009")
+# manhattan_ues = c("10021", "10028", "10044", "10128")
+zip_choropleth(zip_code_num_clients,
+               # zip_zoom = c(manhattan_les, manhattan_ues),
+               county_zoom = c(county_summ_subset$county.fips.numeric),
+               title    = "Number of Clients",
+               legend   = "Number of Clients", 
+               num_colors = 9)
+
 ```
 
+```{r}
+
+# manhattan_les = c("10002", "10003", "10009")
+# manhattan_ues = c("10021", "10028", "10044", "10128")
+zip_choropleth(zip_code_num_clients,
+               # zip_zoom = c(manhattan_les, manhattan_ues),
+               zip_zoom = zip_code_num_clients$region[zip_code_num_clients$value > 4 &
+                                                      !is.na(zip_code_num_clients$region)],
+               title    = "Number of Clients",
+               legend   = "Number of Clients", 
+               num_colors = 9)
+
+```
 
 
 
