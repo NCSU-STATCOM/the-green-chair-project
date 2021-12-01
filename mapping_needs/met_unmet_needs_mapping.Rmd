@@ -1,0 +1,127 @@
+---
+title: "Met and Unmet Needs Mapping"
+author: "Alvin Sheng"
+date: "11/26/2021"
+output: pdf_document
+---
+
+```{r}
+library(here)
+library(tidyverse)
+
+library(choroplethrZip)
+library(choroplethrMaps)
+```
+
+```{r}
+tgcp_svi <- readRDS(here("cleaned_STATCOM_data_SVI.rds"))
+```
+
+There are 634 (12%) clients with missing zip codes. Thus, the maps show only the clients with non-missing zip codes.
+
+```{r}
+zip_code_summary <- tgcp_svi %>% group_by(ClientZipCode) %>% summarise(num_clients = n(), prop_clients = n() / nrow(tgcp_svi))
+
+zip_code_num_clients <- data.frame(region = as.character(zip_code_summary$ClientZipCode), 
+                                   value = zip_code_summary$num_clients)
+```
+
+<!-- Consider making all other NC zip codes with 0 number of clients -->
+
+```{r}
+data(zip.regions)
+
+zip_list <- zip_code_num_clients$region
+
+north_carolina_zip <- zip.regions$region[zip.regions$state.name == "north carolina"]
+
+virginia_zip <- zip.regions$region[zip.regions$state.name == "virginia"]
+
+wake_zip <- zip.regions$region[zip.regions$county.name == "wake"]
+```
+
+
+
+First, mapping all the census tracts in the data set, in North Carolina. 
+
+For the zip codes that are not in North Carolina, one zip code is from Virginia (with one client) and the rest are typos. 
+
+<!-- The tgcp_svi dataset  -->
+
+```{r, eval = F}
+
+
+# manhattan_les = c("10002", "10003", "10009")
+# manhattan_ues = c("10021", "10028", "10044", "10128")
+zip_choropleth(zip_code_num_clients,
+               # zip_zoom = c(manhattan_les, manhattan_ues),
+               state_zoom = c("north carolina", "virginia"),
+               title    = "Number of Clients",
+               legend   = "Number of Clients", 
+               num_colors = 9)
+```
+
+
+
+```{r}
+
+
+# manhattan_les = c("10002", "10003", "10009")
+# manhattan_ues = c("10021", "10028", "10044", "10128")
+zip_choropleth(zip_code_num_clients,
+               # zip_zoom = c(manhattan_les, manhattan_ues),
+               county_zoom = c("37183", "37063"),
+               title    = "Number of Clients",
+               legend   = "Number of Clients", 
+               num_colors = 9)
+```
+
+
+
+<!-- Finding only the counties with ZCTAs containing >= 5 clients -->
+
+<!-- c -->
+
+```{r, eval=FALSE}
+zip_code_num_clients[!(zip_code_num_clients$region %in% north_carolina_zip) & !is.na(zip_code_num_clients$region),]
+```
+
+```{r, eval=FALSE}
+zip_code_num_clients$value[!(zip_code_num_clients$region %in% c(north_carolina_zip, virginia_zip)) & !is.na(zip_code_num_clients$region)]
+```
+
+<!-- Find counties with >1 client -->
+
+```{r}
+1+1
+```
+
+
+
+
+```{r}
+other_zip_dat <- data.frame(region = north_carolina_zip[!(north_carolina_zip %in% zip_list)], value = 0)
+
+zip_code_dat_nc <- rbind(zip_code_num_clients, other_zip_dat)
+```
+
+
+
+```{r}
+
+# manhattan_les = c("10002", "10003", "10009")
+# manhattan_ues = c("10021", "10028", "10044", "10128")
+zip_choropleth(zip_code_dat_nc[!duplicated(zip_code_dat_nc),],
+               # zip_zoom = c(manhattan_les, manhattan_ues),
+               state_zoom = "north carolina",
+               title    = "Number of Clients",
+               legend   = "Number of Clients",
+               num_colors = 7)
+
+```
+
+
+
+<!-- To-do: point out the zip codes in tabular format with most unmet need -->
+
+
