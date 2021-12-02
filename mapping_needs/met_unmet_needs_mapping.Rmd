@@ -5,6 +5,10 @@ date: "11/26/2021"
 output: pdf_document
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, fig.align = 'center', fig.width = 5, fig.height = 3)
+```
+
 ```{r}
 library(here)
 library(tidyverse)
@@ -32,16 +36,7 @@ zip_code_num_clients <- data.frame(region = as.character(zip_code_summary$Client
 zip_code_prop_clients <- data.frame(region = as.character(zip_code_summary$ClientZipCode), 
                                    value = round(zip_code_summary$prop_clients, digits = 3))
 
-zip_code_summary_subset <- zip_code_summary[zip_code_summary$ClientZipCode %in% atleast5_zip, ]
-
-score <- rank(zip_code_summary_subset$num_clients, ties.method = "average")
-# score <- score / max(score)
-
-zip_code_rank_num_clients <- data.frame(region = as.character(zip_code_summary_subset$ClientZipCode), 
-                                   value = score)
 ```
-
-<!-- Consider making all other NC zip codes with 0 number of clients -->
 
 ```{r}
 data(zip.regions)
@@ -58,26 +53,35 @@ atleast5_zip <- zip_code_num_clients$region[zip_code_num_clients$value > 4 &
                                                       !is.na(zip_code_num_clients$region)]
 ```
 
-
-
 ```{r}
-# to get Google reference map
+zip_code_summary_subset <- zip_code_summary[zip_code_summary$ClientZipCode %in% atleast5_zip, ]
 
-library(ggmap)
-register_google("<your api key>")
+score <- rank(zip_code_summary_subset$num_clients, ties.method = "average")
+# score <- score / max(score)
 
-install.packages("mapproj")
+zip_code_rank_num_clients <- data.frame(region = as.character(zip_code_summary_subset$ClientZipCode), 
+                                   value = score)
 ```
 
 
 
-First, mapping all the census tracts in the data set, in North Carolina. 
+```{r, echo = F}
+# to get Google reference map (https://arilamstein.com/blog/2019/05/21/bug-when-creating-reference-maps-with-choroplethr/)
+
+library(ggmap)
+register_google("<your api key>")
+
+```
+
+
+
+First, mapping all the zip codes in the data set, in North Carolina. 
 
 For the zip codes that are not in North Carolina, one zip code is from Virginia (with one client), one zip code is from West Virginia (with one client) and the rest are typos. 
 
 <!-- The tgcp_svi dataset  -->
 
-```{r, eval = F}
+```{r}
 
 
 # manhattan_les = c("10002", "10003", "10009")
@@ -180,7 +184,7 @@ zip_choropleth(zip_code_num_clients,
 
 ```
 
-```{r}
+```{r, eval = F}
 
 zip_choropleth(zip_code_num_clients,
                zip_zoom = intersect(atleast5_zip, wake_zip),
@@ -190,7 +194,7 @@ zip_choropleth(zip_code_num_clients,
 
 ```
 
-```{r}
+```{r, eval = F}
 
 zip_choropleth(zip_code_prop_clients,
                zip_zoom = atleast5_zip,
@@ -212,7 +216,7 @@ zip_choropleth(zip_code_rank_num_clients,
 
 ```
 
-```{r}
+```{r, eval = F}
 
 zip_choropleth(zip_code_rank_num_clients,
                zip_zoom = intersect(atleast5_zip, wake_zip),
