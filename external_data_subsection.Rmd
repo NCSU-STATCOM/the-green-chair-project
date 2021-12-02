@@ -1,4 +1,10 @@
 
+<!-- To see how things would look in the final report, uncomment the following chunk and knit the file. -->
+
+<!-- ```{r setup, include=FALSE} -->
+<!-- knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, fig.align = 'center', fig.width = 5, fig.height = 3) -->
+<!-- ``` -->
+
 # Exploratory Analysis on Social Vulnerability Measures of Locations of Green Chair Clients
 
 The CDC Social Vulnerability Index (SVI) is a collection of social vulnerability measures for each census tract. We merged the CDC SVIs into the zip codes of the TGCP clients.
