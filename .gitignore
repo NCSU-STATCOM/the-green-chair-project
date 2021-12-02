@@ -44,7 +44,6 @@ vignettes/*.pdf
 *.Rproj
 STATCOM_data.xlsx
 ~*.xlsx
-*.html
 
 helpful_code/tl_2019_us_county
 
