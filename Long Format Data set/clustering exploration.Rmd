@@ -1,0 +1,136 @@
+---
+title: "clustering exploration"
+author: "Jiatao Wang"
+date: "12/1/2021"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## information from the dataset cleaned_STATCOM_data_SVI.rds 
+
+```{r cars}
+cleaned_last <- readRDS("~/CKA/the-green-chair-project/cleaned_STATCOM_data_SVI.rds")
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r}
+library(tidyverse)
+library(cluster)    # clustering algorithms
+library(factoextra) # clustering algorithms & visualization
+# get rid of the Household number information for this analysis 
+short <- cleaned_last %>% select(-starts_with(c("HH","More")))
+last2 <- short %>% select(ClientZipCode,Circumstance,Agency_Clean_Short,
+                          AnnualIncomeAmount,TotalHHNumber,NumChildren,30:49,Race)
+View(last2)
+
+
+# return the objects that does not contain any NA values in the last dataset. 
+
+
+# next step : clustering: 
+df <- na.omit(last2)
+View(df)
+
+# catogorize the zipcode variable 
+v<- ifelse(df$ClientZipCode >= 27750, "Zipcode>=27750",
+       ifelse(df$ClientZipCode >= 27700, "27750 > Zipcode >= 27700",
+              ifelse(df$ClientZipCode >= 27650, "27700 > Zipcode >= 27650",
+                  ifelse(df$ClientZipCode >= 27600, "27650 > Zipcode >= 27600",
+                     ifelse(df$ClientZipCode >= 27550, "27600 > Zipcode >= 27550",
+                        ifelse(df$ClientZipCode >= 27500, "27550 > Zipcode >= 27500",
+                            ifelse(df$ClientZipCode >= 27450, "27550 > Zipcode >= 27450","Zipcode<27450")
+       ))))))
+
+df$ZipCode_Range <- v
+
+
+
+
+
+TotalHHnumbers <- as.numeric(df[,5])
+
+Z <- cbind(df,TotalHHnumbers)
+
+final <- Z[,c(-1:-3,-5,-27,-28)]
+
+# center and scale the matrix 
+scaled <- scale(final)
+
+#computing Euclidean distance between the rows of this data 
+#distance <- get_dist(scaled)
+
+#fviz_dist(distance, gradient = list(low = "#00AFBB", mid = "white", high = "#FC4E07"))
+
+try2 <- kmeans(scaled, centers = 2, nstart = 25)
+fviz_cluster(try2, data = scaled)
+
+# explore the zipcode based on the cluster. 
+
+
+# counts of clients from zipcode 27600  to 27650 take most of the cluster 1,
+# while the cluster 2 is spreaded in 27600 > Zipcode >= 27550 
+#27550 > Zipcode >= 27500 and 27650 > Zipcode >= 27600 
+# we could explore more about the characteristics in cluster 1,
+#which take almost two thirds of the counts from zipcode 27600  to 27650. 
+
+df %>%
+  as_tibble() %>%
+  mutate(cluster = try2$cluster) %>%
+  ggplot(aes(x = ZipCode_Range)) +
+    geom_bar(aes(fill = as.factor(cluster)),position = "dodge") + 
+    labs(x = "ZipCode", y = "Count", title = "Zip Code by cluster") + 
+    scale_fill_discrete(name = "cluster") +
+    theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
+
+
+
+
+# this plot shows that the regardless of the cluster, people who are homeless and 
+#have mental health/ job loss are mostly the clients. 
+df %>%
+  mutate(cluster = try2$cluster) %>%
+  ggplot(aes(ZipCode_Range, fill = as.factor(Circumstance))) + geom_bar(position = "stack")+
+    facet_grid(cols = vars(cluster),labeller = label_both)+ 
+  scale_fill_discrete(name = "Circumstance") +
+  labs (title = "zipcode vs Circumstance")+
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
+
+
+
+
+
+
+
+# black or afrian american take up the most clients, the distribution is a little bit
+#weighted to the zipcode 27500 to 27550 when it comes to cluster 2 
+df %>%
+  mutate(cluster = try2$cluster) %>%
+  ggplot(aes(ZipCode_Range, fill = as.factor(Race))) + geom_bar(position = "stack")+
+    facet_grid(cols = vars(cluster),labeller = label_both)+ 
+  scale_fill_discrete(name = "Race") +
+  labs (title = "zipcode vs Race")+
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
+
+
+
+
+# plot of the agency referrals, how the referrals counts as a percentage. 
+cluster_level2 <- try2$cluster
+cluster_data2 <- cbind(df,cluster_level2)
+
+hh2 <- cluster_data2 %>% group_by(ZipCode_Range,Agency_Clean_Short) %>%
+  summarize(percent = 100*n()/nrow(cluster_data2))
+WW <- hh2 %>% filter(percent >= 0.5)
+knitr::kable(WW)
+  
+```
+
+
