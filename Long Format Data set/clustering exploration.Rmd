@@ -27,7 +27,8 @@ library(cluster)    # clustering algorithms
 library(factoextra) # clustering algorithms & visualization
 # get rid of the Household number information for this analysis 
 short <- cleaned_last %>% select(-starts_with(c("HH","More")))
-last2 <- short %>% select(ClientZipCode,Circumstance,Agency_Clean_Short,AnnualIncomeAmount,TotalHHNumber,NumChildren,30:49,Race)
+last2 <- short %>% select(ClientZipCode,Circumstance,Agency_Clean_Short,
+                          AnnualIncomeAmount,TotalHHNumber,NumChildren,30:49,Race)
 View(last2)
 
 
@@ -44,8 +45,8 @@ v<- ifelse(df$ClientZipCode >= 27750, "Zipcode>=27750",
               ifelse(df$ClientZipCode >= 27650, "27700 > Zipcode >= 27650",
                   ifelse(df$ClientZipCode >= 27600, "27650 > Zipcode >= 27600",
                      ifelse(df$ClientZipCode >= 27550, "27600 > Zipcode >= 27550",
-                            ifelse(df$ClientZipCode >= 27500, "27550 > Zipcode >= 27500",
-                                   ifelse(df$ClientZipCode >= 27450, "27550 > Zipcode >= 27450","Zipcode<27450")
+                        ifelse(df$ClientZipCode >= 27500, "27550 > Zipcode >= 27500",
+                            ifelse(df$ClientZipCode >= 27450, "27550 > Zipcode >= 27450","Zipcode<27450")
        ))))))
 
 df$ZipCode_Range <- v
@@ -75,8 +76,10 @@ fviz_cluster(try2, data = scaled)
 
 
 # counts of clients from zipcode 27600  to 27650 take most of the cluster 1,
-# while the cluster 2 is spreaded in 27600 > Zipcode >= 27550  27550 > Zipcode >= 27500 and 27650 > Zipcode >= 27600 
-# we could explore more about the characteristics in cluster 1, which take almost two thirds of the counts from zipcode 27600  to 27650. 
+# while the cluster 2 is spreaded in 27600 > Zipcode >= 27550 
+#27550 > Zipcode >= 27500 and 27650 > Zipcode >= 27600 
+# we could explore more about the characteristics in cluster 1,
+#which take almost two thirds of the counts from zipcode 27600  to 27650. 
 
 df %>%
   as_tibble() %>%
@@ -90,7 +93,8 @@ df %>%
 
 
 
-# this plot shows that the regardless of the cluster, people who are homeless and have mental health/ job loss are mostly the clients. 
+# this plot shows that the regardless of the cluster, people who are homeless and 
+#have mental health/ job loss are mostly the clients. 
 df %>%
   mutate(cluster = try2$cluster) %>%
   ggplot(aes(ZipCode_Range, fill = as.factor(Circumstance))) + geom_bar(position = "stack")+
@@ -105,7 +109,8 @@ df %>%
 
 
 
-# black or afrian american take up the most clients, the distribution is a little bit weighted to the zipcode 27500 to 27550 when it comes to cluster 2 
+# black or afrian american take up the most clients, the distribution is a little bit
+#weighted to the zipcode 27500 to 27550 when it comes to cluster 2 
 df %>%
   mutate(cluster = try2$cluster) %>%
   ggplot(aes(ZipCode_Range, fill = as.factor(Race))) + geom_bar(position = "stack")+
@@ -128,4 +133,4 @@ knitr::kable(WW)
   
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
