@@ -172,8 +172,6 @@ zip_code_num_clients[(zip_code_num_clients$region %in% north_carolina_zip) & !is
 zip_code_num_clients[(zip_code_num_clients$region %in% north_carolina_zip) & !is.na(zip_code_num_clients$region) & !(zip_code_num_clients$region %in% wake_zip),]
 ```
 
-
-
 ```{r}
 
 zip_choropleth(zip_code_num_clients,
@@ -181,6 +179,17 @@ zip_choropleth(zip_code_num_clients,
                title    = "Number of Clients",
                legend   = "Number of Clients", 
                num_colors = 9)
+
+```
+
+```{r}
+
+zip_choropleth(zip_code_num_clients,
+               zip_zoom = atleast5_zip,
+               title    = "Number of Clients",
+               legend   = "Number of Clients", 
+               num_colors = 9, 
+               reference_map = T)
 
 ```
 
@@ -212,7 +221,8 @@ zip_choropleth(zip_code_rank_num_clients,
                zip_zoom = atleast5_zip,
                title    = "Ranking of the Number of Clients",
                legend   = "Rank", 
-               num_colors = 9)
+               num_colors = 9, 
+               reference_map = T)
 
 ```
 
@@ -246,28 +256,41 @@ zip_choropleth(zip_code_num_clients,
 ```{r}
 # tgcp_atleast5 <- tgcp_svi[tgcp_svi$ClientZipCode %in% atleast5_zip, ]
 
-tgcp_pci <- unique(cbind(tgcp_svi$ClientZipCode[!is.na(tgcp_svi$ClientZipCode)],
-                         tgcp_svi$EP_PCI[!is.na(tgcp_svi$ClientZipCode)]))
+tgcp_svi_subset <- unique(cbind(tgcp_svi$ClientZipCode[!is.na(tgcp_svi$ClientZipCode)],
+                         tgcp_svi$EP_PCI[!is.na(tgcp_svi$ClientZipCode)], 
+                         tgcp_svi$E_HH[!is.na(tgcp_svi$ClientZipCode)]))
 
-zip_code_pci <- data.frame(region = as.character(tgcp_pci[, 1]), value = tgcp_pci[, 2])
+zip_code_pci <- data.frame(region = as.character(tgcp_svi_subset[, 1]), value = tgcp_svi_subset[, 2])
 
-tgcp_pci_subset <- tgcp_pci[tgcp_pci[, 1] %in% atleast5_zip, ]
+tgcp_svi_subset_subset <- tgcp_svi_subset[tgcp_svi_subset[, 1] %in% atleast5_zip, ]
 
-score <- rank(-tgcp_pci_subset[, 2], ties.method = "average", na.last = "keep")
+score <- rank(-tgcp_svi_subset_subset[, 2], ties.method = "average", na.last = "keep")
 # score <- score / max(score, na.rm = T)
 
-zip_code_rank_pci <- data.frame(region = as.character(tgcp_pci_subset[, 1]), 
+zip_code_rank_pci <- data.frame(region = as.character(tgcp_svi_subset_subset[, 1]), 
                                 value = score)
+
+
+
+zip_code_hh <- data.frame(region = as.character(tgcp_svi_subset[, 1]), value = tgcp_svi_subset[, 3])
+
 ```
 
-
+```{r}
+zip_choropleth(zip_code_hh,
+               zip_zoom = atleast5_zip,
+               title    = "Number of Household Units",
+               legend   = "Number of Household Units", 
+               num_colors = 9)
+```
 
 ```{r}
 zip_choropleth(zip_code_pci,
                zip_zoom = atleast5_zip,
-               title    = "Per Capita Income of Clients",
+               title    = "Per Capita Income",
                legend   = "Per Capita Income", 
-               num_colors = 9)
+               num_colors = 9, 
+               reference_map = T)
 ```
 
 ```{r}
@@ -275,7 +298,8 @@ zip_choropleth(zip_code_rank_pci,
                zip_zoom = atleast5_zip,
                title    = "Ranking of Need (corresponding to lower PCI)",
                legend   = "Ranking", 
-               num_colors = 9)
+               num_colors = 9, 
+               reference_map = T)
 ```
 
 Difference of the "met" and "unmet" need rankings
