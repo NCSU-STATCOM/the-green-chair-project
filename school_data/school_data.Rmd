@@ -1,0 +1,28 @@
+
+
+## School Data Sources
+
+We were able to find a variety of useful, longitudinal data provided by the Wake County Public School System.
+While our analysis mainly focused on using Free and Reduced-Price Lunch Program information (as a proxy for economic status), we wanted to provide these additional resources in case they are useful to you now or in the future.
+
+
+To start, [**here you can find**](https://www.wcpss.net/domain/100) a summary of the current status of the WCPSS.
+This includes number of schools, employees, number of students on the Free and Reduced-Price Lunch Program, and more.
+Additionally, they provide a _Reports by year_ section.
+This breaks the information out at the school level.
+This is where we obtained the Free and Reduced-Price Lunch Program data for each school.
+They also offer ethnicity breakdowns, limited English proficiency rates, and special education services.
+[**You can view the spreadsheet for the 2020-2021 school year here**](https://docs.google.com/spreadsheets/d/1Q7_HttWQBxRJfEGsvVl6Xf8slbLqxvuQvJ9Fz3hcL4k/edit#gid=1941273913), with previous years available on their website.
+
+
+We also found a variety of information from [**the North Carolina Department of Public Instruction (NC DPI)**](https://www.dpi.nc.gov/districts-schools).
+Some variables include [**cohort graduation rate, ACT results, and SAT and AP results**](https://www.dpi.nc.gov/districts-schools/testing-and-school-accountability/school-accountability-and-reporting).
+These data are again broken up by school and include other school districts along with Wake County.
+These were not the focus of our analysis, as there are often biases in these scores; however we wanted to provide the resource in you find other uses for it.
+NC DPI also provides [**discipline and dropout data**](https://www.dpi.nc.gov/data-reports/dropout-and-discipline-data/discipline-alp-and-dropout-annual-reports#2018-19).
+This includes tables about crime, dropout rates and counts, and suspensions.
+We found this data to be mostly prevalent to high schools and less so in elementary and middle schools.
+
+[**Finally, here is a nice visualization about postsecondary enrollment in North Carolina high schools.**](https://www.nccommunitycolleges.edu/analytics/dashboards/postsecondary-enrollment-high-school)
+It allows options to change charts to look at breakdowns for particular schools.
+Since this data was also focused exclusively on high schools, we did not make use of it ourselves.
