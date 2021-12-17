@@ -16,13 +16,15 @@ library(rgeos)
 library(sf)
 library(osmdata)
 library(ggmap)
+library(here)
+i_am("mapping_schools/mapping_schools.Rmd")
 ```
 
 ## Mapping Schools
 
 ```{r, echo = F}
 ### Load the cleaned data set
-school_merge_csv <- read.csv("school_merge.csv")
+school_merge_csv <- read.csv(here("mapping_schools/school_merge.csv"))
 ### Calculate the proportion of students who are served by TGCP over the total number of students, in each school
 count <- school_merge_csv %>% 
   group_by(SchoolName) %>%
@@ -38,7 +40,7 @@ school_merge_df <- st_as_sf(df, coords = c("X", "Y"))
 merge_shp <- st_set_crs(school_merge_df, 4326)
 ```
 
-```{r, echo = F}
+```{r, echo = F, eval = F}
 ### Load the street maps
 mad_map <- get_map(getbb("Wake County North Carolina"), maptype = "toner-background")
 
@@ -73,11 +75,16 @@ railway <- getbb("Wake County North Carolina")%>%
   opq()%>%
   add_osm_feature(key = "railway", value="rail") %>%
   osmdata_sf()
+
+# the above objects take a long time to generate. I save them below so I can skip the re-computation.
+save(mad_map, big_streets, med_streets, small_streets, railway, file = here("mapping_schools/map_features.RData"))
 ```
 
-We show a plot of the schools (public, non-public) that students served by TGCP go to in Wake County. Colleges and universities, daycare centers, and schools outside Wake County are not included in the plot. 
+We show a plot of the schools (public, non-public) that students served by TGCP go to in Wake County, shown as red dots. Colleges and universities, daycare centers, and schools outside Wake County are not included in the plot. 
 
 ```{r, echo = F}
+load(here("mapping_schools/map_features.RData"))
+
 q <- ggmap(mad_map) +
   geom_sf(data = railway$osm_lines,
           inherit.aes = FALSE,
