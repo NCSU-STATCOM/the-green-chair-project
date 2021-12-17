@@ -5,6 +5,10 @@
 We were able to find a variety of useful, longitudinal data provided by the Wake County Public School System.
 While our analysis mainly focuses on using Free and Reduced-Price Lunch Program information, we wanted to provide these additional resources in case they are useful to you now or in the future.
 
+Here we plot the number of times a school shows up in the TGCP data (this includes a client attending a school or any of their family members) with the number of students on the Free and Reduced-Price Lunch Program at that school. We also provide with the percentage of the student body at a given school on the vertical axis. One use case for this information is to recognize unment need. There may be certain schools that have many students (and/or a high percentage of the student body) participating in a lunch program that do not yet know about The Green Chair Project. Reaching out to the families, faculty, and guidance counselors at these schools may identify communities that would benefit from The Green Chair Project's services.
+
+Additionally, it shows where the current Green Chair Project resources are being allocated. For example, some schools with a very high percentage of students on a lunch program are most prevalent in The Green Chair Project clients. These schools include Baileywick Road Elementary, Barwell Road Elementary, Conn Elementary, Powell Elementary, Oberlin Middle, and Zebulon Middle.
+
 ```{r  echo = FALSE, message = FALSE, warning = FALSE}
 library(readxl)
 library(tidyverse)
@@ -46,7 +50,7 @@ ggplot(school_lunch, aes(x=tgcp_count, y=FREE.and.REDUCED)) +
     check_overlap = TRUE
   )  + 
   ylab("# of students on FR Lunch Program") +
-  xlab("# times school present in TGCP data")
+  xlab("# of times school present in TGCP data")
 
 
 ggplot(school_lunch, aes(x=tgcp_count, y=FR.PERCENTAGE)) + 
@@ -58,7 +62,7 @@ ggplot(school_lunch, aes(x=tgcp_count, y=FR.PERCENTAGE)) +
     check_overlap = TRUE
   ) + 
   ylab("% of students on FR Lunch Program") +
-  xlab("# times school present in TGCP data")
+  xlab("# of times school present in TGCP data")
 
 ```
 
