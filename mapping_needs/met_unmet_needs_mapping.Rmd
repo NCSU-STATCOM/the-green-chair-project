@@ -19,13 +19,13 @@ library(choroplethrZip)
 library(choroplethrMaps)
 
 library(usmap)
+
+library(ggmap)
 ```
 
 ```{r}
 tgcp_svi <- readRDS(here("cleaned_STATCOM_data_SVI.rds"))
 ```
-
-There are 634 (12%) clients with missing zip codes. Thus, the maps show only the clients with non-missing zip codes.
 
 ```{r}
 zip_code_summary <- tgcp_svi[!is.na(tgcp_svi$ClientZipCode), ] %>% group_by(ClientZipCode) %>% summarise(num_clients = n(), prop_clients = n() / nrow(tgcp_svi))
@@ -33,34 +33,11 @@ zip_code_summary <- tgcp_svi[!is.na(tgcp_svi$ClientZipCode), ] %>% group_by(Clie
 zip_code_num_clients <- data.frame(region = as.character(zip_code_summary$ClientZipCode), 
                                    value = zip_code_summary$num_clients)
 
-zip_code_prop_clients <- data.frame(region = as.character(zip_code_summary$ClientZipCode), 
-                                   value = round(zip_code_summary$prop_clients, digits = 3))
-
 ```
 
 ```{r}
-data(zip.regions)
-
-zip_list <- zip_code_num_clients$region
-
-north_carolina_zip <- zip.regions$region[zip.regions$state.name == "north carolina"]
-
-virginia_zip <- zip.regions$region[zip.regions$state.name == "virginia"]
-
-west_virginia_zip <- zip.regions$region[zip.regions$state.name == "west virginia"]
-
 atleast5_zip <- zip_code_num_clients$region[zip_code_num_clients$value > 4 &
-                                                      !is.na(zip_code_num_clients$region)]
-```
-
-```{r}
-zip_code_summary_subset <- zip_code_summary[zip_code_summary$ClientZipCode %in% atleast5_zip, ]
-
-score <- rank(zip_code_summary_subset$num_clients, ties.method = "average")
-# score <- score / max(score)
-
-zip_code_rank_num_clients <- data.frame(region = as.character(zip_code_summary_subset$ClientZipCode), 
-                                   value = score)
+                                              !is.na(zip_code_num_clients$region)]
 ```
 
 
@@ -68,26 +45,20 @@ zip_code_rank_num_clients <- data.frame(region = as.character(zip_code_summary_s
 ```{r, echo = F}
 # to get Google reference map (https://arilamstein.com/blog/2019/05/21/bug-when-creating-reference-maps-with-choroplethr/)
 
-library(ggmap)
 register_google("<your api key>")
 
 ```
 
 
 
-First, mapping all the zip codes in the data set, in North Carolina. 
+First, we map all the client zip codes in North Carolina. 
 
 For the zip codes that are not in North Carolina, one zip code is from Virginia (with one client), one zip code is from West Virginia (with one client) and the rest are typos. 
 
 <!-- The tgcp_svi dataset  -->
 
 ```{r}
-
-
-# manhattan_les = c("10002", "10003", "10009")
-# manhattan_ues = c("10021", "10028", "10044", "10128")
 zip_choropleth(zip_code_num_clients,
-               # zip_zoom = c(manhattan_les, manhattan_ues),
                state_zoom = c("north carolina"),
                title    = "Number of Clients",
                legend   = "Number of Clients", 
@@ -99,6 +70,8 @@ zip_choropleth(zip_code_num_clients,
 <!-- Finding the counties with >= 5 clients -->
 
 ```{r}
+data(zip.regions)
+
 zip.regions.tgcp <- zip.regions[zip.regions$region %in% atleast5_zip, ]
 
 tgcp_county_name_code <- unique(cbind(zip.regions.tgcp$county.name, zip.regions.tgcp$county.fips.numeric))
@@ -136,7 +109,7 @@ intersect(atleast5_zip, nash_zip) # contained within franklin
 intersect(atleast5_zip, granville_zip) # contained within franklin
 ```
 
-```{r}
+```{r, eval = F}
 intersect(atleast5_zip, johnston_zip)
 
 intersect(atleast5_zip, wake_zip)
@@ -148,44 +121,48 @@ intersect(atleast5_zip, orange_zip)
 intersect(atleast5_zip, franklin_zip)
 ```
 
-
-Five counties contain all the zip codes with at least 5 clients: Johnston, Wake, Durham, Orange, and Franklin
+Five counties contain all the zip codes with at least 5 client households: Orange, Durham, Franklin, Wake, and Johnston. Most of the zip codes lie within Wake county.
 
 ```{r}
 usmap::plot_usmap("counties", fill = "yellow", alpha = 0.25,
                   include = c("37101", "37183", "37063", "37135", "37069"), 
                   labels = T) +
-                  labs(title = "Counties Serviced by TGCP")
+  labs(title = "Counties Serviced by TGCP")
 ```
 
 
 
 # Needs mapping
 
-First plotting the needs and number of household units.
+<!-- to-do: put zip code map with labels here -->
+
+First, we plot the number of household units and the need as represented by lower Per Capita Income (PCI). These two variables are taken from the CDC Social Vulnerability Index. 
 
 ```{r}
 # tgcp_atleast5 <- tgcp_svi[tgcp_svi$ClientZipCode %in% atleast5_zip, ]
 
-tgcp_svi_subset <- unique(cbind(tgcp_svi$ClientZipCode[!is.na(tgcp_svi$ClientZipCode)],
-                         tgcp_svi$EP_PCI[!is.na(tgcp_svi$ClientZipCode)], 
-                         tgcp_svi$E_HH[!is.na(tgcp_svi$ClientZipCode)]))
+tgcp_pci_hh <- unique(data.frame(ClientZipCode = tgcp_svi$ClientZipCode[!is.na(tgcp_svi$ClientZipCode)],
+                                 EP_PCI = tgcp_svi$EP_PCI[!is.na(tgcp_svi$ClientZipCode)],
+                                 E_HH = tgcp_svi$E_HH[!is.na(tgcp_svi$ClientZipCode)]))
 
-zip_code_pci <- data.frame(region = as.character(tgcp_svi_subset[, 1]), value = tgcp_svi_subset[, 2])
+zip_code_pci <- data.frame(region = as.character(tgcp_pci_hh[, 1]), value = tgcp_pci_hh[, 2])
 
-tgcp_svi_subset_subset <- tgcp_svi_subset[tgcp_svi_subset[, 1] %in% atleast5_zip, ]
+tgcp_pci_hh_subset <- tgcp_pci_hh[tgcp_pci_hh[, 1] %in% atleast5_zip, ]
 
-score <- rank(-tgcp_svi_subset_subset[, 2], ties.method = "average", na.last = "keep")
+# reversing the ranking based on PCI, by taking negative
+score <- rank(-tgcp_pci_hh_subset[, 2], ties.method = "average", na.last = "keep")
 # score <- score / max(score, na.rm = T)
 
-zip_code_rank_pci <- data.frame(region = as.character(tgcp_svi_subset_subset[, 1]), 
+zip_code_rank_pci <- data.frame(region = as.character(tgcp_pci_hh_subset[, 1]), 
                                 value = score)
 
 
 
-zip_code_hh <- data.frame(region = as.character(tgcp_svi_subset[, 1]), value = tgcp_svi_subset[, 3])
+zip_code_hh <- data.frame(region = as.character(tgcp_pci_hh[, 1]), value = tgcp_pci_hh[, 3])
 
 ```
+
+Below shows the number of household units in each zip code that contains at least 5 TGCP client households.
 
 ```{r}
 zip_choropleth(zip_code_hh,
@@ -195,39 +172,58 @@ zip_choropleth(zip_code_hh,
                num_colors = 9)
 ```
 
+Below is the same map, overlaid over Google Maps.
+
+```{r}
+zip_choropleth(zip_code_hh,
+               zip_zoom = atleast5_zip,
+               title    = "Number of Household Units",
+               legend   = "Number of Household Units", 
+               num_colors = 9, 
+               reference_map = T)
+```
+
+Below shows the Per Capita Income of each zip code.
+
 ```{r}
 zip_choropleth(zip_code_pci,
                zip_zoom = atleast5_zip,
                title    = "Per Capita Income",
                legend   = "Per Capita Income", 
-               num_colors = 9, 
-               reference_map = T)
+               num_colors = 9)
 ```
+
+Below ranks the zip code according to PCI. That is, the rank of 1 is assigned to the highest PCI, and the last rank of 44 is assigned to the lowest PCI. Thus, a higher rank corresponds to higher need.
 
 ```{r}
 zip_choropleth(zip_code_rank_pci,
                zip_zoom = atleast5_zip,
                title    = "Ranking of Need (corresponding to lower PCI)",
                legend   = "Ranking", 
-               num_colors = 9, 
-               reference_map = T)
+               num_colors = 9)
 ```
 
 
 
 # Met Needs Mapping
 
-```{r, eval=FALSE}
-zip_code_num_clients[!(zip_code_num_clients$region %in% north_carolina_zip) & !is.na(zip_code_num_clients$region),]
+```{r}
+zip_code_summary_hh <- left_join(zip_code_summary, tgcp_pci_hh, by = "ClientZipCode")
+
+zip_code_summary_hh$prop_hh_served <- zip_code_summary_hh$num_clients / zip_code_summary_hh$E_HH
 ```
 
-```{r, eval=FALSE}
-zip_code_num_clients[(zip_code_num_clients$region %in% north_carolina_zip) & !is.na(zip_code_num_clients$region) & !(zip_code_num_clients$region %in% atleast5_zip),]
+```{r}
+zip_code_summary_subset <- zip_code_summary_hh[zip_code_summary_hh$ClientZipCode %in% atleast5_zip, ]
+
+score <- rank(zip_code_summary_subset$prop_hh_served, ties.method = "average")
+# score <- score / max(score)
+
+zip_code_rank_num_clients <- data.frame(region = as.character(zip_code_summary_subset$ClientZipCode), 
+                                        value = score)
 ```
 
-```{r, eval=FALSE}
-zip_code_num_clients[(zip_code_num_clients$region %in% north_carolina_zip) & !is.na(zip_code_num_clients$region) & !(zip_code_num_clients$region %in% wake_zip),]
-```
+The below map shows the number of client households served by TGCP at each zip code. 
 
 ```{r}
 
@@ -238,6 +234,8 @@ zip_choropleth(zip_code_num_clients,
                num_colors = 9)
 
 ```
+
+Below is the same map, overlaid over Google Maps.
 
 ```{r}
 
@@ -260,26 +258,17 @@ zip_choropleth(zip_code_num_clients,
 
 ```
 
-```{r, eval = F}
-
-zip_choropleth(zip_code_prop_clients,
-               zip_zoom = atleast5_zip,
-               title    = "Proportion of Clients",
-               legend   = "Proportion of Clients", 
-               num_colors = 9)
-
-```
 
 
+<!-- Put explanation of prop hh served ranking here -->
 
 ```{r}
 
 zip_choropleth(zip_code_rank_num_clients,
                zip_zoom = atleast5_zip,
-               title    = "Ranking of the Number of Clients",
+               title    = "Ranking of Number of Households Served",
                legend   = "Rank", 
-               num_colors = 9, 
-               reference_map = T)
+               num_colors = 9)
 
 ```
 
@@ -298,7 +287,6 @@ zip_choropleth(zip_code_rank_num_clients,
 ```{r, eval = F}
 
 zip_choropleth(zip_code_num_clients,
-               # zip_zoom = c(manhattan_les, manhattan_ues),
                county_zoom = c("37101", "37183", "37063", "37135", "37069"),
                title    = "Number of Clients",
                legend   = "Number of Clients", 
@@ -366,5 +354,7 @@ zip_choropleth(zip_code_rank_diff,
 
 <!-- should rescale the ranking, to be more comparable -->
 
+# References
 
+1. Centers for Disease Control and Prevention, Agency for Toxic Substances and Disease Registry, Geospatial Research, Analysis, and Services Program. CDC/ATSDR Social Vulnerability Index 2018 database United States. https://www.atsdr.cdc.gov/placeandhealth/svi/data_documentation_download.html.
 
