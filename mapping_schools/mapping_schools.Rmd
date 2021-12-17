@@ -1,0 +1,131 @@
+---
+title: "Mapping Schools"
+author: "Hyoshin Kim"
+date: '2021 12 17 '
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, fig.align = 'center', fig.width = 12, fig.height = 8)
+library(rgdal)
+library(raster)
+library(tidyverse)
+library(readxl)
+library(viridis)
+library(rgeos)
+library(sf)
+library(osmdata)
+library(ggmap)
+```
+
+## Mapping Schools
+
+```{r, echo = F}
+### Load the cleaned data set
+school_merge_csv <- read.csv("school_merge.csv")
+### Calculate the proportion of students who are served by TGCP over the total number of students, in each school
+count <- school_merge_csv %>% 
+  group_by(SchoolName) %>%
+  count()
+Number.of.Students <- school_merge_csv %>% 
+  distinct(SchoolName, .keep_all = TRUE)
+df <- left_join(Number.of.Students, count)
+df <- df %>% mutate(Proportion = n/Number.of.Students)
+```
+
+```{r, echo = F}
+school_merge_df <- st_as_sf(df, coords = c("X", "Y"))
+merge_shp <- st_set_crs(school_merge_df, 4326)
+```
+
+```{r, echo = F}
+### Load the street maps
+mad_map <- get_map(getbb("Wake County North Carolina"), maptype = "toner-background")
+
+big_streets <- getbb("Wake County North Carolina")%>%
+  opq()%>%
+  add_osm_feature(key = "highway", 
+                  value = c("motorway", "primary", "motorway_link", "primary_link")) %>%
+  osmdata_sf()
+
+med_streets <- getbb("Wake County North Carolina")%>%
+  opq()%>%
+  add_osm_feature(key = "highway", 
+                  value = c("secondary", "tertiary", "secondary_link", "tertiary_link")) %>%
+  osmdata_sf()
+
+
+small_streets <- getbb("Wake County North Carolina")%>%
+  opq()%>%
+  add_osm_feature(key = "highway", 
+                  value = c("residential", "living_street",
+                            "unclassified",
+                            "service", "footway"
+                  )) %>%
+  osmdata_sf()
+
+#river <- getbb("Wake County North Carolina")%>%
+#  opq()%>%
+#  add_osm_feature(key = "waterway", value = "river") %>%
+#  osmdata_sf()
+
+railway <- getbb("Wake County North Carolina")%>%
+  opq()%>%
+  add_osm_feature(key = "railway", value="rail") %>%
+  osmdata_sf()
+```
+
+We show a plot of the schools (public, non-public) that students served by TGCP go to in Wake County. Colleges and universities, daycare centers, and schools outside Wake County are not included in the plot. 
+
+```{r, echo = F}
+q <- ggmap(mad_map) +
+  geom_sf(data = railway$osm_lines,
+          inherit.aes = FALSE,
+          color = "black",
+          size = .2,
+          linetype="dotdash",
+          alpha = .5) +
+  geom_sf(data = med_streets$osm_lines,
+          inherit.aes = FALSE,
+          color = "black",
+          size = .3,
+          alpha = .5) +
+  geom_sf(data = small_streets$osm_lines,
+          inherit.aes = FALSE,
+          color = "#666666",
+          size = .2,
+          alpha = .3) +
+  geom_sf(data = big_streets$osm_lines,
+          inherit.aes = FALSE,
+          color = "black",
+          size = .4,
+          alpha = .5)
+```
+
+```{r, echo = F}
+q1 <- q + 
+  theme_void() + 
+  labs(title = "Map of Schools in Wake County") +
+  geom_sf(data = merge_shp, inherit.aes = FALSE,
+          color = "firebrick2") 
+```
+
+```{r, echo=F}
+q1
+```
+
+
+
+A map of schools by proportion are also considered. For each school, the proportion of students who are served by TGCP over the total number of students are given below. 
+
+```{r, echo = F}
+q2 <- q + 
+  theme_void() + 
+  labs(title = "Map of Schools in Wake County, by Proportions") +
+  geom_sf(data = merge_shp, inherit.aes = FALSE,
+          aes(size = Proportion), alpha = 0.5,color = "firebrick2") 
+```
+
+```{r, echo = F}
+q2
+```
