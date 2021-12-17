@@ -19,13 +19,14 @@ knitr::opts_chunk$set(
 ```{r warning=F, message=F, echo=F}
 # Read data set and libraries
 library(here)
+i_am("tgcp-data/TGCP_mapping.rmd")
 library(tidyverse)
 library(choroplethr)
 library(choroplethrZip)
 library(choroplethrMaps)
 library(usmap)
 library(ggmap)
-tgcp <- readRDS(here("Greenchair","cleaned_STATCOM_data_SVI.rds"))
+tgcp <- readRDS(here("cleaned_STATCOM_data_SVI.rds"))
 tgcp <- tgcp[!is.na(tgcp$ClientZipCode),]
 data(zip.regions)
 north_carolina_zip <-
