@@ -80,6 +80,17 @@ map_NC # takes a while to render
 
 # Using choroplethrZip
 
+# how to install:
+
+# install.packages("devtools")
+# library(devtools)
+# install_github('arilamstein/choroplethrZip@v1.5.0')
+
+# If above code doesn't work, download zip file from GitHub (https://github.com/arilamstein/choroplethrZip),
+# unzip it, then do
+
+# install("/path/to/unzipped/folder/choroplethrZip-master/")
+
 library(choroplethrZip)
 library(choroplethrMaps)
 

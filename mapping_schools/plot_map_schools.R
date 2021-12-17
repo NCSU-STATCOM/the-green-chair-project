@@ -12,7 +12,7 @@ library(ggmap)
 # Let's plot what we have for now. 
 school_merge_csv <- read.csv("school_merge.csv")
 school_merge_df <- st_as_sf(school_merge_csv, coords = c("X", "Y"))
-#merge_shp <- school_merge_df %>% drop_na()
+merge_shp <- st_set_crs(school_merge_df, 4326)
 mad_map <- get_map(getbb("Wake County North Carolina"), maptype = "toner-background")
 
 big_streets <- getbb("Wake County North Carolina")%>%
@@ -37,10 +37,10 @@ small_streets <- getbb("Wake County North Carolina")%>%
                   )) %>%
   osmdata_sf()
 
-river <- getbb("Wake County North Carolina")%>%
-  opq()%>%
-  add_osm_feature(key = "waterway", value = "river") %>%
-  osmdata_sf()
+#river <- getbb("Wake County North Carolina")%>%
+#  opq()%>%
+#  add_osm_feature(key = "waterway", value = "river") %>%
+#  osmdata_sf()
 
 railway <- getbb("Wake County North Carolina")%>%
   opq()%>%
@@ -76,4 +76,3 @@ q1 <- q +
   geom_sf(data = merge_shp$geometry, inherit.aes = FALSE,
           size = 0.5)
 q1
-
