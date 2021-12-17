@@ -1,0 +1,303 @@
+---
+title: "Mapping TGCP data set"
+author: "Yinqiao Wang"
+date: "12/07/2021"
+output: pdf_document
+---
+
+```{r, setup, include=FALSE}
+options(knitr.graphics.auto_pdf = TRUE)
+knitr::opts_chunk$set(
+  fig.height = 8,
+  fig.width = 10,
+  collapse = TRUE,
+  fig.align = "center",
+  dpi = 600
+)
+```
+
+```{r warning=F, message=F, echo=F}
+# Read data set and libraries
+library(here)
+library(tidyverse)
+library(choroplethr)
+library(choroplethrZip)
+library(choroplethrMaps)
+library(usmap)
+library(ggmap)
+tgcp <- readRDS(here("Greenchair","cleaned_STATCOM_data_SVI.rds"))
+tgcp <- tgcp[!is.na(tgcp$ClientZipCode),]
+data(zip.regions)
+north_carolina_zip <-
+  zip.regions$region[zip.regions$state.name == "north carolina"]
+# Define the zones which contain at least 5 clients
+zip_code_summary <-
+  tgcp[!is.na(tgcp$ClientZipCode),] %>% group_by(ClientZipCode) %>% summarise(num_clients = n())
+zip_code_num_clients <-
+  data.frame(region = as.character(zip_code_summary$ClientZipCode),
+             value = zip_code_summary$num_clients)
+atleast5_zip <-
+  zip_code_num_clients$region[zip_code_num_clients$value > 4 &
+                                !is.na(zip_code_num_clients$region)]
+# Set reference Google map API
+register_google("<your api key>")
+
+# Define highlight function
+highlight_county <- function(county_fips)
+{
+  data(county.map, package="choroplethrMaps", envir=environment())
+  df = county.map[county.map$region %in% county_fips, ]
+  geom_polygon(data=df, aes(long, lat, group = group), color = "Darkgreen", fill = NA, size = 1)
+}
+```
+
+\newpage
+
+# Mapping TGCP variables
+
+The five variables from the green chair data set were chosen, and the Wake county area was circled by green lines. The mapping zone was selected based on the zip codes in which the green chair project served at least five clients. Missing data were excluded before mapping. For disability status,  the number of disabilities and the proportion of disabilities for a certain zip code zone were mapped. The same plotting method was used for the veteran and Covid (positive status) variables. The median number of total household members for families is 4. Thus, homes with five or more total household members were classified as large households. Finally, the household income status was mapped based on the classification described previously. The geographic information could help deeply understand the clients' status, determine current services uncovered zone, and explore the possible additional services. Meanwhile, the areas that might develop more services can be found by comparing the plots with the population plots in the selected zone.
+
+## Mapping population for the selected area
+
+```{r warning=F, message=F, echo=F}
+data(df_pop_zip)
+zip_choropleth(df_pop_zip,
+               zip_zoom = atleast5_zip,
+               title      = "Population estimates over zipcode",
+               legend     = "Population",
+               reference_map = T,  
+               num_colors = 9,
+             )
+```
+
+## Mapping Disability
+```{r warning=F, message=F, echo=F}
+## Mapping Disability
+tgcp_disability <- tgcp[!is.na(tgcp$Disability), ]
+zip_prep_summary <-
+  tgcp_disability %>% group_by(ClientZipCode, Disability) %>%
+  summarise(num_Disability = n()) %>%
+  mutate(prop_Disability = num_Disability / sum(num_Disability))
+zip_code_summary <- zip_prep_summary %>% filter(Disability == "Yes")
+zip_code_num_disability <-
+  data.frame(
+    region = as.character(zip_code_summary$ClientZipCode),
+    value = zip_code_summary$num_Disability
+  )
+
+zip_code_prop__disability <-
+  data.frame(
+    region = as.character(zip_code_summary$ClientZipCode),
+    value = round(zip_code_summary$prop_Disability, digits = 3)
+  )
+
+zip_choropleth(
+  zip_code_num_disability,
+  zip_zoom = atleast5_zip,
+  title    = "Number of Disability",
+  legend   = "Number of Disability",
+  num_colors = 9,
+  reference_map = T)+
+  highlight_county(37183)
+
+zip_choropleth(
+  zip_code_prop__disability,
+  zip_zoom = atleast5_zip,
+  title    = "Proportion of Disability",
+  legend   = "Proportion of Disability",
+  num_colors = 9,
+  reference_map = T)+
+  highlight_county(37183)
+```
+## Mapping Veteran
+```{r warning=F, message=F, echo=F}
+## Mapping Veteran
+tgcp_Veteran <- tgcp[!is.na(tgcp$Veteran),]
+zip_prep_summary <-
+  tgcp_Veteran %>% group_by(ClientZipCode, Veteran) %>%
+  summarise(num_Veteran = n()) %>%
+  mutate(prop_Veteran = num_Veteran / sum(num_Veteran))
+zip_code_summary <- zip_prep_summary %>% filter(Veteran == "Yes")
+zip_code_num_Veteran <-
+  data.frame(region = as.character(zip_code_summary$ClientZipCode),
+             value = zip_code_summary$num_Veteran)
+
+zip_code_prop__Veteran <-
+  data.frame(
+    region = as.character(zip_code_summary$ClientZipCode),
+    value = round(zip_code_summary$prop_Veteran, digits = 3)
+  )
+
+zip_choropleth(
+  zip_code_num_Veteran,
+  zip_zoom = atleast5_zip,
+  title    = "Number of Veteran",
+  legend   = "Number of Veteran",
+  num_colors = 9,
+  reference_map = T)+
+  highlight_county(37183)
+
+zip_choropleth(
+  zip_code_prop__Veteran,
+  zip_zoom = atleast5_zip,
+  title    = "Proportion of Veteran",
+  legend   = "Proportion of Veteran",
+  num_colors = 9,
+  reference_map = T)+
+  highlight_county(37183)
+```
+## Mapping COVID status
+```{r warning=F, message=F, echo=F}
+## Mapping COVID status
+tgcp_COVID <- tgcp[!is.na(tgcp$COVID.19),]
+zip_prep_summary <-
+  tgcp_COVID %>% group_by(ClientZipCode, COVID.19) %>%
+  summarise(num_COVID = n()) %>%
+  mutate(prop_COVID = num_COVID / sum(num_COVID))
+zip_code_summary <- zip_prep_summary %>% filter(COVID.19 == "COVID")
+zip_code_num_COVID <-
+  data.frame(region = as.character(zip_code_summary$ClientZipCode),
+             value = zip_code_summary$num_COVID)
+
+zip_code_prop__COVID <-
+  data.frame(
+    region = as.character(zip_code_summary$ClientZipCode),
+    value = round(zip_code_summary$prop_COVID, digits = 3)
+  )
+
+zip_choropleth(
+  zip_code_num_COVID,
+  zip_zoom = atleast5_zip,
+  title    = "Number of COVID cases",
+  legend   = "Number of COVID cases",
+  num_colors = 9,
+  reference_map = T)+
+  highlight_county(37183)
+
+zip_choropleth(
+  zip_code_prop__COVID,
+  zip_zoom = atleast5_zip,
+  title    = "Proportion of COVID cases",
+  legend   = "Proportion of COVID cases",
+  num_colors = 9,
+  reference_map = T)+
+  highlight_county(37183)
+```
+## Mapping TotalHHNumber
+```{r warning=F, message=F, echo=F}
+## Mapping TotalHHNumber
+tgcp_TotalHHNumber <- tgcp[!is.na(tgcp$TotalHHNumber),]
+tgcp_TotalHHNumber$TotalHHNumber <- as.numeric(tgcp_TotalHHNumber$TotalHHNumber)
+zip_prep_summary <-
+  tgcp_TotalHHNumber %>% group_by(ClientZipCode, TotalHHNumber) %>%
+  summarise(num = n()) %>%
+  mutate(prop = num / sum(num))
+zip_code_summary <-
+  zip_prep_summary %>% filter(TotalHHNumber %in% (5:16)) %>%
+  group_by(ClientZipCode) %>%
+  summarise(num_TotalHHNumber = sum(num),
+            prop_TotalHHNumber = sum(prop))
+zip_code_num_TotalHHNumber <-
+  data.frame(
+    region = as.character(zip_code_summary$ClientZipCode),
+    value = zip_code_summary$num_TotalHHNumber
+  )
+zip_code_prop__TotalHHNumber <-
+  data.frame(
+    region = as.character(zip_code_summary$ClientZipCode),
+    value = round(zip_code_summary$prop_TotalHHNumber, digits = 3)
+  )
+
+zip_choropleth(
+  zip_code_num_TotalHHNumber,
+  zip_zoom = atleast5_zip,
+  title    = "Number of large household",
+  legend   = "Number of large household",
+  num_colors = 9,
+  reference_map = T)+
+  highlight_county(37183)
+
+zip_choropleth(
+  zip_code_prop__TotalHHNumber,
+  zip_zoom = atleast5_zip,
+  title    = "Proportion of large household",
+  legend   = "Proportion of large household",
+  num_colors = 9,
+  reference_map = T)+
+  highlight_county(37183)
+```
+## Mapping Homeincome_Very low income status
+```{r warning=F, message=F, echo=F}
+## Mapping Homeincome
+tgcp_Homeincome <- tgcp[which(tgcp$Homeincome != "Unknown"),]
+zip_prep_summary <-
+  tgcp_Homeincome %>% group_by(ClientZipCode, Homeincome) %>%
+  summarise(num_Homeincome = n()) %>%
+  mutate(prop_Homeincome = num_Homeincome / sum(num_Homeincome))
+zip_code_summary <-
+  zip_prep_summary %>% filter(Homeincome == "Very Low Income")
+zip_code_num_Homeincome <-
+  data.frame(
+    region = as.character(zip_code_summary$ClientZipCode),
+    value = zip_code_summary$num_Homeincome
+  )
+
+zip_code_prop__Homeincome <-
+  data.frame(
+    region = as.character(zip_code_summary$ClientZipCode),
+    value = round(zip_code_summary$prop_Homeincome, digits = 3)
+  )
+
+zip_choropleth(
+  zip_code_num_Homeincome,
+  zip_zoom = atleast5_zip,
+  title    = "Number of very low income home",
+  legend   = "Number of very low income home",
+  num_colors = 9,
+  reference_map = T)+
+  highlight_county(37183)
+
+zip_choropleth(
+  zip_code_prop__Homeincome,
+  zip_zoom = atleast5_zip,
+  title    = "Proportion of very low income home",
+  legend   = "Proportion of very low income home",
+  num_colors = 9,
+  reference_map = T) +
+  highlight_county(37183)
+```
+## Mapping Homeincome_Low income status
+```{r warning=F, message=F, echo=F}
+## Mapping Homeincome
+zip_code_summary <-
+  zip_prep_summary %>% filter(Homeincome == "Low Income")
+zip_code_num_Homeincome <-
+  data.frame(
+    region = as.character(zip_code_summary$ClientZipCode),
+    value = zip_code_summary$num_Homeincome
+  )
+
+zip_code_prop__Homeincome <-
+  data.frame(
+    region = as.character(zip_code_summary$ClientZipCode),
+    value = round(zip_code_summary$prop_Homeincome, digits = 3)
+  )
+
+zip_choropleth(
+  zip_code_num_Homeincome,
+  zip_zoom = atleast5_zip,
+  title    = "Number of low income home",
+  legend   = "Number of low income home",
+  num_colors = 9,
+  reference_map = T)+
+  highlight_county(37183)
+
+zip_choropleth(
+  zip_code_prop__Homeincome,
+  zip_zoom = atleast5_zip,
+  title    = "Proportion of low income home",
+  legend   = "Proportion of low income home",
+  num_colors = 9,
+  reference_map = T)+
+  highlight_county(37183)
+```
