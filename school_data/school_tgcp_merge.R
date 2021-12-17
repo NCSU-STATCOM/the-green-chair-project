@@ -3,9 +3,9 @@ library(tidyverse)
 library(dplyr)
 library(ggplot2)
 #read excel document 
-statcom_data <- read_excel("STATCOM_data.xlsx", col_types = "text")
+statcom_data <- read_csv("../cleaned_STATCOM_data.csv")
 
-source("school_data/clean_school_names.R")
+source("clean_school_names.R")
 
 school_col_names <- tidyselect::vars_select(colnames(statcom_data), contains('School', ignore.case = TRUE)) 
 
@@ -20,7 +20,7 @@ count = table(school_cols, useNA="no")
 school_count_df <- data.frame(school_name = names(count),
                      tgcp_count = as.integer(count))
 
-lunch_data = read.csv("school_data/data/lunches_2020_2021.csv")
+lunch_data = read.csv("data/lunches_2020_2021.csv")
 
 lunch_data = lunch_data %>% select(SCHOOL.NAME, FREE.and.REDUCED, FR.PERCENTAGE)
 
@@ -36,7 +36,9 @@ ggplot(school_lunch, aes(x=tgcp_count, y=FREE.and.REDUCED)) +
     size = 3,
     nudge_x = 0.25, nudge_y = 0.25, 
     check_overlap = TRUE
-  ) 
+  )  + 
+  ylab("# of students on FR Lunch Program") +
+  xlab("# times school present in TGCP data")
 
 
 ggplot(school_lunch, aes(x=tgcp_count, y=FR.PERCENTAGE)) + 
@@ -46,7 +48,9 @@ ggplot(school_lunch, aes(x=tgcp_count, y=FR.PERCENTAGE)) +
     size = 3,
     nudge_x = 0.25, nudge_y = 0.25, 
     check_overlap = TRUE
-  ) 
+  ) + 
+  ylab("% of students on FR Lunch Program") +
+  xlab("# times school present in TGCP data")
 
 
 # separate by elementary, middle, and high school
