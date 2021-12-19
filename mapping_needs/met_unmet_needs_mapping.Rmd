@@ -1,12 +1,8 @@
----
-title: "Met and Unmet Needs Mapping"
-author: "Alvin Sheng"
-date: "11/26/2021"
-output: pdf_document
----
+
+# Met and Unmet Needs Mapping
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.align = 'center', fig.width = 5, fig.height = 3)
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.align = 'center', fig.height = 8, fig.width = 10)
 ```
 
 ```{r}
@@ -49,13 +45,21 @@ register_google("<your api key>")
 
 ```
 
+```{r}
+# Yinqiao's function to highlight a particular county
+highlight_county <- function(county_fips)
+{
+  data(county.map, package="choroplethrMaps", envir=environment())
+  df = county.map[county.map$region %in% county_fips, ]
+  geom_polygon(data=df, aes(long, lat, group = group), color = "Darkgreen", fill = NA, size = 1)
+}
+```
+
 
 
 First, we map all the client zip codes in North Carolina. 
 
 For the zip codes that are not in North Carolina, one zip code is from Virginia (with one client), one zip code is from West Virginia (with one client) and the rest are typos. 
-
-<!-- The tgcp_svi dataset  -->
 
 ```{r}
 zip_choropleth(zip_code_num_clients,
@@ -130,11 +134,13 @@ usmap::plot_usmap("counties", fill = "yellow", alpha = 0.25,
   labs(title = "Counties Serviced by TGCP")
 ```
 
+Below is a map of the zip codes in Wake County, taken from https://www.cccarto.com/nc/wake_zipcodes/.
 
+\begin{center}
+\includegraphics{wake-county--nc-zip-codes.jpg}
+\end{center}
 
-# Needs mapping
-
-<!-- to-do: put zip code map with labels here -->
+## Needs mapping
 
 First, we plot the number of household units and the need as represented by lower Per Capita Income (PCI). These two variables are taken from the CDC Social Vulnerability Index. 
 
@@ -162,14 +168,15 @@ zip_code_hh <- data.frame(region = as.character(tgcp_pci_hh[, 1]), value = tgcp_
 
 ```
 
-Below shows the number of household units in each zip code that contains at least 5 TGCP client households.
+Below shows the number of household units in each zip code that contains at least 5 TGCP client households. Wake County is outlined in green.
 
 ```{r}
 zip_choropleth(zip_code_hh,
                zip_zoom = atleast5_zip,
                title    = "Number of Household Units",
                legend   = "Number of Household Units", 
-               num_colors = 9)
+               num_colors = 9) + 
+  highlight_county(37183)
 ```
 
 Below is the same map, overlaid over Google Maps.
@@ -180,7 +187,8 @@ zip_choropleth(zip_code_hh,
                title    = "Number of Household Units",
                legend   = "Number of Household Units", 
                num_colors = 9, 
-               reference_map = T)
+               reference_map = T) + 
+  highlight_county(37183)
 ```
 
 Below shows the Per Capita Income of each zip code.
@@ -190,7 +198,8 @@ zip_choropleth(zip_code_pci,
                zip_zoom = atleast5_zip,
                title    = "Per Capita Income",
                legend   = "Per Capita Income", 
-               num_colors = 9)
+               num_colors = 9) + 
+  highlight_county(37183)
 ```
 
 Below ranks the zip code according to PCI. That is, the rank of 1 is assigned to the highest PCI, and the last rank of 44 is assigned to the lowest PCI. Thus, a higher rank corresponds to higher need.
@@ -200,17 +209,23 @@ zip_choropleth(zip_code_rank_pci,
                zip_zoom = atleast5_zip,
                title    = "Ranking of Need (corresponding to lower PCI)",
                legend   = "Ranking", 
-               num_colors = 9)
+               num_colors = 9) + 
+  highlight_county(37183)
 ```
 
 
 
-# Met Needs Mapping
+## Met Needs Mapping
 
 ```{r}
 zip_code_summary_hh <- left_join(zip_code_summary, tgcp_pci_hh, by = "ClientZipCode")
 
 zip_code_summary_hh$prop_hh_served <- zip_code_summary_hh$num_clients / zip_code_summary_hh$E_HH
+```
+
+```{r}
+zip_code_prop_hh <- data.frame(region = as.character(zip_code_summary_hh$ClientZipCode), 
+                                   value = zip_code_summary_hh$prop_hh_served)
 ```
 
 ```{r}
@@ -231,7 +246,8 @@ zip_choropleth(zip_code_num_clients,
                zip_zoom = atleast5_zip,
                title    = "Number of Clients",
                legend   = "Number of Clients", 
-               num_colors = 9)
+               num_colors = 9) + 
+  highlight_county(37183)
 
 ```
 
@@ -244,61 +260,42 @@ zip_choropleth(zip_code_num_clients,
                title    = "Number of Clients",
                legend   = "Number of Clients", 
                num_colors = 9, 
-               reference_map = T)
+               reference_map = T) + 
+  highlight_county(37183)
 
 ```
 
-```{r, eval = F}
+```{r}
 
-zip_choropleth(zip_code_num_clients,
-               zip_zoom = intersect(atleast5_zip, wake_zip),
-               title    = "Number of Clients",
-               legend   = "Number of Clients", 
-               num_colors = 9)
+zip_choropleth(zip_code_prop_hh,
+               zip_zoom = atleast5_zip,
+               title    = "Proportion of Households Served",
+               legend   = "Proportion", 
+               num_colors = 9) + 
+  highlight_county(37183)
 
 ```
 
 
 
-<!-- Put explanation of prop hh served ranking here -->
+<!-- To-do: Put explanation of prop hh served ranking here -->
+
+Below ranks the zip code according to the proportion of households served. That is, the rank of 1 corresponds to the lowest proportion of households served, and the last rank of 44 corresponds to the highest proportion of households served. Thus, a higher rank corresponds to more service, or "needs met".
 
 ```{r}
 
 zip_choropleth(zip_code_rank_num_clients,
                zip_zoom = atleast5_zip,
-               title    = "Ranking of Number of Households Served",
+               title    = "Ranking of Proportion of Households Served",
                legend   = "Rank", 
-               num_colors = 9)
-
-```
-
-```{r, eval = F}
-
-zip_choropleth(zip_code_rank_num_clients,
-               zip_zoom = intersect(atleast5_zip, wake_zip),
-               title    = "Ranking of the Number of Clients",
-               legend   = "Rank", 
-               num_colors = 9)
+               num_colors = 9) + 
+  highlight_county(37183)
 
 ```
 
 
 
-```{r, eval = F}
-
-zip_choropleth(zip_code_num_clients,
-               county_zoom = c("37101", "37183", "37063", "37135", "37069"),
-               title    = "Number of Clients",
-               legend   = "Number of Clients", 
-               num_colors = 9)
-
-```
-
-
-
-# Unmet Needs Plot
-
-Difference of the "met" and "unmet" need rankings
+## Unmet Needs Mapping
 
 ```{r}
 zip_code_rank_num_pci <- left_join(zip_code_rank_num_clients, zip_code_rank_pci, by = "region")
@@ -308,31 +305,20 @@ zip_code_rank_diff <- data.frame(region = zip_code_rank_num_pci$region, value = 
 # zip_code_rank_diff_rank <- data.frame(region = zip_code_rank_num_pci$region, value = rank(zip_code_rank_diff$value))
 ```
 
+To measure "unmet need," I take the difference of the PCI ranking (representing the "need") and the proportion of households served ranking (representing the "met need").
+
 ```{r}
 zip_choropleth(zip_code_rank_diff,
                zip_zoom = atleast5_zip,
                title    = "Unmet Need",
                legend   = "Rank Difference", 
-               num_colors = 9)
+               num_colors = 9) + 
+  highlight_county(37183)
 ```
 
-<!-- ```{r} -->
-<!-- zip_choropleth(zip_code_rank_diff_rank, -->
-<!--                zip_zoom = atleast5_zip, -->
-<!--                title    = "Unmet Need, Ranked", -->
-<!--                legend   = "Rank",  -->
-<!--                num_colors = 9) -->
-<!-- ``` -->
-
-<!-- ```{r} -->
-<!-- zip_choropleth(zip_code_rank_diff_rank, -->
-<!--                zip_zoom = intersect(atleast5_zip, wake_zip), -->
-<!--                title    = "Unmet Need, Ranked", -->
-<!--                legend   = "Rank",  -->
-<!--                num_colors = 9) -->
-<!-- ``` -->
-
 <!-- To-do: point out the zip codes in tabular format with most unmet need -->
+
+Below is the same map, overlaid over Google Maps.
 
 ```{r}
 zip_choropleth(zip_code_rank_diff,
@@ -340,21 +326,15 @@ zip_choropleth(zip_code_rank_diff,
                title    = "Unmet Need",
                legend   = "Rank Difference", 
                num_colors = 9, 
-               reference_map = T)
+               reference_map = T) + 
+  highlight_county(37183)
 ```
 
-<!-- ```{r} -->
-<!-- zip_choropleth(zip_code_rank_diff_rank, -->
-<!--                zip_zoom = intersect(atleast5_zip, wake_zip), -->
-<!--                title    = "Unmet Need, Ranked", -->
-<!--                legend   = "Rank",  -->
-<!--                num_colors = 9,  -->
-<!--                reference_map = T) -->
-<!-- ``` -->
+As shown in the two plots above, the zip codes with the most "unmet need" tend to be on the periphery of Wake County. 
 
-<!-- should rescale the ranking, to be more comparable -->
 
-# References
+
+## References
 
 1. Centers for Disease Control and Prevention, Agency for Toxic Substances and Disease Registry, Geospatial Research, Analysis, and Services Program. CDC/ATSDR Social Vulnerability Index 2018 database United States. https://www.atsdr.cdc.gov/placeandhealth/svi/data_documentation_download.html.
 

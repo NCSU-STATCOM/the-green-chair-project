@@ -1,6 +1,6 @@
 
 
-## School Data Sources
+# School Data
 
 We were able to find a variety of useful, longitudinal data provided by the Wake County Public School System.
 While our analysis mainly focuses on using Free and Reduced-Price Lunch Program (FR Lunch Program) information, we wanted to provide these additional resources in case they are useful to you now or in the future.

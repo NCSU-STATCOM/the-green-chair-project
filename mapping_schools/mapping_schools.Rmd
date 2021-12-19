@@ -1,10 +1,3 @@
----
-title: "Mapping Schools"
-author: "Hyoshin Kim"
-date: '2021 12 17 '
-output: pdf_document
----
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, fig.align = 'center', fig.width = 12, fig.height = 8)
 library(rgdal)
@@ -20,7 +13,7 @@ library(here)
 i_am("mapping_schools/mapping_schools.Rmd")
 ```
 
-## Mapping Schools
+# Mapping Schools
 
 ```{r, echo = F}
 ### Load the cleaned data set

@@ -1,10 +1,3 @@
----
-title: "Mapping TGCP data set"
-author: "Yinqiao Wang"
-date: "12/07/2021"
-output: pdf_document
----
-
 ```{r, setup, include=FALSE}
 options(knitr.graphics.auto_pdf = TRUE)
 knitr::opts_chunk$set(
@@ -51,8 +44,6 @@ highlight_county <- function(county_fips)
   geom_polygon(data=df, aes(long, lat, group = group), color = "Darkgreen", fill = NA, size = 1)
 }
 ```
-
-\newpage
 
 # Mapping TGCP variables
 
@@ -227,7 +218,7 @@ zip_choropleth(
   reference_map = T)+
   highlight_county(37183)
 ```
-## Mapping Homeincome_Very low income status
+## Mapping Homeincome: Very low income status
 ```{r warning=F, message=F, echo=F}
 ## Mapping Homeincome
 tgcp_Homeincome <- tgcp[which(tgcp$Homeincome != "Unknown"),]
@@ -267,7 +258,7 @@ zip_choropleth(
   reference_map = T) +
   highlight_county(37183)
 ```
-## Mapping Homeincome_Low income status
+## Mapping Homeincome: Low income status
 ```{r warning=F, message=F, echo=F}
 ## Mapping Homeincome
 zip_code_summary <-
