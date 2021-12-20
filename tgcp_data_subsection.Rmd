@@ -3,7 +3,7 @@
 We have spent a lot of time cleaning the data, allowing us to start making visualizations.
 First, we wanted to answer how many clients are living below the 30% median income line, how many are in the 30% and 60% range, and how many are above the 60% range. 
 It's important to note that the thresholds for these classifcations change both by year and by the number of people that live in a household.
-[You can see the thresholds for 2021 here, provided by the HOME Investment Partnerships Program.](https://www.huduser.gov/portal/datasets/home-datasets/files/HOME_IncomeLmts_State_NC_2021.pdf)
+[**\textcolor{blue}{You can see the thresholds for 2021 here, provided by the HOME Investment Partnerships Program.}**](https://www.huduser.gov/portal/datasets/home-datasets/files/HOME_IncomeLmts_State_NC_2021.pdf)
 Note that we are using the threshold for Raleigh.
 With all that in mind, we have categorized each client/family as being below the 30% line, between 30% and 60%, above 60%, or unknown (if the income data was unavailable).
 
@@ -82,10 +82,4 @@ agency_clean2 %>% arrange(desc(Freq)) %>%
 ```
 
 As expected, the Wake Country Public School System was referred the most by far, with nearly 1200 referrals. 
-This has encouraged us to look further into the schools.
-We are compiling data including drop out/graduation rates, test scores, and free and reduced lunch participation for each public school in Wake county.
-Then we will be able to cross reference this with our data to find correlations between clients referred to TGCP and these external, school variables.
-Here we present the schools with the highest percentage of their students enrolled in the free and reduced lunch program as well as the schools with most highest total number of students enrolled in a lunch program.
-
-```{r child = 'school_data/lunch_plot.Rmd', echo = FALSE, message = FALSE, warning = FALSE}
-```
+This has encouraged us to look further into the schools (see chapter 4).
