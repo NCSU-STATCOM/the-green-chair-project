@@ -6,7 +6,13 @@
 <!-- ``` -->
 
 ```{r}
+rm(list = ls()) # clearing possibly conflicting objects created in past chapters
+```
+
+```{r}
 library(here)
+i_am("mapping_needs/met_unmet_needs_mapping.Rmd")
+
 library(tidyverse)
 
 library(choroplethr)
@@ -24,7 +30,7 @@ tgcp_svi <- readRDS(here("cleaned_STATCOM_data_SVI.rds"))
 ```
 
 ```{r}
-zip_code_summary <- tgcp_svi[!is.na(tgcp_svi$ClientZipCode), ] %>% group_by(ClientZipCode) %>% summarise(num_clients = n(), prop_clients = n() / nrow(tgcp_svi))
+zip_code_summary <- tgcp_svi[!is.na(tgcp_svi$ClientZipCode), ] %>% group_by(ClientZipCode) %>% dplyr::summarise(num_clients = n(), prop_clients = n() / nrow(tgcp_svi))
 
 zip_code_num_clients <- data.frame(region = as.character(zip_code_summary$ClientZipCode), 
                                    value = zip_code_summary$num_clients)
@@ -137,7 +143,7 @@ usmap::plot_usmap("counties", fill = "yellow", alpha = 0.25,
 Below is a map of the zip codes in Wake County, taken from https://www.cccarto.com/nc/wake_zipcodes/.
 
 \begin{center}
-\includegraphics{wake-county--nc-zip-codes.jpg}
+\includegraphics{mapping_needs/wake-county--nc-zip-codes.jpg}
 \end{center}
 
 ## Needs mapping

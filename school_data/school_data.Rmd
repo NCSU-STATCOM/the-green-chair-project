@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 
 
 # School Data
@@ -9,7 +14,7 @@ Here we plot the number of times a school shows up in the TGCP data (this includ
 
 Additionally, it shows where the current Green Chair Project resources are being allocated. For example, some schools with a very high percentage of students on a lunch program are most prevalent in The Green Chair Project clients. These schools include Baileywick Road Elementary, Barwell Road Elementary, Conn Elementary, Powell Elementary, Oberlin Middle, and Zebulon Middle.
 
-```{r  echo = FALSE, message = FALSE, warning = FALSE}
+```{r  echo = FALSE, message = FALSE, warning = FALSE, fig.height = 8, fig.width = 10}
 library(readxl)
 library(tidyverse)
 library(dplyr)
