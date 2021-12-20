@@ -1,0 +1,38 @@
+---
+title: "Analysis of The Green Chair Project Client Demographics"
+author: A. Sheng, J. Hickey, Y. Wang, J. Koerner, H. Kim, J. Wang, S. Unnithan, N. Giertych
+site: bookdown::bookdown_site
+delete_merged_file: true
+output:
+  bookdown::pdf_document2:
+    toc: yes
+    toc_depth: 2
+abstract: |
+  This report contains an exploration and analysis of data on The Green Chair Project's (TGCP) clients and Wake County public schools through plots and maps.
+---
+
+\newpage
+
+```{r child = 'tgcp_data_subsection.Rmd', warning = FALSE}
+```
+
+\newpage
+
+```{r child = 'mapping_needs/met_unmet_needs_mapping.Rmd', echo = FALSE, message = FALSE, warning = FALSE, fig.align = 'center', fig.height = 4, fig.width = 6, dpi = 600}
+```
+
+\newpage
+
+```{r child = 'tgcp-data/TGCP_mapping.rmd', echo = FALSE, message = FALSE, warning = FALSE, fig.align = 'center', fig.height = 4, fig.width = 6, dpi = 600}
+```
+
+\newpage
+
+```{r child = 'school_data/school_data.Rmd'}
+```
+
+\newpage
+
+```{r child = 'mapping_schools/mapping_schools.Rmd', echo = FALSE, message = FALSE, warning = FALSE, fig.align = 'center', fig.width = 12, fig.height = 8}
+```
+
